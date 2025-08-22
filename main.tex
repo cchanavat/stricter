@@ -1,0 +1,72 @@
+\documentclass[11pt,twoside]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,mathtools,mathdots,scalerel,mathrsfs,stmaryrd,cmll}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern, tikz-cd, quiver}
+\usepackage[many]{tcolorbox}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tikz, fancyhdr, xparse, xcolor, tocloft}
+\usepackage[british]{babel}
+\usepackage[a4paper, top=4.5cm, bottom=4.5cm, left=4cm, right=4cm, asymmetric]{geometry}
+
+\usepackage{crossreftools}
+\usepackage[textwidth=3cm, textsize=small, colorinlistoftodos]{todonotes}
+
+\usepackage{cctitle, titlesec}
+\usepackage{etoolbox}
+
+\usetikzlibrary{nfold}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+\input{macros}
+\input{style}
+
+
+\showboxbreadth=50 
+\showboxdepth=50
+
+
+\newcommand\runtitle{stricter $\omega$-categories}
+\newcommand\runauthor{chanavat}
+
+\title{Stricter $\omega$-categories}
+
+\author{Cl\'emence Chanavat}
+
+\institution{Tallinn University of Technology}
+
+\begin{document}
+
+\maketitle
+\begin{center}
+	\begin{minipage}[t]{.95\textwidth}
+		\small\textsc{Abstract.}
+
+	\end{minipage}
+	
+	\vspace{20pt}
+
+	\begin{minipage}[t]{0.95\textwidth}
+		\setcounter{tocdepth}{2}
+		\tableofcontents
+	\end{minipage}
+\end{center}
+
+\makeaftertitle
+
+\input{intro}
+\input{stricter}
+\input{diagrammatic}
+\input{model}
+
+\bibliographystyle{alpha}
+\small\bibliography{main.bib}
+
+\end{document}

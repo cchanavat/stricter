@@ -1,0 +1,34 @@
+\ProvidesPackage{cctitle}
+
+\newcommand*{\institution}[1]{\gdef\@institution{#1}}
+\newcommand*{\@institution}{\@empty}
+
+\newcommand*{\subjclass}[1]{\gdef\@subjclass{#1}}
+\newcommand*{\@subjclass}{\@empty}
+
+\newcommand*{\keywords}[1]{\gdef\@keywords{#1}}
+\newcommand*{\@keywords}{\@empty}
+
+\renewcommand*{\maketitle}{
+	\begin{center}
+		\vspace{10pt}
+		
+		\centering\LARGE{\sffamily\fbox{\parbox{0.9\linewidth}{\centering\@title}}}
+		
+		\vspace{20pt}
+		
+		\noindent{\large\@author} 
+
+		\noindent {\itshape\normalsize\@institution} 
+		
+		\vspace{15pt}
+	\end{center}
+}
+
+\newcommand{\makeaftertitle}{
+	\thispagestyle{empty}
+	\newpage
+}
+
+\endinput
+

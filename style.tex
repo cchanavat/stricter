@@ -1,0 +1,65 @@
+\newtheoremstyle{ittheorem}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  { ---}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+
+\newtheoremstyle{itdfn}
+  {\topsep}
+  {\topsep}
+  {}
+  {0pt}
+  {\bfseries}
+  {}
+  {5pt plus 1pt minus 1pt}
+  {\thmnumber{#2}{\thmnote{\normalfont\ \ %
+{\sffamily(#3)}.}}}
+
+\newtheoremstyle{itrmk}
+  {0.5\topsep}
+  {0.5\topsep}
+  {\normalfont}
+  {0pt}
+  {\sffamily \itshape}
+  { --- }
+  {5pt plus 1pt minus 1pt}
+  {}
+  
+% \makeatletter
+%   \renewcommand\@upn{\textit}
+% \makeatother
+
+    
+\theoremstyle{ittheorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\theoremstyle{itdfn}
+\newtheorem{dfn}[thm]{}
+\theoremstyle{itrmk}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{comm}[thm]{Comment}
+\newtheorem{exm}[thm]{Example}
+
+
+\setlength\parindent{1em}
+
+\relpenalty=10000
+\binoppenalty=10000
+
+\setlist{leftmargin=20pt,itemsep=0pt,parsep=0pt,topsep=1ex}
+
+
+\titleformat{\section}
+ {\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+ {\normalsize\bfseries}{\thesubsection.}{1em}{}

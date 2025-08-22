@@ -1,0 +1,69 @@
+\begin{lem} \label{lem:local_wrt_directed_complexes}
+    Let \( C \) be a stricter \( n \)\nbd category and \( P \) be a \( n \)\nbd regular directed complex.
+    Then \( C \) is local with respect to the canonical strict functor 
+    \begin{equation*}
+        s_P \colon \colim_{x \in P} \molecin{\imel{P}{x}} \to \molecin{P}.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Consider a strict functor \( \F \colon \colim_{x \in P} \molecin{\imel{P}{x}} \to C \), and for \( x \in P \), denote by \( \F_x \) the restriction of \( \F \) along \( \molecin{\imel{P}{X}} \to \colim_{x \in P} \molecin{\imel{P}{x}} \).
+    We define a strict functor \( \G \colon \molecin{P} \to C \) such that \( \G \after s_P = \F \).
+    Let \( u \colon U \to P \) be a morphism with \( U \) an atom.
+    Then \( u = \mapel{x} \) for some \( x \in P \), hence we must necessarily let \( \G(u) \eqdef \F_x(\idd{}) \).
+    Since \( \atomin{P} \) is a basis for \( \molecin{P} \), this assignment uniquely determine \( \G \).
+    We need to show that this indeed makes \( \G \) a strict functor.
+    Let \( w \colon W \to P \) be a pasting diagram.
+    We show that \( \G(w) \) does is independent on the decomposition of \( w \) into pasting of cells. 
+    We proceed by induction on submolecules, the base case being evident.
+    Inductively, suppose that \( \G(w') \) is well defined for all proper subdiagrams \( w' \) of \( w \), and consider a proper decomposition \( w = w_1 \cp{k} w_2 \).
+    Then we have a strict functor \( (\G_1, \G_2) \colon \molecin{W_1} \cup \molecin{W_2} \to C \), where \( \G_i \) is the restriction of \( \G \) along \( \molecin{w_i} \), which is well defined by inductive hypothesis. 
+    Since \( C \) is stricter, \( (\G_1, \G_2) \) extends to a strict functor \( \G' \colon \molecin{W} \to C \) with the property that \( \G'(u) = \G(u) \) for all \( u \in \atomin{P} \).
+    This proved that \( \G \) is well defined, and concludes the proof. 
+\end{proof}
+
+
+\begin{prop} \label{prop:density_of_pasting_diagram}
+    Let \( C \) be a stricter \( \omega \)\nbd category.
+    Then the canonical strict functor
+    \begin{equation*}
+        \phi \colon \colim_{u \in \Dgm(C)} \molecin{U} \to C,
+    \end{equation*}
+    is an isomorphism.
+\end{prop}
+\begin{proof}
+    We show that \( C \) has the universal property of the colimit. 
+    Consider a cone \( \set{\F_u \colon \molecin{U} \to D}_{u \in \Dgm(C)} \) for some stricter \( \omega \)\nbd category \( D \).
+    We define a strict functor \( \F \colon C \to D \).
+    Each globular cell \( c \) of \( C \) is classifies by a pasting diagram \( u \colon O^n \to C \), and therefore we must let \( \F(c) \eqdef \pcell{\F_u} \).
+    This shows the uniqueness of the universal property.
+    Let \( U \) be a molecule. 
+    We must show that the diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{U}} \\
+            C & D
+            \arrow["u"', from=1-1, to=2-1]
+            \arrow["{\F_u}", from=1-1, to=2-2]
+            \arrow["\F"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    commute.
+    Let \( w \colon W \to U \) be a morphism with \( \dim w = n \).
+    Then \( w \) is classified by a pasting diagram \( w' \colon \globe{n} \to \molecin{U} \), and by definition, \( \F \after u \after w' = \F_u \after w' \).
+    Passing to the principal cells, we get that \( (\F \after u)(w) = \F_u(w) \).
+    This shows that the diagram commutes.
+    Now we need to proves that \( \F \) is indeed a strict functor, which is done by using the fact that \( C \) is stricter, the commutation of the previous diagram for all molecules \( U \), together with the strict functors
+    \begin{equation*}
+        \molecin{(\bd{k}{\a} \dglobe{n})} \to \molecin{\dglobe{n}}
+    \end{equation*}
+    classifying the morphism \( \bd{k}{\a} \dglobe{n} \to \dglobe{n} \), and  
+    \begin{equation*}
+        \molecin{\dglobe{n}} \to \molecin{(\dglobe{n} \cp{k} \dglobe{n})},
+    \end{equation*}
+    classifying the principal cell of \( \molecin{(\dglobe{n} \cp{k} \dglobe{n})} \).
+    This concludes the proof.
+\end{proof}
+
+\begin{rmk} \label{rmk:thetas_are_dense}
+    As it is the case for strict \( \omega \)\nbd categories, the previous result is still valid if one let the colimit run over pasting diagrams \( u \colon \molecin{U} \to C \), where \( U \) is a ``theta'', that is, a pasting of directed globes.
+\end{rmk}
