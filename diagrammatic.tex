@@ -1,1 +1,379 @@
 \section{Diagrammatic sets}
+
+\subsection{Diagrams in a diagrammatic set}
+
+Recall that a diagrammatic set is a presheaf on the category \( \atom \).
+We let \( \dgmSet \) be the category of diagrammatic sets.
+By \cite[Lemma 2.5]{chanavat2024htpy}, the Yoneda embedding \( \atom \incl \dgmSet \) factors as
+\begin{equation*}
+    \atom \incl \rdcpx \incl \dgmSet,
+\end{equation*} 
+and in the sequel, we always identify a regular directed complex with its associated diagrammatic set.
+
+\begin{dfn} [Diagram in a diagrammatic set]
+    Let \( U \) be a regular directed complex and \( X \) a diagrammatic set.
+    A \emph{diagram of shape \( U \) in \( X \)} is a morphism \( u \colon U \to X \).
+    A diagram is called
+    \begin{itemize}
+        \item a \emph{pasting diagram} if \( U \) is a molecule,
+        \item a \emph{round diagram} if \( U \) is a \emph{round} molecule, and
+        \item a \emph{cell} if \( U \) is an atom.
+    \end{itemize}
+    We write \( \dim u \eqdef \dim U \).
+    We write respectively \( \Pd X \), \( \Rd X \) and \( \cell X \) the sets of pasting diagrams, round diagrams, and cells in \( X \).
+\end{dfn}
+
+\begin{rmk}
+    Any atom is a round molecule, and any round molecule is a molecule, thus \(  \cell X \subseteq \Rd X \subseteq \Pd X \).
+\end{rmk}
+
+\begin{rmk}
+    By the Yoneda Lemma, we identify a cell \( u \colon U \to X \) with its corresponding element \( u \in X(U) \).
+    Furthermore, since isomorphisms of molecules are unique when they exists, we may safely identify isomorphic pasting diagrams in the slice over \( X \).
+\end{rmk}
+
+\begin{dfn} [Subdiagram]
+    Let \( u \colon U \to X \) be a pasting diagram in a diagrammatic set \( X \).
+    A \emph{subdiagram of \( u \)} is a pair of a pasting diagram \( v \colon V \to X \) and a submolecule inclusion \( \iota \colon V \incl U \) such that \( u \after \iota = v \).
+    A subdiagram is \emph{rewritable} if the submolecule inclusion \( \iota \) is rewritable.
+    We write \( \iota \colon v \submol u \) for the data of a subdiagram of \( u \), or simply \( v \submol u \) if \( \iota \) is irrelevant or evident from the context. 
+\end{dfn}
+
+\begin{dfn} [Composition structure of pasting diagrams]
+    Let \( u \colon U \to X \) be a pasting diagram in a diagrammatic set \( X \).
+    For \( n \geq 0 \) and \( \a \in \set{-, +} \), we write \( \bd{n}{\a} u \) for the pasting diagram \( \restr{u}{\bd{n}{\a}U} \colon \bd{n}{\a} U \to X \).
+    We may omit the index \( n \) if \( n = \dim u - 1 \).
+    This makes \( \Pd(X) \) a reflexive \( \omega \)\nbd graph.
+    Now let \( u \colon U \to X \) and \( v \colon V \to X \) be pasting diagrams, such that \( \bd{k}{+} u = \bd{k}{-} v \).
+    We let \( u \cp{k} v \colon U \cp{k} V \to X \) be the unique pasting diagram determined by the universal property of the pushout \( U \cp{k} V \).
+    This makes \( \Pd(X) \) a composition structure.
+    % More generally, for any generalised pasting at the \( k \)\nbd boundary \( U \gencp{k} V \), we write \( u \gencp{k} v \colon U \gencp{k} V \to X \) for the pasting diagram determined by the universal property of the pushout \( U \gencp{k} V \).
+\end{dfn}
+\noindent We often omit the index \( k \) when it is equal to \( \min \set{\dim u, \dim v} - 1 \), and omit \( \iota \) when it is irrelevant or evident from the context.
+
+\begin{rmk}
+    \( \Rd(X) \) is a sub-reflexive graph \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pasting of round diagrams are generally not round. 
+\end{rmk}
+
+\begin{dfn} [Degenerate pasting diagram]
+    Let \( u \colon U \to X \) be a diagram.
+    We say that \( u \) is \emph{degenerate} if there exists a pair of a diagram \( v \colon V \to X \) and a surjective cartesian map of regular directed complexes \( p \colon U \to V \) such that \( v \after p = u \), and \( \dim v < \dim v \). 
+    We let
+    \begin{align*}
+        \Dgn X &\eqdef \set{u \in \Pd X \mid u \text{ is degenerate}} & \dgn X \eqdef \Dgn X \cap \cell x,\\
+        \Nd X &\eqdef \set{u \in \Pd X \mid u \text{ is not degenerate}} & \nd X \eqdef \Nd X \cap \cell x.
+    \end{align*}
+\end{dfn}
+
+\begin{dfn} [Reverse of a degenerate diagram]
+    Let \( u \colon U \to X \) be a degenerate diagram, equal to \( v \after p \) for some diagram \( v \colon V \to X \) and surjective cartesian map \( p \colon U \to V \) with \( n \eqdef \dim u > \dim v \).
+    The \emph{reverse of \( u \)} is the diagram \( \rev{u} \eqdef v \after \dual{n}{p} \colon \dual{n}{U} \to X \).
+\end{dfn}
+
+\begin{dfn}[Partial cylinder]
+    Given a graded poset \( P \) and a closed subset \( K \subseteq P \), the \emph{partial cylinder on \( P \) relative to \( K \)} is the graded poset \( I \times_K P \) obtained as the pushout
+    \begin{center}
+        \begin{tikzcd}
+            {I \times K} & K \\
+            {I \times P} & {I \times_K  P}
+            \arrow[two heads, from=1-1, to=1-2]
+            \arrow[hook', from=1-1, to=2-1]
+            \arrow["{(-)}", hook', from=1-2, to=2-2]
+            \arrow["q", two heads, from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+        \end{tikzcd}  
+    \end{center}
+    in the category of posets.
+    This is equipped with a canonical projection map \( \tau_K \colon I \times_K P \surj P \).
+\end{dfn}
+
+\begin{dfn}[Partial Gray cylinder]
+	Let \( U \) be a regular directed complex and \( K \subseteq U \) a closed subset.
+	The \emph{partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \arr \gray_K U \) whose
+    \begin{itemize}
+        \item underlying graded poset is \( I \times_K U \), and
+        \item orientation is specified, for all \( \a \in \set{+, -} \), by
+        \begin{align*}
+            \faces{}{\a}(x) & \eqdef \set{(y) \mid y \in \faces{}{\a}x}, \\
+            \faces{}{\a}(i, x) & \eqdef \begin{cases}
+                \set{(0^\a, x)} + \set{(1, y) \mid y \in \faces{}{-\a}x \setminus K} &
+                \text{if \( i = 1 \),} \\
+                \set{(i, y) \mid y \in \faces{}{\a}x \setminus K} + 
+                \set{(y) \mid y \in \faces{}{\a}x \cap K} &
+                \text{otherwise}.
+            \end{cases}
+        \end{align*}
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Inverted partial Gray cylinder] \ccnote{would be nice if I don't need this}
+	Let \( U \) be a molecule, \( n \eqdef \dim U \), and \( K \subseteq \bd{}{+}U \) a closed subset.
+	The \emph{left-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \lcyl{K} U \) whose
+    \begin{itemize}
+        \item underlying graded poset is \( I \times_K U \), and
+        \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
+    \begin{align*}
+        \faces{}{-}(1, x) &\eqdef \set{(0^-, x), (0^+, x)} + \set{(1, y) \mid y \in \faces{}{+}x \setminus K}, \\
+        \faces{}{+}(1, x) &\eqdef \set{(1, y) \mid y \in \faces{}{-}x}, \\
+        \faces{}{\a}(0^+, x) &\eqdef \set{(0^+, y) \mid y \in \faces{}{-\a}x \setminus K} + 
+            \set{(y) \mid y \in \faces{}{-\a}x \cap K}.
+    \end{align*}
+\end{itemize}
+	Dually, if \( K \subseteq \bd{}{-}U \), the \emph{right-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \rcyl{K}{U} \) whose
+    \begin{itemize}
+        \item underlying graded poset is \( I \times_K U \), and
+        \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
+        \begin{align*}
+            \faces{}{-}(1, x) &\eqdef \set{(1, y) \mid y \in \faces{}{+}x}, \\
+            \faces{}{+}(1, x) &\eqdef \set{(0^-, x), (0^+, x)} + \set{(1, y) \mid y \in \faces{}{-}x \setminus K}, \\
+            \faces{}{\a}(0^-, x) &\eqdef \set{(0^-, y) \mid y \in \faces{}{-\a}x \setminus K} + 
+                \set{(y) \mid y \in \faces{}{-\a}x \cap K}.
+        \end{align*}
+    \end{itemize}
+\end{dfn}
+
+\begin{rmk} \label{rmk:inverted_cylinder_well_def}
+	By \cite[Lemma 1.20, Lemma 1.26]{chanavat2024equivalences}, partial Gray cylinders and inverted partial Gray cylinders respect the classes of molecules, round molecules and atoms.
+	Moreover, for all molecules \( U \) and closed subset \( K \subseteq U \),
+	\begin{itemize}
+		\item \( \tau_K \colon \arr \gray_K U \to U \) is a cartesian map of molecules,
+		\item if \( p \colon U \to V \) is a cartesian map of molecules with \( \dim V < \dim U \), then \( p \after \tau_K \colon \lcyl{K}{U} \to V \) and \( p \after \tau_K \colon \rcyl{K}{U} \to V \) are cartesian maps of molecules.
+	\end{itemize}
+\end{rmk}
+
+\begin{dfn} [Higher invertor shapes]
+    Let \( U \) be a round molecule.
+    The family of \emph{higher invertor shapes on \( U \)} is the family of molecules \( \hcyl s U \) indexed by strings \( s \in \set{L, R}^* \), defined inductively on the length of \( s \) by
+    \begin{align*}
+        \hcyl{\langle\rangle} U & \eqdef U, \\
+        \hcyl{Ls} U &\eqdef \lcyl{\bd{}{+} \hcyl{s} U} (\hcyl{s} U), \\
+                \hcyl{Rs} U &\eqdef \rcyl{\bd{}{-} \hcyl{s} U} (\hcyl{s} U).
+    \end{align*}
+	These are equipped with cartesian maps \( \tau_s \colon \hcyl{s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_s \) is a cartesian map of molecules.
+\end{dfn}
+
+\begin{dfn} [Unit]
+    Let \( u \colon U \to X \) be a pasting diagram.
+    The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
+\end{dfn}
+
+\subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(infty, n)}-categories}
+
+Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degeneracies. 
+A morphism of marked diagrammatic sets is a morphism of the underlying diagrammatic sets sending marked cells to marked cells.
+We write \( \mdgmSet \) for the category of marked diagrammatic sets and their morphisms. 
+Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0}{P} \) is a subset of elements of \( P \) of dimension \( > 0 \), we let \( (P, A) \) be the marked diagrammatic set \( (P, \dgn P \cup \set{\mapel{a} \mid a \in A}) \).
+
+\begin{dfn}
+    We recall the definition of \emph{localisation} from \cite[Section 2.4]{chanavat2024model}.
+    A \emph{cellular extension} of a diagrammatic set \( X \) is a pushout diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\coprod_{e \in \cls{S}} \bd{}{}U_e} &&& {\coprod_{u \in \cls{S}} U_e} \\
+            X &&& {X_\cls{S}}
+            \arrow["{(\bd{}{}e)_{e \in \cls{S}}}", from=1-1, to=2-1]
+            \arrow["{(e)_{e \in \cls{S}}}", from=1-4, to=2-4]
+            \arrow[hook, from=2-1, to=2-4]
+            \arrow["{\coprod_{e \in \cls{S}}\bd{U_e}{}}", hook, from=1-1, to=1-4]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-4, to=1-1]
+        \end{tikzcd}
+    \end{center}
+    in \( \dgmSet \) such that for each \( e \in \cls{S} \), \( U_e \) is an atom.
+
+    Let \( (X, A) \) be a marked diagrammatic set.
+    We define \( \preloc{X}{A} \) to be the diagrammatic set obtain by, for each cell \( a \colon u \celto v \) in \( A \cap \nd X \),
+    \begin{enumerate}
+        \item attach cells \( a^L, a^R  \colon v \celto u \), then
+        \item attach cells \( \hinv{L}(a) \colon a \cp{} a^L \celto \un(u) \) and \( \hinv{R} \colon \un(v) \celto a^R \cp{} a \).
+    \end{enumerate} 
+    Then, let \( \order{0}{X} \eqdef X \) and \( \order{0}{A} \eqdef A \).
+    Inductively on \( n > 0 \), define
+    \begin{equation*}
+        \order{n}{X} \eqdef \preloc{\order{n - 1}{X}}{\order{n - 1}{A}}, \quad\quad \order{n}{A} \edef \set{\hinv{R}a, \hinv{L}a \mid a \in \order{n - 1}{A}}.
+    \end{equation*}
+    We then have a sequence of inclusions
+    \begin{equation*}
+        \order{0}{X} \incl \order{1}{X} \incl \ldots \incl \order{n}{X} \incl \ldots,
+    \end{equation*}
+    whose transfinite composition is \( \loc{X}{A} \), the \emph{localisation of \( X \) at \( A \)}, which comes equipped with a canonical inclusion \( X \incl \loc{X}{A} \).
+    This defines a colimit preserving functor
+    \begin{equation*}
+        \Loc \colon \mdgmSet \to \dgmSet.
+    \end{equation*}
+    By definition, each cell in \( A \) becomes invertible in \( \loc{X}{A} \).
+\end{dfn}
+
+\begin{dfn} [Walking equivalence]
+    Let \( U \) be an atom.
+    The \emph{walking equivalence of shape \( U \)} is the diagrammatic set \( \selfloc{U} \eqdef \Loc (U, \set{\top_U}) \).
+    We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \).
+\end{dfn}
+
+\begin{dfn}
+    Let \( X \) be a diagrammatic set, and \( u \colon U \to X \) be cell.
+    We write \( \td u \colon \selfloc{U} \to X \) for any extension of \( u \) along the inclusion \( U \incl \selfloc{U} \).
+    If \( u \colon a \celto b \), then we write \( \td u \colon a \simeq b \).
+    Furthermore if \( v \colon V \to X \) is a diagram and \( k \geq 0 \) such that \( u \cp{k} v \) is defined, we also write \( \td u \cp{k} v \colon \selfloc{U} \cp{k} V \to X \) for the morphism \( \td u \cup_{\bd{k}{+}u} v \) whose domain is \( \tilde{U} \cup_{\bd{k}{\a} U} V \).
+    We use similar notations of pasting at a subdiagrams \( - \cpsub{} - \) and \( - \subcp{} - \).
+\end{dfn}
+
+\begin{dfn} [Weak composites]
+    Let \( X \) be a diagrammatic set.
+    We say that \( X \) has \emph{weak composites} if for each round diagram \( u \colon U \to X \), there exists a cell \( \compos{u} \colon \compos{U} \to X \) parallel to \( u \) such that \( u \simeq \compos{u} \).
+    In that case, \( \compos{u} \) is called a weak composite of \( u \).
+\end{dfn}
+
+\begin{dfn} [\( (\infty, n) \)\nbd category]
+    Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( X \) be a diagrammatic set.
+    We say that \( X \) is an \( (\infty, n) \)\nbd category if:
+    \begin{enumerate}
+        \item \( X \) has weak composites
+        \item all cells of dimension \( > n \) are equivalences.
+    \end{enumerate}
+    
+    A morphisms of diagrammatic sets is called a \emph{functor} when its domain and codomain are \( (\infty, n) \)\nbd categories. 
+\end{dfn}
+
+\begin{rmk}
+    In the case \( n = \infty \), the second condition is void.
+\end{rmk}
+
+\begin{dfn}
+    Let \( U \) be a round molecules.
+    The \emph{walking weak composite of \( U \)} is the inclusion of diagrammatic sets
+    \begin{equation*}
+        c_U \colon U \incl U \simeq \compos{U}.
+    \end{equation*}
+    We let \( \Jcomp \) be the set of walking weak composites.
+\end{dfn}
+
+\begin{dfn}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \).
+    We let \( \Jn{n} \eqdef \set{U \incl \selfloc{U} \mid U \text{ atom}, \dim U > n } \).
+\end{dfn}
+
+\begin{rmk}
+    By \cite[]{chanavat2024model} an \( (\infty, \infty) \)\nbd category \( X \), a cell \( u \colon U \to X \) is an equivalence if an only if it extends to some \( \td u \colon \selfloc{U} \to X \).
+    Thus, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
+\end{rmk}
+
+\begin{dfn} [Marked horn]
+    Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \) and \( x \in \maxel{\bd{}{\a} U} \).
+    Call \( \Lambda^x_U \eqdef U \setminus \set{\top_U, x} \)
+    We say that the inclusion of marked regular directed complexes
+    \begin{equation*}
+        \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \incl (U, A) 
+    \end{equation*}
+    is a \emph{marked horn of \( U \)} if there exists molecules \( (\order{i}{L}, \order{i}{R})_{i = 1}^k \) such that
+    \begin{enumerate}
+        \item \( \bd{}{\a} U = \order{k}{L} \cp{k - 1} (\ldots \cp{1} \order{1}{L} \cp{0} \clset{x} \cp{0} \order{1}{R} \cp{1} \ldots) \cp{k - 1} \order{k}{R} \);
+        \item \( \dim \order{i}{L}, \dim \order{i}{R} \le i \) for each \( 1 \le i \le k \);
+        \item \( \gr{i}{\order{i}{L}} \cup \gr{i}{\order{i}{R}} \subseteq A \);
+        \item \( x \in A \) if and only if \( \faces{}{-\a} U \subseteq A \).
+    \end{enumerate}
+    We let \( \Jhorn \) be the set of marked horn.
+\end{dfn}
+
+\begin{lem} \label{lem:isofib_rlp_double_walking}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be an atom of dimension \( > 0 \).
+    Then \( f \) has the right lifting property against 
+    \begin{equation*}
+        \selfloc{U} \incl \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}).
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Consider a lifting problem
+    \begin{center}
+        \begin{tikzcd}
+            {\selfloc{U}} & X \\
+            {\Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}})} & Y.
+            \arrow["{\tilde u}", from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["f", from=1-2, to=2-2]
+            \arrow["s"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    Each attached cell in \( \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \) 
+    \cccom{TODO}
+\end{proof}
+
+\begin{lem} \label{lem:isofib_rlp_dual_comp}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be a round molecule.
+    Then \( f \) has the right lifting property against the inclusion \( U \incl \compos{U} \simeq U \).
+\end{lem}
+\begin{proof}
+    Consider a lifting problem
+    \begin{center}
+        \begin{tikzcd}
+            U & X \\
+            {\compos{U} \simeq U} & Y
+            \arrow["u", from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["f", from=1-2, to=2-2]
+            \arrow["{\td h}"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    Consider a lift \( \td z \colon \compos{U}\simeq U \to X \) making the upper triangle commute.
+    Call \( V \eqdef \compos{U} \celto U \).
+    Then too solve the previous lifting problem, it is enough to solve
+    \begin{center}
+        \begin{tikzcd}
+            {\selfloc V} & X \\
+            {\Loc (\selfloc V,\set{\top_V})} & Y
+            \arrow["{\td z}", from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["f", from=1-2, to=2-2]
+            \arrow["{\td h \cup f(\td z)}"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    which is possible by Lemma \ref{lem:isofib_rlp_double_walking}.
+\end{proof}
+
+\begin{lem} \label{lem:rlp_localised_horn_iff_rlp_weak_composite}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories.
+    The following are equivalent.
+    \begin{enumerate}
+        \item \( f \) has the right lifting property against \( \Loc \Jhorn \);
+        \item \( f \) has the right lifting property against \( \Jcomp \); 
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    The second condition is clearly necessary since \( \Jcomp \subseteq \Loc \Jhorn \).
+    Conversely, suppose that \( f \) has the right lifting property against \( \Loc \Jhorn \), and consider a marked horn \( \lambda^x_U \colon (\Lambda^x_U, B) \to (U, A) \).
+    Suppose without loss if generality that \( x \in \bd{}{-} U \).
+    Suppose also that \( x \notin A \), the proof in the other case follows similar lines.
+    Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Loc (\Lambda^x_U, B) \to X \) classifying in \( X \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a weakly invertible context in the sense of \cite[3.12]{chanavat2024equivalences}.
+    An extension of \( s \) along \( \lambda^x_U \) then classifies a solution \( u \), witnessed by \( \tilde{h} \colon \fun{E}u \simeq v \). 
+    Thus, by \cite[Lemma 5.10]{chanavat2024equivalences}, and passing to weak composites, all \( (\infty, n) \)\nbd categories have the right lifting property against \( \Loc \Jhorn \).
+    Now consider a lifting problem
+    \begin{center}
+        \begin{tikzcd}
+            {\Loc (\Lambda^x_U, B)} & X \\
+            {\Loc (U, A)} & Y
+            \arrow["s", from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["f", from=1-2, to=2-2]
+            \arrow["{\tilde h}"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    and choose a lift \( \tilde{h}' \colon \Loc (U, A) \to X \) making the upper triangle commute. 
+    Then, \( \tilde{h} \cup f(\tilde{h'}) \) classify another equation \( x' \cpsub{} f(\tilde{h}) \qeq \tilde{h} \) in \( Y \), which admits a solution \( \tilde{w} \colon u \simeq f(u') \), witnessed by \( \tilde{z} \colon \tilde{w} \cpsub{} f(\tilde{h}') \celto \tilde{h} \)
+    By Lemma \ref{lem:isofib_rlp_dual_comp}, \( \tilde{w} = f(\tilde{w'}) \) for \( w' \colon \hat{u} \simeq u' \).
+    In particular, \( f(\hat{u}) = u \).
+    Thus \( \tilde{z} \) has type \( f(\tilde{w'} \cpsub{} \tilde{h}') \simeq \tilde{h} \).
+    By assumption and Lemma \ref{lem:isofib_rlp_double_walking} twice, \( \tilde{z} = f(\tilde{z'}) \) for some \( \tilde{z'} \colon \tilde{w'} \cpsub{} \tilde{k} \).
+    In particular, \( \tilde{k} \) classifies another solution in \( X \) of the equation given by \( s \) and \( f(\tilde{k}) = \tilde{h} \).
+    Therefore, \( \tilde{k} \colon \Loc (U, A) \) is the desired lift.  
+\end{proof}
+
+\begin{thm} \label{thm:n_model_structure_on_dgm_set}
+    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, where
+    \begin{enumerate}
+        \item cofibrations are the monomorphisms;
+        \item fibrant objects are the \( (\infty, n) \)\nbd categories;
+        \item \( \Jcomp \cup \Jn{n} \) is a pseudo-generating set of acyclic cofibrations.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \cccom{TODO}
+\end{proof}

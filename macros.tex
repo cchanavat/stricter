@@ -118,6 +118,7 @@
 \newcommand{\selflocm}[1]{\selfloc{#1}_{\m{}}}
 \newcommand{\markarr}{\markmol{\arr}}
 
+\newcommand{\td}[1]{\tilde{#1}}
 % other
 \renewcommand{\a}{\alpha}
 
@@ -162,7 +163,7 @@
 \newcommand{\Jhorn}{J_{\mathsf{horn}}}
 \newcommand{\Jcoind}{J_{\mathsf{coind}}}
 \newcommand{\Jloc}{J_{\mathsf{loc}}}
-
+\newcommand{\Jcomp}{J_{\mathsf{comp}}}
 % simplicial notations
 
 \newcommand{\simplex}[1]{\Delta[#1]}
@@ -203,7 +204,7 @@
 \DeclareMathOperator*{\amalg}{\mathrm{amalg}}
 
 \newcommand{\trunc}[1]{\tau_{#1}}
-\newcommand{\underlying}[1]{\sigma_{#1} }
+\newcommand{\skel}[1]{\sigma_{#1} }
 \newcommand\molec{\mathit{Mol}}
 \newcommand\Atom{\mathit{Atom}}
 \newcommand\molecin[1]{\slice{\molec}{#1}}
@@ -212,17 +213,41 @@
 \newcommand{\globe}[1]{O^{#1}}
 \newcommand{\dglobe}[1]{\vec{O}^{#1}}
 
+\newcommand{\gcelto}{\to}
+
 \DeclareMathOperator{\Dgm}{Dgm}
 
 \newcommand\sd{\looparrowright}
+
+
+% folk model structure
+
+\newcommand{\Icof}{\mathcal{I}}
+\newcommand{\sJcof}{\mathcal{J}^>}
+\newcommand{\Jcof}{\mathcal{J}}
+\newcommand{\sfolkcof}{\mathrm{Cof}^{>}}
+\newcommand{\wE}[1]{E_{#1}}
+\newcommand{\swE}[1]{E^>_{#1}}
+\newcommand{\rGamma}{\tilde\Gamma}
+\newcommand{\rpi}{\tilde\pi}
 
 % gray product
 
 \newcommand{\homlax}{\underline{\fun{Hom}}_{\mathrm{lax}}}
 \newcommand{\homcolax}{\underline{\fun{Hom}}_{\mathrm{colax}}}
 
-% special categories
+% model structures
 
+\DeclareMathOperator{\rlp}{r}
+\DeclareMathOperator{\llp}{l}
+
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-1.5\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+\newcommand\qeq{\oset{?}{=}}
 
 
 % notes

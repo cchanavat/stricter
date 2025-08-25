@@ -67,3 +67,41 @@
 \begin{rmk} \label{rmk:thetas_are_dense}
     As it is the case for strict \( \omega \)\nbd categories, the previous result is still valid if one let the colimit run over pasting diagrams \( u \colon \molecin{U} \to C \), where \( U \) is a ``theta'', that is, a pasting of directed globes.
 \end{rmk}
+
+
+%% old folk model structure
+
+
+
+% \begin{lem} \label{lem:j_n_weak_equivalence_cofibration}
+%     Let \( n \geq 0 \).
+%     Then \( j_n \) is both a stricter cofibration and an \( \omega \)\nbd equivalence.
+% \end{lem}
+% \begin{proof}
+%     The strict functor \( j_n \) is a stricter cofibration as composite of two stricter cofibrations.
+%     Furthermore, \( p \after j_n = \idd{\globe{n}} \).
+%     By \cite[Proposition 20.1.17 and 20.1.13 ]{ara2025polygraphs} (which hold more generally for strict functors of composition structures), \( j_n \) is an \( \omega \)\nbd equivalence.
+% \end{proof}
+
+    % A globular \( n \)\nbd cell \( u \) in \( \Gamma(C) \) is therefore a strict functor \( u \colon \molec{(\arr \gray \dglobe{n})} \to C \), and we say that \( u \) is a \emph{reversible cylinder} if \( \pcell{u} \), as well as the principal cells of 
+    % \begin{equation*}
+    %    u \after \molecin{(\arr \gray \iota^\a_k)} \colon \molecin{(\arr \gray \dglobe{k})} \to C
+    % \end{equation*}
+    % are reversible, for each \( k \geq 0 \) and \( \a \in \set{-, +} \), where \( \iota^\a_k \) is the strict functor
+    % \begin{equation*}
+    %     \iota^\a_k \colon \molecin{(\bd{k}{\a} \dglobe{n})} \to \molecin{\dglobe{n}}.
+    % \end{equation*} 
+    % We then define the \emph{stricter \( \omega \)\nbd category of reversible cylinder} \( \rGamma(C) \) to be the stricter \( \omega \)\nbd category \( \rGamma(C) \subseteq \Gamma(C) \) on globular cells classifying reversible cylinders.
+
+    % \begin{prop} \label{lem:stricter_cof_and_weak_stable_under_pushout}
+%     The class of strict functors between stricter \( \omega \)\nbd categories that are both \( \omega \)\nbd equivalences and stricter cofibrations is closed under pushouts (in \( \somegaCat \)).
+% \end{prop}
+% \begin{proof}
+%     Similar to the proof of \cite[Theorem 20.5.6]{ara2025polygraphs}, replacing ``cofibration'' with ``stricter cofibrations''.
+% \end{proof}
+
+\begin{dfn} [Relative stricter polygraph and stricter cofibration]
+    Let \( f \colon C \to D \) be a strict functor of stricter \( \omega \)\nbd categories.
+    We say that \( f \) is a \emph{relative stricter polygraph} if \( f \) can be written as a transfinite composition of pushouts (in \( \somegaCat \)) of elements of \( \Icof \).
+    A retract of a relative stricter polygraph is called a \emph{stricter cofibration}.
+\end{dfn}
