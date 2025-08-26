@@ -714,6 +714,7 @@ Now recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd ca
         \end{tikzcd}
     \end{center}
     in \( \somegaCat \), exhibiting the \( \skel{n}C \) as a cellular extension of \( \skel{n - 1}C \), and such that for each \( e \in \cls{S}_n \), \( \dim e = n \).
+    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative stricter polygraph} if \( f \) can be obtain as the transfinite composition of cellular extensions of \( A \).
 \end{dfn}
 
 \begin{rmk} \label{rmk:reflection_of_polygraph_is_stricter_polygraph}
@@ -753,7 +754,7 @@ Now recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd ca
 
 \begin{dfn} [Reversible globular cell]
     Let \( C \) be a composition structure, and \( e \colon x \gcelto y \) be a globular cell of dimension \( n > 0 \) in \( C \).
-    We say that \( e \) is a reversible if there exists a globular cell \( e^* \colon y \gcelto x \), as well as globular cells \( h \colon e \comp{n - 1} e^* \gcelto x \) and \( h' \colon e^* \comp{n - 1} e \gcelto y \) such that \( h \) and \( h' \) are reversible.
+    We say that \( e \) is reversible if there exists a globular cell \( e^* \colon y \gcelto x \), as well as globular cells \( h \colon e \comp{n - 1} e^* \gcelto x \) and \( h' \colon e^* \comp{n - 1} e \gcelto y \) such that \( h \) and \( h' \) are reversible.
     We write \( x \sim y \) if there exists a reversible globular cell \( e \) of type \( x \gcelto y \).
 \end{dfn}
 
@@ -845,6 +846,14 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     As a consequence, the classes \( \llp(\rlp(\rcs\Jcof))  \) and \( \llp(\rlp(\sJcof)) \) coincide.
 \end{proof}
 
+\begin{rmk} 
+    By Lemma \ref{lem:pushout_principal_cell}, the set
+    \begin{equation*}
+        \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
+    \end{equation*}
+    is also a generating set of acyclic cofibrations for the folk model structure on \( \somegaCat \), whose cofibrations are therefore given by the retracts of relative polygraphs.
+\end{rmk}
+
 \noindent Finally, we fix \( n \in \mathbb{N} \), and let
 \begin{equation*}
     \Icof_n \eqdef \trunc{n}\Icof,\quad\quad \sJcof_n \eqdef \trunc{n}\Jcof.
@@ -872,7 +881,7 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     Same as Theorem \ref{thm:folk_model_structure_on_stricter}.
 \end{proof}
 
-Therefore, we have the following commutative square of left Quillen functors
+\noindent Therefore, we have the following commutative square of left Quillen functors
 \begin{center}
     \begin{tikzcd}
         \omegaCat & \somegaCat \\

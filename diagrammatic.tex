@@ -24,10 +24,6 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{dfn}
 
 \begin{rmk}
-    Any atom is a round molecule, and any round molecule is a molecule, thus \(  \cell X \subseteq \Rd X \subseteq \Pd X \).
-\end{rmk}
-
-\begin{rmk}
     By the Yoneda Lemma, we identify a cell \( u \colon U \to X \) with its corresponding element \( u \in X(U) \).
     Furthermore, since isomorphisms of molecules are unique when they exists, we may safely identify isomorphic pasting diagrams in the slice over \( X \).
 \end{rmk}
@@ -69,6 +65,8 @@ and in the sequel, we always identify a regular directed complex with its associ
     Let \( u \colon U \to X \) be a degenerate diagram, equal to \( v \after p \) for some diagram \( v \colon V \to X \) and surjective cartesian map \( p \colon U \to V \) with \( n \eqdef \dim u > \dim v \).
     The \emph{reverse of \( u \)} is the diagram \( \rev{u} \eqdef v \after \dual{n}{p} \colon \dual{n}{U} \to X \).
 \end{dfn}
+
+\cccom{suggestion: for all the following maps, just give the type of the associated degenerate diagram, wihtout expliciting the combinatorial description of its representation}
 
 \begin{dfn}[Partial cylinder]
     Given a graded poset \( P \) and a closed subset \( K \subseteq P \), the \emph{partial cylinder on \( P \) relative to \( K \)} is the graded poset \( I \times_K P \) obtained as the pushout
@@ -157,6 +155,10 @@ and in the sequel, we always identify a regular directed complex with its associ
     The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
 \end{dfn}
 
+\begin{thm} \label{thm:main_equivalence}
+    
+\end{thm}
+
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(infty, n)}-categories}
 
 Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degeneracies. 
@@ -239,7 +241,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{rmk}
 
 \begin{dfn}
-    Let \( U \) be a round molecules.
+    Let \( U \) be a round molecule.
     The \emph{walking weak composite of \( U \)} is the inclusion of diagrammatic sets
     \begin{equation*}
         c_U \colon U \incl U \simeq \compos{U}.
@@ -282,19 +284,27 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     \end{equation*}
 \end{lem}
 \begin{proof}
-    Consider a lifting problem
+    Call \( \selfloc{U}^2 \eqdef \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \), and consider a lifting problem
     \begin{center}
         \begin{tikzcd}
             {\selfloc{U}} & X \\
-            {\Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}})} & Y.
+            {\selfloc{U}^2} & Y.
             \arrow["{\tilde u}", from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
             \arrow["f", from=1-2, to=2-2]
             \arrow["s"', from=2-1, to=2-2]
         \end{tikzcd}
     \end{center}
-    Each attached cell in \( \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \) 
-    \cccom{TODO}
+    Then \( s \) classifies the extension \( f(\td{u}) \colon \selfloc{U} \to X \) of \( f(u) \), together with another extension \( \td{v} \colon \selfloc{U} \to X \).
+    Let \( u \colon a \celto b \) be the type of \( u \).
+    We let \( w \eqdef u \), and construct an extension \( \td{w} \colon \td{U} \to X \) of \( w \) such that \( f(\td{w}) = \td{v} \).
+    We proceed by induction on the construction of the localisation: we do the base case and leave the inductive step, which proceed along the same line, to the reader.
+    Let \( f(w)^L \) and \( v^L \) be the left inverses of \( f(w) \) attached at the first step of the localisation.
+    By Theorem \ref{thm:main_equivalence}, \( \td{e} \colon f(u)^L \simeq v^L \), where \( h \) is can be taken to be a cell, since \( Y \) is an \( (\infty, n) \)\nbd category.
+    Since \( f \) has the right lifting property against \( \Jcomp \), \( \td{e} = f(\td{e}') \), in particular \( v^L = f(w^L) \).
+    Then, one attaches \( \hinv{L}(v) \colon v \cp{} v^L \celto \un(f(a)) \) and \( \hinv{R} \colon \un(f(b)) \celto v^R \cp{} v \).
+    Since \( v \cp{} v^L = f(u \cp{} w^L) \) and \( \un(f(b)) = f(\un(b)) \), we have \( \hinv{L}(v) = f(\hinv{L}(w)) \) and \( \hinv{R}(v) = f(\hinv{r}(w)) \) for some equivalence \( \hinv{L}(w) \colon w \cp{} w^L \celto a' \) and \( \hinv{R}(w) \colon \un(b) \celto w^R \cp{} w \).
+    \cccom{TODO: a' is not necessarily a unit, fix that, or not?}
 \end{proof}
 
 \begin{lem} \label{lem:isofib_rlp_dual_comp}
