@@ -105,3 +105,167 @@
     We say that \( f \) is a \emph{relative stricter polygraph} if \( f \) can be written as a transfinite composition of pushouts (in \( \somegaCat \)) of elements of \( \Icof \).
     A retract of a relative stricter polygraph is called a \emph{stricter cofibration}.
 \end{dfn}
+
+
+% old and ugly rlp
+
+% \begin{proof}
+%     Let \( h \colon v \celto \compos{v} \) be a weak composite of \( v \), and \( z \colon f(u) \celto f(\compos{v}) \) be a weak composite of \( w \cp{} h \).
+%     Since \( f \) has the right lifting property against \( \Jcomp \), \( z = f(z') \) for some equivalences \( z' \colon u \celto v' \).
+
+
+%     Let \( h \colon f(v) \celto \compos{f(v)} \) be a weak composite, and \( z \colon f(u) \celto \compos{f(v)} \) be a weak composite of \( w \cp{} h \).
+%     By Theorem \ref{thm:main_equivalence}, \( z \) is an equivalence, thus extends to \( \td{z} \colon f(u) \simeq \compos{f(v)} \).
+%     By assumption, \( z = f(z') \) for some equivalence \( z \colon u \celto v' \).
+%     Now, \( h \colon f(v) \)
+% \end{proof}
+
+% \begin{prop} \label{prop:relative_rlp_localisation}
+%     Let \( f \colon Y \to W \) be a functor of \( (\infty, \infty) \)\nbd categories with the right lifting property against \( \Jcomp \), let \( (X, A) \) be a marked diagrammatic set, and consider lifting problem of the form
+%     \begin{center}
+%         \begin{tikzcd}
+%             X & Y \\
+%             {\loc X A} & W.
+%             \arrow["u", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["{\td u}"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     Then the lifting problem admits a solution if and only if for each cell \( a \in A \), \( u(a) \) is an equivalence in \( Y \).
+% \end{prop}
+% \begin{proof}
+%     If the lifting problem has a solution, clearly each of the \( u(a) \) is an equivalence in \( Y \).
+%     Conversely, \( \loc{X}{A} \) is the colimit of the the sequence \( \order{n}{X} \incl \order{n + 1}{X} \) starting with \( \order{0}{X} \eqdef X \).
+%     We let \( \iota_n \colon \order{n}{X}  \incl \loc{X}{A} \) be the canonical inclusion.
+%     We define a lift \( \td{v} \colon \loc{X}{A} \to Y \) by successive extension along \( \order{n}{X} \incl \order{n + 1}{X} \), starting with \( \order{0}{v} \eqdef u \), and with the property that for all \( a \in \order{n}{A} \), \( \order{n}{v}(a) \) is an equivalence in \( Y \) and \( f \after \order{n}{c} = \td{u} \after \iota_n \).
+%     Let \( n > 0 \) and consider \( a \in \order{n - 1}{A} \).
+%     By inductive hypothesis, \( b \eqdef \order{n - 1}{v}(a) \colon c \celto d \) has left and right inverse \( b^L, b^R \colon d \celto c \), witnessed by the equivalences
+%     \begin{equation*}
+%         z \colon b \cp{} b^L \celto \un(c),\quad\quad h \colon \un(d) \celto b^R \cp{} b \celto \un(d).
+%     \end{equation*}
+%     By construction, \( f(b) \colon f(c) \celto f(d) \), which is equal to \( (\td{u} \after \iota_n)(a) \), has left and right inverses given by the cells \( f(b)^L \) and \( f(b)^R \), witnessed by the equivalences
+%     \begin{equation*}
+%         \hcyl{L}(f(b)) \colon f(b) \cp{} f(b)^L \celto \un f(c),\quad\quad \hcyl{R}(f(b)) \colon \un f(d) \celto f(b)^R \cp{} f(b).
+%     \end{equation*}
+%     % By Theorem \ref{thm:main_equivalence}, there are equivalences \( h^L \colon f(b^L) \celto f(b)^L \) and \( h^R \colon f(b^R) \celto f(b)^R \) in \( Y \), which, up to passing to a weak composites, we may assume to be cells.
+%     Now consider the equations in \( W \)
+%     \begin{equation*}
+%         x \cpsub{f(b^L)} f(z) \qeq \hcyl{L}(f(b)^L) 
+%     \end{equation*}
+%     has a solution
+
+%     Since \( f \) has the right lifting property against \( \Jcomp \), \( h^L = f(z^L) \) and \( h^R = f(z^R) \) for some equivalences \( z^L \colon b^L \celto b_0^L \) and \( z^R \colon b^R \celto b_0^R \).
+%     Now
+%     In particular, we may define
+%     \begin{equation*}
+%         \order{n}{v}(a^L) \eqdef b^L_0\quad\text{ and }\quad \order{n}{v}(b^L) \eqdef b^R_0.
+%     \end{equation*}
+%     Now we have the equivalences \( h \colon f(b) \cp{k} f(b)^L \celto \un f(c) \) and \( z \colon \un f(d) \celto f(b)^L \)
+% \end{proof}
+
+% \begin{rmk}
+%     By \cite[Proposition 3.7]{chanavat2024model} an \( (\infty, \infty) \)\nbd category \( X \), a cell \( u \colon U \to X \) is an equivalence if an only if it extends to some \( \td u \colon \selfloc{U} \to X \).
+%     Thus, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
+% \end{rmk}
+
+
+% \begin{lem} \label{lem:isofib_rlp_double_walking}
+%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be an atom of dimension \( > 0 \).
+%     Then \( f \) has the right lifting property against 
+%     \begin{equation*}
+%         \selfloc{U} \incl \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}).
+%     \end{equation*}
+% \end{lem}
+% \begin{proof}
+%     Call \( \selfloc{U}^2 \eqdef \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \), and consider a lifting problem
+%     \begin{center}
+%         \begin{tikzcd}
+%             {\selfloc{U}} & X \\
+%             {\selfloc{U}^2} & Y.
+%             \arrow["{\tilde u}", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["s"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     Then \( s \) classifies the extension \( f(\td{u}) \colon \selfloc{U} \to X \) of \( f(u) \), together with another extension \( \td{v} \colon \selfloc{U} \to X \).
+%     Let \( u \colon a \celto b \) be the type of \( u \).
+%     We let \( w \eqdef u \), and construct an extension \( \td{w} \colon \td{U} \to X \) of \( w \) such that \( f(\td{w}) = \td{v} \).
+%     We proceed by induction on the construction of the localisation: we do the base case and leave the inductive step, which proceed along the same line, to the reader.
+%     Let \( f(w)^L \) and \( v^L \) be the left inverses of \( f(w) \) attached at the first step of the localisation.
+%     By Theorem \ref{thm:main_equivalence}, \( \td{e} \colon f(u)^L \simeq v^L \), where \( h \) is can be taken to be a cell, since \( Y \) is an \( (\infty, n) \)\nbd category.
+%     Since \( f \) has the right lifting property against \( \Jcomp \), \( \td{e} = f(\td{e}') \), in particular \( v^L = f(w^L) \).
+%     Then, one attaches \( \hinv{L}(v) \colon v \cp{} v^L \celto \un(f(a)) \) and \( \hinv{R} \colon \un(f(b)) \celto v^R \cp{} v \).
+%     Since \( v \cp{} v^L = f(u \cp{} w^L) \) and \( \un(f(b)) = f(\un(b)) \), we have \( \hinv{L}(v) = f(\hinv{L}(w)) \) and \( \hinv{R}(v) = f(\hinv{r}(w)) \) for some equivalence \( \hinv{L}(w) \colon w \cp{} w^L \celto a' \) and \( \hinv{R}(w) \colon \un(b) \celto w^R \cp{} w \).
+%     \cccom{TODO: a' is not necessarily a unit, fix that, or not?}
+% \end{proof}
+
+% \begin{lem} \label{lem:isofib_rlp_dual_comp}
+%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be a round molecule.
+%     Then \( f \) has the right lifting property against the inclusion \( U \incl \compos{U} \simeq U \).
+% \end{lem}
+% \begin{proof}
+%     Consider a lifting problem
+%     \begin{center}
+%         \begin{tikzcd}
+%             U & X \\
+%             {\compos{U} \simeq U} & Y
+%             \arrow["u", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["{\td h}"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     Consider a lift \( \td z \colon \compos{U}\simeq U \to X \) making the upper triangle commute.
+%     Call \( V \eqdef \compos{U} \celto U \).
+%     Then too solve the previous lifting problem, it is enough to solve
+%     \begin{center}
+%         \begin{tikzcd}
+%             {\selfloc V} & X \\
+%             {\Loc (\selfloc V,\set{\top_V})} & Y
+%             \arrow["{\td z}", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["{\td h \cup f(\td z)}"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     which is possible by Lemma \ref{lem:isofib_rlp_double_walking}.
+% \end{proof}
+
+% \begin{lem} \label{lem:rlp_localised_horn_iff_rlp_weak_composite}
+%     Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories.
+%     The following are equivalent.
+%     \begin{enumerate}
+%         \item \( f \) has the right lifting property against \( \Loc \Jhorn \);
+%         \item \( f \) has the right lifting property against \( \Jcomp \); 
+%     \end{enumerate}
+% \end{lem}
+% \begin{proof}
+%     The second condition is clearly necessary since \( \Jcomp \subseteq \Loc \Jhorn \).
+%     Conversely, suppose that \( f \) has the right lifting property against \( \Loc \Jhorn \), and consider a marked horn \( \lambda^x_U \colon (\Lambda^x_U, B) \to (U, A) \).
+%     Suppose without loss if generality that \( x \in \bd{}{-} U \).
+%     Suppose also that \( x \notin A \), the proof in the other case follows similar lines.
+%     Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Loc (\Lambda^x_U, B) \to X \) classifying in \( X \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a weakly invertible context in the sense of \cite[3.12]{chanavat2024equivalences}.
+%     An extension of \( s \) along \( \lambda^x_U \) then classifies a solution \( u \), witnessed by \( \tilde{h} \colon \fun{E}u \simeq v \). 
+%     Thus, by \cite[Lemma 5.10]{chanavat2024equivalences}, and passing to weak composites, all \( (\infty, n) \)\nbd categories have the right lifting property against \( \Loc \Jhorn \).
+%     Now consider a lifting problem
+%     \begin{center}
+%         \begin{tikzcd}
+%             {\Loc (\Lambda^x_U, B)} & X \\
+%             {\Loc (U, A)} & Y
+%             \arrow["s", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["{\tilde h}"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     and choose a lift \( \tilde{h}' \colon \Loc (U, A) \to X \) making the upper triangle commute. 
+%     Then, \( \tilde{h} \cup f(\tilde{h'}) \) classify another equation \( x' \cpsub{} f(\tilde{h}) \qeq \tilde{h} \) in \( Y \), which admits a solution \( \tilde{w} \colon u \simeq f(u') \), witnessed by \( \tilde{z} \colon \tilde{w} \cpsub{} f(\tilde{h}') \celto \tilde{h} \)
+%     By Lemma \ref{lem:isofib_rlp_dual_comp}, \( \tilde{w} = f(\tilde{w'}) \) for \( w' \colon \hat{u} \simeq u' \).
+%     In particular, \( f(\hat{u}) = u \).
+%     Thus \( \tilde{z} \) has type \( f(\tilde{w'} \cpsub{} \tilde{h}') \simeq \tilde{h} \).
+%     By assumption and Lemma \ref{lem:isofib_rlp_double_walking} twice, \( \tilde{z} = f(\tilde{z'}) \) for some \( \tilde{z'} \colon \tilde{w'} \cpsub{} \tilde{k} \).
+%     In particular, \( \tilde{k} \) classifies another solution in \( X \) of the equation given by \( s \) and \( f(\tilde{k}) = \tilde{h} \).
+%     Therefore, \( \tilde{k} \colon \Loc (U, A) \) is the desired lift.  
+% \end{proof}

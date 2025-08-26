@@ -161,10 +161,22 @@ and in the sequel, we always identify a regular directed complex with its associ
 
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(infty, n)}-categories}
 
+
 Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degeneracies. 
 A morphism of marked diagrammatic sets is a morphism of the underlying diagrammatic sets sending marked cells to marked cells.
 We write \( \mdgmSet \) for the category of marked diagrammatic sets and their morphisms. 
 Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0}{P} \) is a subset of elements of \( P \) of dimension \( > 0 \), we let \( (P, A) \) be the marked diagrammatic set \( (P, \dgn P \cup \set{\mapel{a} \mid a \in A}) \).
+
+\begin{dfn}
+    The functor \( \fun{U} \colon \mdgmSet \to \dgmSet \) forgetting the marking of a marked diagrammatic set has a left adjoint \( \minmark{(-)} \) defined by \( \minmark{X} \eqdef (X, \dgn X) \).
+    Given a diagrammatic set, we also let \( \natmark{X} \eqdef (X, \eqv X) \).
+    By Theorem \ref{thm:main_equivalence}, this is well defined and extends to a functor \( \natmark{(-)} \colon \dgmSet \to \mdgmSet \). 
+\end{dfn}
+
+\begin{dfn} [Marking]
+   Let \( j \colon (X, A) \to (Y, B) \) be a morphism of marked diagrammatic sets. 
+   We say that \( j \) is a \emph{marking} if \( \fun{U}j \) is an isomorphism.
+\end{dfn}
 
 \begin{dfn}
     We recall the definition of \emph{localisation} from \cite[Section 2.4]{chanavat2024model}.
@@ -208,7 +220,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{dfn} [Walking equivalence]
     Let \( U \) be an atom.
     The \emph{walking equivalence of shape \( U \)} is the diagrammatic set \( \selfloc{U} \eqdef \Loc (U, \set{\top_U}) \).
-    We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \).
+    We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \), and \( \selflocm{U} \) for the marked diagrammatic set \( (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \).
 \end{dfn}
 
 \begin{dfn}
@@ -254,10 +266,30 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We let \( \Jn{n} \eqdef \set{U \incl \selfloc{U} \mid U \text{ atom}, \dim U > n } \).
 \end{dfn}
 
-\begin{rmk}
-    By \cite[]{chanavat2024model} an \( (\infty, \infty) \)\nbd category \( X \), a cell \( u \colon U \to X \) is an equivalence if an only if it extends to some \( \td u \colon \selfloc{U} \to X \).
-    Thus, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
+\begin{rmk} \label{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}
+    By \cite[Proposition 3.8, Proposition 3.9]{chanavat2024model}, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
 \end{rmk}
+
+\begin{lem} \label{lem:isofib_left_right_lift}
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, \infty) \)\nbd categories with the right lifting property against \( \Jcomp \), \( u \) be a round diagram in \( X \) and \( v \) a cell in \( Y \).
+    Then
+    \begin{enumerate}
+        \item for all equivalence \( h \colon f(u) \celto v \), there exists an equivalence \( z \colon u \celto v' \) such that \( f(z) = h \);
+        \item for all equivalences \( h \colon v \celto f(u) \), there exists an equivalence \( z \colon v' \celto u \) such that \( f(z) = h \).  
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    The first part follows from \cite[Proposition 3.7]{chanavat2024model}.
+    Let \( h \colon v \celto f(u) \) be an equivalence.
+    Then \( h \) has a weak inverse \( h' \colon f(u) \celto v \), which is itself an equivalence.
+    Thus \( h' = f(z') \) for equivalence \( z' \colon v' \celto u \).
+    Then, \( z' \) is an equivalence, thus has a weak inverse \( z'' \colon u \celto v' \).
+    Since morphisms of diagrammatic set preserves weak inverses, \( f(z'') \) is a weak inverse of \( h' \).
+    By Theorem \ref{thm:main_equivalence}, there exists an equivalence \( k \colon f(z'') \celto h \), 
+    By the first part of the proof, \( k = f(k') \) for some equivalence \( k' \colon z'' \celto z \).
+    In particular, \( h = f(z) \), and \( z \simeq z'' \) is an equivalence.
+\end{proof}
+
 
 \begin{dfn} [Marked horn]
     Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \) and \( x \in \maxel{\bd{}{\a} U} \).
@@ -276,104 +308,45 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We let \( \Jhorn \) be the set of marked horn.
 \end{dfn}
 
-\begin{lem} \label{lem:isofib_rlp_double_walking}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be an atom of dimension \( > 0 \).
-    Then \( f \) has the right lifting property against 
-    \begin{equation*}
-        \selfloc{U} \incl \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}).
-    \end{equation*}
-\end{lem}
-\begin{proof}
-    Call \( \selfloc{U}^2 \eqdef \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \), and consider a lifting problem
-    \begin{center}
-        \begin{tikzcd}
-            {\selfloc{U}} & X \\
-            {\selfloc{U}^2} & Y.
-            \arrow["{\tilde u}", from=1-1, to=1-2]
-            \arrow[from=1-1, to=2-1]
-            \arrow["f", from=1-2, to=2-2]
-            \arrow["s"', from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    Then \( s \) classifies the extension \( f(\td{u}) \colon \selfloc{U} \to X \) of \( f(u) \), together with another extension \( \td{v} \colon \selfloc{U} \to X \).
-    Let \( u \colon a \celto b \) be the type of \( u \).
-    We let \( w \eqdef u \), and construct an extension \( \td{w} \colon \td{U} \to X \) of \( w \) such that \( f(\td{w}) = \td{v} \).
-    We proceed by induction on the construction of the localisation: we do the base case and leave the inductive step, which proceed along the same line, to the reader.
-    Let \( f(w)^L \) and \( v^L \) be the left inverses of \( f(w) \) attached at the first step of the localisation.
-    By Theorem \ref{thm:main_equivalence}, \( \td{e} \colon f(u)^L \simeq v^L \), where \( h \) is can be taken to be a cell, since \( Y \) is an \( (\infty, n) \)\nbd category.
-    Since \( f \) has the right lifting property against \( \Jcomp \), \( \td{e} = f(\td{e}') \), in particular \( v^L = f(w^L) \).
-    Then, one attaches \( \hinv{L}(v) \colon v \cp{} v^L \celto \un(f(a)) \) and \( \hinv{R} \colon \un(f(b)) \celto v^R \cp{} v \).
-    Since \( v \cp{} v^L = f(u \cp{} w^L) \) and \( \un(f(b)) = f(\un(b)) \), we have \( \hinv{L}(v) = f(\hinv{L}(w)) \) and \( \hinv{R}(v) = f(\hinv{r}(w)) \) for some equivalence \( \hinv{L}(w) \colon w \cp{} w^L \celto a' \) and \( \hinv{R}(w) \colon \un(b) \celto w^R \cp{} w \).
-    \cccom{TODO: a' is not necessarily a unit, fix that, or not?}
-\end{proof}
+\begin{comm}
+    Let \( \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to (U, A) \) be a marked horn, and \( W \) be an \( (\infty, \infty) \)\nbd category.
+    Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Lambda^x_U \to W \) classifying in \( W \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a context in the sense of \cite[3.1]{chanavat2024equivalences}.
+    Now if \( s \) defines furthermore a morphisms of marked diagrammatic sets \( s \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to \natmark{W} \), then this implies that the context \( \fun{E} \) is weakly invertible.
+    By \cite[Lemma 5.10]{chanavat2024equivalences}, this equation has a solution \( u \), witnessed by an equivalence \( h \colon \fun{E}u \celto v \), which is exactly the data of an extension of \( s \) along \( \lambda^x_U \).
+\end{comm}
 
-\begin{lem} \label{lem:isofib_rlp_dual_comp}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be a round molecule.
-    Then \( f \) has the right lifting property against the inclusion \( U \incl \compos{U} \simeq U \).
+\begin{lem} \label{lem:isofib_rlp_marked_horn}
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, \infty) \) category with the right lifting property against \( \Jcomp \),
+    Then \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
 \end{lem}
 \begin{proof}
-    Consider a lifting problem
+    Let \( \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to (U, A) \) be a marked horn, assume without loss of generality that \( x \in \bd{}{-} U \), and consider a lifting problem
     \begin{center}
         \begin{tikzcd}
-            U & X \\
-            {\compos{U} \simeq U} & Y
-            \arrow["u", from=1-1, to=1-2]
-            \arrow[from=1-1, to=2-1]
-            \arrow["f", from=1-2, to=2-2]
-            \arrow["{\td h}"', from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    Consider a lift \( \td z \colon \compos{U}\simeq U \to X \) making the upper triangle commute.
-    Call \( V \eqdef \compos{U} \celto U \).
-    Then too solve the previous lifting problem, it is enough to solve
-    \begin{center}
-        \begin{tikzcd}
-            {\selfloc V} & X \\
-            {\Loc (\selfloc V,\set{\top_V})} & Y
-            \arrow["{\td z}", from=1-1, to=1-2]
-            \arrow[from=1-1, to=2-1]
-            \arrow["f", from=1-2, to=2-2]
-            \arrow["{\td h \cup f(\td z)}"', from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    which is possible by Lemma \ref{lem:isofib_rlp_double_walking}.
-\end{proof}
-
-\begin{lem} \label{lem:rlp_localised_horn_iff_rlp_weak_composite}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories.
-    The following are equivalent.
-    \begin{enumerate}
-        \item \( f \) has the right lifting property against \( \Loc \Jhorn \);
-        \item \( f \) has the right lifting property against \( \Jcomp \); 
-    \end{enumerate}
-\end{lem}
-\begin{proof}
-    The second condition is clearly necessary since \( \Jcomp \subseteq \Loc \Jhorn \).
-    Conversely, suppose that \( f \) has the right lifting property against \( \Loc \Jhorn \), and consider a marked horn \( \lambda^x_U \colon (\Lambda^x_U, B) \to (U, A) \).
-    Suppose without loss if generality that \( x \in \bd{}{-} U \).
-    Suppose also that \( x \notin A \), the proof in the other case follows similar lines.
-    Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Loc (\Lambda^x_U, B) \to X \) classifying in \( X \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a weakly invertible context in the sense of \cite[3.12]{chanavat2024equivalences}.
-    An extension of \( s \) along \( \lambda^x_U \) then classifies a solution \( u \), witnessed by \( \tilde{h} \colon \fun{E}u \simeq v \). 
-    Thus, by \cite[Lemma 5.10]{chanavat2024equivalences}, and passing to weak composites, all \( (\infty, n) \)\nbd categories have the right lifting property against \( \Loc \Jhorn \).
-    Now consider a lifting problem
-    \begin{center}
-        \begin{tikzcd}
-            {\Loc (\Lambda^x_U, B)} & X \\
-            {\Loc (U, A)} & Y
+            {(\Lambda^x_U, \Lambda^x_U \cap A)} & \natmark{X} \\
+            {(U, A)} & {\natmark{Y}.}
             \arrow["s", from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
-            \arrow["f", from=1-2, to=2-2]
-            \arrow["{\tilde h}"', from=2-1, to=2-2]
+            \arrow["\natmark{f}", from=1-2, to=2-2]
+            \arrow["h"', from=2-1, to=2-2]
         \end{tikzcd}
     \end{center}
-    and choose a lift \( \tilde{h}' \colon \Loc (U, A) \to X \) making the upper triangle commute. 
-    Then, \( \tilde{h} \cup f(\tilde{h'}) \) classify another equation \( x' \cpsub{} f(\tilde{h}) \qeq \tilde{h} \) in \( Y \), which admits a solution \( \tilde{w} \colon u \simeq f(u') \), witnessed by \( \tilde{z} \colon \tilde{w} \cpsub{} f(\tilde{h}') \celto \tilde{h} \)
-    By Lemma \ref{lem:isofib_rlp_dual_comp}, \( \tilde{w} = f(\tilde{w'}) \) for \( w' \colon \hat{u} \simeq u' \).
-    In particular, \( f(\hat{u}) = u \).
-    Thus \( \tilde{z} \) has type \( f(\tilde{w'} \cpsub{} \tilde{h}') \simeq \tilde{h} \).
-    By assumption and Lemma \ref{lem:isofib_rlp_double_walking} twice, \( \tilde{z} = f(\tilde{z'}) \) for some \( \tilde{z'} \colon \tilde{w'} \cpsub{} \tilde{k} \).
-    In particular, \( \tilde{k} \) classifies another solution in \( X \) of the equation given by \( s \) and \( f(\tilde{k}) = \tilde{h} \).
-    Therefore, \( \tilde{k} \colon \Loc (U, A) \) is the desired lift.  
+    By \cite[Theorem 4.9]{chanavat2024model}, both \( \natmark{X} \) and \( \natmark{Y} \) have the right lifting property against \( \Jhorn \).
+    Then \( s \) classifies in \( X \) an equation \( \fun{E}x \qeq v \) in the unknown \( x \), where \( \fun{E} \) is a weakly invertible context. 
+    Let us choose a solution \( u \) witnessed by an equivalence \( z \colon \fun{E}u \celto v \).
+    Then, by assumption, \( h \colon (f\fun{E})w \celto f(v) \) is an equivalence in \( Y \).
+    In \( Y \), we may form the equation 
+    \begin{equation*}
+        y \cpsub{f(u)} f(z) \qeq h,
+    \end{equation*}
+    in the unknown \( y \), which has a solution \( e \colon w \celto f(u) \) witnessed by an equivalence \( k \colon e \cpsub{} f(z) \celto h \).
+    By Lemma \ref{lem:isofib_left_right_lift}, \( e = f(e') \) for some equivalence \( e' \colon w' \celto u \).
+    Thus \( k \) has type \( f(e' \cpsub{} z) \celto h \).
+    By Lemma \ref{lem:isofib_left_right_lift} again, \( k = f(k') \) for some equivalence \( k' \colon e' \cpsub{} z \celto h' \).
+    In particular, \( h' \) is an equivalence of type \( \fun{E}w' \celto v \) and \( f(h') = h \).
+    If \( \faces{}{+} U \subseteq A \), then \( v \) is an equivalence, hence by \cite[Theorem 5.22]{chanavat2024equivalences}, \( w' \) is an equivalence.
+    This shows that \( h' \colon U \to X \) extends to a morphism \( (U, A) \to \natmark{X} \) solving the lifting problem.
+    This concludes the proof.
 \end{proof}
 
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
@@ -385,5 +358,21 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     \end{enumerate}
 \end{thm}
 \begin{proof}
-    \cccom{TODO}
+    The existence as well as the characterisation of fibrant objects is given by \cite{chanavat2024model}, where it is also proven that marked diagrammatic sets support a model structure called the \emph{coinductive \( (\infty, n) \)\nbd model structure} such that \( \minmark{(-)} \) is a left Quillen equivalence.
+    In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
+    By \cite[Lemma 4.17]{chanavat2024model}, one sees that the set \( (\minmark{\Jcomp \cup \Jn{n}}) \) is a set of acyclic cofibrations.
+    By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
+    Since left Quillen equivalence reflect weak equivalence between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibration.
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd category with the right lifting property against \( \Jcomp \cup \Jn{n} \).
+    We need to prove that \( f \) is a fibration.
+    Since \( \fun{U}\natmark{f} = f \), is it enough to prove that \( \natmark{f} \) is a fibration. 
+    By Lemma \ref{lem:isofib_rlp_marked_horn}, \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
+    By \cite[Theorem 4.22]{chanavat2025gray}, a set of pseudo-generating acyclic cofibration for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jcomp \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
+    But a morphism of marked diagrammatic sets has the right lifting property against a collection of markings \( J \) if and only if its domain has the right lifting property against \( J \).
+    Since the domain of \( \natmark{f} \) is the fibrant object \( \natmark{X} \), we conclude.
 \end{proof}
+
+\begin{comm}
+    In \cite{chanavat2024model}, a pseudo generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a certain closure \( \mathrm{an}(\Jcomp \cup \Jn{n}) \) of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
+    We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary (which incidentally was already predicted by Hadzihasanovic in \cite[Remark 6.9]{hadzihasanovic2020diagrammatic}).
+\end{comm}
