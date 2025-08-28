@@ -42,6 +42,7 @@
 \newcommand{\init}{\varnothing}
 
 % oriented poset macros
+\DeclareMathOperator{\clos}{cl}
 \newcommand\clset[1]{\mathrm{cl}\set{#1}}
 \newcommand\gr[2]{#2_{#1}}
 \newcommand\maxel[1]{\mathscr{M}\!\mathit{ax}\,#1}
@@ -63,6 +64,8 @@
 \newcommand\relcelto[1]{\Rightarrow_{\kern-3pt #1}}
 
 \newcommand\submol{\sqsubseteq}
+
+\newcommand\augm[1]{{{#1}_\bot}}
 
 \newcommand\dual[2]{\fun{D}_{#1}{#2}}
 \newcommand\join{\,{\star}\,}
@@ -103,7 +106,12 @@
 % special objects
 \newcommand\arr{\vec{I}}
 
+% collapsible
 
+\newcommand{\coll}[2]{{#2} / {#1}}
+\newcommand{\zcoll}{\bullet}
+\newcommand{\icoll}[1]{(#1)}
+\newcommand{\mapcoll}{p}
 % maps induced
 \newcommand{\mapel}[1]{\iota_{#1}}
 \newcommand{\imel}[2]{{#1}_{#2}}
@@ -212,6 +220,7 @@
 
 \newcommand{\globe}[1]{O^{#1}}
 \newcommand{\dglobe}[1]{\vec{O}^{#1}}
+\newcommand{\rglobe}[1]{\tilde{O}^{#1}}
 
 \newcommand{\gcelto}{\to}
 
@@ -219,7 +228,9 @@
 
 \newcommand\sd{\looparrowright}
 
+\DeclareMathOperator{\N}{N}
 
+\DeclareMathOperator{\s}{\mathsf{s}}
 % folk model structure
 
 \newcommand{\Icof}{\mathcal{I}}

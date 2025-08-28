@@ -1,1 +1,75 @@
 \section{Strict and weak higher categories}
+
+We let \( \molecin{-} \colon \dgmSet \to \somegaCat \) be the left Kan extension along the Yoneda embedding of the functor \( \atom \to \somegaCat \) defined by \( U \mapsto \molecin{U} \).
+Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, there is no ambiguity when one writes \( \molecin{P} \) for a regular directed complex \( P \).
+
+\begin{dfn} [Diagrammatic nerve]
+    The \emph{diagrammatic nerve} is the right adjoint to the functor \( \molecin{-} \).
+\end{dfn}
+
+% \begin{lem}
+%     Let \( C \) be a stricter \( \omega \)\nbd category and \( P \) be a regular directed complex.
+%     Then there is a natural bijections
+%     \begin{equation*}
+%         \dgmSet(P, \N C) \cong \somegaCat(\molecin{P}, C).
+%     \end{equation*}
+% \end{lem}
+% \begin{proof}
+%     By definition, a morphism \( u \colon P \to \N C \)
+% \end{proof}
+
+\begin{lem} \label{lem:molecin_preserves_cofibration}
+    Let \( f \colon X \incl Y \) be a monomorphism of diagrammatic sets.
+    Then \( \molecin{f} \) is a relative stricter polygraph.
+\end{lem}
+\begin{proof}
+    Let \( I \eqdef \set{\bd{}{} U \incl U \mid U \text{ atom}} \).
+    Then \( f \) is a relative \( I \)\nbd cell complex by \cite[Remark 2.9]{chanavat2024htpy}.
+    Since \( \molecin{-} \) is left adjoint, \( \molecin{f} \) is a relative \( \molecin{I} \)\nbd cell complex, i.e. a relative stricter polygraph.
+\end{proof}
+
+\begin{lem} \label{lem:molecin_monoidal}
+    The functor \( \molecin{-} \colon \dgmSet \to \somegaCat \) is monoidal with respect to the Gray product of diagrammatic sets and stricter \( \omega \)\nbd categories.
+\end{lem}
+\begin{proof}
+    The result is true on atoms by definition of the Gray product of stricter \( \omega \)\nbd categories.
+    We conclude by universal property of the Gray product.
+\end{proof}
+
+\subsection{Coherent walking equivalence}
+
+\begin{lem} \label{lem:suspension_walking_globe_is_walking}
+    Let \( (X, A) \) be a marked diagrammatic set.
+    Then \( \sus{\Loc (X, A)} \) and \( \Loc (\sus{X}, \sus{A}) \) are isomorphic. 
+\end{lem}
+\begin{proof}
+    Since both \( \sus{} \) and \( \Loc \) are colimit preserving, it is enough to show that for all atoms \( U \), \( \sus{\selfloc{U}} \) and \( \selfloc{\sus{U}} \) are naturally isomorphic.
+    Then, 
+    \begin{equation*}
+        \sus{\selfloc{U}} \cong \sus{\colim_{v \colon V \to \nd \selfloc{U}} V} \cong \colim_{v \colon V \to \nd \selfloc{U}} \sus{V}
+    \end{equation*}
+    We proceed by induction on the construction of the localisation. 
+    \cccom{TODO}
+\end{proof}
+
+\cccom{TODO: suspension of stricter categories, show it is left adjoint}
+
+\begin{lem} \label{lem:suspension_commutes_dgm_stricter}
+    Let \( X \) be a diagrammatic set.
+    Then \( \sus{\molecin{X}} \) and \( \molecin{\sus{X}} \) are naturally isomorphic.
+\end{lem}
+\begin{proof}
+    Let \( U \) be an atom.
+    Then by inspection, \( \sus{\molecin{U}} = \molecin{\sus{U}} \).
+    Then
+    \begin{equation*}
+        \molecin{\sus{X}} = \molecin{\colim_{u \colon U \to X} \sus{U}} \cong \colim_{u \colon U \to X} \sus{\molecin{U}}.
+    \end{equation*}
+    By universal property of the left Kan extension, we conclude.
+\end{proof}
+
+
+
+\begin{prop}\label{prop:compositor_is_acyclic_atom_case}
+    Let \( U \) be an atom
+\end{prop}

@@ -155,9 +155,32 @@ and in the sequel, we always identify a regular directed complex with its associ
     The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
 \end{dfn}
 
-\begin{thm} \label{thm:main_equivalence}
-    
-\end{thm}
+\begin{dfn} [Equivalence]
+    Let \( e \) be a pasting diagram in a diagrammatic set \( X \).
+    We say that \( e \) is an \emph{equivalence} if it is reversible in the composition structure \( \Pd(X) \).
+    We let
+    \begin{equation*}
+        \Eqv X \eqdef \set{e \in \Pd(X) \mid e \text{ is an equivalence}},\quad \eqv X = \Eqv X \cap \cell X.
+    \end{equation*}
+\end{dfn}
+
+\begin{rmk}
+    This definition of equivalence coincides, for round diagrams, with the usual notion of equivalence in a diagrammatic set, see \cite[Section 2]{chanavat2024equivalences}.
+\end{rmk}
+
+\begin{prop} \label{prop:main_equivalence}
+    Let \( X \) be a diagrammatic set.
+    Then
+    \begin{enumerate}
+        \item every degenerate diagram is an equivalence;
+        \item any two weak inverses of an equivalence are equivalent to each other;
+    \end{enumerate}
+    Furthermore, any morphism \( f \colon X \to Y \) of diagrammatic sets sends equivalences to equivalences.
+\end{prop}
+\begin{proof}
+    See \cite[Section]{chanavat2024equivalences} for the case of equivalences that are round diagrams, and notice that all the relevant results go through when considering not necessarily round diagrams.
+\end{proof}
+
 
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(infty, n)}-categories}
 
@@ -170,7 +193,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{dfn}
     The functor \( \fun{U} \colon \mdgmSet \to \dgmSet \) forgetting the marking of a marked diagrammatic set has a left adjoint \( \minmark{(-)} \) defined by \( \minmark{X} \eqdef (X, \dgn X) \).
     Given a diagrammatic set, we also let \( \natmark{X} \eqdef (X, \eqv X) \).
-    By Theorem \ref{thm:main_equivalence}, this is well defined and extends to a functor \( \natmark{(-)} \colon \dgmSet \to \mdgmSet \). 
+    By Proposition \ref{prop:main_equivalence}, this is well defined and extends to a functor \( \natmark{(-)} \colon \dgmSet \to \mdgmSet \). 
 \end{dfn}
 
 \begin{dfn} [Marking]
@@ -210,7 +233,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
         \order{0}{X} \incl \order{1}{X} \incl \ldots \incl \order{n}{X} \incl \ldots,
     \end{equation*}
     whose transfinite composition is \( \loc{X}{A} \), the \emph{localisation of \( X \) at \( A \)}, which comes equipped with a canonical inclusion \( X \incl \loc{X}{A} \).
-    This defines a colimit preserving functor
+    This can be extended to a colimit preserving functor
     \begin{equation*}
         \Loc \colon \mdgmSet \to \dgmSet.
     \end{equation*}
@@ -220,16 +243,16 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{dfn} [Walking equivalence]
     Let \( U \) be an atom.
     The \emph{walking equivalence of shape \( U \)} is the diagrammatic set \( \selfloc{U} \eqdef \Loc (U, \set{\top_U}) \).
-    We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \), and \( \selflocm{U} \) for the marked diagrammatic set \( (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \).
+    We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \), and \( \rglobe{n} \) for \( \dglobe{n - 1} \simeq \dglobe{n - 1} \) for \( n \geq 1 \). 
 \end{dfn}
 
-\begin{dfn}
-    Let \( X \) be a diagrammatic set, and \( u \colon U \to X \) be cell.
-    We write \( \td u \colon \selfloc{U} \to X \) for any extension of \( u \) along the inclusion \( U \incl \selfloc{U} \).
-    If \( u \colon a \celto b \), then we write \( \td u \colon a \simeq b \).
-    Furthermore if \( v \colon V \to X \) is a diagram and \( k \geq 0 \) such that \( u \cp{k} v \) is defined, we also write \( \td u \cp{k} v \colon \selfloc{U} \cp{k} V \to X \) for the morphism \( \td u \cup_{\bd{k}{+}u} v \) whose domain is \( \tilde{U} \cup_{\bd{k}{\a} U} V \).
-    We use similar notations of pasting at a subdiagrams \( - \cpsub{} - \) and \( - \subcp{} - \).
-\end{dfn}
+% \begin{dfn}
+%     Let \( X \) be a diagrammatic set, and \( u \colon U \to X \) be cell.
+%     We write \( \td u \colon \selfloc{U} \to X \) for any extension of \( u \) along the inclusion \( U \incl \selfloc{U} \).
+%     If \( u \colon a \celto b \), then we write \( \td u \colon a \simeq b \).
+%     Furthermore if \( v \colon V \to X \) is a diagram and \( k \geq 0 \) such that \( u \cp{k} v \) is defined, we also write \( \td u \cp{k} v \colon \selfloc{U} \cp{k} V \to X \) for the morphism \( \td u \cup_{\bd{k}{+}u} v \) whose domain is \( \tilde{U} \cup_{\bd{k}{\a} U} V \).
+%     We use similar notations of pasting at a subdiagrams \( - \cpsub{} - \) and \( - \subcp{} - \).
+% \end{dfn}
 
 \begin{dfn} [Weak composites]
     Let \( X \) be a diagrammatic set.
@@ -274,7 +297,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     Let \( f \colon X \to Y \) be a functor of \( (\infty, \infty) \)\nbd categories with the right lifting property against \( \Jcomp \), \( u \) be a round diagram in \( X \) and \( v \) a cell in \( Y \).
     Then
     \begin{enumerate}
-        \item for all equivalence \( h \colon f(u) \celto v \), there exists an equivalence \( z \colon u \celto v' \) such that \( f(z) = h \);
+        \item for all equivalences \( h \colon f(u) \celto v \), there exists an equivalence \( z \colon u \celto v' \) such that \( f(z) = h \);
         \item for all equivalences \( h \colon v \celto f(u) \), there exists an equivalence \( z \colon v' \celto u \) such that \( f(z) = h \).  
     \end{enumerate}
 \end{lem}
@@ -285,7 +308,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     Thus \( h' = f(z') \) for equivalence \( z' \colon v' \celto u \).
     Then, \( z' \) is an equivalence, thus has a weak inverse \( z'' \colon u \celto v' \).
     Since morphisms of diagrammatic set preserves weak inverses, \( f(z'') \) is a weak inverse of \( h' \).
-    By Theorem \ref{thm:main_equivalence}, there exists an equivalence \( k \colon f(z'') \celto h \), 
+    By Proposition \ref{prop:main_equivalence}, there exists an equivalence \( k \colon f(z'') \celto h \), 
     By the first part of the proof, \( k = f(k') \) for some equivalence \( k' \colon z'' \celto z \).
     In particular, \( h = f(z) \), and \( z \simeq z'' \) is an equivalence.
 \end{proof}
@@ -334,7 +357,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     By \cite[Theorem 4.9]{chanavat2024model}, both \( \natmark{X} \) and \( \natmark{Y} \) have the right lifting property against \( \Jhorn \).
     Then \( s \) classifies in \( X \) an equation \( \fun{E}x \qeq v \) in the unknown \( x \), where \( \fun{E} \) is a weakly invertible context. 
     Let us choose a solution \( u \) witnessed by an equivalence \( z \colon \fun{E}u \celto v \).
-    Then, by assumption, \( h \colon (f\fun{E})w \celto f(v) \) is an equivalence in \( Y \).
+    Moreover, by assumption, \( h \colon (f\fun{E})w \celto f(v) \) is an equivalence in \( Y \).
     In \( Y \), we may form the equation 
     \begin{equation*}
         y \cpsub{f(u)} f(z) \qeq h,
@@ -349,6 +372,17 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     This concludes the proof.
 \end{proof}
 
+\begin{prop} \label{prop:model_structre_on_marked_dgm_set}
+    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
+    \begin{enumerate}
+        \item cofibrations are the monomorphisms;
+        \item fibrant objects are of the form \(  \natmark{X} \) for an \( (\infty, n) \)\nbd category \( X \).
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    See \cite[3.24, Theorem 4.9]{chanavat2024model}.
+\end{proof}
+
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
     For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
@@ -356,9 +390,10 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
         \item fibrant objects are the \( (\infty, n) \)\nbd categories;
         \item \( \Jcomp \cup \Jn{n} \) is a pseudo-generating set of acyclic cofibrations.
     \end{enumerate}
+    Furthermore, the adjunction \( \minmark{(-)} \dashv \fun{U} \) is a Quillen equivalence with the coinductive \( (\infty, n) \)\nbd model structure on marked diagrammatic sets.
 \end{thm}
 \begin{proof}
-    The existence as well as the characterisation of fibrant objects is given by \cite{chanavat2024model}, where it is also proven that marked diagrammatic sets support a model structure called the \emph{coinductive \( (\infty, n) \)\nbd model structure} such that \( \minmark{(-)} \) is a left Quillen equivalence.
+    The existence as well as the characterisation of fibrant objects, and the Quillen equivalence are given by \cite[3.27, Theorem 4.21, Theorem 4.23]{chanavat2024model}.
     In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
     By \cite[Lemma 4.17]{chanavat2024model}, one sees that the set \( (\minmark{\Jcomp \cup \Jn{n}}) \) is a set of acyclic cofibrations.
     By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
@@ -367,7 +402,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We need to prove that \( f \) is a fibration.
     Since \( \fun{U}\natmark{f} = f \), is it enough to prove that \( \natmark{f} \) is a fibration. 
     By Lemma \ref{lem:isofib_rlp_marked_horn}, \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
-    By \cite[Theorem 4.22]{chanavat2025gray}, a set of pseudo-generating acyclic cofibration for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jcomp \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
+    By \cite[Theorem 4.22]{chanavat2025gray}, a set of pseudo-generating acyclic cofibration for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jhorn \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
     But a morphism of marked diagrammatic sets has the right lifting property against a collection of markings \( J \) if and only if its domain has the right lifting property against \( J \).
     Since the domain of \( \natmark{f} \) is the fibrant object \( \natmark{X} \), we conclude.
 \end{proof}
@@ -376,3 +411,84 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     In \cite{chanavat2024model}, a pseudo generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a certain closure \( \mathrm{an}(\Jcomp \cup \Jn{n}) \) of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
     We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary (which incidentally was already predicted by Hadzihasanovic in \cite[Remark 6.9]{hadzihasanovic2020diagrammatic}).
 \end{comm}
+
+\begin{dfn}
+    For each \( n \in \mathbb{N} \cup \set{\infty} \), we call \( \fun{W}_n \) be the collection of weak equivalences of the \( (\infty, n) \)\nbd model structure on diagrammatic sets, and \( \fun{W}^{\m{}}_n \) the collection of weak equivalences of the coinductive \( (\infty, n) \)\nbd model structures on marked diagrammatic sets.
+\end{dfn}
+\begin{rmk}
+
+    Then we have a sequence of inclusions
+    \begin{equation*}
+        \fun{W}_{\infty} \subseteq \ldots \subseteq \fun{W}_{n + 1} \subseteq \fun{W}_n \subseteq \ldots \subseteq \fun{W}_0.
+    \end{equation*}
+    Thus, if a certain morphism of diagrammatic sets is proven to belong to \( \fun{W}_n \), it also belongs to \( \fun{W}_k \) for all \( k \le n \).
+    This discussion applies equally for the weak equivalences \( \fun{W}^{\m{}}_n \).
+\end{rmk}
+
+\begin{prop} \label{prop:loc_preserves_weak_equivalences} \cccom{do we need that?}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \).
+    Then \( \Loc \fun{W}^{\m{}}_n = \fun{W}_n \).
+\end{prop}
+\begin{proof}
+    Let \( f \colon (X, A) \to (Y, B) \) in \( \fun{W}^{\m{}}_n \).
+    By Theorem \ref{thm:n_model_structure_on_dgm_set}, \( \Loc f \) is in \( \fun{W}_n \) if and only if \( \minmark{(\Loc f)} \) is in \( \fun{W}^{\m{}}_n \).
+    Now for all marked diagrammatic sets \( (Z, C) \), \( (Z, C) \incl (\loc{Z}{C}, C \cup \dgn (\loc{Z}{C})) \) is in \( \fun{W}^{\m{}}_n \) by \cite[Lemma 4.17]{chanavat2024model}.
+    Then the marking \( \minmark{(\Loc (Z, C))} \incl (\loc{Z}{C}, C \cup \dgn (\loc{Z}{C})) \) also belongs to \( \fun{W}^{\m{}}_n \) since it can be constructed as a transfinite composition of pushout along markings of the form
+    \begin{equation*}
+        \minmark{\selfloc{U}} \incl (\selfloc{U}, \set{U \incl \selfloc{U}} \cup \dgn \selfloc{U}), U \text{ atom},
+    \end{equation*}
+    which belong to \( \fun{W}^{\m{}}_n \) by definition of the coinductive \( (\infty, n) \)\nbd model structure.
+    By the two-out-of-three, we conclude that \( \minmark{(\Loc f)} \) is in \( \fun{W}^{\m{}}_n \).
+    Conversely, \( \minmark{\fun{W}_n} \subseteq \fun{W}^{\m{}}_n \), and by the first part of the proof
+    \begin{equation*}
+        \fun{W}_n = \Loc \minmark{\fun{W}_n} \subseteq \Loc \fun{W}^{\m{}}_n.
+    \end{equation*}
+    This concludes the proof.
+\end{proof}
+
+% \begin{lem}\label{lem:acyclic_on_globes_acyclic_on_all}
+%     Let \( f \colon X \to Y \) be a fibration of \( (\infty, n) \)\nbd categories, and suppose that \( f \) has the right lifting property against
+%     \begin{equation*}
+%         \set{\bd{}{} \dglobe{n} \incl \dglobe{n} \mid n \geq 0}.
+%     \end{equation*}
+%     Then \( f \) is an acyclic fibration.
+% \end{lem}
+
+
+% \begin{dfn} [Globularisation]
+%     Given a round molecule \( V \), we define the atoms \( C^+(V) \eqdef (V \celto \compos{V}) \) and \( C^-(V) \eqdef (\compos{V} \celto V) \).
+%     Let \( U \) be an atom of dimension \( n \geq 2 \), we let
+%     \begin{equation*}l
+%         R(U) \eqdef C^-(\bd{}{-}U) \cp{n - 1} (\ldots \cp{2} C^-(\bd{1}{-}U) \cp{1} U \cp{1} C^+(\bd{1}{+} U) \cp{2} \ldots) \cp{} C^+(\bd{}{+}U),
+%     \end{equation*}
+%     and let \( G(U) \eqdef R(U) \celto \dglobe{n} \) and \( L(U) \eqdef G(U) \setminus \set{\top_{G(U)}, \top_U} \).
+%     Now, calling \( \top^\a_k \) be the maximal element of \( \C^\a(\bd{k}{\a} U) \) in \( R(U) \) for \( \a \in \set{-, +} \) and \( 1 \le k \le n - 1 \), we get that
+%     \begin{equation*}
+%         \lambda^{\top_U} \colon (L(U), \bigcup_{k = 1}^{n - 1} \set{\top^\a_k}) \incl (G(U), {\top_{G(U)}, \top_U} \cup \bigcup \bigcup_{k = 1}^{n - 1} \set{\top^\a_k})
+%     \end{equation*}
+%     is a marked horn. 
+%     The \emph{globularisation} of \( U \) is the morphism of diagrammatic set
+% \end{dfn}
+
+% \begin{prop}\label{prop:infty_n_cat_htpy_colimit_of_its_globes}
+%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( Y \) be an \( (\infty, n) \)\nbd category, and \( \iota \colon X \subseteq Y \) a subpresheaf of \( Y \) such that for all \( n \geq 0 \), \( X(\dglobe{n}) = Y(\dglobe{n}) \).
+%     Then \( \iota \) is an acyclic cofibration in the \( (\infty, n) \)\nbd model structure.
+% \end{prop}
+% \begin{proof}
+%     Factors \( \iota = f \after j \) where \( j \colon X \to X' \) is an acyclic cofibration and \( p \colon X' \to Y \) is a fibration.
+%     In particular, \( X' \) is fibrant. 
+%     We show by induction on \(  \) 
+%     Consider a lifting problem 
+%     \begin{center}
+%         \begin{tikzcd}
+%             {\bd{}{} \dglobe{n}} & {X'} \\
+%             {\dglobe{n}} & Y
+%             \arrow[from=1-1, to=1-2]
+%             \arrow[hook', from=1-1, to=2-1]
+%             \arrow["f", from=1-2, to=2-2]
+%             \arrow["u"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     By assumption \( u = \iota \after v \) for some \( v \colon \dglobe{n} \to A \).
+%     Then 
+% \end{proof}

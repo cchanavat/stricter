@@ -269,3 +269,90 @@
 %     In particular, \( \tilde{k} \) classifies another solution in \( X \) of the equation given by \( s \) and \( f(\tilde{k}) = \tilde{h} \).
 %     Therefore, \( \tilde{k} \colon \Loc (U, A) \) is the desired lift.  
 % \end{proof}
+
+
+\begin{dfn}
+    Let \( \iota \colon (X, A) \incl (Y, B) \) be an inclusion of marked diagrammatic sets, and \( u \colon (L, C) \to (X, B) \) be a morphisms of diagrammatic sets. 
+    We write \( u \in_\iota A \) if \( u \) factors through \( \iota \), and \( u \notin_\iota A \) otherwise.
+\end{dfn}
+
+\begin{lem} \label{lrm:relative_small_object_argument}\ccnote{define relative cell complex, change def of relative polygraph to relfect the definition}
+    Let \( \iota \colon A \to X \) be an inclusion of diagrammatic sets, and \( J \) be a set of inclusions with the left lifting property against \( X \).
+    Then there exists a factorisation of \( \iota \) into inclusions
+    \begin{equation*}
+        A \stackrel{j}{\incl} \order{\infty}{A} \incl X,
+    \end{equation*}
+    such that \( \order{\infty}{A} \) has the right lifting property against \( J \) and \( j \) is a relative \( J \)\nbd cell complex.
+\end{lem}
+\begin{proof}
+    We construct \( \order{\infty}{A} \incl X \) by a transfinite induction of relative \( J \)\nbd cell complexes
+    \begin{center}
+        \begin{tikzcd}
+            {A \eqdef \order{0}{A}} & {\order 1 A} & \ldots & {\order{n} A} & \ldots \\
+            \\
+            &&& X
+            \arrow[hook, from=1-1, to=1-2]
+            \arrow["{{\order 0 \iota \eqdef \iota}}"', curve={height=6pt}, hook, from=1-1, to=3-4]
+            \arrow[hook, from=1-2, to=1-3]
+            \arrow["{{\order 1 \iota}}"{description}, hook, from=1-2, to=3-4]
+            \arrow[hook, from=1-3, to=1-4]
+            \arrow[dashed, hook, from=1-3, to=3-4]
+            \arrow[hook, from=1-4, to=1-5]
+            \arrow["{{\order n \iota}}"{description}, hook, from=1-4, to=3-4]
+        \end{tikzcd}
+    \end{center}
+    and such that \( \iota_n \) is an inclusion.
+    The base case is \( (\order{0}{A}, \order{0}{\iota}) \eqdef (A, \iota) \).
+    Let \( n > 0 \) and suppose inductively that \( \order{n - 1}{A} \) has been defined.
+    Define \( \order{n}{S} \) by
+    \begin{equation*}
+        \coprod_{k \colon K \to L \in J} \set{(u \colon K \to \order{n - 1}{A}, v \colon L \to X) \mid v \after k = \order{n - 1}{\iota} \after u, v \notin_{\order{n - 1}{\iota}} \order{n - 1}{A} }.
+    \end{equation*}
+    Then define \( \order{n}{\iota} \colon \order{n}{A} \to X \) by the pushout
+    \begin{center}
+        \begin{tikzcd}
+            {\coprod_{(k \colon K \to L, u, v) \in \order n S} K} & {\coprod_{(k \colon K \to L, u, v) \in \order n S} L} \\
+            {\order{n - 1} A} & {\order n A} \\
+            && X
+            \arrow[""{name=0, anchor=center, inner sep=0}, "{\coprod k}", from=1-1, to=1-2]
+            \arrow["{\coprod u}"', from=1-1, to=2-1]
+            \arrow[from=1-2, to=2-2]
+            \arrow["{\coprod v}", curve={height=-12pt}, from=1-2, to=3-3]
+            \arrow[from=2-1, to=2-2]
+            \arrow["{\order{n - 1} \iota}"{description}, curve={height=12pt}, hook, from=2-1, to=3-3]
+            \arrow["{\order n \iota}"{description}, from=2-2, to=3-3]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    We claim that \( \order{n}{\iota} \) is a monomorphism. 
+    Inde
+\end{proof}
+
+
+%% cannot prove those results on strictification
+
+% We recall that every surjective cartesian map \( p \colon U \to V \) of molecules factors uniquely into \( p = \ell \after f \) where \( \ell \) is a surjective morphism and \( f \) is a surjective final map.
+
+% \begin{dfn} [Strict pasting diagram]
+%     Let \( u \colon U \to X \) be a pasting diagram in a diagrammatic set. 
+%     Then \( u \) factors uniquely as \( u = v \after \ell \after f \) where \( v \) is a non-degenerate pasting diagram, \( \ell \) is a surjective morphism and \( f \) is a surjective final map.
+%     The \emph{strictification of \( u \)} is the diagram \( \s(u) \eqdef v \after \ell \).
+%     We say that a diagram \( u \) is strict if \( u = \s(u) \).
+% \end{dfn}
+
+% \begin{lem}
+    
+% \end{lem}
+
+% \begin{dfn} [Composition structure of strict pasting diagrams]
+%     Let \( X \) be a diagrammatic set.
+%     Then the \emph{composition structure of strict pasting diagrams of \( X \)} is the composition structure
+%     \begin{equation*}
+%         C \eqdef \set{u \in \Pd(X) \mid u \text{ strict}},
+%     \end{equation*}
+%     where, for \( k \geq 0 \), \( \a \in \set{-, +} \), \( \bd{k}{\a} \colon C \to C \) is the function \( u \mapsto \s(\bd{k}{\a} u) \)
+% \end{dfn}
+
+% \begin{prop} \label{prop:molecin_description}
+%     Let \( X \) be a diagrammatic set.
+% \end{prop}
