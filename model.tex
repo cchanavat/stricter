@@ -28,6 +28,14 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     Since \( \molecin{-} \) is left adjoint, \( \molecin{f} \) is a relative \( \molecin{I} \)\nbd cell complex, i.e. a relative stricter polygraph.
 \end{proof}
 
+\begin{cor} \label{lem:molecin_polygraph_with_basis}
+    Let \( X \) be a diagrammatic set. 
+    Then \( \molecin{X} \) is a stricter polygraph with generating set \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \), where
+    \begin{equation*}
+        \cls{S}_k \eqdef \set{\molecin{u} \colon \molecin{U} \to \molecin{X} \mid u \colon U \to X \in \gr{k}{\nd X}}.
+    \end{equation*}
+\end{cor}
+
 \begin{lem} \label{lem:molecin_monoidal}
     The functor \( \molecin{-} \colon \dgmSet \to \somegaCat \) is monoidal with respect to the Gray product of diagrammatic sets and stricter \( \omega \)\nbd categories.
 \end{lem}
@@ -52,24 +60,163 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \cccom{TODO}
 \end{proof}
 
-\cccom{TODO: suspension of stricter categories, show it is left adjoint}
-
 \begin{lem} \label{lem:suspension_commutes_dgm_stricter}
-    Let \( X \) be a diagrammatic set.
+    Let \( X \) be a connected diagrammatic set.
     Then \( \sus{\molecin{X}} \) and \( \molecin{\sus{X}} \) are naturally isomorphic.
 \end{lem}
 \begin{proof}
-    Let \( U \) be an atom.
-    Then by inspection, \( \sus{\molecin{U}} = \molecin{\sus{U}} \).
     Then
     \begin{equation*}
         \molecin{\sus{X}} = \molecin{\colim_{u \colon U \to X} \sus{U}} \cong \colim_{u \colon U \to X} \sus{\molecin{U}}.
     \end{equation*}
     By universal property of the left Kan extension, we conclude.
+    \cccom{TODO}
 \end{proof}
 
 
+\begin{dfn} 
+    We recall from \cite{hadzihasanovic2024model} the construction of the \emph{coherent walking equivalence \( \wE \)}, which is a strict \( \omega \)\nbd category equipped with an inclusion \( \globe{0} \incl \wE \).
+    We define \( \wE \) as a transfinite composition of inclusions \( \order{n}{\wE} \incl \order{n + 1}{\wE} \) such that
+    \begin{itemize}
+        \item \( \order{n}{\wE} \) is a strict \( n \)\nbd category, and
+        \item for \( n \geq 1 \), \( \order{n}{\wE} \) is equipped with strict functors \( \iota_n \colon \order{n - 1}{\wE} \to \order{n}{\wE} \),
+    as well as \( \fun{L}_k, \fun{R}_k \colon \sus{\order{n - 1}{\wE}} \to \wE \).
+    \end{itemize}
+    Then, \( \order{0}{\wE} \) is the set with two elements \( \set{x, y} \) and \( \order{1}{\wE} \) is the free category on three generators \( \set{a \colon x \to y, a^L \colon y \to x, a^R \colon y \to x} \), equipped with the evident inclusion \( \iota_1 \colon \set{x, y} \incl \order{1}{\wE} \), and
+    \begin{equation*}
+        \fun{L}_1 \colon \sus{x} \mapsto a \comp{0} a^L, \sus{y} \mapsto x, \quad\text{ and }\quad \fun{R}_1 \colon \sus{x} \mapsto a^R \comp{0} a, \sus{y} \mapsto y
+    \end{equation*}
 
-\begin{prop}\label{prop:compositor_is_acyclic_atom_case}
-    Let \( U \) be an atom
-\end{prop}
+    Let \( k > 1 \), and suppose that \( (\order{k - 1}{\wE}, \iota_{k - 1}, \fun{L}_{k - 1}, \fun{R}_{k - 1}) \) have been defined.
+    Then \( (\order{k}{\wE}, \iota_{k}, \fun{L}_{k}, \fun{R}_{k}) \) is defined by the pushout
+    \begin{center}
+        \begin{tikzcd}[column sep=huge]
+            {\sus{\order{k - 2}{\wE}} \coprod \sus{\order{k - 2}{\wE}}} & {\order{k - 1}{\wE}} \\
+            {\sus{\order{k - 1}{\wE}} \coprod \sus{\order{k - 1}{\wE}}} & {\order{k}{\wE}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, "{(\fun{L}_{k-1},\fun{R}_{k-1})}", from=1-1, to=1-2]
+            \arrow["{\sus{\iota_{k-1}} \coprod \sus{\iota_{k-1}}}"', from=1-1, to=2-1]
+            \arrow["{\iota_k}", from=1-2, to=2-2]
+            \arrow["{(\fun{L}_k,\fun{R}_k)}"', from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    in \( \omegaCat \).
+    The inclusion \( \globe{0} \incl \wE \) then classifies \( x \in \order{0}{\wE} \).
+    We denote by \( \fun{L}_\infty, \fun{R}_\infty \colon \sus{\wE} \to \wE \) the transfinite composition of \( (\fun{L}_k)_k \) and \( (\fun{R}_k)_k \) respectively.
+\end{dfn}
+
+\begin{dfn} [Stricter coherent walking equivalence]
+    The \emph{stricter coherent walking equivalence} is the stricter \( \omega \)\nbd category \( \swE \eqdef \rcs \wE \), which comes equipped with the inclusion \( j \colon \globe{0} \incl \swE \).
+\end{dfn}
+
+\begin{lem} \label{lem:inclusion_into_stricter_is_equivalence}
+    The inclusion \( j \colon \globe{0} \incl \swE \) is an acyclic cofibration in the folk model structure on stricter \( \omega \)\nbd categories.
+\end{lem}
+\begin{proof}
+    Let \( i \colon \dglobe{0} \incl \wE \) be the inclusion of strict \( \omega \)\nbd categories such that \( j = \rcs i \).
+    By \cite[Remark 1.29, Theorem 1.33]{hadzihasanovic2024model} and the two-out-of-three, \( i \) a cofibration and a weak equivalence.
+    By Theorem \ref{thm:folk_model_structure_on_stricter}, \( j \) is an acyclic cofibration. 
+\end{proof}
+
+\begin{lem} \label{lem:swE_is_iso_to_molecin_loc_globe}
+    The stricter \( \omega \)\nbd categories \( \swE \) and \( \molecin{\rglobe{1}} \) are isomorphic.
+\end{lem}
+\begin{proof}
+    By \cite[Remark 1.29]{hadzihasanovic2024model}, \( \swE \) is the stricter polygraph whose \( k \)\nbd globular cells are
+    generated by the set \( \cls{S}_k \), which can be describe inductively as
+    \begin{equation*}
+        \cls{S}_0 = \set{x, y}, \cls{S}_1 = \set{a, a^L, a^R},
+    \end{equation*} 
+    and for \( k > 1 \),
+    \begin{equation*}
+        \cls{S}_k = \set{\fun{L}_\infty(\sus{t}), \fun{R}_\infty(\sus{t}) \mid t \in \cls{S}_{k - 1}}.
+    \end{equation*}
+    Letting \( \fun{L} \eqdef \fun{L}_\infty(\sus{}) \) and \( \fun{R} \eqdef \fun{R}_\infty(\sus{}) \), we can then canonically identify elements of \( \cls{S}_k \)
+    as 
+    \begin{equation*}
+        \cls{S}_k \cong \set{(a, s), (a^L, s), (a^R, s) \mid s \in \set{L, R}^*},
+    \end{equation*}
+    such that, for instance, \( (a, sL) = \fun{L}_\infty(\sus{(a, s)}) \).
+    By definition, \( \molecin{\rglobe{1}} \) is the stricter polygraph whose generating set is given, in the notation of (\ref{dfn:localisation}) by \( \coprod_{k \geq 0} \cls{T}_k \), where, letting \( b \colon \dglobe{1} \to \dglobe{1} \) be the identity, 
+    \begin{equation*}
+        \cls{T}_0 = \set{0^-, 0^+}, \cls{T}_1 = \set{b, b^L, b^R},
+    \end{equation*}
+    and for \( k > 1 \),
+    \begin{equation*}
+        \cls{T}_k = \set{\hinv{s}b, (\hinv{s}b)^L, (\hinv{s}b)^R \mid s \in \set{L, R}^{k - 1}}.
+    \end{equation*}
+    Then, we define inductively on \( k \geq 0 \) a family of bijections \( \phi_k \colon \cls{T}_k \cong \cls{S}_k \) such that by \( (0^-, 0^+) \mapsto (x, y) \), and inductively for \( k > 0 \),
+    \begin{equation*}
+        \hinv{s}b \mapsto (b, s),\quad (\hinv{s}b)^L \mapsto (b^L, s),\quad (\hinv{s}b)^R \mapsto (b^R, s).
+    \end{equation*}
+    One checks that \( \phi \) induces a strict functor which is an isomorphism.
+    This concludes the proof.
+\end{proof}
+
+\begin{lem}
+    Let \( X, Y \) be diagrammatic sets, \( \fun{F} \colon X \to Y \) be a strict functor, \( u \colon U \to X \) and \( v \colon V \to Y \) be cells, \( c \colon U \sd V \) be a subdivision such that \( \F \after \molecin{u} = \molecin{v} \after \molecin{c} \).
+    Then there exists a strict functor \( \F' \colon \molecin{(\preloc{X}{u})} \to \molecin{(\preloc{Y}{v})} \) fitting in a pushout diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin X} & {\molecin{(\preloc{X}{u})}} \\
+            {\molecin Y} & {\molecin{(\preloc{Y}{v})}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow["\F", from=1-1, to=2-1]
+            \arrow["{\F'}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    where the horizontal strict functors are canonical.
+\end{lem}
+\begin{proof}
+    To avoid overloading the notation, we avoid writing \( \molecin{-} \) in this proof.
+    We then construct \( \F' \colon \preloc{X}{u} \to \preloc{Y}{v} \) in two steps.
+    First we construct \( \F' \colon X' \to Y' \) by universal property
+    \begin{center}
+        \begin{tikzcd}
+            {\bd{}{}U \coprod \bd{}{}U} & {U \coprod U} \\
+            X & {X'} & {\bd{}{}V \coprod \bd{}{}V} & {V \coprod V} \\
+            && Y & {Y'}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-1, to=2-3]
+            \arrow[dashed, from=1-2, to=2-2]
+            \arrow["{c \coprod c}", from=1-2, to=2-4]
+            \arrow[dashed, from=2-1, to=2-2]
+            \arrow["\F"', from=2-1, to=3-3]
+            \arrow["{\F'}", dashed, from=2-2, to=3-4]
+            \arrow[""{name=1, anchor=center, inner sep=0}, from=2-3, to=2-4]
+            \arrow[from=2-3, to=3-3]
+            \arrow[from=2-4, to=3-4]
+            \arrow[from=3-3, to=3-4]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=3-4, to=1]
+        \end{tikzcd}
+    \end{center}
+    The top square is a pushout by Lemma \ref{lem:pushout_principal_cell}, thus so is the bottom one.
+    \cccom{Really need some theory of subdivision}
+\end{proof}
+
+\begin{lem} \label{lem:pushout_with_localisation}
+    Let \( c \colon U \to V \) be a subdivision between atoms of dimension \( \geq 1 \)
+    Then there is a strict functor \( \td{c} \colon \molecin{\rglobe{n}} \to \molecin{\selfloc U} \) fitting in a pushout diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{\dglobe n}} & {\molecin{\rglobe n}} \\
+            {\molecin{U}} & {\molecin{\selfloc U}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, hook, from=1-1, to=1-2]
+            \arrow["{\molecin{c}}"', from=1-1, to=2-1]
+            \arrow["{\tilde c}", from=1-2, to=2-2]
+            \arrow[hook, from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+\end{lem}
+\begin{proof}
+    Let \( u \colon U \to U \) and \( v \colon V \to V \) be the identity.
+    In the notation of (\ref{dfn:localisation}), for a string \( t \in \set{-, +}^* \), one sees that there is a unique subdivision \( s_t \colon \hcyl{t} U \sd \hcyl{t} \dglobe{n} \), where
+    \begin{equation*}
+        \hinv{t}u \colon \hcyl{t} U \to \selfloc{U}, \hinv{t}v \colon \hcyl{t} \dglobe{n} \to \rglobe{n}.
+    \end{equation*}
+\end{proof}

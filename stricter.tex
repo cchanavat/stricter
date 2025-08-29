@@ -387,6 +387,89 @@ Notice that given an stricter \( \omega \)\nbd category \( C \), we have a chain
 \end{equation*}
 whose colimit \( \somegaCat \) is \( C \).
 
+We conclude this part with the notion of \emph{stricter polygraph}. 
+The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinatorics}.
+
+\begin{dfn} [Cellular extension] \label{dfn:cellular_extension}
+    Let \( C \) be a stricter \( \omega \)\nbd category.
+    A \emph{cellular extension of \( C \)} is a stricter \( \omega \)\nbd category \( C_{\cls{S}} \) together with a pushout diagram 
+    \begin{center}
+        \begin{tikzcd}[column sep=large]
+            {\coprod_{e \in \cls{S}} \bd{}{}U_e} & {\coprod_{e \in \cls{S}} \molecin{U_e}} \\
+            C & {C_{\cls{S}}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, "{\molecin{\bd{e}{}}}", from=1-1, to=1-2]
+            \arrow["{(\bd{}{}e)_{e \in \cls{S}}}"', from=1-1, to=2-1]
+            \arrow["{(e)_{e \in \cls{S}}}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    in \( \somegaCat \), where, for each \( e \in \cls{S} \), \( U_e \) is an atom.
+\end{dfn}
+
+\begin{comm}
+    This is a non-standard definition of cellular extension, which is a priori more general than the usual one, which requires each of the atoms \( U_e \) to be globes.
+    However, by the following Lemma, we may turn every cellular extension in this sense into one in the restricted sense. 
+    See \cite[Comment 8.2.2]{hadzihasanovic2024combinatorics}. 
+\end{comm}
+
+\begin{lem} \label{lem:pushout_principal_cell} \ccnote{problem of dependency, but in fact prove this result for all comap substitution, it will be needed}
+    Let \( U \) be an atom of dimension \( n \), and \( s \colon \dglobe{n} \to U \) be the unique subdivision.
+    Then the square
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{(\bd{}{}\dglobe{n})}} & {\molecin{\dglobe{n}}} \\
+            {\molecin{(\bd{}{}U)}} & {\molecin{U}}
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\molecin{(\restr{s}{\bd{}{}\dglobe{n}})}}"', from=1-1, to=2-1]
+            \arrow["{\molecin{s}}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    is a pushout square in \( \somegaCat \).
+\end{lem}
+\begin{proof}
+    By \cite[Lemma 9.1.12]{hadzihasanovic2024combinatorics}, the square is a pushout in \( \omegaCat \).
+    Since all the strict \( \omega \)\nbd categories involved are stricter, we can conclude by an application of the left adjoint functor \( \rcs \). 
+\end{proof}
+
+\begin{dfn} [Stricter polygraph]
+    A \emph{stricter polygraph} is a stricter \( \omega \)\nbd category \( C \), together with, for each \( n \geq 0 \), a pushout diagram
+    \begin{center}
+        \begin{tikzcd}[column sep=large]
+            {\coprod_{e \in \cls{S}_n} \bd{}{}U_e} & {\coprod_{e \in \cls{S}_n} \molecin{U_e}} \\
+            \skel{n - 1}C & {\skel{n} C}
+            \arrow[""{name=0, anchor=center, inner sep=0}, "{\molecin{\bd{e}{}}}", from=1-1, to=1-2]
+            \arrow["{(\bd{}{}e)_{e \in \cls{S}_n}}"', from=1-1, to=2-1]
+            \arrow["{(e)_{e \in \cls{S}_n}}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    in \( \somegaCat \), exhibiting the \( \skel{n}C \) as a cellular extension of \( \skel{n - 1}C \), and such that for each \( e \in \cls{S}_n \), \( \dim e = n \).
+    The set \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \) is called the \emph{generating set} of \( C \).
+    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative stricter polygraph} if \( f \) can be obtain as the transfinite composition of cellular extensions of \( A \).
+\end{dfn}
+
+\begin{lem} \label{lem:stricter_regular_complex_are_stricter_polygraph}
+    Let \( P \) be a regular direct complex.
+    Then \( \molecin{P} \) is a stricter polygraph
+\end{lem}
+\begin{proof}
+    By Corollary \ref{cor:molecin_preserves_pushout_inclusions}, the square
+    \begin{center}
+        \begin{tikzcd}
+            {\coprod_{x \in \gr{n}P} \molecin{\bd{}{}\imel P x}} & {\coprod_{x \in \gr{n}P} \molecin{\imel P x}} \\
+            {\skel{n - 1}P} & {\skel{n} P}
+            \arrow["{{\molecin{\bd{e}{}}}}", from=1-1, to=1-2]
+            \arrow["{{(\bd{}{}\molecin{\mapel x})_{x \in \gr n P}}}"', from=1-1, to=2-1]
+            \arrow["{{(\molecin{\mapel x})_{x \in \gr n P}}}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    is a pushout in \( \somegaCat \).
+    This concludes the proof.
+\end{proof}
 
 \subsection{Gray product of stricter \texorpdfstring{$\omega$}{}-categories}
 
@@ -609,7 +692,7 @@ to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) 
     By Lemma \ref{lem:stricter_n_iff_local_with_dim_le_n}, this concludes the proof.
 \end{proof}
 
-
+\cccom{TODO: strict and stricter polygraph: say polygraph with basis gives stricter with basis, and stricter with basis reconstruct a polygraph with basis that strictifies to itself}
 
 \cccom{TODO: omega-cat are the local presheaves for a certain subset of Theta, might even close it under Gray product to give an equivalent definition of the Gray product, uses amar's book on Steiner theory to get a quick proof of the following fact.}
 
@@ -620,94 +703,6 @@ Now recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd ca
 \end{prop}
 \begin{proof}
     \cccom{TODO}
-\end{proof}
-
-
-\subsection{Stricter polygraphs}
-
-\noindent The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinatorics}.
-\begin{dfn} [Cellular extension] \label{dfn:cellular_extension}
-    Let \( C \) be a stricter \( \omega \)\nbd category.
-    A \emph{cellular extension of \( C \)} is a stricter \( \omega \)\nbd category \( C_{\cls{S}} \) together with a pushout diagram 
-    \begin{center}
-        \begin{tikzcd}[column sep=large]
-            {\coprod_{e \in \cls{S}} \bd{}{}U_e} & {\coprod_{e \in \cls{S}} \molecin{U_e}} \\
-            C & {C_{\cls{S}}}
-            \arrow[""{name=0, anchor=center, inner sep=0}, "{\molecin{\bd{e}{}}}", from=1-1, to=1-2]
-            \arrow["{(\bd{}{}e)_{e \in \cls{S}}}"', from=1-1, to=2-1]
-            \arrow["{(e)_{e \in \cls{S}}}", from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
-        \end{tikzcd}
-    \end{center}
-    in \( \somegaCat \), where, for each \( e \in \cls{S} \), \( U_e \) is an atom.
-\end{dfn}
-
-\begin{comm}
-    The previous definition is a non-standard definition of cellular extension, which is a priori more general than the standard one, which requires each of the atoms \( U_e \) to be globes.
-    However, by the following Lemma, we may turn every cellular extension in this sense into one in the restricted sense. 
-    See \cite[Comment 8.2.2]{hadzihasanovic2024combinatorics}. 
-\end{comm}
-
-\begin{lem} \label{lem:pushout_principal_cell}
-    Let \( U \) be an atom of dimension \( n \), and \( s \colon \dglobe{n} \to U \) be the unique subdivision.
-    Then the square
-    \begin{center}
-        \begin{tikzcd}
-            {\molecin{(\bd{}{}\dglobe{n})}} & {\molecin{\dglobe{n}}} \\
-            {\molecin{(\bd{}{}U)}} & {\molecin{U}}
-            \arrow[from=1-1, to=1-2]
-            \arrow["{\molecin{(\restr{s}{\bd{}{}\dglobe{n}})}}"', from=1-1, to=2-1]
-            \arrow["{\molecin{s}}", from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    is a pushout square in \( \somegaCat \).
-\end{lem}
-\begin{proof}
-    By \cite[Lemma 9.1.12]{hadzihasanovic2024combinatorics}, the square is a pushout in \( \omegaCat \).
-    Since all the strict \( \omega \)\nbd categories involved are stricter, we can conclude by an application of the left adjoint functor \( \rcs \). 
-\end{proof}
-
-\begin{dfn} [Stricter polygraph]
-    A \emph{stricter polygraph} is a stricter \( \omega \)\nbd category \( C \), together with, for each \( n \geq 0 \), a pushout diagram
-    \begin{center}
-        \begin{tikzcd}[column sep=large]
-            {\coprod_{e \in \cls{S}_n} \bd{}{}U_e} & {\coprod_{e \in \cls{S}_n} \molecin{U_e}} \\
-            \skel{n - 1}C & {\skel{n} C}
-            \arrow[""{name=0, anchor=center, inner sep=0}, "{\molecin{\bd{e}{}}}", from=1-1, to=1-2]
-            \arrow["{(\bd{}{}e)_{e \in \cls{S}_n}}"', from=1-1, to=2-1]
-            \arrow["{(e)_{e \in \cls{S}_n}}", from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
-        \end{tikzcd}
-    \end{center}
-    in \( \somegaCat \), exhibiting the \( \skel{n}C \) as a cellular extension of \( \skel{n - 1}C \), and such that for each \( e \in \cls{S}_n \), \( \dim e = n \).
-    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative stricter polygraph} if \( f \) can be obtain as the transfinite composition of cellular extensions of \( A \).
-\end{dfn}
-
-\begin{rmk} \label{rmk:reflection_of_polygraph_is_stricter_polygraph}
-    Since the functor \( \rcs \) is left adjoint, if a strict \( \omega \)\nbd category \( C \) is a polygraph in the traditional sense, then \( \rcs C \) is a stricter polygraph.
-\end{rmk}
-
-\begin{lem} \label{lem:stricter_regular_complex_are_stricter_polygraph}
-    Let \( P \) be a regular direct complex.
-    Then \( \molecin{P} \) is a stricter polygraph
-\end{lem}
-\begin{proof}
-    By Corollary \ref{cor:molecin_preserves_pushout_inclusions}, the square
-    \begin{center}
-        \begin{tikzcd}
-            {\coprod_{x \in \gr{n}P} \molecin{\bd{}{}\imel P x}} & {\coprod_{x \in \gr{n}P} \molecin{\imel P x}} \\
-            {\skel{n - 1}P} & {\skel{n} P}
-            \arrow["{{\molecin{\bd{e}{}}}}", from=1-1, to=1-2]
-            \arrow["{{(\bd{}{}\molecin{\mapel x})_{x \in \gr n P}}}"', from=1-1, to=2-1]
-            \arrow["{{(\molecin{\mapel x})_{x \in \gr n P}}}", from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    is a pushout in \( \somegaCat \).
-    This concludes the proof.
 \end{proof}
 
 \subsection{Suspension of stricter \texorpdfstring{$\omega$}{}-categories}
@@ -762,7 +757,7 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
 
 \begin{dfn} [Collapsible closed subset]
     Let \( U \) be a molecule, \( K \subseteq U \) be a closed subset, and \( \beta \in \set{-, +} \).
-    We say that \( K \) is \emph{\( \beta \)\nbd collapsible} if \( K \) is non-empty and for all \( x \in U \), if \( \bd{0}{\beta} x \in K \) then \( x \in K \).
+    We say that \( K \) is \emph{\( \beta \)\nbd collapsible} if \( K \) is non-empty and for all \( x \in U \), if \( \bd{0}{-\beta} x \in K \) then \( x \in K \).
     In that case, we let \( \coll K U \) be oriented graded poset whose underlying set is
     \begin{equation*}
         \set{\zcoll} \coprod \set{\icoll u \mid u \in U \setminus K},
@@ -772,7 +767,7 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
         \cofaces{}{\a} x \eqdef
         \begin{cases}
             \set{ \icoll v \mid v \in \cofaces{}{\a} u} & \text{if } x = \icoll u,\\
-            \set{ \icoll u \mid \dim u = 1, \faces{}{\a} u \in K} &\text{if } x = \bullet, \a = -\beta\\
+            \set{ \icoll u \mid \dim u = 1, \faces{}{\a} u \in K} &\text{if } x = \bullet, \a = \beta\\
             \varnothing &\text{else.}
         \end{cases}
     \end{equation*}
@@ -796,14 +791,6 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
             \zcoll & \text{otherwise.}
         \end{cases}
     \end{equation*}
-    % in the category of posets.
-    % We may identify the elements of \( \coll K U \) with the set
-    % \begin{equation*}
-    %     (U \setminus K) \coprod \set{\bullet},
-    % \end{equation*}
-    % where \( \bullet \) is the unique element in the image of \( \pt \incl \coll K U \).
-    % Then, the order on \( U \setminus K \) is restricted from the order on \( U \), the element \( \bullet \) is minimal, and given \( u \in U \setminus K \), \( \bullet < u \) if and only if there exists \( k \in K \) such that \( k < u \).
-    
 \end{dfn}
 
 \begin{lem} \label{lem:collapsible_is_puhsout}
@@ -845,38 +832,34 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
         \end{tikzcd}
     \end{center}
     rewriting the left chain to the right chain.
-    Let \( i_0 \eqdef \max \set{i \mid y_i \in K} \).
+    Let \( i_0 \eqdef \max \set{i \mid y_i \in K} \), which exists since \( y_1 \in K \).
     If \( x_{i_0} < u \), then we are done since \( x_{i_0} \) covers \( y_{i_0} \in K \).
-    Otherwise \( x_{i_0} = u \).
-    Then, either \( i_0 \eqdef r \), in which case \( y'_{i_0} = u_j \) for some \( j \), or \( i_0 < r \), in which case \( y'_{i_0} = y_{i + 1} \notin K \).
+    Else \( x_{i_0} = u \).
+    Then, either \( i_0 = r \), in which case \( y'_{i_0} = u_j \) for some \( j \), or \( i_0 < r \), in which case \( y'_{i_0} = y_{i + 1} \notin K \).
     In any case, \( y'_{i_0} \) is not in \( K \).
     Since \( y_{i_0} \in K \) is of dimension \( \geq 1 \) and \( K \) is closed, \( z_{i_0} \in K \).
-    Thus we found that \( y'_{i_0} < u \) which is not in \( K \) and covers an element of \( K \).
+    Thus we found a \( y'_{i_0} < u \) which is not in \( K \) and covers \( z_{i_0} \in K \).
     This concludes the proof.
 \end{proof}
 
-% \begin{cor} \label{lem:collapsible_preserves_submolecules}
-%     Let \( U \) be a molecule and \( K \subseteq U \) be a collapsible subset.
-%     Then for all submolecules \( V \submol U \) such that \( K \cap V \neq \)
-% \end{cor}
 
 \begin{lem} \label{lem:path_from_zero_bd_to_all_points}
     Let \( U \) be a molecule, \( \a \in \set{-, +} \) and \( x \in \gr{0}{U} \).
-    Then there exists \( k \geq 0 \) and a inclusion \( \iota \colon k\arr \incl U \) such that \( \bd{0}{\a} \iota = \bd{0}{\a} U \) and \( \bd{0}{-\a} \iota = x \).
+    Then there exists \( k \geq 0 \) and a inclusion \( \iota \colon k\dglobe{1} \incl U \) such that \( \bd{0}{\a} \iota = \bd{0}{\a} U \) and \( \bd{0}{-\a} \iota = x \).
 \end{lem}
 \begin{proof}
     We proceed by induction on the submolecules of \( V \) of \( U \).
     The base case where \( V \) is the point is trivial.
     Suppose inductively that the statement is true of all proper submolecules \( V \) of \( U \).
     First suppose that \( U \) is an atom.
-    If \( \dim U = 0 \), then the statement is trivial, otherwise \( \dim U \geq 0 \) and \( x \in \bd{}{\beta} U \) for some \( \beta \in \set{-, +} \).
+    If \( \dim U = 0 \), then the statement is trivial, otherwise \( \dim U > 0 \) and \( x \in \bd{}{\beta} U \) for some \( \beta \in \set{-, +} \).
     We conclude by inductive hypothesis and globularity.
-    Now suppose split into \( U = V \cp{k} W \), and suppose without loss of generality that \( x \in V \).
-    Then either \( k > 0 \), hence \( \bd{0}{} V = \bd{0}{} U \) and we may conclude by inductive hypothesis, or \( k = 0 \).
-    If \( \a = - \), we conclude by inductive hypothesis.
+    Now suppose split into \( U = V \cp{k} W \), and suppose that \( x \in V \), the case \( x \in W \) is symmetrical.
+    Then either \( k > 0 \), hence \( \bd{0}{} V = \bd{0}{} U \) and we may conclude by inductive hypothesis on \( V \), or \( k = 0 \).
+    If \( \a = - \), then \( \bd{0}{-} V = \bd{0}{-} U \), and we conclude by inductive hypothesis on \( V \) again.
     Else, \( \a = + \) and \( \bd{0}{+} U = \bd{0}{+} W \).
-    Consider by inductive hypothesis the inclusion \( \iota \colon k\arr \submol V \) from \( x \) to \( \bd{0}{+} V \).
-    Then \( \bd{-}{0} W \) is isomorphic to \( k'\arr \) for some \( k' > 0 \), hence \( \iota \cp{0} \bd{1}{-} \idd{W} \colon (k + k') \arr \to U \) is the desired path.
+    Consider by inductive hypothesis an inclusion \( \iota \colon k\dglobe{1} \incl V \) from \( x \) to \( \bd{0}{+} V \).
+    Then \( \bd{-}{0} W \) is isomorphic to \( k'\dglobe{1} \) for some \( k' > 0 \), hence \( \iota \cp{0} \bd{1}{-} \idd{W} \colon (k + k') \dglobe{1} \incl U \) is the desired path.
 \end{proof}
 
 \begin{lem} \label{lem:collapsible_connected_with_all_closure_element}
@@ -885,32 +868,34 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     In the latter case, \( V \cap K \subseteq V \) is \( \beta \)\nbd collapsible and contains \( \bd{0}{-\beta} V \).
 \end{lem}
 \begin{proof}
-    Assume without loss of generality that \( \beta = + \).
+    Assume that \( \beta = - \), the case \( \beta = + \) is dual.
     Suppose that \( V \cap K \) is non-empty.
     We show that \( x \eqdef \bd{0}{-} V \) is in \( V \cap K \).
     Let \( z \in V \cap K \), then \( y \eqdef \bd{0}{-} z \in V \cap K \).
     By Lemma \ref{lem:path_from_zero_bd_to_all_points}, there exist \( k \geq 0 \) and \( \iota \colon k\arr \to V \) such that \( \bd{0}{} \iota = (x, y) \).
-    Since \( y \in K \) and \( K \) is collapsible and \( y = \bd{0}{+} \iota \in K \), \( \cofaces{}{+} y \in K \), since \( K \) is closed, \( \faces{}{-} \cofaces{}{+} y \in K \).
-    Continuing this proceed, we find fact \( x \in K \).
+    Since \( y = \bd{0}{+} \iota \in K \) and \( K \) is collapsible, \( \cofaces{}{+} y \in K \).
+    Since \( K \) is closed, \( \faces{}{-} \cofaces{}{+} y \in K \).
+    Iterating this process, we find indeed that \( x \in K \).
     Then, suppose that \( V \cap K = F \cup G \) for two closed subsets \( F, G \) with \( F \cap G = \emptyset \), and suppose without loss of generality that \( x \in F \).
-    Then, pick any \( y \in \gr{0}{G} \neq \emptyset \). 
-    As previously, we have an inclusion \( \iota \colon k\arr \to F \cup G \) such that \( \bd{0}{}\iota = (x, y) \).
+    Let \( y \in \gr{0}{G} \). 
+    As previously, we have an inclusion \( \iota \colon k\arr \incl F \cup G \) such that \( \bd{0}{}\iota = (x, y) \).
     Then \( \iota(k\arr) = \invrs{\iota}(F) \cup \invrs{\iota}(G) \) and \( \invrs{\iota}F \cap \invrs{G} = \emptyset \).
     By \cite[Lemma 3.3.13]{hadzihasanovic2024combinatorics}, \( \invrs{\iota}F = \emptyset \) or \( \invrs{\iota}G = \emptyset \), a contradiction.
-    This proves that \( V \cap K \) is connected.
+    This proves that \(  \gr{0}{G} = \emptyset \), thus that \( G = \emptyset \).
+    This shows that \( V \cap K \) is connected.
     Finally, let \( x \in V \) such that \( \bd{0}{+} x \in K \).
-    Then \( K \) is collapsible, so that \( x \in K \).
-    Thus \( x \in V \cap K \).
-    This proves that \( V \cap K \subseteq V \) is collapsible and conclude the proof.
+    Since \( K \) is collapsible, \( x \in V \cap K \).
+    Hence \( V \cap K \subseteq V \) is collapsible.
+    This concludes the proof.
 \end{proof}
 
-\begin{lem} \label{lem:collapsible_beta_boundary_collapse_all}
-    Let \( U \) be a molecule, \( \beta \in \set{-, +} \), and \( K \subseteq U \) be a \( \beta \)\nbd collapsible subset such that \( \bd{0}{\beta} U \subseteq K \).
+\begin{lem} \label{lem:collapsible_negbeta_boundary_collapse_all}
+    Let \( U \) be a molecule, \( \beta \in \set{-, +} \), and \( K \subseteq U \) be a \( \beta \)\nbd collapsible subset such that \( \bd{0}{-\beta} U \subseteq K \).
     Then \( K = U \).
 \end{lem}
 \begin{proof}
     We proceed induction on the layering dimension \( \ell \) of \( U \).
-    If \( \ell = -1 \), then \( U \) is an atom, and this is by definition.
+    If \( \ell = -1 \), then \( U \) is an atom, thus \( U = \clset{\top_U} \subseteq K \) by definition.
     Inductively, let \( \ell \geq 0 \). Then \( U \) admits a \( \ell \)\nbd layering
     \begin{equation*}
         U \eqdef \order{1}{U} \cp{\ell} \ldots \cp{\ell} \order{r}{U}
@@ -923,41 +908,51 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
 
 \begin{lem} \label{lem:collapsible_mapcoll_preserve_boundaries}
     Let \( U \) be a molecule, \( \beta \in \set{-, +} \), \( K \subseteq U \) be a \( \beta \)\nbd collapsible subset, \( \a \in \set{-, +} \) and \( k \geq 0 \).
-    Then
+    Then 
     \begin{equation*}
-        \mapcoll (\bd{k}{\a} U) = \bd{k}{\a} (\coll{K}{U}).
+        \mapcoll (\bd{k}{\a} U) = \bd{k}{\a} (\coll{K}{U}),
     \end{equation*}
+    in particular \( \bd{0}{\beta} (\coll{K}{U}) = \set{\zcoll} \).
     Furthermore, \( \coll{K}{U} \) is globular, and if \( U \) is round, so is \( \coll{K}{U} \).
 \end{lem}
 \begin{proof}
-    Without loss of generality, we assume that \( \beta = + \) and that \( K \) is a proper subset of \( U \), otherwise the statement is trivial.
+    Without loss of generality, we assume that \( \beta = - \) and that \( K \) is a proper subset of \( U \), otherwise the statement is trivial.
     By Lemma \ref{lem:collapsible_connected_with_all_closure_element}, \( \bd{0}{-} U \subseteq K \).
-    Suppose that \( k > 0 \)
+    Suppose that \( k > 0 \), then
     \begin{equation*}
-        \bd{k}{\a} \coll{K}{U} = \clos \faces{k}{\a} \icoll{\top} \cup \gr{< k}{\clset{\maxel U}} = \mapcoll(\bd{k}{\a} U) \cup \set{\zcoll}.
+        \bd{k}{\a} (\coll{K}{U}) = \clos \faces{k}{\a} (\coll{K}{U}) \cup \gr{< k}{\clset{\maxel (\coll{K}{U})}} = \mapcoll(\bd{k}{\a} U) \cup \set{\zcoll}.
     \end{equation*}
-    Since \( k > 0 \) and \( \bd{0}{-} U \subseteq \bd{k}{\a} U \), the latter is equal to \( \mapcoll(\bd{k}{\a} U) \).
+    Since \( k > 0 \), Lemma \ref{lem:collapsible_connected_with_all_closure_element} implies that \( \set{\zcoll} = p(\bd{0}{-} U) \subseteq p(\bd{k}{\a} U) \).
+    Thus \(  \mapcoll (\bd{k}{\a} U) = \bd{k}{\a} (\coll{K}{U}) \).
     Next suppose \( k = 0 \) and \( \a = + \).
-    Then since \( K \) is a proper subset, \( \set{x} = \bd{0}{+} U \) is not a subset of \( K \), and by definition of \( \coll{K}{U} \), 
-    \begin{equation*}
-        \mapcoll (\bd{0}{+} U) = \bd{+}{0} \coll{K}{U}.
-    \end{equation*}
-    The last thing to see is therefore that \( \set{\zcoll} = \bd{0}{-} \coll{K}{U} \).
-    Sine \( \cofaces{}{+} \zcoll = \emptyset \) by assumption, we have one inclusion.
-    Let \( x \in \coll{K}{U} \) such that \( \cofaces{}{+} x = \emptyset \).
-    Either \( x = \zcoll \) and we are done, or \( x = \icoll{u} \) for some \( u \in \gr{0}{(U \setminus K)} \).
-    If \( u \in \bd{0}{-} U \) then \( u \in K \), contradiction.
-    Otherwise there exists \( v \in \cofaces{}{+} u \).
-    Since \( u \notin K \), \( v \notin K \), thus \( \icoll{v} \) covers \( \icoll{u} \) with orientation \( + \), thus \( \cofaces{}{+} \icoll{u} \neq \emptyset \), another contradiction.
+    Then since \( K \) is a proper subset, \( \set{x} = \bd{0}{+} U \) is not a subset of \( K \) by Lemma \ref{lem:collapsible_negbeta_boundary_collapse_all}. 
+    Now by definition of \( \coll{K}{U} \), one sees that \( \mapcoll (\bd{0}{+} U) = \bd{0}{+} (\coll{K}{U}) \).
+    The next thing to see is therefore that \( \set{\zcoll} = \bd{0}{-} \coll{K}{U} \).
+    By construction, \( \cofaces{}{+} \zcoll = \emptyset \), thus we have one inclusion.
+    Let \( \icoll{u} \in \gr{0}{(U \setminus K)} \).
+    If \( u \in \bd{0}{-} U \) then \( u \in K \) by Lemma \ref{lem:collapsible_connected_with_all_closure_element}, a contradiction.
+    Thus there exists \( v \in \cofaces{}{+} u \), and since \( K \) is closed, \( v \notin K \).
+    We find that \( \icoll{v} \in \cofaces{}{+} \icoll{u} \), meaning that \( u \notin \bd{0}{-} (\coll{K}{U}) \).
     This proves that \( \set{\zcoll} = \bd{0}{-} \coll{K}{U} \).
-    Since for all closed subsets \( V \subset U \) such that \( V \) is a molecule, we have \( p(V) \cong V \) if \( V \cap K = \emptyset \), and \( p(V) \cong \coll{(V \cap K)}{V} \) else, we deduce by what we just proved that \( \coll{K}{U} \) is globular.
+    By Lemma \ref{lem:collapsible_is_puhsout} and formal properties, for all closed subsets \( V \subseteq U \) such that \( V \) is a molecule, we have 
+    \begin{equation*}
+        p(V) \cong
+        \begin{cases}
+            V & \text{if } V \cap K = \emptyset, \\
+            \coll{(V \cap K)}{V} & \text{else}.
+        \end{cases}
+    \end{equation*}
+    With this together with the first part of the proof, one sees that \( \coll{K}{U} \) is globular.
     Last, suppose that \( U \) is round of dimension \( n \geq 0 \).
-    Let \( k < n \), and let \( x \in (\bd{k}{-} \coll{K}{U}) \cap (\bd{k}{+} \coll{K}{U}) \).
-    If \( x = \zcoll \), then \( \set{x} = \bd{0}{-} \coll{K}{U} \).
-    If \( k > 0 \) we are done by globularity, otherwise \( k = 0 \).
-    Since \( \zcoll \in \bd{k}{+} \coll{K}{U} \), \( \bd{k}{+} U \subseteq K \), hence \( \coll{K}{U} = \pt \) by Lemma \ref{lem:collapsible_beta_boundary_collapse_all}.
-    Otherwise, \( x = \icoll{u} \) for some \( u \in U \).
-    By the first part of the proof, \( u \in \bd{k}{-} U \cap \bd{k}{+} U \), and since \( U \) is round, \( u \in \bd{k - 1}{} U \), so that by the first part of the proof again, \( \icoll{u} \in \bd{k - 1}{} \coll{K}{U} \).
+    Let \( k < n \), and let \( x \in (\bd{k}{-} (\coll{K}{U})) \cap (\bd{k}{+} (\coll{K}{U})) \).
+    We must show that \( x \in \bd{k - 1}{}  (\coll{K}{U}) \)
+    Suppose first that \( x = \zcoll \), then \( \set{x} = \bd{0}{-} (\coll{K}{U}) \).
+    If \( k > 0 \) we are done by globularity, else \( k = 0 \).
+    In that case, \( \zcoll \in \bd{0}{+} (\coll{K}{U}) \), so \( \bd{0}{+} U \subseteq K \), hence \( \coll{K}{U} = \pt \) by Lemma \ref{lem:collapsible_negbeta_boundary_collapse_all}.
+    Thus \( n = 0 = k \), contradiction.
+    Suppose now that \( x = \icoll{u} \) for some \( u \in U \setminus K \).
+    By the first part of the proof, \( u \in \bd{k}{-} U \cap \bd{k}{+} U \), and since \( U \) is round, \( u \in \bd{k - 1}{} U \), so that by the first part of the proof again, \( \icoll{u} \in \bd{k - 1}{} (\coll{K}{U}) \).
+    This concludes the proof.
 \end{proof}
 
 \begin{prop} \label{prop:collapsible_collapse_to_molecules}
@@ -985,16 +980,14 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     Since final maps of posets are stable under pushouts, we conclude that \( \restr{\mapcoll}{V} \colon V \surj \mapcoll(V) \) is final.
     This proves that for all submolecules \( V \submol U \), \( \restr{\mapcoll}{V} \colon V \surj \mapcoll(V) \) is final.
     Now let \( x \in U \), \( k \geq 0 \) and \( \a \in \set{-, +} \).
-    Suppose that \( \clset{x} \cap K = \emptyset \).
-    Then one sees that \( \mapcoll(\bd{k}{\a} x) = \bd{k}{\a} \mapcoll x \).
-    Otherwise \( \clset{x} \cap K \neq \emptyset \), and by Lemma \ref{lem:collapsible_connected_with_all_closure_element}, \( \clset{x} \cap K \subseteq \clset{x} \) is collapsible.
-    Thus by Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}, \( \mapcoll(\bd{k}{\a} x) = \bd{k}{\a} \mapcoll x \).
+    Using either the fact that \( \restr{p}{\bd{k}{\a} x} \) is the identity if \( \clset{x} \cap K = \emptyset \) and Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries} otherwise, we find that \( \mapcoll(\bd{k}{\a} x) = \bd{k}{\a} \mapcoll(x) \).
     This proves that, in case \( \coll{K}{U} \) is a regular directed complex, \( \mapcoll \) is a final map of regular directed complexes.
-    We prove by induction on the submolecules \( V \) of \( U \) that \( \mapcoll V \) is a molecule.
+
+    We prove by induction on the submolecules \( V \) of \( U \) that \( \mapcoll(V) \) is a molecule.
     The base case where \( V \) is a point is clear.
-    Suppose inductively that \( \mapcoll V \) is a molecule for all proper submolecules of \( U \).
+    Suppose inductively that \( \mapcoll(V) \) is a molecule for all proper submolecules of \( U \).
     Suppose first that \( U \) is an atom.
-    By inductive hypothesis, \( p(\bd{}{\a} U) \) is a molecule, and is round by Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}.
+    By inductive hypothesis, for \( \a \in \set{-, +} \), \( p(\bd{}{\a} U) \) is a molecule, and is round by Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}.
     Thus \( p(\bd{}{-} U) \celto p(\bd{}{+} U) \) is a well defined atom, and one sees that, unless \( K = U \), it is by construction isomorphic to \( \coll{K}{U} \).
     If \( K = U \), then \( U = \pt \) is also an atom. 
     Now suppose that \( U \) is a molecule.
@@ -1002,31 +995,114 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     We conclude by \cite[Proposition 6.2.33]{hadzihasanovic2024combinatorics} and the first part of the proof.
 \end{proof}
 
-\begin{prop} \label{prop:factor_molecin_into_sus}
-    Let \( C \) be a composition structure, \( U \) a molecule, and \( \F \colon \molecin{U} \to \sus{C} \) be a strict functor of composition structures.
-    Then there exists a molecule \( V \), together with a strict functor \( \G \colon V \to C \) and a final map \( f \colon U \to \sus{V} \) such that \( \F = \sus{\G} \after \molecin{f} \).  
-\end{prop}
+\begin{lem} \label{lem:has_two_point_is_susp}
+    Let \( U \) be a molecule such that \( \gr{0}{U} = \bd{0}{} U \).
+    Then \( U = \sus{U'} \) for some molecule \( U' \).
+\end{lem}
 \begin{proof}
-    For \( \beta \in \set{-, +} \), let \( K^{\beta} \eqdef \set{x \in U \mid \pcell{\F_x} = \bot^{\beta}} \).
-    We claim that \( K^\beta \subseteq U \) is either empty or \( (- \beta) \)\nbd collapsible.
-    Without loss of generality, suppose that \( \beta = - \).
-    Let \( x \in U \) such that \( \pcell{\bd{0}{+} \F_x} = \bot^- \).
-    If \( \pcell{\F_x} \in C \cup \set{\bot^+} \), then by definition of \( \sus{C} \), \( \bd{0}{+} \pcell{\F_x} = \bot^+ \), a contradiction.
-    Thus \( \pcell{\F_x} = \bot^- \).
-    This shows that \( K^\beta \) is either empty or collapsible.
-    Notice also that \( K^- \cap K^+ = \emptyset \).
-    By Proposition \ref{prop:collapsible_collapse_to_molecules} twice, \( W \eqdef \coll{K^+}{(\coll{K^-}{U})} \) is a molecule, and we have a final map \( p \colon U \to W \).
-    We claim that \( W = \sus{V} \)
-    \cccom{DO this argument}
-
+    We proceed by induction on the submolecules \( V \) of \( U \).
+    The base case where \( V \) is a point is vacuously true, since \( \gr{0}{V} \) have exactly one element.
+    Suppose inductively that the statement is true of all submolecules of \( U \)
+    Suppose first that \( U \) is an atom.
+    We distinguish two cases.
+    Either \( U = \dglobe{1} \), in which case it is \( \sus{\pt} \), or \( U = V \cell W \) with \( \dim V = \dim W \geq 1 \).
+    Then, 
+    \begin{equation*} \label{eq:grade_boundary_zero}
+         \bd{0}{} V \subseteq \gr{0}{V} \subseteq \gr{0}{U} = \bd{0}{} U = \bd{0}{} V,
+    \end{equation*}
+    thus \( \gr{0}{V} = \bd{0}{} V \).
+    Similarly, \( \gr{0}{W} = \bd{0}{} W \).
+    By inductive hypothesis on the submolecules, \( V = \sus{V'} \) and \( W = \sus{W'} \) for some molecules \( V' \) and \( W' \).
+    By \cite[Proposition 7.3.16]{hadzihasanovic2024combinatorics}, \( U = \sus{(V' \cell W')} \).
+    Suppose next that \( U \) splits into \( V \cp{k} W \) with \( \dim V, \dim W > k \).
+    If \( k = 0 \), then \( \bd{0}{-} V \cup \bd{0}{+} V \cup \bd{0}{+} W \subseteq \gr{0}{U} \).
+    By hypothesis on the dimension of \( V \) and \( W \), \( \bd{0}{-} V \cup \bd{0}{+} V \cup \bd{0}{+} W \) has exactly three elements, contradicting the assumption.
+    Thus \( k > 0 \) and (\ref{eq:grade_boundary_zero}) also holds.
+    We deduce by inductive hypothesis that \( V = \sus{V'} \) and \( W = \sus{W'} \).
+    By \cite[Proposition 7.3.16]{hadzihasanovic2020diagrammatic} again, \( U = \sus{(V' \cp{k - 1} W')} \).
+    This concludes the proof.
 \end{proof}
 
-\begin{thm} \label{thm:stricter_preserves_suspensions}
+\begin{prop} \label{prop:desuspension}
+    Let \( U \) be a molecule, and \( K^- \coprod K^+ \) be a partition of \( \gr{0}{U} \) such that for all \( \a \in \set{-, +} \), \( K^\beta \subseteq U \) is \( \beta \)\nbd collapsible.
+    Then there exists a molecule \( V \), together with a commutative diagram
+    \begin{center}
+        \begin{tikzcd}
+            {K^- \coprod K^+} & {\pt \coprod \pt} \\
+            U & {\sus{V}}
+            \arrow[two heads, from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow["{(\bot^-, \bot^+)}", from=1-2, to=2-2]
+            \arrow["q"', two heads, from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    whose underlying diagram in \( \Pos \) is a pushout, and such that \( q \) is a final map of molecules.
+\end{prop}
+\begin{proof}
+    By Proposition \ref{prop:collapsible_collapse_to_molecules}, we have a final map of molecules \( p \colon U \surj \coll{K^-}{U} \) is a molecule, and it is straightforwards to see that \( p(K^+) \subseteq \coll{K^-}{U} \) is collapsible.
+    Applying Proposition \ref{prop:collapsible_collapse_to_molecules} again, we have a final map of molecules \( q \colon U \surj W \), which is the pushout of \( K^- \coprod K^- \to \pt \coprod \pt \) along the inclusion \( K^+ \coprod K^- \incl U \).
+    By Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}, the inclusion \( \pt \coprod \pt \incl W \) has image \( \bd{0}{} W \).
+    To conclude, we need to show that \( W = \sus{V} \) for some molecule \( V \).
+    Since \( q \) is a surjective map of molecules, \( \gr{0}{W} = q(\gr{0}{U}) = q(K^-) \coprod q(K^+) = \pt \coprod \pt \).
+    We conclude by Lemma \ref{lem:has_two_point_is_susp}.
+\end{proof}
+
+\begin{thm} \label{thm:suspension_of_stricter}
     Let \( C \) be a stricter \( \omega \)\nbd category.
     Then \( \sus{C} \) is a stricter \( \omega \)\nbd category.
 \end{thm}
 \begin{proof}
-    \cccom{TODO, should be easy now}
+    Let \( U \) be a molecule and \( \set{\F_x \colon \molecin{\imel{U}{x}} \to \sus{C}}_{x \in U} \) be a \( U \)\nbd matching family in \( \sus{C} \).
+    For \( \beta \in \set{-, +} \), let \( K^\beta \eqdef \set{x \in U \mid \pcell{\F_x} = \bot^\a} \).
+    We claim that \( K^\beta \subseteq U \) is either empty or \( \beta \)\nbd contractible.
+    Let \( x \in U \), and suppose that \( \bd{0}{-\beta} x \in K^\beta \).
+    Then \( \bd{0}{-\beta} \pcell{F_x} = \bot^{\beta} \).
+    If \( \pcell{\F_x} \neq \bot^\beta \), then by construction of \( \sus{C} \), \( \bd{0}{-\beta} \pcell{\F_x} = \bot^{-\beta} \).
+    Thus \( \pcell{\F_x} = \bot^\beta \), hence \( x \in K^\beta \).
+    This shows that \( K^\beta \) is either empty or \( \beta \)\nbd contractible.
+    Now \( U = K^- \coprod K^+ \).
+    Suppose that there exists \( \beta \in \set{-, +} \) such that \( K^\beta \) is empty and let \( x \in U \).
+    If \( \pcell{\F_x} \in C \), we would have \( x \in K^\beta \).
+    Thus \( \pcell{\F_x} = \bot^{-\beta} \), and \( K^{-\beta} = U \).
+    Therefore, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well defined since it factors as
+    \begin{equation*}
+        \molecin{U} \to \molecin{\pt} \to \sus{C},
+    \end{equation*}
+    where \( \molecin{\pt} \to \sus{C} \) classifies \( \bot^{-\beta} \).
+    Now suppose that \( K^- \coprod K^+ \) forms a partition of \( U \).
+    Then Proposition \ref{prop:desuspension} applies, and we have in particular a molecule \( U' \) and a final map of molecules \( q \colon U \surj \sus{U'} \). 
+    By \cite[Theorem 6.2.35]{hadzihasanovic2024combinatorics}, \( \molecin{q} \) is a strict functor.
+    Then, one checks that the family of globular cells of \( C \)
+    \begin{equation*}
+        \set{\pcell{\F_x} \mid q(x) = \sus{y}}_{y \in U'}
+    \end{equation*} 
+    defines, as per Remark \ref{rmk:data_matching family}, a matching family \( \set{\G_y \colon \molecin{\imel{U'}{y}} \to C}_{y \in U'} \).
+    Because \( C \) is stricter, it admits a well defined amalgamation \( \G \colon \molecin{U'} \to C \).
+    Finally, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well defined, since it factors as \( \F = \sus{\G} \after \molecin{q} \).
+    This concludes the proof.
+\end{proof}
+
+\begin{dfn} [Bipointed stricter \( \omega \)\nbd category]
+    A \emph{bipointed stricter \( \omega \)\nbd category} is given by a stricter \( \omega \)\nbd category \( C \) together with a pair of objects \( (a, b) \).
+    We let \( \bpt\somegaCat \) be the category of bipointed stricter \( \omega \)\nbd category and strict functors that respect the bipointing.
+\end{dfn}
+
+\begin{cor} \label{cor:adjunction_hom_suspension}
+    There is an adjunction
+    \begin{equation*}
+        \sus{} \colon \somegaCat \leftrightarrows \bpt\somegaCat \cocolon \hom,
+    \end{equation*}
+    where \( \sus{C} \) is the suspension of \( C \) bipointed by \( (\bot^-, \bot^+) \), and \( \hom(C, a, b) \) is given by \( C(a, b) \).
+    Furthermore, the functor
+    \begin{equation*}
+        \sus{} \colon \somegaCat \to \somegaCat
+    \end{equation*}
+    preserves connected colimits.
+\end{cor}
+\begin{proof}
+    That the pair of functors is well defined follows from Lemma \ref{lem:hom_of_stricter_is_stricter} and Theorem \ref{thm:suspension_of_stricter}.
+    That this form an adjunction follows from standard arguments.
+    Last, since \( \bpt\somegaCat \) is a coslice construction, \( \sus{} \colon \somegaCat \to \somegaCat \) preserves connected colimits by \cite[Proposition 3.3.8]{riehl2019context}.
 \end{proof}
 
 \subsection{Folk model structure on stricter \texorpdfstring{$\omega$}{}-categories}
@@ -1058,7 +1134,7 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
 
 \begin{comm}
     The definitions of acyclic fibration, reversibility, and \( \omega \)\nbd equivalence make sense in any composition structure, in particular in a strict or stricter \( \omega \)\nbd category.
-    In the former case, we recover the usual definitions, see for instance \cite[19.2.3, 20.1.1, 20.1.11]{ara2025polygraphs}.
+    In the former case, we recover the usual definitions, seepoly for instance \cite[19.2.3, 20.1.1, 20.1.11]{ara2025polygraphs}.
 \end{comm}
 
 \begin{thm} \label{thm:folk_model_structure}

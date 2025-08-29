@@ -41,6 +41,7 @@
 \newcommand{\pt}{\mathbf{1}}
 \newcommand{\init}{\varnothing}
 
+\newcommand{\bpt}[1]{#1_{**}}
 % oriented poset macros
 \DeclareMathOperator{\clos}{cl}
 \newcommand\clset[1]{\mathrm{cl}\set{#1}}
@@ -104,7 +105,7 @@
 \newcommand{\hcyl}[1]{\Xi_{#1}}
 
 % special objects
-\newcommand\arr{\vec{I}}
+
 
 % collapsible
 
@@ -220,6 +221,7 @@
 
 \newcommand{\globe}[1]{O^{#1}}
 \newcommand{\dglobe}[1]{\vec{O}^{#1}}
+\newcommand\arr{\dglobe{1}}
 \newcommand{\rglobe}[1]{\tilde{O}^{#1}}
 
 \newcommand{\gcelto}{\to}
@@ -237,8 +239,8 @@
 \newcommand{\sJcof}{\mathcal{J}^>}
 \newcommand{\Jcof}{\mathcal{J}}
 \newcommand{\sfolkcof}{\mathrm{Cof}^{>}}
-\newcommand{\wE}[1]{E_{#1}}
-\newcommand{\swE}[1]{E^>_{#1}}
+\newcommand{\wE}{\tilde E}
+\newcommand{\swE}{\tilde E^>}
 \newcommand{\rGamma}{\tilde\Gamma}
 \newcommand{\rpi}{\tilde\pi}
 
@@ -260,6 +262,18 @@
 \makeatother
 \newcommand\qeq{\oset{?}{=}}
 
+% other
+
+\newcommand*\cocolon{%
+        \nobreak
+        \mskip6mu plus1mu
+        \mathpunct{}%
+        \nonscript
+        \mkern-\thinmuskip
+        {:}%
+        \mskip2mu
+        \relax
+}
 
 % notes
 \newcommand{\cccom}[1]{\todo[inline, color=magenta!30, linecolor=magenta!30!black, size=\normalsize]{#1}}

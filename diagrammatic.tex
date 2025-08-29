@@ -150,6 +150,26 @@ and in the sequel, we always identify a regular directed complex with its associ
 	These are equipped with cartesian maps \( \tau_s \colon \hcyl{s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_s \) is a cartesian map of molecules.
 \end{dfn}
 
+\begin{lem} \label{lem:higher_invertor_commute_subdivision} \cccom{say square like this commutes if molecin of the square commutes}
+    Let \( c \colon U \sd V \) be a subdivision of round molecules, and \( s \in \set{L, R}^* \).
+    Then there exists a subdivision \( \hcyl{s} c \colon \hcyl{s} U \sd \hcyl{s} V \) fitting in the commutative square 
+    \begin{center}
+        \begin{tikzcd}
+            {\hcyl{s}U} & {\hcyl{s}V} \\
+            U & V
+            \arrow["{\hcyl{s}c}", from=1-1, to=1-2]
+            \arrow["{\tau_s}"', two heads, from=1-1, to=2-1]
+            \arrow["{\tau_s}", two heads, from=1-2, to=2-2]
+            \arrow["c"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+\end{lem}
+\begin{proof}
+    Let \( c' \colon V \to U \) be the function representing \( c \). 
+    Then we have the order preserving function \( \arr \times_K c' \colon \arr \times_K V \to \arr \times_K U \), whose dual induce subdivisions
+\cccom{TODO}
+\end{proof}
+
 \begin{dfn} [Unit]
     Let \( u \colon U \to X \) be a pasting diagram.
     The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
@@ -201,7 +221,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
    We say that \( j \) is a \emph{marking} if \( \fun{U}j \) is an isomorphism.
 \end{dfn}
 
-\begin{dfn}
+\begin{dfn} \label{dfn:localisation}
     We recall the definition of \emph{localisation} from \cite[Section 2.4]{chanavat2024model}.
     A \emph{cellular extension} of a diagrammatic set \( X \) is a pushout diagram
     \begin{center}
@@ -221,24 +241,33 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We define \( \preloc{X}{A} \) to be the diagrammatic set obtain by, for each cell \( a \colon u \celto v \) in \( A \cap \nd X \),
     \begin{enumerate}
         \item attach cells \( a^L, a^R  \colon v \celto u \), then
-        \item attach cells \( \hinv{L}(a) \colon a \cp{} a^L \celto \un(u) \) and \( \hinv{R} \colon \un(v) \celto a^R \cp{} a \).
+        \item attach cells \( \hinv{L}(a) \colon a \cp{} a^L \celto \un(u) \) and \( \hinv{R} \colon a^R \cp{} a \celto \un(v) \).
     \end{enumerate} 
     Then, let \( \order{0}{X} \eqdef X \) and \( \order{0}{A} \eqdef A \).
     Inductively on \( n > 0 \), define
     \begin{equation*}
-        \order{n}{X} \eqdef \preloc{\order{n - 1}{X}}{\order{n - 1}{A}}, \quad\quad \order{n}{A} \edef \set{\hinv{R}a, \hinv{L}a \mid a \in \order{n - 1}{A}}.
+        \order{n}{X} \eqdef \preloc{\order{n - 1}{X}}{\order{n - 1}{A}}, \quad\quad \order{n}{A} \eqdef \set{\hinv{R}(a), \hinv{L}(a) \mid a \in \order{n - 1}{A}}.
     \end{equation*}
     We then have a sequence of inclusions
     \begin{equation*}
         \order{0}{X} \incl \order{1}{X} \incl \ldots \incl \order{n}{X} \incl \ldots,
     \end{equation*}
     whose transfinite composition is \( \loc{X}{A} \), the \emph{localisation of \( X \) at \( A \)}, which comes equipped with a canonical inclusion \( X \incl \loc{X}{A} \).
+    We may describe the non-degenerate cells of \( \loc{X}{A} \) as being either in the image of \( \nd X \setminus A \), or of the form \( \hinv{s}a, (\hinv{s}a)^L \) or \( (\hinv{s}a)^R \) for \( a \in (\nd X) \cap A \) and a string \( s \in \set{L, R}^* \), such defined inductively by \( \hinv{\langle\rangle} a \eqdef a \), and inductively on \( s \in \set{L, R}^* \),
+    \begin{align*}
+        \hinv{Ls}a \eqdef \hinv{L}(\hinv{s}a) &\colon \hinv{s}a \cp{} (\hinv{s}a)^L \celto \un(\bd{}{-}\hinv{s}a),\\
+        \hinv{Rs}a \eqdef \hinv{R}(\hinv{s}a) &\colon (\hinv{s}a)^R \cp{} \hinv{s}a \celto \un(\bd{}{+}\hinv{s}a).
+    \end{align*}
     This can be extended to a colimit preserving functor
     \begin{equation*}
         \Loc \colon \mdgmSet \to \dgmSet.
     \end{equation*}
     By definition, each cell in \( A \) becomes invertible in \( \loc{X}{A} \).
 \end{dfn}
+
+\begin{rmk}
+    This definition of localisation slightly differs from the one given in \cite[2.38]{chanavat2024model}.
+\end{rmk}
 
 \begin{dfn} [Walking equivalence]
     Let \( U \) be an atom.
@@ -290,7 +319,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{dfn}
 
 \begin{rmk} \label{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}
-    By \cite[Proposition 3.8, Proposition 3.9]{chanavat2024model}, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
+    By a simple variation of \cite[Proposition 3.8, Proposition 3.9]{chanavat2024model}, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
 \end{rmk}
 
 \begin{lem} \label{lem:isofib_left_right_lift}
@@ -376,11 +405,19 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
         \item cofibrations are the monomorphisms;
-        \item fibrant objects are of the form \(  \natmark{X} \) for an \( (\infty, n) \)\nbd category \( X \).
+        \item fibrant objects are of the form \( \natmark{X} \) for an \( (\infty, n) \)\nbd category \( X \).
     \end{enumerate}
 \end{prop}
 \begin{proof}
     See \cite[3.24, Theorem 4.9]{chanavat2024model}.
+\end{proof}
+
+\begin{lem} \label{lem:marked_localisation_acyclic}
+    Let \( n \in \mathbb{N} \cup \set{\infty} \) and \( U \) be an atom of dimension \( \geq 1 \).
+    Then the marking \( \selfloc{U} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
+\end{lem}
+\begin{proof}
+    Follows from Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn} and \cite[Lemma 5.8]{chanavat2025gray}.
 \end{proof}
 
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
@@ -395,7 +432,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{proof}
     The existence as well as the characterisation of fibrant objects, and the Quillen equivalence are given by \cite[3.27, Theorem 4.21, Theorem 4.23]{chanavat2024model}.
     In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
-    By \cite[Lemma 4.17]{chanavat2024model}, one sees that the set \( (\minmark{\Jcomp \cup \Jn{n}}) \) is a set of acyclic cofibrations.
+    Using a slight variation of \cite[Lemma 4.16, Lemma 4.17]{chanavat2024model} together with Lemma \ref{lem:marked_localisation_acyclic}, one sees that the set \( (\minmark{\Jcomp \cup \Jn{n}}) \) is a set of acyclic cofibrations.
     By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
     Since left Quillen equivalence reflect weak equivalence between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibration.
     Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd category with the right lifting property against \( \Jcomp \cup \Jn{n} \).
