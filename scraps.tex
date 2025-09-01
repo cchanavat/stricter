@@ -360,3 +360,51 @@
 \begin{rmk} \label{rmk:reflection_of_polygraph_is_stricter_polygraph}
     Since the functor \( \rcs \) is left adjoint, if a strict \( \omega \)\nbd category \( C \) is a polygraph in the traditional sense, then \( \rcs C \) is a stricter polygraph.
 \end{rmk}
+
+
+%% subdivide localisaiton
+
+\begin{lem}
+    Let \( X, Y \) be diagrammatic sets, \( \fun{F} \colon X \to Y \) be a strict functor, \( u \colon U \to X \) and \( v \colon V \to Y \) be cells, \( c \colon U \sd V \) be a subdivision such that \( \F \after \molecin{u} = \molecin{v} \after \molecin{c} \).
+    Then there exists a strict functor \( \F' \colon \molecin{(\preloc{X}{u})} \to \molecin{(\preloc{Y}{v})} \) fitting in a pushout diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin X} & {\molecin{(\preloc{X}{u})}} \\
+            {\molecin Y} & {\molecin{(\preloc{Y}{v})}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow["\F", from=1-1, to=2-1]
+            \arrow["{\F'}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    where the horizontal strict functors are canonical.
+\end{lem}
+\begin{proof}
+    To avoid overloading the notation, we avoid writing \( \molecin{-} \) in this proof.
+    We then construct \( \F' \colon \preloc{X}{u} \to \preloc{Y}{v} \) in two steps.
+    First we construct \( \F' \colon X' \to Y' \) by universal property
+    \begin{center}
+        \begin{tikzcd}
+            {\bd{}{}U \coprod \bd{}{}U} & {U \coprod U} \\
+            X & {X'} & {\bd{}{}V \coprod \bd{}{}V} & {V \coprod V} \\
+            && Y & {Y'}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-1, to=2-3]
+            \arrow[dashed, from=1-2, to=2-2]
+            \arrow["{c \coprod c}", from=1-2, to=2-4]
+            \arrow[dashed, from=2-1, to=2-2]
+            \arrow["\F"', from=2-1, to=3-3]
+            \arrow["{\F'}", dashed, from=2-2, to=3-4]
+            \arrow[""{name=1, anchor=center, inner sep=0}, from=2-3, to=2-4]
+            \arrow[from=2-3, to=3-3]
+            \arrow[from=2-4, to=3-4]
+            \arrow[from=3-3, to=3-4]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=3-4, to=1]
+        \end{tikzcd}
+    \end{center}
+    The top square is a pushout by Lemma \ref{lem:pushout_principal_cell}, thus so is the bottom one.
+    \cccom{Really need some theory of subdivision}
+\end{proof}

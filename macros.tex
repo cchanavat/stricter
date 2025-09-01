@@ -120,7 +120,7 @@
 % localisation
 \newcommand{\loc}[2]{#1[#2^{-1}]}
 \newcommand{\preloc}[2]{#1\set{{#2}^{-1}}}
-\newcommand{\selfloc}[1]{\tilde{#1}}
+\newcommand{\selfloc}[1]{\widetilde{#1}}
 \newcommand{\locarr}{\tilde I}
 \DeclareMathOperator{\Loc}{\fun{Loc}}
 \newcommand{\revarr}{\tilde I}
@@ -222,7 +222,7 @@
 \newcommand{\globe}[1]{O^{#1}}
 \newcommand{\dglobe}[1]{\vec{O}^{#1}}
 \newcommand\arr{\dglobe{1}}
-\newcommand{\rglobe}[1]{\tilde{O}^{#1}}
+\newcommand{\rglobe}[1]{\selfloc{O}^{#1}}
 
 \newcommand{\gcelto}{\to}
 
@@ -230,9 +230,10 @@
 
 \newcommand\sd{\looparrowright}
 
-\DeclareMathOperator{\N}{N}
+\newcommand{\N}[1]{N_{#1}}
 
 \DeclareMathOperator{\s}{\mathsf{s}}
+
 % folk model structure
 
 \newcommand{\Icof}{\mathcal{I}}

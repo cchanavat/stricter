@@ -1,4 +1,4 @@
-\section{Stricter \texorpdfstring{$\omega$}{}-categories}
+\section{Stricter \texorpdfstring{$\omega$}{ω}-categories}
 
 \subsection{Definitions and properties}
 
@@ -471,7 +471,72 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
     This concludes the proof.
 \end{proof}
 
-\subsection{Gray product of stricter \texorpdfstring{$\omega$}{}-categories}
+% \begin{dfn} [Polygraphic subdivision]
+%     The class of \emph{polygraphic subdivision} is the smallest class of strict functors of stricter polygraphs such that
+%     \begin{enumerate}
+%         \item all isomorphisms are polygraphic subdivisions,
+%         \item the composite of two polygraphic subdivisions is a polygraphic subdivision,
+%         \item for all polygraphic subdivisions \( \F \colon C \to D \), all subdivisions \( s \colon U \sd V \) between atoms \( U, V \), all commutative squares of the form
+%         \begin{center}
+%             \begin{tikzcd}[column sep=huge]
+%                 {\molecin{(\bd{}{}U)}} & {\molecin{(\bd{}{}V)}} \\
+%                 C & D
+%                 \arrow["{\molecin{(\restr s{\bd{}{}U})}}", from=1-1, to=1-2]
+%                 \arrow[from=1-1, to=2-1]
+%                 \arrow[from=1-2, to=2-2]
+%                 \arrow["\F"', from=2-1, to=2-2]
+%             \end{tikzcd}
+%         \end{center}
+%         the canonical strict functor \( \fun{F'} \colon C' \to D' \) induced by universal property
+%         \begin{center}
+%             \begin{tikzcd}[column sep=huge]
+%                 & {\molecin U} \\
+%                 {\molecin{(\bd{}{}U)}} & {C'} & {\molecin V} \\
+%                 C & {\molecin{(\bd{}{}V)}} & {D'} \\
+%                 & D
+%                 \arrow[dashed, from=1-2, to=2-2]
+%                 \arrow["{\molecin s}"{description}, from=1-2, to=2-3]
+%                 \arrow[from=2-1, to=1-2]
+%                 \arrow[from=2-1, to=3-1]
+%                 \arrow["{\molecin{(\restr{\bd{}{}U}s)}}"{description}, from=2-1, to=3-2]
+%                 \arrow["{\F'}"{description, pos=0.6}, dashed, from=2-2, to=3-3]
+%                 \arrow[from=2-3, to=3-3]
+%                 \arrow[dashed, from=3-1, to=2-2]
+%                 \arrow["\F"{description}, from=3-1, to=4-2]
+%                 \arrow[from=3-2, to=2-3]
+%                 \arrow[from=3-2, to=4-2]
+%                 \arrow[from=4-2, to=3-3]
+%             \end{tikzcd}
+%         \end{center}
+%         of the cellular extensions, is a polygraphic subdivision.
+%     \end{enumerate}
+% \end{dfn}
+
+% \begin{rmk} \label{rmk:pushout_polygraphic subdivision}
+%     By general properties and Lemma \ref{lem:pushout_principal_cell}, the square
+%     \begin{center}
+%         \begin{tikzcd}
+%             C & {C'} \\
+%             D & {D'}
+%             \arrow[from=1-1, to=1-2]
+%             \arrow["\F"', from=1-1, to=2-1]
+%             \arrow["{\F'}", from=1-2, to=2-2]
+%             \arrow[from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     is a pushout square
+% \end{rmk}
+
+% \begin{lem} \label{lem:subdivision_regular_directed_complex_are_polygraphic}
+%     Let \( s \colon P \sd Q \) be a subdivision of regular directed complexes.
+%     Then \( \molecin{s} \colon \molecin{P} \to \molecin{Q} \) is a polygraphic subdivision.
+% \end{lem}
+% \begin{proof}
+%     First of all, by Lemma \ref{lem:stricter_regular_complex_are_stricter_polygraph}, \( \molecin{s} \) is a strict functor of stricter polygraphs.
+%     For each \( x \in P \)
+% \end{proof}
+
+\subsection{Gray product of stricter \texorpdfstring{$\omega$}{ω}-categories}
 
 Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(P \gray Q)} \) of the stricter regular complex \( \molecin{P \gray Q} \) is given exactly by the morphisms \( u \gray v \) for \( u \in \atomin{P} \) and \( v \in \atomin{Q} \).  
 
@@ -705,7 +770,7 @@ Now recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd ca
     \cccom{TODO}
 \end{proof}
 
-\subsection{Suspension of stricter \texorpdfstring{$\omega$}{}-categories}
+\subsection{Suspension of stricter \texorpdfstring{$\omega$}{ω}-categories}
 
 \begin{dfn} 
     Let \( C \) be a composition structure, and \( a, b \) be \( 0 \)\nbd dimensional globular cells.
@@ -1040,7 +1105,7 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
 \end{prop}
 \begin{proof}
     By Proposition \ref{prop:collapsible_collapse_to_molecules}, we have a final map of molecules \( p \colon U \surj \coll{K^-}{U} \) is a molecule, and it is straightforwards to see that \( p(K^+) \subseteq \coll{K^-}{U} \) is collapsible.
-    Applying Proposition \ref{prop:collapsible_collapse_to_molecules} again, we have a final map of molecules \( q \colon U \surj W \), which is the pushout of \( K^- \coprod K^- \to \pt \coprod \pt \) along the inclusion \( K^+ \coprod K^- \incl U \).
+    Applying Proposition \ref{prop:collapsible_collapse_to_molecules} again, we have a final map of molecules \( q \colon U \surj W \), which is the pushout of the final map \( K^- \coprod K^- \to \pt \coprod \pt \) along the inclusion \( K^+ \coprod K^- \incl U \).
     By Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}, the inclusion \( \pt \coprod \pt \incl W \) has image \( \bd{0}{} W \).
     To conclude, we need to show that \( W = \sus{V} \) for some molecule \( V \).
     Since \( q \) is a surjective map of molecules, \( \gr{0}{W} = q(\gr{0}{U}) = q(K^-) \coprod q(K^+) = \pt \coprod \pt \).
@@ -1105,155 +1170,3 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     Last, since \( \bpt\somegaCat \) is a coslice construction, \( \sus{} \colon \somegaCat \to \somegaCat \) preserves connected colimits by \cite[Proposition 3.3.8]{riehl2019context}.
 \end{proof}
 
-\subsection{Folk model structure on stricter \texorpdfstring{$\omega$}{}-categories}
-
-\begin{dfn} [Acyclic fibration] \label{dfn:acyclic_fibration}
-    Let \( f \colon C \to D \) be a strict functor of compositions structures.
-    We say that \( f \) is an \emph{acyclic fibration} if
-    \begin{enumerate}
-        \item \( f \) is surjective on objects;
-        \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel globular \( n \)\nbd cells of \( C \), and each globular \( (n + 1) \)\nbd cell \( v \colon f(c) \gcelto f(c') \), there exists a globular \( (n + 1) \)\nbd cell \( u \colon c \gcelto c' \) such that \( f(u) = v \)
-    \end{enumerate}
-\end{dfn}
-
-\begin{dfn} [Reversible globular cell]
-    Let \( C \) be a composition structure, and \( e \colon x \gcelto y \) be a globular cell of dimension \( n > 0 \) in \( C \).
-    We say that \( e \) is reversible if there exists a globular cell \( e^* \colon y \gcelto x \), as well as globular cells \( h \colon e \comp{n - 1} e^* \gcelto x \) and \( h' \colon e^* \comp{n - 1} e \gcelto y \) such that \( h \) and \( h' \) are reversible.
-    In that case, \( e^* \) is called a \emph{weak inverse} of \( e \).
-    We write \( x \sim y \) if there exists a reversible globular cell \( e \) of type \( x \gcelto y \).
-\end{dfn}
-
-\begin{dfn} [\( \omega \)\nbd equivalence]
-    Let \( f \colon C \to D \) be a strict functor of composition structures.
-    We say that \( f \) is an \( \omega \)\nbd equivalence if
-    \begin{enumerate}
-        \item for each globular cell \( d \) in \( D \) of dimension \( 0 \), there exists a globular cell \( c \) in \( C \) such that \( f(c) \sim d \);
-        \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel globular \( n \)\nbd cells of \( C \), and each globular \( (n + 1) \)\nbd cell \( v \colon f(c) \gcelto f(c') \), there exists a globular \( (n + 1) \)\nbd cell \( u \colon c \gcelto c' \) such that \( f(u) \sim v \)
-    \end{enumerate}
-\end{dfn}
-
-\begin{comm}
-    The definitions of acyclic fibration, reversibility, and \( \omega \)\nbd equivalence make sense in any composition structure, in particular in a strict or stricter \( \omega \)\nbd category.
-    In the former case, we recover the usual definitions, see for instance \cite[19.2.3, 20.1.1, 20.1.11]{ara2025polygraphs}.
-\end{comm}
-
-\begin{thm} \label{thm:folk_model_structure}
-    There exists a model structure, called the \emph{folk model structure}, on \( \omegaCat \) such that:
-    \begin{enumerate}
-        \item the weak equivalences are the \( \omega \)\nbd equivalences;
-        \item the acyclic fibrations are the one of Definition \ref{dfn:acyclic_fibration};
-        \item every strict \( \omega \)\nbd category is fibrant. 
-    \end{enumerate} 
-\end{thm}
-\begin{proof} 
-    See \cite{lafont2010folk}.
-\end{proof}
-
-\noindent We conclude this section by giving an analogue to Theorem \ref{thm:folk_model_structure}, with \( \somegaCat \) in place of \( \omegaCat \).
-We let 
-\begin{equation*}
-    \Icof \eqdef \set{i_n \colon \bd{}{} \globe{n} \incl \globe{n} \mid n \geq 0}.
-\end{equation*}
-By the small object argument in \( \somegaCat \), each strict functor \( f \colon C \to D \) of stricter \( \omega \)\nbd categories factors as \( f = p i \) where \( i \) is a relative stricter polygraph and \( p \) has the right lifting property against \( \Icof \), that is, \( p \) is an acyclic cofibration.
-
-\begin{dfn} \label{dfn:generating_folk_acyclic_cof}
-    For each \( n \geq 0 \), consider the strict functor \( \bd{}{} \globe{n + 1} \to \globe{n} \) sending the two non-trivial globular \( n \)\nbd cells of \( \bd{}{} \globe{n + 1} \) to the only non-trivial globular cell of \( \globe{n} \).
-    We fix a factorisation of this strict functor
-    \begin{equation*}
-        \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1} \stackrel{p}{\to} \globe{n}
-    \end{equation*}
-    into a stricter cofibration followed by an acyclic fibration, and let \( j_n \) be the composite
-    \begin{equation*}
-        \globe{n} \incl \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1},
-    \end{equation*}
-    where \( \globe{n} \incl \bd{}{} \globe{n + 1} \) is the ``source'' inclusion, that is, the one factoring through \( \molecin{(\bd{}{-}\dglobe{n + 1})} \incl \molecin{\dglobe{n + 1}} \).
-    We let
-    \begin{equation*}
-        \sJcof \eqdef \set{j_n \colon \globe{n} \to \swE{n + 1} \mid n \geq 0}.
-    \end{equation*} 
-\end{dfn}
-
-\begin{dfn} [Stricter \( \omega \)\nbd category of cylinders]
-    Let \( C \) be a stricter \( \omega \)\nbd category.
-    The \emph{stricter \( \omega \)\nbd category of cylinder} is the stricter \( \omega \)\nbd category 
-    \begin{equation*}
-       \Gamma(C) \eqdef \homlax(\globe{1}, C). 
-    \end{equation*}
-\end{dfn}
-
-\begin{rmk} \label{rmk:strict_stricter_same_cylinders}
-    By Proposition \ref{prop:reflection_to_stricter_monoidal}, the stricter categories \( \Gamma(C) \) coincides with the strict \( \omega \)\nbd categories of cylinders \cite[Remark 20.2.9]{ara2025polygraphs}, which happen to be stricter, since \( C \) is.
-\end{rmk}
-
-\begin{thm} \label{thm:folk_model_structure_on_stricter}
-    There is a cofibrantely generated model structure on the category \( \somegaCat \), called the \emph{folk model structure}, where:
-    \begin{enumerate}
-        \item \( \Icof \) is a set of generating cofibrations;
-        \item \( \sJcof \) is a set of generating acyclic cofibrations;
-        \item weak equivalences are the \( \omega \)\nbd equivalences;
-        \item acyclic fibrations are the one of Definition \ref{dfn:acyclic_fibration}.
-        \item all stricter \( \omega \)\nbd categories are fibrant;
-        \item cofibrant objects are the stricter polygraphs.
-    \end{enumerate}
-    Furthermore, this model structure is right transferred from the folk model structure on \( \omegaCat \) along the adjunction 
-    \begin{center}
-        \begin{tikzcd}
-            \somegaCat & \omegaCat,
-            \arrow[""{name=0, anchor=center, inner sep=0}, "\iota"', curve={height=12pt}, hook, from=1-1, to=1-2]
-            \arrow[""{name=1, anchor=center, inner sep=0}, "\rcs"', curve={height=12pt}, from=1-2, to=1-1]
-            \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-        \end{tikzcd}
-    \end{center}
-    making it a Quillen adjunction.
-\end{thm}
-\begin{proof}
-    This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders}, noticing that \( \rcs \Icof = \Icof \), and that, by \cite[20.4.7]{ara2025polygraphs}, a generating set \( \Jcof \) of acyclic cofibrations for the folk model structure on \( \omegaCat \) is given by the same construction as (\ref{dfn:generating_folk_acyclic_cof}), but computing the small objects argument in \( \omegaCat \) instead of \( \somegaCat \).
-    As a consequence, the classes \( \llp(\rlp(\rcs\Jcof)) \) and \( \llp(\rlp(\sJcof)) \) coincide.
-\end{proof}
-
-\begin{rmk} 
-    By Lemma \ref{lem:pushout_principal_cell}, the set
-    \begin{equation*}
-        \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
-    \end{equation*}
-    is also a generating set of acyclic cofibrations for the folk model structure on \( \somegaCat \), whose cofibrations are therefore given by the retracts of relative polygraphs.
-\end{rmk}
-
-\noindent Finally, we fix \( n \in \mathbb{N} \), and let
-\begin{equation*}
-    \Icof_n \eqdef \trunc{n}\Icof,\quad\quad \sJcof_n \eqdef \trunc{n}\Jcof.
-\end{equation*}
-
-\begin{thm} \label{thm:folk_model_structure_on_stricter_n}
-    There is a cofibrantely generated model structure on the category \( \snCat{n} \), called the \emph{folk model structure}, where:
-    \begin{enumerate}
-        \item \( \Icof_n \) is a set of generating cofibrations;
-        \item \( \sJcof_n \) is a set of generating acyclic cofibrations;
-        \item weak equivalences are the \( \omega \)\nbd equivalences;
-    \end{enumerate}
-    Furthermore, this model structure is right transferred from the folk model structure on \( \nCat{n} \) along the adjunction 
-    \begin{center}
-        \begin{tikzcd}
-            \snCat{n} & \nCat{n},
-            \arrow[""{name=0, anchor=center, inner sep=0}, "\iota"', curve={height=12pt}, hook, from=1-1, to=1-2]
-            \arrow[""{name=1, anchor=center, inner sep=0}, "\rcs"', curve={height=12pt}, from=1-2, to=1-1]
-            \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-        \end{tikzcd}
-    \end{center}
-    making it a Quillen adjunction.
-\end{thm}
-\begin{proof}
-    Same as Theorem \ref{thm:folk_model_structure_on_stricter}.
-\end{proof}
-
-\noindent Therefore, we have the following commutative square of left Quillen functors
-\begin{center}
-    \begin{tikzcd}
-        \omegaCat & \somegaCat \\
-        {\nCat{n}} & {\snCat{n}.}
-        \arrow["\rcs", from=1-1, to=1-2]
-        \arrow["{\trunc{n}}"', from=1-1, to=2-1]
-        \arrow["{\trunc{n}}", from=1-2, to=2-2]
-        \arrow["\rcs"', from=2-1, to=2-2]
-    \end{tikzcd}
-\end{center}

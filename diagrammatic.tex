@@ -150,23 +150,22 @@ and in the sequel, we always identify a regular directed complex with its associ
 	These are equipped with cartesian maps \( \tau_s \colon \hcyl{s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_s \) is a cartesian map of molecules.
 \end{dfn}
 
-\begin{lem} \label{lem:higher_invertor_commute_subdivision} \cccom{say square like this commutes if molecin of the square commutes}
-    Let \( c \colon U \sd V \) be a subdivision of round molecules, and \( s \in \set{L, R}^* \).
-    Then there exists a subdivision \( \hcyl{s} c \colon \hcyl{s} U \sd \hcyl{s} V \) fitting in the commutative square 
-    \begin{center}
-        \begin{tikzcd}
-            {\hcyl{s}U} & {\hcyl{s}V} \\
-            U & V
-            \arrow["{\hcyl{s}c}", from=1-1, to=1-2]
-            \arrow["{\tau_s}"', two heads, from=1-1, to=2-1]
-            \arrow["{\tau_s}", two heads, from=1-2, to=2-2]
-            \arrow["c"', from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
+\begin{lem} \label{lem:subdivision_of_invertors}
+    \cccom{TODO}
+    % Let \( c \colon U \sd V \) be a subdivision of round molecules, and \( s \in \set{L, R}^* \).
+    % Then there exists a subdivision \( \hcyl{s} c \colon \hcyl{s} U \sd \hcyl{s} V \) fitting in the commutative square 
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         {\hcyl{s}U} & {\hcyl{s}V} \\
+    %         U & V
+    %         \arrow["{\hcyl{s}c}", from=1-1, to=1-2]
+    %         \arrow["{\tau_s}"', two heads, from=1-1, to=2-1]
+    %         \arrow["{\tau_s}", two heads, from=1-2, to=2-2]
+    %         \arrow["c"', from=2-1, to=2-2]
+    %     \end{tikzcd}
+    % \end{center}
 \end{lem}
 \begin{proof}
-    Let \( c' \colon V \to U \) be the function representing \( c \). 
-    Then we have the order preserving function \( \arr \times_K c' \colon \arr \times_K V \to \arr \times_K U \), whose dual induce subdivisions
 \cccom{TODO}
 \end{proof}
 
@@ -175,7 +174,7 @@ and in the sequel, we always identify a regular directed complex with its associ
     The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
 \end{dfn}
 
-\begin{dfn} [Equivalence]
+\begin{dfn} [Equivalence] \ccnote{not defined yet}
     Let \( e \) be a pasting diagram in a diagrammatic set \( X \).
     We say that \( e \) is an \emph{equivalence} if it is reversible in the composition structure \( \Pd(X) \).
     We let
@@ -201,8 +200,39 @@ and in the sequel, we always identify a regular directed complex with its associ
     See \cite[Section]{chanavat2024equivalences} for the case of equivalences that are round diagrams, and notice that all the relevant results go through when considering not necessarily round diagrams.
 \end{proof}
 
+\begin{dfn} [Bipointed diagrammatic set]
+    A \emph{bipointed diagrammatic set} is given by a diagrammatic set \( X \) together with a pair of \( 0 \)\nbd cells \( a, b \colon \pt \to X \).
+    We let \( \bpt\dgmSet \) be the category of bipointed diagrammatic set and strict functors that respect the bipointing.
+\end{dfn}
 
-\subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(infty, n)}-categories}
+\begin{dfn} [Suspension]
+    The \emph{suspension of diagrammatic sets} is the functor
+    \begin{equation*}
+        \sus{-} \colon \dgmSet \to \bpt{\dgmSet}
+    \end{equation*} 
+    defined as the left Kan extension along the Yoneda embedding of the functor defined on atoms by \( U \mapsto (\sus{U}, \bot^-, \bot^+) \).
+\end{dfn}
+
+\begin{prop} \label{prop:suspension_of_dgmSet}
+    The functor \( \sus{-} \colon \dgmSet \to \dgmSet \) preserves connected colimits.    
+\end{prop}
+\begin{proof}
+    The category \( \bpt{\dgmSet} \) is the coslice \( \slice{(\pt + \pt)}{\dgmSet} \).
+    Since \( \sus{-} \) is left adjoin by construction, the result follows from \cite[Proposition 3.3.8]{riehl2019context}
+\end{proof}
+
+\begin{dfn} [Connected diagrammatic set]
+    Let \( X \) be a diagrammatic set. 
+    We say that \( X \) is \emph{connected} if its category of elements is connected.
+\end{dfn}
+
+\begin{rmk} \label{rmk:ez_connected}
+    \cccom{say something here}
+    % Since \( \atom \) is an Eilenberg-Zilber category, \( X \) is connected if and only if the category  
+\end{rmk}
+
+
+\subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(∞, n)}-categories}
 
 
 Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degeneracies. 
@@ -253,7 +283,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
         \order{0}{X} \incl \order{1}{X} \incl \ldots \incl \order{n}{X} \incl \ldots,
     \end{equation*}
     whose transfinite composition is \( \loc{X}{A} \), the \emph{localisation of \( X \) at \( A \)}, which comes equipped with a canonical inclusion \( X \incl \loc{X}{A} \).
-    We may describe the non-degenerate cells of \( \loc{X}{A} \) as being either in the image of \( \nd X \setminus A \), or of the form \( \hinv{s}a, (\hinv{s}a)^L \) or \( (\hinv{s}a)^R \) for \( a \in (\nd X) \cap A \) and a string \( s \in \set{L, R}^* \), such defined inductively by \( \hinv{\langle\rangle} a \eqdef a \), and inductively on \( s \in \set{L, R}^* \),
+    We may describe the non-degenerate cells of \( \loc{X}{A} \) as being either in the image of \( \nd X \setminus A \), or of the form \( \hinv{s}a, (\hinv{s}a)^L \) or \( (\hinv{s}a)^R \) for \( a \in (\nd X) \cap A \) and a string \( s \in \set{L, R}^* \), defined by \( \hinv{\langle\rangle} a \eqdef a \), and inductively on \( s \in \set{L, R}^* \),
     \begin{align*}
         \hinv{Ls}a \eqdef \hinv{L}(\hinv{s}a) &\colon \hinv{s}a \cp{} (\hinv{s}a)^L \celto \un(\bd{}{-}\hinv{s}a),\\
         \hinv{Rs}a \eqdef \hinv{R}(\hinv{s}a) &\colon (\hinv{s}a)^R \cp{} \hinv{s}a \celto \un(\bd{}{+}\hinv{s}a).
@@ -423,7 +453,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
     For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
-        \item cofibrations are the monomorphisms;
+        \item the set \( \set{\bd{}{} U \incl U \mid U \text{ atom}} \) is a generating set of cofibrations;
         \item fibrant objects are the \( (\infty, n) \)\nbd categories;
         \item \( \Jcomp \cup \Jn{n} \) is a pseudo-generating set of acyclic cofibrations.
     \end{enumerate}
