@@ -30,6 +30,10 @@
 % special categories
 
 \newcommand\rdcpx{\cat{RDCpx}}
+\newcommand\rdcpxmap{\rdcpx_{\downarrow}}
+\newcommand\rdcpxcomap{\rdcpx_{\uparrow}}
+\newcommand\rdcpxcart{\rdcpx_{\mathsf{cart}}}
+
 \newcommand{\atom}{{\scalebox{1.3}{\( \odot \)}}}
 \newcommand{\smallatom}{\odot}
 \newcommand{\Set}{\cat{Set}}
@@ -205,6 +209,7 @@
 \newcommand{\comp}[1]{*_{#1}}
 \newcommand{\omegaReg}{\omega\cat{Reg}}
 \newcommand{\omegaMol}{\omega\cat{Mol}}
+\newcommand{\omegaRegSet}{[\opp{\omegaReg}, \Set]^{\mathsf{rw, pst}}}
 \newcommand{\rc}{\fun{r}}
 \newcommand{\rcs}{\fun{r}^{>}}
 
@@ -233,7 +238,7 @@
 \newcommand{\N}[1]{N_{#1}}
 
 \DeclareMathOperator{\s}{\mathsf{s}}
-
+\newcommand{\eps}{\epsilon}
 % folk model structure
 
 \newcommand{\Icof}{\mathcal{I}}
@@ -255,6 +260,12 @@
 \DeclareMathOperator{\rlp}{r}
 \DeclareMathOperator{\llp}{l}
 
+
+% adjunction
+
+\newcommand{\unit}{\eta}
+\newcommand{\counit}{\epsilon}
+
 \makeatletter
 \newcommand{\oset}[3][0ex]{%
   \mathrel{\mathop{#3}\limits^{
@@ -275,6 +286,8 @@
         \mskip2mu
         \relax
 }
+
+
 
 % notes
 \newcommand{\cccom}[1]{\todo[inline, color=magenta!30, linecolor=magenta!30!black, size=\normalsize]{#1}}

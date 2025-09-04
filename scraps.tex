@@ -408,3 +408,111 @@
     The top square is a pushout by Lemma \ref{lem:pushout_principal_cell}, thus so is the bottom one.
     \cccom{Really need some theory of subdivision}
 \end{proof}
+
+
+%%% counit 
+
+\noindent We now investigate the counit of the adjunction \( \molecin{-} \dashv \N{} \).
+% \begin{dfn}\ccnote{NO Clémence: nu is not a strict functor }
+%     For any stricter \( \omega \)\nbd category \( C \) and atom \( U \), strict functors \( u \colon \molecin{U} \to C \) correspond naturally to cells \( u^\dagger \colon U \to \N{} C \).
+%     By Corollary \ref{cor:molecin_polygraph_with_basis}, \( \molecin{\N{} C} \) is a stricter polygraph with basis
+%     \begin{equation*}
+%         \set{u \colon \molecin{U} \to C \mid u^\dagger \in \nd \N{}C}.
+%     \end{equation*}
+%     The counit \( \eps_C \colon \molecin{\N{}C} \to C \) is then defined on the basis by \( u \mapsto \pcell{u} \).
+%     We let \( \nu_C \colon C \to \molecin{\N{} C} \) be the strict functor defined by sending a globular cell \( u \colon \globe{\dim u} \to C \) to \( \molecin{u^\dagger} \).
+% \end{dfn}
+
+% \begin{rmk}\label{rmk:nu_C_sends_to_basis}
+%     The transpose of a globular cell \( u \colon \globe{\dim u} \to C \) is always non-degenerate.
+%     Thus, by Corollary \ref{cor:molecin_polygraph_with_basis}, \( \nu_C \colon C \to \molecin{\N{} C} \) sends globular cells of \( C \) to elements of the basis of \( \molecin{\N{} C} \).
+% \end{rmk}
+
+% \begin{lem} \label{lem:eps_star_is_omega_eq}
+%     Let \( C \) be a stricter \( \omega \)\nbd category.
+%     Then \( \nu_C \) is an \( \omega \)\nbd equivalence. 
+% \end{lem}
+% \begin{proof}
+%     Denote \( \nu \eqdef \nu_C \).
+%     By Corollary \ref{cor:molecin_polygraph_with_basis}, the objects of \( \molecin{\N{} C} \) coincides with the \( 0 \)\nbd cells \( u \colon \pt \to \N{} C \).
+%     Transposing, one sees that they corresponds in fact to the objects of \( C \), hence \( \nu \) is surjective on objects.
+%     Let \( n > 0 \) and \( (c^-, c^+) \colon \bd{}{} \globe{n} \to C \) be a pair of parallel globular cells, and consider a globular cell \( u \colon \globe{n} \to \molecin{\N{}C} \) of type \( u \colon \nu(c^-) \gcelto \nu(c^+) \).
+%     Since \( \molecin{\N{} C} \) the non-degenerate cells of \( \N{} C \) are a basis of \( \molecin{\N{} C} \) by Corollary \ref{cor:molecin_polygraph_with_basis}, we may show that \( u \sim \nu(v) \) for some globular cell \( v \colon c^- \gcelto c^+ \) in \( C \) by induction on the dimension, then the construction of \( u \).
+%     We already established the case \( \dim u = 0 \).
+%     Inductively, let \( n > 0 \).
+%     Suppose first that \( u \) is an element of the basis, then necessarily \( u = \nu(\eps_C(u)) \).
+%     Now suppose that \( u = u_1 \comp{k} u_2 \) for some \( k < n \), and \( u_i \colon u_i^- \gcelto u_i^+ \) for \( i \in \set{1, 2} \).
+%     Suppose \( k < n - 1 \).
+%     Let \( \a \in \set{-, +} \), then \( \nu(c^\a) = \bd{n - 1}{\a} u = u_1^\a \comp{k} u_2^\a \). 
+%     By Remark \ref{rmk:nu_C_sends_to_basis}, this means that either \( \nu(c^\a) = u^\a_1 \) and \( u_2^\a = \nu(\bd{k}{+} c^\a) \), or \( \nu(c^\a) = u^\a_2 \) and \( u_1^\a = \nu(\bd{k}{-} c^\a) \).
+%     In any case, we have for all \( i \in \set{1, 2} \) and \( \a \in \set{-, +} \), globular cells \( c^\a_i \) such that \( u_i \colon \nu(c_i^-) \gcelto \nu(c_i^+) \).
+%     By inductive hypothesis, there exists both \( i \in \set{1, 2} \), globular cells \( v_i \colon c_i^- \gcelto c_i^+ \) such that \( u_i \sim \nu(v_i) \).
+%     By Proposition \ref{prop:reversible_globular_cells}, \( u \sim \nu(v_1) \comp{k} \nu(v_2) = \nu(v_1 \comp{k} v_2 ) \).
+%     Last, suppose that \( k = n - 1 \), so that \( u_1 \colon \nu(c^-) \gcelto w \) and \( u_2 \colon w \gcelto \nu(c^+) \).
+%     Then, \( \dim w < n \) and either \( n = 1 \) and \( w \) is an object, or \( w \colon \nu(\bd{n - 2}{-} c^-) \gcelto \nu(\bd{n - 2}{+} c^-) \).
+%     In any case, by inductive hypothesis on the dimension, we have a globular cell \( w' \colon \bd{n - 2}{-} c^- \gcelto \bd{n - 2}{+} c^- \)
+%     \cccom{does not work unless one shows first that nu is a fibration, which it is not}
+% \end{proof}
+
+% \begin{thm} \label{thm:cofibrant_replacement_counit_infty}
+%     Let \( C \) be a stricter \( \omega \)\nbd category.
+%     Then the (derived) counit \( \eps_C \colon \molecin{\N{} C} \to C \) is an acyclic fibration in the folk model structure on stricter \( \omega \)\nbd categories.
+% \end{thm}
+% \begin{proof}\ccnote{very much false}
+%     Notice that for all \( n \geq 0 \), a globular cell \( u \colon \globe{n} \to C \) of \( C \) is equivalent, by transposing along the adjunction \( \molecin{-} \dashv \N{} \), to a cell \( u^\dagger \colon \dglobe{n} \to \N{} C \).
+%     Let \( n \geq 0 \) and consider a lifting problem of the form
+%     \begin{center}
+%         \begin{tikzcd}
+%             {\bd{}{}\globe n} & {\molecin{\N{}C}} \\
+%             {\globe n} & C
+%             \arrow["{(v^-, v^+)}", from=1-1, to=1-2]
+%             \arrow[from=1-1, to=2-1]
+%             \arrow["\eps_C", from=1-2, to=2-2]
+%             \arrow["u"', from=2-1, to=2-2]
+%         \end{tikzcd}
+%     \end{center}
+%     We claim that \( \molecin{u^\dagger} \colon \globe{n} \to \molecin{\N{} C} \) solves the lifting problem. 
+%     Indeed, \( u = \eps_C \after \molecin{u^\dagger} \) by adjunction.
+%     Then for \( \a \in \set{-, +} \), 
+%     \begin{equation*}
+%         \bd{}{\a} (\molecin{u^\dagger}) = \molecin{(\bd{}{\a} u^\dagger)} = \molecin{(\bd{}{\a}u)^\dagger} = \molecin{(v^\a)^\dagger}.
+%     \end{equation*}  
+%     By adjunction again, \( \eps_C \after \bd{}{\a} (\molecin{u^\dagger}) = v^\a \).
+%     This concludes the proof.
+% \end{proof}
+
+\cccom{Strategy}
+\begin{itemize}
+    \item define the function \( \nu \colon C \to \molecin{\N{}C} \), show by induction on \( n \) that all \( n \) dom globular cell of \( c \) of \( \molecin{\N{} C} \) are such that there is a reversible cylinder \( c \to \nu(\eps(c)) \) that is mapped via \( \eps \) to the identity (use the weak composite of \( \N{} C \) mapped, which generated basis element mapped to identity in \( C \))
+    \item probably it is not possible without some kind of description of the elements of \( \molecin{\N{}C} \), in that \( \molecin{u} \) for \( u \in \Pd \N{} C \) is appropriately surjective. It is the case on the basis, but there are more possible compositions in \( \molecin{\N{}C} \) that there is a priori in \( \N{} C \), so this is quite difficult.
+\end{itemize}
+
+
+\begin{thm} \label{thm:cofibrant_replacement_counit_n}
+    Let \( n \in \mathbb{N} \) and \( C \) be a stricter \( n \)\nbd category. 
+    The the (derived) counit \( \eps_C \colon \N{n}\trunc{n}\molecin{C} \to C \) is an acyclic fibration in the folk model structure for stricter \( n \)\nbd categories.
+\end{thm}
+\begin{proof}
+    \cccom{TODO}
+\end{proof}
+
+\subsection{Counit and cofibrant replacement}
+
+\cccom{globe-like diagrammatic sets, restriction is acyclic-cofibration, stricter polygraph on globe like can recover all glob cell as pasting diagrams of theta}
+
+
+\begin{lem} \label{lem:gray_determines_strict_functors}
+    Let \( P, Q, P', Q' \) be regular directed complexes, and \( \F \colon \molecin{P} \to \molecin{P'} \), \( \G \colon \molecin{Q} \to \molecin{Q'} \) be strict functors.
+    Then \( \F \gray \G \) extends to a strict functor 
+    \begin{equation*}
+        \F \gray \G \colon \molecin{P} \gray \molecin{Q} \to \molecin{P'} \gray \molecin{Q'}.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Let \( w \colon W \to P \gray Q \) be a morphism.
+    We show by induction on \( n \eqdef \dim w \) that \( (\F \gray \G) \after \molecin{w} \) is well defined. 
+    The base case where \( n = 0 \) is clear.
+    Inductively, suppose that \( n > 0 \).
+    We show that for all 
+    We show by induction on the dim morphism mi
+\end{proof}

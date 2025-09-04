@@ -14,8 +14,8 @@
         \begin{equation*}
             \bd{k}{\a}(\bd{n}{\beta} c) = 
             \begin{cases}
-                \bd{k}{\a} c & k < n,
-                \bd{n}{\beta}, k \ge n.
+                \bd{k}{\a} c & \text{if }k < n, \\
+                \bd{n}{\beta} c& \text{else.}
             \end{cases}
         \end{equation*}
     \end{enumerate}
@@ -36,9 +36,14 @@ We say that a globular cell \( c \) is an \emph{object} if \( \dim c = 0 \).
         - \comp{k} - \colon C \times_k C \to C,
     \end{equation*}
     call the \emph{\( k \)\nbd composition}.
-    If \( C, D \) are composition structures, a \emph{strict functor} \( f \colon C \to D \) is a morphism of the underlying reflexive graph respecting the \( k \)\nbd composition.
+    If \( C, D \) are composition structures, a \emph{strict functor} \( f \colon C \to D \) is a morphism of the underlying reflexive graph respecting the \( k \)\nbd composition operations for all \( k \geq 0 \).
     We denote \( \Comp \) the category of composition structures and strict functors.
 \end{dfn}
+
+\begin{rmk}
+    The category \( \Comp \) is equivalent to a category of models of a limit sketch; use for instance a simpler version of \cite[Proposition 14.2.4]{ara2025polygraphs}.
+    In particular, it is locally presentable, complete, and cocomplete \cite{adamek1994locally}.
+\end{rmk}
 
 \begin{dfn} [Basis for composition structure]
     Let \( C \) be a composition structure, and \( \cls{S} \) be a subset of the globular cells of \( C \).
@@ -47,27 +52,41 @@ We say that a globular cell \( c \) is an \emph{object} if \( \dim c = 0 \).
 \end{dfn}
 
 \begin{lem}\label{lem:strict_functor_determined_by_basis}
-    Let \( f, g \colon C \to D \) be strict functors and let \( \cls{S} \) be a generating set for \( C \) such that for all \( c \in \cls{C} \), \( f(c) = g(c) \).
+    Let \( f, g \colon C \to D \) be strict functors of composition structures and let \( \cls{S} \) be a generating set for \( C \) such that for all \( c \in \cls{C} \), \( f(c) = g(c) \).
     Then \( f = g \).
 \end{lem}
 \begin{proof}
     See \cite[Lemma 5.1.23]{hadzihasanovic2024combinatorics}.
 \end{proof}
 
-\noindent Recall\ccnote{cannot use Nd here} from \cite[Section 5.2]{hadzihasanovic2024combinatorics} that given a regular directed complex \( P \), the set \( \molecin{P} \eqdef \Nd(P) \), together with the boundary operators \( \bd{k}{\a} \) and the pasting operations \( - \cp{k} - \) is a composition structure with basis \( \atomin{P} \eqdef \nd(P) \).
-Furthermore, by \cite[Theorem 6.2.32]{hadzihasanovic2024combinatorics}, this assignment extends to a functor
-\begin{equation*}
-    \molecin{-} \colon \rdcpx \to \Comp.
-\end{equation*}
-We recall as well that \( \molecin{-} \) is also functorial with respect to subdivisions \( s \colon P \sd Q \) of regular directed complexes.
-
-\begin{dfn} [Globe]
-    Let \( n \geq 0 \).
-    The \emph{\( n \)\nbd globe} is the composition structure defined by \( \globe{n} \eqdef \molecin{\dglobe{n}} \), and its \emph{boundary} is the composition structure given by \( \bd{}{}\globe{n} \eqdef \molecin{\bd{}{}\dglobe{n}} \).
+\begin{dfn} [Molecules in a regular directed complexes]
+    Let \( P \) be a regular directed complex.
+    We let \( \molecin{P} \) to be the composition structure whose
+    \begin{itemize}
+        \item globular cells are the morphisms \( u \colon U \to P \) with \( U \) a molecule;
+        \item boundary operators are defined by \( u \mapsto \bd{k}{ \a} u \), for all \( k \geq 0 \) and \( \a \in \set{-, +} \);
+        \item the \( k \)\nbd composition operation is given by the pasting \( (u, v) \mapsto u \cp{k} v \), for all \( k \geq 0 \). 
+    \end{itemize}    
 \end{dfn}
 
 \begin{rmk}
-    As usual, a strict functor \( u \colon O^n \to C \) classifies a globular cell of \( C \), and a strict functor \( \bd{}{} O^n \to C \) classifies two parallel cells \( u, v \colon O^{n - 1} \to C \).
+    Since isomorphisms of molecules are unique when they exist, we may safely identify identity two isomorphic objects \( u \colon U \to P \) and \( u' \colon U' \to P \) in the slice over \( P \).
+\end{rmk}
+
+\noindent Recall from \cite[Section 5.2, Section 6]{hadzihasanovic2024combinatorics} that the subset \( \atomin{P} \) of \( \molecin{P} \) on morphisms \( u \colon U \to P \) whose domain is an atom, is a basis for \( \molecin{P} \).
+Furthermore, the assignment \( P \mapsto \molecin{P} \) extends to functors
+\begin{align*}
+    \molecin{-} &\colon \rdcpxmap \to \Comp \\
+    \molecin{-} &\colon \opp{\rdcpxcomap} \to \Comp. \\    
+\end{align*} 
+
+\begin{dfn} [Globe]
+    Let \( n \geq 0 \).
+    The \emph{\( n \)\nbd globe} is the composition structure defined by \( \globe{n} \eqdef \molecin{\dglobe{n}} \), and its \emph{boundary} is the composition structure given by \( \bd{}{}\globe{n} \eqdef \molecin{(\bd{}{}\dglobe{n})} \).
+\end{dfn}
+
+\begin{rmk}
+    A strict functor \( u \colon O^n \to C \) classifies a globular cell of \( C \), and a strict functor \( \bd{}{} O^n \to C \) classifies two parallel cells \( u, v \colon O^{n - 1} \to C \).
 \end{rmk}
 
 \begin{dfn} [Diagram in a composition structure]
@@ -75,7 +94,6 @@ We recall as well that \( \molecin{-} \) is also functorial with respect to subd
     A \emph{diagram of shape \( P \) in \( C \)} is a strict functor \( \F \colon \molecin{P} \to C \).
     If \( P = U \) is a molecule, we speak of \emph{pasting diagram}, and in that case, for \( k \geq 0 \) and \( \a \in \set{-, +} \), we write \( \bd{k}{\a} F \) for the restriction of \( \F \) along the strict functor \( \molecin{\bd{k}{\a} U} \to \molecin{U} \).
     We write \( \Dgm(C) \) for the collection of all pasting diagrams of \( C \).
-    % Finally, if \( U \) is an atom, we speak of \emph{atomic diagram} in \( C \), and write \( \dgm(C) \) for the collection of all atomic diagram of \( C \).
 \end{dfn}
 
 \begin{dfn} [Principal cell]
@@ -83,34 +101,24 @@ We recall as well that \( \molecin{-} \) is also functorial with respect to subd
     The \emph{principal cell of \( \F \)} is the cell \( \pcell{\F} \eqdef \F(\idd{U}) \).
 \end{dfn}
 
-% \noindent For each pair of molecules \( U, V \) and \( k \geq 0 \) such that \( U \cp{k} V \) is defined, there is a canonical strict functor \( s^k_{UV} \)
-% \begin{center}
-%     \begin{tikzcd}
-%         {\molecin{\bd{k}{+}U}} & {\molecin{V}} \\
-%         {\molecin{U}} & {\molecin{U}\cup\molecin{V}} \\
-%         && {\molecin{U \cp{k} V}}.
-%         \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
-%         \arrow[from=1-1, to=2-1]
-%         \arrow[from=1-2, to=2-2]
-%         \arrow[curve={height=-18pt}, from=1-2, to=3-3]
-%         \arrow[from=2-1, to=2-2]
-%         \arrow[curve={height=12pt}, from=2-1, to=3-3]
-%         \arrow["{s^k_{UV}}"{description}, from=2-2, to=3-3]
-%         \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
-%     \end{tikzcd}
-% \end{center}
-\noindent For each regular directed complex \( P \), there is a canonical strict functor
-\begin{equation*}
-    s_P \colon \colim_{x \in P} \molecin{\imel{P}{x}} \to \molecin{P}
-\end{equation*}
-We let \( S \) be the set of all the strict functors \( s_U \) for \( U \) a molecule.
+\begin{dfn}
+    For each regular directed complex \( P \), there is a canonical strict functor
+    \begin{equation*}
+        s_P \colon \colim_{x \in P} \molecin{\imel{P}{x}} \to \molecin{P},
+    \end{equation*}
+    where the colimit is computed in \( \Comp \).
+    We let \( S \) be the set
+    \begin{equation*}
+        S \eqdef \set{s_U \colon \colim_{x \in U} \molecin{\imel{U}{x}} \to \molecin{U} \mid U \text{ molecule}}.
+    \end{equation*}
+\end{dfn}
 
 \begin{dfn}[Stricter \( \omega \)\nbd category]
     A \emph{stricter \( \omega \)\nbd category} is a composition structure \( C \) which is local with respect to \( S \).
     We let \( \somegaCat \) be the full subcategory of \( \omegaCat \) on stricter \( \omega \)\nbd categories.
 \end{dfn}
 
-\noindent Since \( \Comp \) is locally presentable, as a category of models of a limit sketch, and \( S \) is a small set, the full subcategory inclusion \( \iota \colon \somegaCat \incl \Comp \) is reflective \cite{freyd1972continuous}, and we denote by 
+\noindent Since \( \Comp \) is locally presentable and \( S \) is a small set, the full subcategory inclusion \( \iota \colon \somegaCat \incl \Comp \) is reflective \cite{freyd1972continuous}, and we denote by 
 \begin{equation*}
     \rc \colon \Comp \to \somegaCat
 \end{equation*}
@@ -118,7 +126,7 @@ the left adjoint of \( \iota \).
 
 \begin{dfn} [Matching family and amalgamation]
     Let \( P \) be a regular directed complex, and \( C \) be a composition structures.
-    A \( P \)\nbd matching family in \( C \) is a cone 
+    A \emph{\( P \)\nbd matching family in \( C \)} is a cone 
     \begin{equation*}
         \set{\F_x \colon \molecin{\imel{P}{x}} \to C}_{x \in P}
     \end{equation*}
@@ -127,22 +135,23 @@ the left adjoint of \( \iota \).
     \begin{equation*}
         \amalg_{x\in P} \F_x \colon \molecin{P} \to C
     \end{equation*}
-    such that for all \( x \in P \), \( (\amalg_y \F_y) \after \molecin{\mapel{x}} = \F_x \).
+    such that for all \( y \in P \), \( (\amalg_x \F_x) \after \molecin{\mapel{y}} = \F_y \).
 \end{dfn}
+
+\begin{rmk}
+    Thus, a composition structure \( C \) is a stricter \( \omega \)\nbd category if for all molecules \( U \), all \( U \)\nbd matching families in \( C \) have a unique amalgamation.
+\end{rmk}
 
 \begin{rmk}\label{rmk:data_matching family}
     The data of a \( P \)\nbd matching family 
     \begin{equation*}
         \set{\F_x \colon \molecin{\imel{P}{x}} \to C}_{x \in P}
     \end{equation*}
-    in \( C \) is given by an element \( c_x \in C \) for each \( x \in P \).
+    in \( C \) is given by a family of globular cells \( \set{c_x \in C}_{x \in P} \).
     Indeed, given a matching family \( \set{\F_x}_{x \in P} \), define \( c_x \eqdef \pcell{\F_x} \).
-    By functoriality, if \( x \le y \), then \( c_x = \F_y(\clset{x} \incl \clset{y}) \), thus by Lemma \ref{lem:strict_functor_determined_by_basis}, this data entirely determines the matching family \( \set{\F_x}_{x \in P} \).
-    Of course, not all data of this type gives rise to a matching family. 
-\end{rmk}
-
-\begin{rmk}
-    Thus, a composition structure \( C \) is a stricter \( \omega \)\nbd category if for all molecules \( U \), all \( U \)\nbd matching families in \( C \) have a unique amalgamation.
+    By functoriality, if \( x \le y \), then \( c_x = \F_y(\imel{P}{x} \incl \imel{P}{y}) \).
+    Since \( \atomin{\imel{P}{y}} \) is a basis for \( \molecin{\imel{P}{y}} \), Lemma \ref{lem:strict_functor_determined_by_basis} implies that the data of \( \set{c_x}_{x \in \imel{P}{y}} \) entirely determines \( \F_y \colon \molecin{\imel{P}{y}} \to C \).
+    Of course, not all data of this type give rise to a matching family. 
 \end{rmk}
 
 \begin{lem}\label{lem:at_most_one_lift}
@@ -153,11 +162,33 @@ the left adjoint of \( \iota \).
     Immediate by Lemma \ref{lem:strict_functor_determined_by_basis}.
 \end{proof}
 
+\begin{lem} \label{lem:well_define_from_regular_iff_well_defined_from_molecules}
+    Let \( C \) be a composition structure, \( P \) be a regular directed complex, \( \set{\F_x \colon \molecin{\imel{P}{x}} \to C}_{x \in P} \) be a \( P \)\nbd matching family in \( C \). 
+    Suppose that for all \( w \colon W \to P \) in \( \molecin{P} \), the \( W \)\nbd matching family \( \set{\F_{w(x)} \colon \imel{P}{w(x)} \to X}_{x \in W} \) in \( C \) has a well defined amalgamation.
+    Then \( \set{\F_x}_{x \in P} \) has a well defined amalgamation.
+\end{lem}
+\begin{proof}
+    For \( w \colon W \to P \) in \( \molecin{P} \), we let \( \F_w \) be the strict functor 
+    \begin{equation*}
+        \amalg_{x \in W} \F_{w(x)} \colon \molecin{W} \to C
+    \end{equation*}
+    We claim that \( \F \colon \molecin{P} \to C \) defined by \( w \mapsto \pcell{\F_w} \) is a strict functor.
+    Let \( w \colon W \to P \) in \( \molecin{P} \), and suppose that \( w = w^- \cp{k} w^+ \) for some \( k \geq 0 \) and \( w^\a \colon W^\a \to P \) in \( \molecin{P} \), for all \( \a \in \set{-, +} \).
+    Then
+    \begin{equation*}
+        \pcell{\F_w} = \F_w(W^- \incl W) \comp{k} \F_w(W^+ \incl W) = \pcell{\F_{w^-}} \comp{k} \pcell{\F_{w^+}}.
+    \end{equation*}
+    Thus \( \F(w) = \F(w^-) \comp{k} \F(w^+) \).
+    This concludes the proof.
+\end{proof}
+
 \begin{comm} \label{comm:well_defined_amalgamation}
-    Given a \( P \)\nbd matching family \( \set{\F_x} \) in \( C \), we thus have a candidate amalgamation \( \F \colon \molecin{P} \to C \) defined by sending an element \( \mapel{x} \in \atomin{P} \) to \( \pcell{\F_x} \).
-    Then, using induction on submolecules (a variant of \cite[Comment 4.1.7]{hadzihasanovic2024combinatorics}), to show that \( \F \) is a well defined strict functor, we may take an arbitrary element \( w \colon W \to P \) in \( \molecin{P} \), and prove that \( \F \after \molecin{w} \) is well defined under the hypothesis that for all proper subdiagrams \( w' \) of \( w \), \( \F \after \molecin{w'} \) is well defined. 
-    The base case on subdiagrams \( w' \) of \( w \) of dimension \( 0 \) is always true in that case.
-    Here, ``well-defined'' means that the value of \( \F(w) \) is independent of the chosen decomposition \( w = w_1 \cp{k} w_2 \).
+    Given a \( P \)\nbd matching family \( \set{\F_x} \) in \( C \), we thus have a \emph{candidate amalgamation} \( \F \colon \molecin{P} \to C \) defined on the basis \( \atomin{P} \) by \( \mapel{x} \mapsto \pcell{\F_x} \).
+    Then, \( \F \) is a well defined strict functor if for all morphisms \( u \colon U \to P \) with \( U \) a molecule, if \( u = u_1 \cp{k} u_2 \), then \( \F(u) = \F(u_1) \comp{k} \F(u_2) \).
+    To show this, we may use \emph{induction on submolecule} (see \cite[Comment 4.1.7]{hadzihasanovic2024combinatorics}) as follows.
+    Take an arbitrary element \( w \colon W \to P \) in \( \molecin{P} \), and prove that \( \F \after \molecin{w} \) is a well defined strict functor under the hypothesis that for all proper subdiagrams \( w' \) of \( w \), \( \F \after \molecin{w'} \) is a well defined strict functor.
+    The base case on subdiagrams \( w' \) of \( w \) of dimension \( 0 \) is always true in that case. 
+    % % Then, using induction on submolecules (a variant of \cite[Comment 4.1.7]{hadzihasanovic2024combinatorics}), to show that \( \F \) is a well defined strict functor, we may take an arbitrary element \( w \colon W \to P \) in \( \molecin{P} \), and prove that \( \F \after \molecin{w} \) is well defined under the hypothesis that for all proper subdiagrams \( w' \) of \( w \), \( \F \after \molecin{w'} \) is well defined. 
 \end{comm}
 
 \begin{lem} \label{lem:stricter_iff_local_wrt_pasting}
@@ -166,7 +197,7 @@ the left adjoint of \( \iota \).
     \begin{enumerate}
         \item \( C \) is a stricter \( \omega \)\nbd category;
         \item for all regular directed complexes \( P \), \( C \) is local with respect to \( s_P \);
-        \item for all pairs of molecules \( U, V \) and \( k \geq 0 \) such that \( U \cp{k} V \) is defined, each lifting problem
+        \item for all pairs of molecules \( U, V \), and \( k \geq 0 \) such that \( U \cp{k} V \) is defined, each lifting problem
         \begin{center}
             \begin{tikzcd}
                 {\molecin{U} \cup \molecin{V}} & C \\
@@ -179,10 +210,8 @@ the left adjoint of \( \iota \).
     \end{enumerate}
 \end{lem}
 \begin{proof}
-    Suppose that \( C \) is stricter, consider a regular directed complex \( P \) and a \( P \)\nbd matching family \( \set{\F_x \colon \molecin{\imel{P}{x}} \to C}_{x \in P} \).
-    Then for all element \( w \colon W \to P \), \( \set{\F_x}_{x \in W} \) defines \( W \)\nbd matching family in \( C \), whose amalgamation is \( \F \after \molecin{w} \).
-    This shows that \( \amalg \F_x \) is a well defined strict functor.
-    Conversely, if \( C \) is local with respect to all the strict functors \( s_P \) where \( P \) is a regular directed complex, then it is also the case for all the functor \( s_U \) where \( U \) is a molecule.
+    That the first point implies the second follows from Lemma \ref{lem:well_define_from_regular_iff_well_defined_from_molecules} and Lemma \ref{lem:at_most_one_lift}.
+    Conversely, if \( C \) is local with respect to all the strict functors \( s_P \) where \( P \) is a regular directed complex, then it is also the case for all the strict functors \( s_U \) where \( U \) is a molecule.
     This shows the first two conditions are equivalent.
     Finally, the last condition is clearly necessary, since any functor \( \molecin{U} \cup \molecin{V} \to C \) defines in particular a \( (U \cp{k} V) \)\nbd matching family in \( C \).
     Conversely, we show it is sufficient.
@@ -204,7 +233,7 @@ the left adjoint of \( \iota \).
 \begin{proof}
     Let \( Q \) be a regular directed complex, and consider a \( Q \)\nbd matching family \( \set{\F_x \colon \molecin{\imel{Q}{x}} \to \molecin{P}} \) in \( \molecin{P} \).
     We want to show that the candidate amalgamation \( \F \colon \molecin{Q} \to \molecin{P} \) is well defined, but for each \( w \colon W \to Q \) in \( \F(w) \) is given by the canonical morphism \( \colim_{x \in W} \pcell{\F_{w(x)}} \to P \), which is independent of the chosen decomposition of \( w \).
-    This concludes the proof.
+    We conclude by Lemma \ref{lem:stricter_iff_local_wrt_pasting}.
 \end{proof}
 
 \noindent Therefore, the functor \( \molecin{-} \colon \rdcpx \to \Comp \) factors through the subcategory \( \somegaCat \).
@@ -221,7 +250,7 @@ the left adjoint of \( \iota \).
     Since \( \rc \) is left adjoint, we conclude by Proposition \ref{prop:regular_directed_complex_stricter}.
 \end{proof}
 
-\begin{cor} \label{cor:molecin_preserves_pushout_inclusions}
+\begin{cor} \label{cor:molecin_preserves_pushout_inclusions} \ccnote{is this juts a Corollary?}
     The functor \( \molecin{-} \colon \rdcpx \to \somegaCat \) preserves all pushouts of inclusions. 
 \end{cor}
 
@@ -231,58 +260,6 @@ the left adjoint of \( \iota \).
     More generally, if a generalised pasting \( U \gencp{k} V \) given by a span \( (i \colon U \cap V \incl U, j \colon U \cap V \incl V) \) is defined and such that \( \F \after \molecin{i} = \G \after \molecin{j} \), we write \( \F \gencp{k} \G \) for the strict functor determined by universal property of the pushout.
     If the generalised pasting is given by a pasting at a submolecules \( U \cpsub{\iota} V \) or \( V \subcp{\iota} V \), we write accordingly \( \F \cpsub{\iota} \G \) and \( \G \subcp{\iota} \F \).
 \end{dfn}
-
-\begin{dfn} [Stricter complex]
-    We say that a stricter \( \omega \)\nbd category is a \emph{stricter regular complex} if it is of the form \( \molecin{P} \) for some regular directed complex \( P \), and let \( \omegaReg \) the full subcategory of \( \somegaCat \) on stricter regular complexes, and \( \omegaMol \) its full subcategory on stricter regular complexes \( \molecin{U} \) where \( U \) is a molecule.
-\end{dfn}
-
-\begin{dfn}
-    Let \( X \colon \opp{\omegaMol} \to \Set \) be an \( S \)\nbd local presheaf.\ccnote{define local presheaf}
-    The \emph{stricter \( \omega \)\nbd category associated to \( X \)} is the composition structure 
-    \begin{equation*}
-        C \eqdef \coprod_{n \geq 0} X(\dglobe{n}),
-    \end{equation*}
-    whose boundary operators are induced by the strict functor
-    \begin{equation*}
-        \bd{k}{\a} \colon \molecin{\dglobe{k}} \to \molecin{\dglobe{n}}, 
-    \end{equation*}
-    and \( k \)\nbd composition operation is induced by the strict functor
-    \begin{equation*}
-        \molec{\dglobe{n}} \to \molecin{(\dglobe{n} \cp{k} \dglobe{n})}.
-    \end{equation*}
-\end{dfn}
-
-\begin{rmk}\label{rmk:local_presheaf_defines_stricter}
-    The composition structure \( C \) is indeed a stricter \( \omega \)\nbd category, by definition of the locality with respect to \( S \).
-    Furthermore, any natural transformation \( f \colon X \to Y \) between \( S \)\nbd local presheaves induces a strict functor between the associated stricter \( \omega \)\nbd categories.
-    This defines a functor
-    \begin{equation*}
-        [\opp{\omegaMol}, \Set] \to \somegaCat.
-    \end{equation*}
-\end{rmk}
-
-\begin{prop} \label{prop:stricter_cat_are_local_presheaves}
-    The category of \( S \)\nbd local presheaves over \( \omegaMol \) is equivalent to the category of stricter \( \omega \)\nbd categories.
-\end{prop}
-\begin{proof}
-    We construct an inverse up to natural isomorphism to the functor of Remark \ref{rmk:local_presheaf_defines_stricter}.
-    Let \( C \) be a stricter \( \omega \)\nbd category.
-    Then the presheaf defined by \(\molecin{U} \mapsto \somegaCat(\molecin{U}, C) \) is \( S \)\nbd local by definition. 
-    One checks directly that this functor is the desired inverse up to natural isomorphism.
-\end{proof}
-
-\begin{cor} \label{cor:diagrams_are_dense} 
-    Let \( C \) be a stricter \( \omega \)\nbd category.
-    Then the canonical strict functor
-    \begin{equation*}
-        \phi \colon \colim_{u \in \Dgm(C)} \molecin{U} \to C,
-    \end{equation*}
-    is an isomorphism.
-    That is, the category \( \omegaMol \) is dense in \( \somegaCat \).
-\end{cor}
-\begin{proof}
-    Follows from the density formula for presheaves and Proposition \ref{prop:stricter_cat_are_local_presheaves}.
-\end{proof}
 
 \begin{dfn} [Stricter \( n \)\nbd category]
     Let \( n \geq 0 \).
@@ -471,131 +448,209 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
     This concludes the proof.
 \end{proof}
 
-% \begin{dfn} [Polygraphic subdivision]
-%     The class of \emph{polygraphic subdivision} is the smallest class of strict functors of stricter polygraphs such that
-%     \begin{enumerate}
-%         \item all isomorphisms are polygraphic subdivisions,
-%         \item the composite of two polygraphic subdivisions is a polygraphic subdivision,
-%         \item for all polygraphic subdivisions \( \F \colon C \to D \), all subdivisions \( s \colon U \sd V \) between atoms \( U, V \), all commutative squares of the form
-%         \begin{center}
-%             \begin{tikzcd}[column sep=huge]
-%                 {\molecin{(\bd{}{}U)}} & {\molecin{(\bd{}{}V)}} \\
-%                 C & D
-%                 \arrow["{\molecin{(\restr s{\bd{}{}U})}}", from=1-1, to=1-2]
-%                 \arrow[from=1-1, to=2-1]
-%                 \arrow[from=1-2, to=2-2]
-%                 \arrow["\F"', from=2-1, to=2-2]
-%             \end{tikzcd}
-%         \end{center}
-%         the canonical strict functor \( \fun{F'} \colon C' \to D' \) induced by universal property
-%         \begin{center}
-%             \begin{tikzcd}[column sep=huge]
-%                 & {\molecin U} \\
-%                 {\molecin{(\bd{}{}U)}} & {C'} & {\molecin V} \\
-%                 C & {\molecin{(\bd{}{}V)}} & {D'} \\
-%                 & D
-%                 \arrow[dashed, from=1-2, to=2-2]
-%                 \arrow["{\molecin s}"{description}, from=1-2, to=2-3]
-%                 \arrow[from=2-1, to=1-2]
-%                 \arrow[from=2-1, to=3-1]
-%                 \arrow["{\molecin{(\restr{\bd{}{}U}s)}}"{description}, from=2-1, to=3-2]
-%                 \arrow["{\F'}"{description, pos=0.6}, dashed, from=2-2, to=3-3]
-%                 \arrow[from=2-3, to=3-3]
-%                 \arrow[dashed, from=3-1, to=2-2]
-%                 \arrow["\F"{description}, from=3-1, to=4-2]
-%                 \arrow[from=3-2, to=2-3]
-%                 \arrow[from=3-2, to=4-2]
-%                 \arrow[from=4-2, to=3-3]
-%             \end{tikzcd}
-%         \end{center}
-%         of the cellular extensions, is a polygraphic subdivision.
-%     \end{enumerate}
-% \end{dfn}
+\begin{dfn}
+    We let \( \omegaReg \) be the full subcategories of \( \somegaCat \) on stricter \( \omega \)\nbd categories of the form \( \molecin{P} \), for \( P \) a \emph{finite} regular directed complex.
+\end{dfn}
 
-% \begin{rmk} \label{rmk:pushout_polygraphic subdivision}
-%     By general properties and Lemma \ref{lem:pushout_principal_cell}, the square
-%     \begin{center}
-%         \begin{tikzcd}
-%             C & {C'} \\
-%             D & {D'}
-%             \arrow[from=1-1, to=1-2]
-%             \arrow["\F"', from=1-1, to=2-1]
-%             \arrow["{\F'}", from=1-2, to=2-2]
-%             \arrow[from=2-1, to=2-2]
-%         \end{tikzcd}
-%     \end{center}
-%     is a pushout square
-% \end{rmk}
+\begin{comm}
+    The finiteness condition is only here to ensure that \( \omegaReg \) is a small category. 
+\end{comm}
 
-% \begin{lem} \label{lem:subdivision_regular_directed_complex_are_polygraphic}
-%     Let \( s \colon P \sd Q \) be a subdivision of regular directed complexes.
-%     Then \( \molecin{s} \colon \molecin{P} \to \molecin{Q} \) is a polygraphic subdivision.
-% \end{lem}
-% \begin{proof}
-%     First of all, by Lemma \ref{lem:stricter_regular_complex_are_stricter_polygraph}, \( \molecin{s} \) is a strict functor of stricter polygraphs.
-%     For each \( x \in P \)
-% \end{proof}
+\noindent We conclude this section by describing \( \somegaCat \) as a subcategory of the category of presheaves over \( \omegaReg \).
+
+\begin{dfn} [Rewrite and pasting condition]
+    Let \( X \colon \opp{\omegaReg} \to \Set \) be a presheaf. 
+    We say that \( X \) satisfies \emph{the rewrite condition} if for all atoms \( U \) of dimension \( n \), letting \( s \colon \dglobe{n} \sd U \) be the unique subdivision, \( X \) sends the square
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{(\bd{}{}\dglobe{n})}} & {\molecin{\dglobe{n}}} \\
+            {\molecin{(\bd{}{}U)}} & {\molecin{U}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow["{{\molecin{(\restr{s}{\bd{}{}\dglobe{n}})}}}"', from=1-1, to=2-1]
+            \arrow["{{\molecin{s}}}", from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    to a pullback square.
+    We say that \( X \) satisfies \emph{pasting condition} if for all finite regular directed complex \( P \), \( X \) sends the cone 
+    \begin{equation*}
+        \set{\molecin{\imel{P}{x}} \to \molecin{P}}_{x \in P}
+    \end{equation*}
+    over \( \molecin{P} \) to a limit cone.
+    We let \( \omegaRegSet \) be the full subcategory of \( [\opp{\omegaReg}, \Set] \) on presheaves satisfying the rewrite and pasting conditions.
+\end{dfn}
+
+\begin{rmk}
+    Let \( X \colon \opp{\omegaReg} \to \Set \) be a presheaf, and \( P \) a finite regular directed complex. 
+    Then we may still call a cone \( \set{t_x \colon \molecin{\imel{P}{x}} \to X}_{x \in P} \) a \( P \)\nbd matching family in \( X \), and an extension along \( s_P \) an amalgamation.
+    Then \( X \) satisfies the pasting condition if for all regular directed complexes \( P \), all \( P \)\nbd matching families in \( X \) have a unique amalgamation.
+\end{rmk}
+
+\begin{dfn}
+    Let \( X \colon \opp{\omegaReg} \to \Set \) be a presheaf, \( U \) be a molecule of dimension \( n \geq 0 \), and \( t \colon \molecin{U} \to X \) a natural transformation.
+    Then there exists a unique strict functor \( \F \colon \molecin{\dglobe{n}} \to \molecin{U} \) classifying \( \idd{U} \).
+    The \emph{principal cell of \( t \)} is the natural transformation \( \pcell{t} \eqdef t \after \F \colon \molecin{\dglobe{n}} \to X \).
+\end{dfn}
+
+\begin{dfn}
+    Let \( X \colon \opp{\omegaMol} \to \Set \) be a presheaf satisfying the rewrite and pasting conditions.
+    The \emph{composition structure associated to \( X \)} is the composition structure 
+    \begin{equation*}
+        C \eqdef \coprod_{n \geq 0} X(\dglobe{n}),
+    \end{equation*}
+    whose boundary operators are induced by the strict functor
+    \begin{equation*}
+        \bd{k}{\a} \colon \molecin{\dglobe{k}} \to \molecin{\dglobe{n}}, 
+    \end{equation*}
+    and \( k \)\nbd composition operation is induced by the strict functor
+    \begin{equation*}
+        \molecin{\dglobe{n}} \to \molecin{(\dglobe{n} \cp{k} \dglobe{n})},
+    \end{equation*}
+    classifying \( \idd{(\dglobe{n} \cp{k} \dglobe{n})} \).
+    This extends to a functor 
+    \begin{equation*}
+        \phi \colon \omegaRegSet \to \Comp.
+    \end{equation*}
+\end{dfn}
+
+\begin{lem} \label{lem:stricter_hom_set_iso_presheaf}
+    Let \( X \colon \opp{\omegaMol} \to \Set \) be a presheaf satisfying the rewrite and pasting conditions, and \( U \) be a molecule.
+    Then there is a bijection
+    \begin{equation*}
+        X(\molecin{U}) \cong \Comp(\molecin{U}, \phi(X)),
+    \end{equation*}
+    natural in \( X \) and \( U \).
+\end{lem}
+\begin{proof}
+    Let \( t \in X(\molecin{U}) \), which by the Yoneda Lemma, is a natural transformation \( t \colon \molecin{U} \to X \).
+    We define \( \F \colon \molecin{U} \to \phi(X) \) by sending \( w \colon W \to U \) to \( \pcell{t \after \molecin{w}} \), which is, by definition of \( \phi(X) \), a strict functor of compositions structures.
+    Conversely, let \( \F \colon \molecin{U} \to \phi(X) \) be a strict functor, and let \( \set{\F_x}_{x \in U} \) be the matching family it is the amalgamation of.
+    We construct by induction on the submolecules \( V \) of \( U \) matching families \( \set{t_x \colon \molecin{\imel{U}{x}} \to X}_{x \in V} \) such that \( \pcell{t_x} = \pcell{\F_x} \).    
+    Let \( V \submol U \) be a submolecule inclusion with \( \dim V = 0 \).
+    Then \( V = \clset{x} \) for some \( x \in \gr{0}{U} \), and we let \( t_x \colon \molecin{\pt} \to X \) classifying \( \pcell{\F_x} \in X(\globe{0}) \).
+    Suppose inductively that the statement holds of all proper submolecules of \( U \).
+    Consider first the case where \( U \) is an atom with greatest element \( \top \), of dimension \( n \), and let \( s \colon \dglobe{n} \sd U \) be the unique subdivision.
+    Then we have a commutative diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{(\bd{}{}\dglobe{n})}} & {\molecin{\dglobe{n}}} \\
+            {\molecin{(\bd{}{}U)}} & X
+            \arrow[from=1-1, to=1-2]
+            \arrow["{{\molecin{(\restr{s}{\bd{}{}\dglobe{n}})}}}"', from=1-1, to=2-1]
+            \arrow["{\pcell{\F_{\top}}}", from=1-2, to=2-2]
+            \arrow["{t_{\bd{}{} V}}"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    where \( t_{\bd{}{} V} \) is the amalgamation of \( \set{t_x \colon \molecin{\imel{U}{x}} \to X}_{x \in \bd{}{} U} \).
+    Since \( X \) satisfies the rewrite condition, this data defines a unique natural transformation \( t_\top \colon \molecin{U} \to X \) such that \( t_\top \after \molecin{s} = \pcell{\F_\top} \).
+    Now suppose that \( U \) is not an atom. 
+    Then for all \( x \in U \), \( \imel{U}{x} \) is a proper submolecule of \( U \), hence \( \set{t_x \colon \molecin{\imel{U}{x}} \to X}_{x \in U} \) is already \( U \)\nbd matching family.
+    This concludes the construction of the matching family.
+    Since \( X \) satisfies the pasting condition, the matching family admits an amalgamation \( t \colon \molecin{U} \to X \), defining the desired element of \( X(\molecin{U}) \)
+    It is straightforwards to check naturality and that those two transformations are inverse of each other.
+\end{proof}
+
+\begin{prop} \label{prop:stricter_cat_are_local_presheaves}
+    The categories \( \omegaRegSet \) and \( \somegaCat \) are equivalent, realised by the functors \( X \mapsto \phi(X) \) and \( C \mapsto \somegaCat(\molecin{-}, C) \). 
+\end{prop}
+\begin{proof}
+    For all presheaf \( X \) in \( \omegaRegSet \), we claim that \( \phi(X) \) is a stricter \( \omega \)\nbd category.
+    Indeed, a \( U \)\nbd matching family \( \set{\F_x \colon \molecin{\imel{U}{x}} \to \phi(X)}_{x \in U} \) defines by Lemma \ref{lem:stricter_hom_set_iso_presheaf} a matching family \( \set{t_x \colon \molecin{\imel{U}{x}} \to X} \) which has an amalgamation \( t \colon \molecin{U} \to X \), which, by Lemma \ref{lem:stricter_hom_set_iso_presheaf} again, defines a strict functor \( \F \colon \molecin{U} \to \phi(X) \), which is the amalgamation of \( \set{\F_x}_{x \in U} \). 
+    Thus \( X \mapsto \phi(X) \) defines a functor \( \omegaRegSet \to \somegaCat \).
+    We construct an inverse up to natural isomorphism to \( \phi \).
+    Let \( C \) be a stricter \( \omega \)\nbd category.
+    Then the presheaf defined by \(\molecin{U} \mapsto \somegaCat(\molecin{U}, C) \) is \( S \)\nbd local by definition, and satisfy the rewrite condition by Lemma \ref{lem:pushout_principal_cell}.
+    This defines a functor \( \psi \colon \somegaCat \to \omegaRegSet \).
+    One sees directly that \( \phi \after \psi \) is isomorphic to the identity on \( \somegaCat \). 
+    By Lemma \ref{lem:stricter_hom_set_iso_presheaf}, it is also the case of \( \psi \after \phi \).
+    This concludes the proof.
+\end{proof}
+
+\begin{cor} \label{cor:diagrams_are_dense} 
+    Let \( C \) be a stricter \( \omega \)\nbd category.
+    Then the canonical strict functor
+    \begin{equation*}
+        \phi \colon \colim_{u \in \Dgm(C)} \molecin{U} \to C,
+    \end{equation*}
+    is an isomorphism.
+    That is, the category \( \omegaMol \) is dense in \( \somegaCat \).
+\end{cor}
+\begin{proof}
+    Follows from the density formula for presheaves and Proposition \ref{prop:stricter_cat_are_local_presheaves}.
+\end{proof}
 
 \subsection{Gray product of stricter \texorpdfstring{$\omega$}{ω}-categories}
 
-Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(P \gray Q)} \) of the stricter regular complex \( \molecin{P \gray Q} \) is given exactly by the morphisms \( u \gray v \) for \( u \in \atomin{P} \) and \( v \in \atomin{Q} \).  
+Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(P \gray Q)} \) of \( \molecin{P \gray Q} \) is given exactly by the morphisms \( u \gray v \) for \( u \in \atomin{P} \) and \( v \in \atomin{Q} \).  
 
-\begin{dfn} [Gray product stricter complexes] \label{dfn:gray_product_of_stricter_regular_complexes}
-    Let \( P, Q \) be regular directed complexes.
-    The \emph{Gray product} of \( \molecin{P} \) and \( \molecin{Q} \) is the stricter regular complex
+\begin{dfn} [Gray product in \( \omegaReg \)] \label{dfn:gray_product_of_stricter_regular_complexes}
+    Let \( P, Q \) be finite regular directed complexes.
+    The \emph{Gray product} of \( \molecin{P} \) and \( \molecin{Q} \) is the stricter \( \omega \)\nbd category
     \begin{equation*}
         \molecin{P} \gray \molecin{Q} \eqdef \molecin{(P \gray Q)}.
     \end{equation*}
     If \( \F \colon \molecin{P} \to \molecin{P'} \) and \( \G \colon \molecin{Q} \to \molecin{P'} \) are two strict functors, we let 
     \begin{equation*}
-        \F \gray \G \colon \molecin{P} \gray \molecin{Q} \to  \molecin{P'} \gray \molecin{Q'}
+        \F \gray \G \colon \atomin{P} \times \atomin{Q} \to  \molecin{P'} \gray \molecin{Q'}
     \end{equation*}
-    by sending a basis element \( u \gray v \) to \( \F(u) \gray \G(v) \).
+    defined by sending a pair \( (u, v) \) to \( \F(u) \gray \G(v) \).
 \end{dfn}
 
 \begin{prop} \label{prop:gray_stricter_regular_complex_monoidal}
     The Gray product determines a monoidal structure on the category \( \omegaReg \), whose monoidal unit is the terminal stricter \( \omega \)\nbd category \( \globe{0} \).
 \end{prop}
 \begin{proof}
-    Let \( \F \colon \molecin{P} \to \molecin{P'} \) and \( \G \colon \molecin{Q} \to \molecin{Q'} \) be two strict functors, and \( w \colon W \to P \gray Q \) be a morphism.
-    We show that \( \fun{H} \eqdef (\F \gray \G) \after \molecin{w} \) is well defined by induction on \( \dim w \), then on the subdiagrams \( w' \) of \( w \).
-    The base cases where \( \dim w = 0 \) and \( w' \) is a point are clear.
-    Suppose inductively that \( \dim w > 0 \) and that \( (\F \gray \G) \after \molecin{w'} \) is well defined for all proper subdiagrams \( w' \) of \( w \).
-    Consider first the case where that \( W \) is an atom.
-    Then by definition, \( \pcell{\F \gray \G} = \pcell{\F} \gray \pcell{\G} \).
-    Then, for \( k \geq 0 \) and \( \a \in \set{-, +} \), we have
+    Let \( \F \colon \molecin{P} \to \molecin{P'} \) and \( \G \colon \molecin{Q} \to \molecin{Q'} \) be two strict functors, given by matching families \( \set{\F_x}_{x \in P} \) and \( \set{\G_y}_{y \in Q} \) respectively.
+    We show by induction on \( n \) that the data of \( \set{\pcell{\F_x} \gray \pcell{\G_y}}_{\dim (x, y) \le n} \) determines, as per Remark \ref{rmk:data_matching family}, a \( (\gr{\le n}{(P \gray Q)}) \)\nbd matching family in \( P' \gray Q' \).
+    When \( n = 0 \), the statement is clear. 
+    Inductively, let \( n > 0 \) and let \( (x, y) \in P \gray Q \) of dimension \( n \). 
+    Then for \( 0 \le k < n \) and \( \a \in \set{-, +} \), we have
     \begin{align*}
-        \bd{k}{\a} \pcell{\F \gray \G} &= \bd{k}{\a} (\pcell{\F} \gray \pcell{\G}) \\
-                                       &= \bigcup_{i = 1}^k \pcell{\bd{i}{\a} \F} \gray \pcell{\bd{k - i}{(-)^i\a} \G} \\
-                                       &= \pcell{\bigcup_{i = 1}^k \bd{i}{\a} \F \gray \bd{k - i}{(-)^i\a \G}} \\
-                                       &= \pcell{\bd{k}{\a} (\F \gray \G)},
+        \bd{k}{\a} (\pcell{\F_x} \gray \pcell{\G_y}) &= \bigcup_{i = 1}^k \bd{i}{\a} \pcell{\F_x} \gray \bd{k - i}{(-)^i\a} \pcell{\G_y} \\
+                                       &= \bigcup_{i = 1}^k \pcell{\bd{i}{\a} \F_x} \gray \pcell{\bd{k - i}{(-)^i\a} \G_y} \\
+                                       &= \pcell{\bigcup_{i = 1}^k \bd{i}{\a} \F_x \gray \bd{k - i}{(-)^i\a} \G_y} \\
+                                       &= \pcell{\bd{k}{\a} (\F_x \gray \G_y)},
     \end{align*}
-    where we used the inductive hypothesis in the case \( k < \dim W \).
-    Then, consider an element \( u \in \molecin{W} \) which is not the principal cell. 
-    Necessarily \( \dim u < \dim w \), thus
-    \begin{align*}
-        \bd{k}{\a} \fun{H}(u) &= \bd{k}{\a} \pcell{(\F \gray \G) \after \molecin{(w \after u)}} \\
-                                                         &= \pcell{\bd{k}{\a} ((\F \gray \G) \after \molecin{(w \after u)})} \\
-                                                         &= \fun{H}(\bd{k}{\a} u).
-    \end{align*}
-    This shows that \( (\F \gray \G) \after w \) is a morphism of the underlying reflexive globular graph. 
-    Now let \( u, u' \in \molecin{W} \) and \( 0 \le k \le \dim u, \dim u' \) such that \( u \cp{k} u' \) is defined.
-    Since \( \atomin{W} \) is a basis for \( \molecin{W} \), we get that \( \dim (u \cp{k} u') < n \), and thus by inductive hypothesis, 
-    \( (\F \gray \G)  \after \molecin{w \after (u \cp{k} u')} \) is well defined.
-    Then,
-    \begin{align*}
-        ((\F \gray \G)  \after \molecin{w})(u \cp{k} u') &= \pcell{\fun{H} \after \molecin{(u \cp{k} u')}} \\
-                                                         &= \pcell{\fun{H} \after \molecin{u}} \cp{k} \pcell{\fun{H} \after \molecin{u'}} \\
-                                                         &= \fun{H}(u) \cp{k} \fun{H}(u').
-    \end{align*}
-    This shows that \( \fun{H} \) is a strict functor.
-    Finally, suppose \( w \) is not an atom.
-    Given \( x \in W \), we have \( (a, b) \in P \gray Q \) such that \( w(x) = (a, b) \).
-    By inductive hypothesis on the subdiagrams, 
-    \begin{equation*}
-        \fun{H}_x \eqdef (\F \after \molecin{\mapel{a}}) \gray (\G \after \molecin{\mapel{b}}) \colon \molecin{(\imel{P}{a} \gray \imel{Q}{b})} \to \molecin{(P' \gray Q')}
-    \end{equation*}
-    is a strict functor, and the collection \( \set{\fun{H}_x}_{x \in W} \) is a \( W \)\nbd matching family in \( \molecin{(P' \gray Q')} \), whose amalgamation is \( \fun{H} \), which is therefore a well defined strict functor.
+    \cccom{TODO still unclear}
+
+    % Let \( \F \colon \molecin{P} \to \molecin{P'} \) and \( \G \colon \molecin{Q} \to \molecin{Q'} \) be two strict functors, and \( w \colon W \to P \gray Q \) be a morphism.
+    % We show that \( \fun{H} \eqdef (\F \gray \G) \after \molecin{w} \) is well defined by induction the subdiagrams \( W' \) of \( W \).
+    % The base cases where \( W' \) is a point are clear.
+    % Suppose inductively that \( (\F \gray \G) \after \molecin{w \after \iota} \) is well defined for all proper subdiagrams \( \iota \colon W' \submol W \) of \( W \).
+    % Consider first the case where that \( W \) is an atom.
+    % Then we have morphism \( u \colon U \to P \) and \( v \colon V \to Q \) such that \( w = u \gray v \).
+    % We define \( \F_u \) and \( \G_v \) by precomposing \( \F \) and \( \G \) by \( \molecin{u} \) and \( \molecin{v} \) respectively.
+    % Then \( \fun{H} = \F_u \gray \G_v \) and by definition, \( \pcell{\fun{H}} = \pcell{\F_u} \gray \pcell{\G_v} \).
+    % For \( k \geq 0 \) and \( \a \in \set{-, +} \), we have
+    % \begin{align*}
+    %     \bd{k}{\a} \pcell{\fun{H}} &= \bd{k}{\a} (\pcell{\F_u} \gray \pcell{\G_v}) \\
+    %                                    &= \bigcup_{i = 1}^k \pcell{\bd{i}{\a} \F_u} \gray \pcell{\bd{k - i}{(-)^i\a} \G_v} \\
+    %                                    &= \pcell{\bigcup_{i = 1}^k \bd{i}{\a} \F_u \gray \bd{k - i}{(-)^i\a} \G_v} \\
+    %                                    &= \pcell{\bd{k}{\a} (\F_u \gray \G_v)},
+    % \end{align*}
+    % where we used the inductive hypothesis in the case \( k < \dim W \).
+    % Since by inductive hypothesis, \( \bd{k}{\a} \fun{H}(w') = \fun{H}(\bd{k}{\a} w') \) for all morphisms \( w' \colon W' \to W \) which is not the principal cell, we deduce that \( \fun{H} \) is a morphism of the underlying reflexive globular graph.
+    % Then, \( \set{\fun{H}_x \colon \molecin{\imel{W}{x}} \to } \)
+
+    % Since all
+    % By inductive hypothesis, this is enough to conclude that \( \fun{H} \) is a strict functor.
+    % Now let \( u, u' \in \molecin{W} \) and \( 0 \le k < \min{\dim u, \dim u'} \) such that \( u \cp{k} u' \) is defined.
+    % Since \( \atomin{W} \) is a basis for \( \molecin{W} \), we get that \( \dim (u \cp{k} u') < n \), and thus by inductive hypothesis, 
+    % \( (\F \gray \G)  \after \molecin{w \after (u \cp{k} u')} \) is well defined.
+    % Then,
+    % \begin{align*}
+    %     ((\F \gray \G)  \after \molecin{w})(u \cp{k} u') &= \pcell{\fun{H} \after \molecin{(u \cp{k} u')}} \\
+    %                                                      &= \pcell{\fun{H} \after \molecin{u}} \cp{k} \pcell{\fun{H} \after \molecin{u'}} \\
+    %                                                      &= \fun{H}(u) \cp{k} \fun{H}(u').
+    % \end{align*}
+    % This shows that \( \fun{H} \) is a strict functor.
+    % Finally, suppose \( w \) is not an atom.
+    % Given \( x \in W \), we have \( (a, b) \in P \gray Q \) such that \( w(x) = (a, b) \).
+    % By inductive hypothesis on the subdiagrams, 
+    % \begin{equation*}
+    %     \fun{H}_x \eqdef (\F \after \molecin{\mapel{a}}) \gray (\G \after \molecin{\mapel{b}}) \colon \molecin{(\imel{P}{a} \gray \imel{Q}{b})} \to \molecin{(P' \gray Q')}
+    % \end{equation*}
+    % is a strict functor, and the collection \( \set{\fun{H}_x}_{x \in W} \) is a \( W \)\nbd matching family in \( \molecin{(P' \gray Q')} \), whose amalgamation is \( \fun{H} \), which is therefore a well defined strict functor.
     This shows that \( \F \gray \G \) is a strict functor.
     Since for all regular directed complexes \( P \), \( \pt \gray P = P = P \gray \pt \), we deduce that the monoidal unit is \( \molecin{\pt} = \globe{0} \).
     Functoriality of \( - \gray - \) is straightforwards.
@@ -615,7 +670,7 @@ Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(
 
 \begin{dfn} 
     Let \( P \) be a regular directed complex and \( C \) be a stricter \( \omega \)\nbd category.
-    By \cite[Lemma 7.2.8]{hadzihasanovic2024combinatorics}, the presheaf on \( \omegaMol \) given by
+    By \cite[Lemma 7.2.8]{hadzihasanovic2024combinatorics}, the presheaf on \( \omegaReg \) given by
     \begin{equation*}
         \molecin{U} \mapsto \somegaCat(\molecin{(P \gray U)}, C) 
     \end{equation*}
@@ -654,7 +709,7 @@ Applying \cite[Th\'eor\`eme 5.3]{ara2020joint} together with the previous result
     \end{equation*}
     This determines a biclosed monoidal structure whose monoidal unit is the terminal stricter \( \omega \)\nbd category \( \globe{0} \) and such that the inclusion
     \begin{equation*}
-        \omegaMol \to \somegaCat
+        \omegaReg \to \somegaCat
     \end{equation*}
     is strong monoidal.
 \end{dfn}
@@ -667,11 +722,7 @@ Applying \cite[Th\'eor\`eme 5.3]{ara2020joint} together with the previous result
                                       &\cong \colim_{(x, y) \in P \gray Q} \molecin{(\imel{P}{x} \gray \imel{Q}{y})} \\
                                       &= \molecin{(P \gray Q)}.
     \end{align*}
-    Thus the notation is consistent with Definition \ref{dfn:gray_product_of_stricter_regular_complexes}, so that the inclusion
-    \begin{equation*}
-        \omegaReg \incl \somegaCat
-    \end{equation*}
-    is also strong monoidal.
+    Thus Definition \ref{dfn:gray_product_of_stricter_regular_complexes} can be extended to all regular directed complexes \( P, Q \).
 \end{rmk}
 
 \subsection{Strict and stricter categories}
@@ -791,8 +842,7 @@ Now recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd ca
     \begin{equation*}
         \set{\F_x \colon \molecin{\imel{U}{x}} \to \C(a, b)}_{x \in U}
     \end{equation*}
-    determines a \( \sus{U} \)\nbd matching family 
-    by letting \( \F_{\sus{x}} \eqdef \F_x \) for \( x \in U \), and \( \F_{\bot^-}, \F_{\bot^+} \) be the strict functors from \( \molecin{\pt} \) classifying \( a \) and \( b \) respectively. 
+    determines a \( \sus{U} \)\nbd matching family in \( C \) by letting \( \F_{\sus{x}} \eqdef \F_x \) for \( x \in U \), and \( \F_{\bot^-}, \F_{\bot^+} \) be the strict functors from \( \molecin{\pt} \) classifying \( a \) and \( b \) respectively. 
     This matching family has an amalgamation \( \sus{\F} \colon \molecin{\sus{U}} \to C \), showing that the amalgamation of \( \set{\F_x}_{x \in U} \) is well defined.
 \end{proof}
 
@@ -1061,7 +1111,7 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
 \end{proof}
 
 \begin{lem} \label{lem:has_two_point_is_susp}
-    Let \( U \) be a molecule such that \( \gr{0}{U} = \bd{0}{} U \).
+    Let \( U \) be a molecule such that \( \gr{0}{U} = \bd{0}{-} U \coprod \bd{0}{+} U \).
     Then \( U = \sus{U'} \) for some molecule \( U' \).
 \end{lem}
 \begin{proof}
@@ -1070,19 +1120,20 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     Suppose inductively that the statement is true of all submolecules of \( U \)
     Suppose first that \( U \) is an atom.
     We distinguish two cases.
-    Either \( U = \dglobe{1} \), in which case it is \( \sus{\pt} \), or \( U = V \cell W \) with \( \dim V = \dim W \geq 1 \).
+    Either \( U = \dglobe{1} \), in which case it is \( \sus{\pt} \), or \( U = V \celto W \) with \( \dim V = \dim W \geq 1 \).
     Then, 
-    \begin{equation*} \label{eq:grade_boundary_zero}
-         \bd{0}{} V \subseteq \gr{0}{V} \subseteq \gr{0}{U} = \bd{0}{} U = \bd{0}{} V,
-    \end{equation*}
-    thus \( \gr{0}{V} = \bd{0}{} V \).
-    Similarly, \( \gr{0}{W} = \bd{0}{} W \).
+    \begin{align} 
+         \bd{0}{} V \subseteq \gr{0}{V} \subseteq \gr{0}{U} &= \bd{0}{} U = \bd{0}{} V, \text{ and} \nonumber\\
+         \bd{0}{-} V \cap \bd{0}{+} V &= \emptyset \label{aln:grade_boundary_zero}
+    \end{align}
+    % and \(  \). 
+    Thus \( \gr{0}{V} = \bd{0}{-} V \coprod \bd{0}{+} V\).
+    Similarly, \( \gr{0}{W} = \bd{0}{-} W \coprod \bd{0}{+} W \).
     By inductive hypothesis on the submolecules, \( V = \sus{V'} \) and \( W = \sus{W'} \) for some molecules \( V' \) and \( W' \).
-    By \cite[Proposition 7.3.16]{hadzihasanovic2024combinatorics}, \( U = \sus{(V' \cell W')} \).
+    By \cite[Proposition 7.3.16]{hadzihasanovic2024combinatorics}, \( U = \sus{(V' \celto W')} \).
     Suppose next that \( U \) splits into \( V \cp{k} W \) with \( \dim V, \dim W > k \).
-    If \( k = 0 \), then \( \bd{0}{-} V \cup \bd{0}{+} V \cup \bd{0}{+} W \subseteq \gr{0}{U} \).
-    By hypothesis on the dimension of \( V \) and \( W \), \( \bd{0}{-} V \cup \bd{0}{+} V \cup \bd{0}{+} W \) has exactly three elements, contradicting the assumption.
-    Thus \( k > 0 \) and (\ref{eq:grade_boundary_zero}) also holds.
+    If \( k = 0 \), then \( \bd{0}{+} V \subseteq \gr{0}{U} \), but \( \bd{0}{+} V \cap (\bd{-}{0} U \coprod \bd{+}{0} U) \) is empty, contradicting the assumption.
+    Thus \( k > 0 \) and (\ref{aln:grade_boundary_zero}) also holds of \( V \) and \( W \).
     We deduce by inductive hypothesis that \( V = \sus{V'} \) and \( W = \sus{W'} \).
     By \cite[Proposition 7.3.16]{hadzihasanovic2020diagrammatic} again, \( U = \sus{(V' \cp{k - 1} W')} \).
     This concludes the proof.
@@ -1135,14 +1186,14 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     \end{equation*}
     where \( \molecin{\pt} \to \sus{C} \) classifies \( \bot^{-\beta} \).
     Now suppose that \( K^- \coprod K^+ \) forms a partition of \( U \).
-    Then Proposition \ref{prop:desuspension} applies, and we have in particular a molecule \( U' \) and a final map of molecules \( q \colon U \surj \sus{U'} \). 
+    Then Proposition \ref{prop:desuspension} applies, and we have in particular a molecule \( V \) and a final map of molecules \( q \colon U \surj \sus{V} \). 
     By \cite[Theorem 6.2.35]{hadzihasanovic2024combinatorics}, \( \molecin{q} \) is a strict functor.
     Then, one checks that the family of globular cells of \( C \)
     \begin{equation*}
-        \set{\pcell{\F_x} \mid q(x) = \sus{y}}_{y \in U'}
+        \set{\pcell{\F_x} \mid q(x) = \sus{y}}_{y \in V}
     \end{equation*} 
-    defines, as per Remark \ref{rmk:data_matching family}, a matching family \( \set{\G_y \colon \molecin{\imel{U'}{y}} \to C}_{y \in U'} \).
-    Because \( C \) is stricter, it admits a well defined amalgamation \( \G \colon \molecin{U'} \to C \).
+    defines, as per Remark \ref{rmk:data_matching family}, a \( V \)\nbd matching family \( \set{\G_y \colon \molecin{\imel{V}{y}} \to C}_{y \in V} \) in \( C \).
+    Since \( C \) is stricter, it admits a well defined amalgamation \( \G \colon \molecin{V} \to C \).
     Finally, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well defined, since it factors as \( \F = \sus{\G} \after \molecin{q} \).
     This concludes the proof.
 \end{proof}

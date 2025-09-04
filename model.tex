@@ -11,7 +11,7 @@
     \end{enumerate}
 \end{dfn}
 
-\begin{dfn} [Reversible globular cell]
+\begin{dfn} [Reversible globular cell] \ccnote{say identities are reversible}
     Let \( C \) be a composition structure, and \( e \colon x \gcelto y \) be a globular cell of dimension \( n > 0 \) in \( C \).
     We say that \( e \) is reversible if there exists a globular cell \( e^* \colon y \gcelto x \), as well as globular cells \( h \colon e \comp{n - 1} e^* \gcelto x \) and \( h' \colon e^* \comp{n - 1} e \gcelto y \) such that \( h \) and \( h' \) are reversible.
     In that case, \( e^* \) is called a \emph{weak inverse} of \( e \).
@@ -302,7 +302,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     This concludes the proof.
 \end{proof}
 
-\subsection{Quillen adjunction}
+\subsection{Right transfer from the diagrammatic model structures}
 
 \begin{lem} \label{lem:pushout_with_localisation}
     Let \( c \colon U \to V \) be a subdivision between atoms of dimension \( \geq 1 \)
@@ -466,17 +466,16 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 
 \begin{dfn} [Diagrammatic nerve]
     The \emph{diagrammatic nerve} is the right adjoint \( \N{} \) to the functor \( \molecin{-} \).
-    For \( n \in \mathbb{N} \), the \( n \)\nbd truncated diagrammatic nerve is the right adjoint \( \N{n} \) to the functor \( \trunc{n} \after \molecin{-} \).
 \end{dfn}
 
 
 \begin{thm} \label{thm:quillen_folk_dgm_infty}
-    The folk model structure on stricter \( \omega \)\nbd categories is right transferred along the diagrammatic nerve \( \N{} \colon \somegaCat \to \dgmSet \).
+    The folk model structure on stricter \( \omega \)\nbd categories is right transferred from the \( (\infty, \infty) \)\nbd model structure on \( \dgmSet \) along the diagrammatic nerve \( \N{} \colon \somegaCat \to \dgmSet \).
     In particular, the adjunction 
     \begin{equation*}
         \molecin{-} \colon \dgmSet \leftrightarrows \somegaCat \cocolon \N{}
     \end{equation*}
-    is a Quillen adjunction between the \( (\infty, \infty) \)\nbd model structure on diagrammatic sets and the folk model structure on stricter \( \omega \)\nbd categories
+    is a Quillen adjunction.
 \end{thm}
 \begin{proof}
     Recall from Theorem \ref{thm:n_model_structure_on_dgm_set} that \( I \eqdef \set{\bd{}{} U \incl U \mid U \text{ atom}} \) is a generating set of cofibrations for the \( (\infty, \infty) \)\nbd model structure on diagrammatic sets, while \( \Jcomp \) is a pseudo-generating set of acyclic cofibration. 
@@ -492,28 +491,34 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     This concludes the proof.
 \end{proof}
 
-\begin{cor}\label{cor:quillen_folk_dgm_n}\cccom{maybe: do uniform n, repalce infty by omega in dgm}
+\begin{dfn} [\( n \)\nbd truncated diagrammatic nerve]
+    For \( n \in \mathbb{N} \), the \( n \)\nbd truncated diagrammatic nerve is the right adjoint \( \N{n} \) to the functor \( \trunc{n} \after \molecin{-} \).
+\end{dfn}
+
+\begin{rmk}
+    For all stricter \( n \)\nbd categories, \( \N{n} C \) is equal to \( \N{} C \), where in the latter expression, the stricter \( n \)\nbd category \( C \) is seen as a stricter \( \omega \)\nbd category.
+\end{rmk}
+
+\begin{cor}\label{cor:quillen_folk_dgm_n}
     Let \( n \in \mathbb{N} \).
-    Then the folk model structure on stricter \( n \)\nbd categories is right transferred along the \( n \)\nbd truncated diagrammatic nerve \( \N{n} \colon \snCat{n} \to \dgmSet \).
+    Then the folk model structure on stricter \( n \)\nbd categories is right transferred from the \( (\infty, n) \)\nbd model structure on \( \dgmSet \) along the \( n \)\nbd truncated diagrammatic nerve \( \N{n} \colon \snCat{n} \to \dgmSet \).
     In particular, the adjunction 
     \begin{equation*}
         \molecin{-} \colon \dgmSet \leftrightarrows \snCat{n} \cocolon \N{n}
     \end{equation*}
-    is a Quillen adjunction between the \( (\infty, n) \)\nbd model structure on diagrammatic sets and the folk model structure on stricter \( n \)\nbd categories
+    is a Quillen adjunction.
 \end{cor}
 \begin{proof}
     A look at the generating cofibrations and acyclic cofibration of Theorem \ref{thm:folk_model_structure_on_stricter_n} indicates that the folk model structure on stricter \( n \)\nbd categories is right transferred along the right adjoint inclusion \( \snCat{n} \incl \somegaCat \).  
     In particular, the functor \( \trunc{n} \colon \somegaCat \to \snCat{n} \) is left Quillen.
-    Let \( U \) be an atom of dimension \( > n \), and \( i \colon U \incl U \) be the canonical inclusion.
+    Let \( U \) be an atom of dimension \( k > n \), and \( i \colon U \incl \selfloc{U} \) be the canonical inclusion.
     A direct inspection and Corollary \ref{cor:molecin_polygraph_with_basis} show that \( \trunc{n}\molecin{i} \) is an isomorphism.
     Thus \( \trunc{n} \after \molecin{(\Jcomp \cup \Jn{n})} \) is a set of acyclic cofibrations.
     By \cite[E.2.14]{joyal2008theory}, \( \molecin{-} \) is left Quillen. 
     Since ``being right transferred'' is a compatible with composition of right Quillen functors, we conclude by Theorem \ref{thm:quillen_folk_dgm_infty}.
 \end{proof}
 
-\begin{thm} \label{thm:cofibrant_replacement_counit}
-    Let \( n \in \mathbb{N} \cup \set{\omega} \), and \( C \) be a stricter \( n \)\nbd category.
-\end{thm}
-\begin{proof}
-    \cccom{TODO}
-\end{proof}
+
+% \subsection{Coherent adjoint-equivalence}
+
+% \cccom{Maybe?}
