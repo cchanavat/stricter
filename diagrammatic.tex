@@ -2,8 +2,8 @@
 
 \subsection{Diagrams in a diagrammatic set}
 
-Recall that a diagrammatic set is a presheaf on the category \( \atom \).
-We let \( \dgmSet \) be the category of diagrammatic sets.
+Recall that a diagrammatic set is a presheaf over the category \( \atom \).
+We write \( \dgmSet \) for the category of diagrammatic sets.
 By \cite[Lemma 2.5]{chanavat2024htpy}, the Yoneda embedding \( \atom \incl \dgmSet \) factors as
 \begin{equation*}
     \atom \incl \rdcpx \incl \dgmSet,
@@ -19,8 +19,7 @@ and in the sequel, we always identify a regular directed complex with its associ
         \item a \emph{round diagram} if \( U \) is a \emph{round} molecule, and
         \item a \emph{cell} if \( U \) is an atom.
     \end{itemize}
-    We write \( \dim u \eqdef \dim U \).
-    We write respectively \( \Pd X \), \( \Rd X \) and \( \cell X \) the sets of pasting diagrams, round diagrams, and cells in \( X \).
+    We let \( \dim u \eqdef \dim U \), and call respectively \( \Pd X \), \( \Rd X \) and \( \cell X \) the sets of pasting diagrams, round diagrams, and cells in \( X \).
 \end{dfn}
 
 \begin{rmk}
@@ -43,7 +42,6 @@ and in the sequel, we always identify a regular directed complex with its associ
     Now let \( u \colon U \to X \) and \( v \colon V \to X \) be pasting diagrams, such that \( \bd{k}{+} u = \bd{k}{-} v \).
     We let \( u \cp{k} v \colon U \cp{k} V \to X \) be the unique pasting diagram determined by the universal property of the pushout \( U \cp{k} V \).
     This makes \( \Pd(X) \) a composition structure.
-    % More generally, for any generalised pasting at the \( k \)\nbd boundary \( U \gencp{k} V \), we write \( u \gencp{k} v \colon U \gencp{k} V \to X \) for the pasting diagram determined by the universal property of the pushout \( U \gencp{k} V \).
 \end{dfn}
 \noindent We often omit the index \( k \) when it is equal to \( \min \set{\dim u, \dim v} - 1 \), and omit \( \iota \) when it is irrelevant or evident from the context.
 
@@ -51,13 +49,27 @@ and in the sequel, we always identify a regular directed complex with its associ
     \( \Rd(X) \) is a sub-reflexive graph \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pasting of round diagrams are generally not round. 
 \end{rmk}
 
+\begin{lem} \label{lem:Pd_is_stricter}
+    Let \( X \) be a diagrammatic set.
+    Then the composition structure \( \Pd(X) \) is a stricter \( \omega \)\nbd category.
+\end{lem}
+\begin{proof}
+    Let \( P \) be a regular directed complex and consider a matching family \( \set{\F_x \colon \molecin{\imel{P}{x}} \to \Pd(X)}_{x \in P} \).
+    Then the candidate amalgamation sends \( w \colon W \to P \) to the canonical \( \colim_{x \in W} \imel{P}{w(x)} \to X \), which does not depend on the decomposition of \( w \).
+\end{proof}
+
+\noindent Since morphisms \( f \colon X \to Y \) of diagrammatic sets also induce strict functors \( \Pd(f) \colon \Pd(X) \to \Pd(Y) \), this defines a functor
+\begin{equation*}
+    \Pd \colon \dgmSet \to \somegaCat.
+\end{equation*}
+
 \begin{dfn} [Degenerate pasting diagram]
     Let \( u \colon U \to X \) be a diagram.
     We say that \( u \) is \emph{degenerate} if there exists a pair of a diagram \( v \colon V \to X \) and a surjective cartesian map of regular directed complexes \( p \colon U \to V \) such that \( v \after p = u \), and \( \dim v < \dim v \). 
     We let
     \begin{align*}
         \Dgn X &\eqdef \set{u \in \Pd X \mid u \text{ is degenerate}} & \dgn X \eqdef \Dgn X \cap \cell x,\\
-        \Nd X &\eqdef \set{u \in \Pd X \mid u \text{ is not degenerate}} & \nd X \eqdef \Nd X \cap \cell x.
+        \Nd X & \eqdef \set{u \in \Pd X \mid u \text{ is not degenerate}} & \nd X \eqdef \Nd X \cap \cell x.
     \end{align*}
 \end{dfn}
 
@@ -66,10 +78,8 @@ and in the sequel, we always identify a regular directed complex with its associ
     The \emph{reverse of \( u \)} is the diagram \( \rev{u} \eqdef v \after \dual{n}{p} \colon \dual{n}{U} \to X \).
 \end{dfn}
 
-\cccom{suggestion: for all the following maps, just give the type of the associated degenerate diagram, wihtout expliciting the combinatorial description of its representation}
-
 \begin{dfn}[Partial cylinder]
-    Given a graded poset \( P \) and a closed subset \( K \subseteq P \), the \emph{partial cylinder on \( P \) relative to \( K \)} is the graded poset \( I \times_K P \) obtained as the pushout
+    Given a graded poset \( P \) and a closed subset \( K \subseteq P \), the \emph{partial cylinder on \( P \) relative to \( K \)} is the graded poset \( \arr \times_K P \) obtained as the pushout
     \begin{center}
         \begin{tikzcd}
             {I \times K} & K \\
@@ -82,14 +92,14 @@ and in the sequel, we always identify a regular directed complex with its associ
         \end{tikzcd}  
     \end{center}
     in the category of posets.
-    This is equipped with a canonical projection map \( \tau_K \colon I \times_K P \surj P \).
+    This is equipped with a canonical projection map \( \tau_K \colon \arr \times_K P \surj P \).
 \end{dfn}
 
 \begin{dfn}[Partial Gray cylinder]
 	Let \( U \) be a regular directed complex and \( K \subseteq U \) a closed subset.
 	The \emph{partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \arr \gray_K U \) whose
     \begin{itemize}
-        \item underlying graded poset is \( I \times_K U \), and
+        \item underlying graded poset is \( \arr \times_K U \), and
         \item orientation is specified, for all \( \a \in \set{+, -} \), by
         \begin{align*}
             \faces{}{\a}(x) & \eqdef \set{(y) \mid y \in \faces{}{\a}x}, \\
@@ -104,11 +114,11 @@ and in the sequel, we always identify a regular directed complex with its associ
     \end{itemize}
 \end{dfn}
 
-\begin{dfn}[Inverted partial Gray cylinder] \ccnote{would be nice if I don't need this}
+\begin{dfn}[Inverted partial Gray cylinder]
 	Let \( U \) be a molecule, \( n \eqdef \dim U \), and \( K \subseteq \bd{}{+}U \) a closed subset.
 	The \emph{left-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \lcyl{K} U \) whose
     \begin{itemize}
-        \item underlying graded poset is \( I \times_K U \), and
+        \item underlying graded poset is \( \arr \times_K U \), and
         \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
     \begin{align*}
         \faces{}{-}(1, x) &\eqdef \set{(0^-, x), (0^+, x)} + \set{(1, y) \mid y \in \faces{}{+}x \setminus K}, \\
@@ -119,7 +129,7 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{itemize}
 	Dually, if \( K \subseteq \bd{}{-}U \), the \emph{right-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \rcyl{K}{U} \) whose
     \begin{itemize}
-        \item underlying graded poset is \( I \times_K U \), and
+        \item underlying graded poset is \( \arr \times_K U \), and
         \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
         \begin{align*}
             \faces{}{-}(1, x) &\eqdef \set{(1, y) \mid y \in \faces{}{+}x}, \\
@@ -150,42 +160,74 @@ and in the sequel, we always identify a regular directed complex with its associ
 	These are equipped with cartesian maps \( \tau_s \colon \hcyl{s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_s \) is a cartesian map of molecules.
 \end{dfn}
 
-\begin{lem} \label{lem:subdivision_of_invertors}
-    \cccom{TODO}
-    % Let \( c \colon U \sd V \) be a subdivision of round molecules, and \( s \in \set{L, R}^* \).
-    % Then there exists a subdivision \( \hcyl{s} c \colon \hcyl{s} U \sd \hcyl{s} V \) fitting in the commutative square 
-    % \begin{center}
-    %     \begin{tikzcd}
-    %         {\hcyl{s}U} & {\hcyl{s}V} \\
-    %         U & V
-    %         \arrow["{\hcyl{s}c}", from=1-1, to=1-2]
-    %         \arrow["{\tau_s}"', two heads, from=1-1, to=2-1]
-    %         \arrow["{\tau_s}", two heads, from=1-2, to=2-2]
-    %         \arrow["c"', from=2-1, to=2-2]
-    %     \end{tikzcd}
-    % \end{center}
+\begin{lem} \label{lem:subdivision_of_unitors}
+    Let \( s \colon U \sd V \) be a subdivision of molecules with formal dual \( c \colon V \to U \), and \( K \subseteq U \) be a subset of \( U \).
+    Then the formal dual \( \arr \gray_K s \colon \arr \gray_K U \sd \arr \gray_{s(K)} V \) of the map \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \) is a subdivision of partial Gray cylinders.
 \end{lem}
 \begin{proof}
-\cccom{TODO}
+    Let \( x \in \arr \gray_K U \).
+    Let \( V_x \eqdef s(\imel{U}{x}) \), \( K_x \eqdef \imel{U}{x} \cap K \), and \( c_x \) the restriction of \( c \) to \( V_x \)
+    Then \( (\arr \gray_K s)\imel{U}{x} \) is isomorphic to \( \arr \gray_{s(K_x)} V_x \), which is a molecule.
+    Now let \( q_V \colon \arr \times V_x \surj \arr \times_{s(K_x)} V_x  \) and \( q_U \colon \arr \times \imel{U}{x} \surj \arr \times_{K_x} \imel{U}{x} \) be the quotient maps.
+    Then we have a commutative diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\arr \times V_x} & {\arr \times_{s(K_x)} V_x} \\
+            {\arr \times \imel{U}{x}} & {\arr \times_{K_x} \imel{U}{x}.}
+            \arrow["{q_V}", two heads, from=1-1, to=1-2]
+            \arrow["{\arr \times c_x}"', from=1-1, to=2-1]
+            \arrow["{\arr \times_{K_x} c_x}", from=1-2, to=2-2]
+            \arrow["{q_U}"', two heads, from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+    By \cite[Proposition 7.2.21]{hadzihasanovic2024combinatorics}, the formal dual of \( \arr \times c_x \) is a subdivision.
+    By inspection, for all \( k \in \mathbb{N} \) and \( \a \in \set{-, +} \), we have
+    \begin{equation*}
+        q_V(\bd{k}{\a} (\arr \gray V_x)) = \bd{k}{\a} (\arr \gray_{s(K_x)} V_x) \text{ and } q_U(\bd{k}{\a} (\arr \gray \imel{U}{x})) = \bd{k}{\a} (\arr \gray_{K_x} \imel{U}{x}),
+    \end{equation*}
+    which is enough to conclude. 
 \end{proof}
+
+\begin{lem} \label{lem:subdivision_of_invertors}
+    Let \( s \colon U \sd V \) be a subdivision of atoms with formal dual \( c \colon V \to U \).
+    Then
+    \begin{enumerate}
+        \item for all closed subsets \( K \subseteq \bd{}{+} U \), the formal dual \( \lcyl{K} s \colon \lcyl{K} U \sd \lcyl{s(K)} V \) of the map \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \) is a subdivision of left-inverted partial Gray cylinders, and dually
+        \item for all closed subsets \( K \subseteq \bd{}{-} U \), the formal dual \( \rcyl{K} s \colon \rcyl{K} U \sd \rcyl{s(K)} V \) of the map \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \)  is a subdivision of right-inverted partial Gray cylinders.
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    We prove the first point, the second is entirely dual.
+    Let \( n \eqdef \dim U \).
+    By construction, \( \bd{}{-} \lcyl{K} U \) and \( \bd{}{+} \lcyl{K} U \) are, respectively, of the form
+    \begin{equation*}
+        U \cpsub{} (\arr \gray_K \bd{}{+} U) \subcp{} \dual{n}{U} \text{ and } \arr \gray_{K \cap \bd{}{-} U} \bd{}{-} U,
+    \end{equation*}
+    and similarly for \( \bd{}{-} \lcyl{K} V \) and \( \bd{}{+} \lcyl{K} V \).
+    Since \( s(-) \) preserves pastings at submolecules and boundaries, we have by Lemma \ref{lem:subdivision_of_unitors} a clear subdivision of regular directed complexes 
+    \begin{equation*}
+        \restr{\lcyl{K} s}{\bd{}{} \bd{}{} \lcyl{K} U} \colon \bd{}{} \lcyl{K} U \to \bd{}{} \lcyl{s(K)} V.
+    \end{equation*}
+    Since \( U \) and \( V \) are atoms, this extends to a subdivision \( \lcyl{K} s \colon \lcyl{K} U \to \bd{}{} \lcyl{s(K)} V \)
+\end{proof}
+
+\begin{rmk}
+    Given a subdivision \( s \colon U \sd V \) of atoms, and a string \( t \in \set{L, R}^* \), we have by induction a subdivision \( \hcyl{t} s \colon \hcyl{t} U \sd \hcyl{t} V \).
+\end{rmk}
 
 \begin{dfn} [Unit]
     Let \( u \colon U \to X \) be a pasting diagram.
     The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
 \end{dfn}
 
-\begin{dfn} [Equivalence] \ccnote{not defined yet}
-    Let \( e \) be a pasting diagram in a diagrammatic set \( X \).
-    We say that \( e \) is an \emph{equivalence} if it is reversible in the composition structure \( \Pd(X) \).
+\begin{dfn} [Equivalence] 
+    Let \( e \colon u \celto v \) be a round diagram in a diagrammatic set \( X \).
+    We say that \( e \) is an \emph{equivalence} if there exist a round diagram \( e^* \colon v \celto u \), together with round diagrams \( h \colon e \cp{} e* \celto \un(u) \) and \( h' \colon e^* \cp{} e \celto \un(v) \) such that \( h \) and \( h' \) are equivalences.
     We let
     \begin{equation*}
-        \Eqv X \eqdef \set{e \in \Pd(X) \mid e \text{ is an equivalence}},\quad \eqv X = \Eqv X \cap \cell X.
+        \Eqv X \eqdef \set{e \in \Rd(X) \mid e \text{ is an equivalence}},\quad \eqv X = \Eqv X \cap \cell X.
     \end{equation*}
 \end{dfn}
-
-\begin{rmk}
-    This definition of equivalence coincides, for round diagrams, with the usual notion of equivalence in a diagrammatic set, see \cite[Section 2]{chanavat2024equivalences}.
-\end{rmk}
 
 \begin{prop} \label{prop:main_equivalence}
     Let \( X \) be a diagrammatic set.
@@ -227,10 +269,9 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{dfn}
 
 \begin{rmk} \label{rmk:ez_connected}
-    \cccom{say something here}
-    % Since \( \atom \) is an Eilenberg-Zilber category, \( X \) is connected if and only if the category  
+    Since \( \atom \) is an Eilenberg-Zilber category, \( X \) is connected if and only if its poset of non-degenerate cells is connected.
+    In particular by \cite[Lemma 3.3.13]{hadzihasanovic2024combinatorics}, all molecules are connected.
 \end{rmk}
-
 
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(∞, n)}-categories}
 
@@ -251,7 +292,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
    We say that \( j \) is a \emph{marking} if \( \fun{U}j \) is an isomorphism.
 \end{dfn}
 
-\begin{dfn} \label{dfn:localisation}
+\begin{dfn} \label{dfn:localisation} \ccnote{cannot do that if keep the cylinder. Will have to find the fix}
     We recall the definition of \emph{localisation} from \cite[Section 2.4]{chanavat2024model}.
     A \emph{cellular extension} of a diagrammatic set \( X \) is a pushout diagram
     \begin{center}
@@ -479,94 +520,3 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary (which incidentally was already predicted by Hadzihasanovic in \cite[Remark 6.9]{hadzihasanovic2020diagrammatic}).
 \end{comm}
 
-\begin{dfn}
-    For each \( n \in \mathbb{N} \cup \set{\infty} \), we call \( \fun{W}_n \) be the collection of weak equivalences of the \( (\infty, n) \)\nbd model structure on diagrammatic sets, and \( \fun{W}^{\m{}}_n \) the collection of weak equivalences of the coinductive \( (\infty, n) \)\nbd model structures on marked diagrammatic sets.
-\end{dfn}
-\begin{rmk}
-
-    Then we have a sequence of inclusions
-    \begin{equation*}
-        \fun{W}_{\infty} \subseteq \ldots \subseteq \fun{W}_{n + 1} \subseteq \fun{W}_n \subseteq \ldots \subseteq \fun{W}_0.
-    \end{equation*}
-    Thus, if a certain morphism of diagrammatic sets is proven to belong to \( \fun{W}_n \), it also belongs to \( \fun{W}_k \) for all \( k \le n \).
-    This discussion applies equally for the weak equivalences \( \fun{W}^{\m{}}_n \).
-\end{rmk}
-
-\begin{prop} \label{prop:loc_preserves_weak_equivalences} \cccom{do we need that?}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \).
-    Then \( \Loc \fun{W}^{\m{}}_n = \fun{W}_n \).
-\end{prop}
-\begin{proof}
-    Let \( f \colon (X, A) \to (Y, B) \) in \( \fun{W}^{\m{}}_n \).
-    By Theorem \ref{thm:n_model_structure_on_dgm_set}, \( \Loc f \) is in \( \fun{W}_n \) if and only if \( \minmark{(\Loc f)} \) is in \( \fun{W}^{\m{}}_n \).
-    Now for all marked diagrammatic sets \( (Z, C) \), \( (Z, C) \incl (\loc{Z}{C}, C \cup \dgn (\loc{Z}{C})) \) is in \( \fun{W}^{\m{}}_n \) by \cite[Lemma 4.17]{chanavat2024model}.
-    Then the marking \( \minmark{(\Loc (Z, C))} \incl (\loc{Z}{C}, C \cup \dgn (\loc{Z}{C})) \) also belongs to \( \fun{W}^{\m{}}_n \) since it can be constructed as a transfinite composition of pushout along markings of the form
-    \begin{equation*}
-        \minmark{\selfloc{U}} \incl (\selfloc{U}, \set{U \incl \selfloc{U}} \cup \dgn \selfloc{U}), U \text{ atom},
-    \end{equation*}
-    which belong to \( \fun{W}^{\m{}}_n \) by definition of the coinductive \( (\infty, n) \)\nbd model structure.
-    By the two-out-of-three, we conclude that \( \minmark{(\Loc f)} \) is in \( \fun{W}^{\m{}}_n \).
-    Conversely, \( \minmark{\fun{W}_n} \subseteq \fun{W}^{\m{}}_n \), and by the first part of the proof
-    \begin{equation*}
-        \fun{W}_n = \Loc \minmark{\fun{W}_n} \subseteq \Loc \fun{W}^{\m{}}_n.
-    \end{equation*}
-    This concludes the proof.
-\end{proof}
-
-% \begin{lem}\label{lem:acyclic_on_globes_acyclic_on_all}
-%     Let \( f \colon X \to Y \) be a fibration of \( (\infty, n) \)\nbd categories, and suppose that \( f \) has the right lifting property against
-%     \begin{equation*}
-%         \set{\bd{}{} \dglobe{n} \incl \dglobe{n} \mid n \geq 0}.
-%     \end{equation*}
-%     Then \( f \) is an acyclic fibration.
-% \end{lem}
-
-
-% \begin{dfn} [Globularisation]
-%     Given a round molecule \( V \), we define the atoms \( C^+(V) \eqdef (V \celto \compos{V}) \) and \( C^-(V) \eqdef (\compos{V} \celto V) \).
-%     Let \( U \) be an atom of dimension \( n \geq 2 \), we let
-%     \begin{equation*}l
-%         R(U) \eqdef C^-(\bd{}{-}U) \cp{n - 1} (\ldots \cp{2} C^-(\bd{1}{-}U) \cp{1} U \cp{1} C^+(\bd{1}{+} U) \cp{2} \ldots) \cp{} C^+(\bd{}{+}U),
-%     \end{equation*}
-%     and let \( G(U) \eqdef R(U) \celto \dglobe{n} \) and \( L(U) \eqdef G(U) \setminus \set{\top_{G(U)}, \top_U} \).
-%     Now, calling \( \top^\a_k \) be the maximal element of \( \C^\a(\bd{k}{\a} U) \) in \( R(U) \) for \( \a \in \set{-, +} \) and \( 1 \le k \le n - 1 \), we get that
-%     \begin{equation*}
-%         \lambda^{\top_U} \colon (L(U), \bigcup_{k = 1}^{n - 1} \set{\top^\a_k}) \incl (G(U), {\top_{G(U)}, \top_U} \cup \bigcup \bigcup_{k = 1}^{n - 1} \set{\top^\a_k})
-%     \end{equation*}
-%     is a marked horn. 
-%     The \emph{globularisation} of \( U \) is the morphism of diagrammatic set
-% \end{dfn}
-
-% \begin{prop}\label{prop:infty_n_cat_htpy_colimit_of_its_globes}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( Y \) be an \( (\infty, n) \)\nbd category, and \( \iota \colon X \subseteq Y \) a subpresheaf of \( Y \) such that for all \( n \geq 0 \), \( X(\dglobe{n}) = Y(\dglobe{n}) \).
-%     Then \( \iota \) is an acyclic cofibration in the \( (\infty, n) \)\nbd model structure.
-% \end{prop}
-% \begin{proof}
-%     Factors \( \iota = f \after j \) where \( j \colon X \to X' \) is an acyclic cofibration and \( p \colon X' \to Y \) is a fibration.
-%     In particular, \( X' \) is fibrant. 
-%     We show by induction on \(  \) 
-%     Consider a lifting problem 
-%     \begin{center}
-%         \begin{tikzcd}
-%             {\bd{}{} \dglobe{n}} & {X'} \\
-%             {\dglobe{n}} & Y
-%             \arrow[from=1-1, to=1-2]
-%             \arrow[hook', from=1-1, to=2-1]
-%             \arrow["f", from=1-2, to=2-2]
-%             \arrow["u"', from=2-1, to=2-2]
-%         \end{tikzcd}
-%     \end{center}
-%     By assumption \( u = \iota \after v \) for some \( v \colon \dglobe{n} \to A \).
-%     Then 
-% \end{proof}
-
-% \subsection{Adjoint equivalences}
-
-% \begin{dfn} [Adjunction in a diagrammatic set]
-%     Let \( \ell \colon u \celto v \) and \( r \colon v \celto u \) be round diagrams in a diagrammatic set.
-%     We say that \( \ell \) is left adjoint to \( r \), and write \( \ell \dashv r \) if there exists a sequence of round diagrams \( (\counit_n, \unit_n)_{n \geq 1} \), whose type is defined inductively as follows. 
-%     \begin{itemize}
-%         \item for the base case, \( \unit_1 \colon \un(u) \celto \ell \cp{} r \) and \( \counit_1 \colon r \cp{} \ell \celto \un(v) \).
-%         \item for all \( n > 2 \)
-%     \end{itemize}
-% \end{dfn}

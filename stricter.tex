@@ -25,7 +25,7 @@
 \noindent If \( C \) is a reflexive \( \omega \)\nbd graph, the set of \emph{\( k \)\nbd composable pairs of globular cells} is the set 
 \begin{equation*}
     C \times_k C \eqdef \set{(c, d) \in C \times C \mid \bd{k}{+} c = \bd{k}{-} d}.
-\end{equation*}
+\end{equation*}\ccnote{maybe change to source target instead of bd }
 Given a globular cell \( c \) and \( \a \in \set{-, +} \), we write \( \bd{}{\a} c \) in place of \( \bd{\dim c - 1}{\a} c \), and \( c \colon u^- \gcelto u^+ \) to signify that \( \bd{}{\a} c = u^\a \), and call \( u^- \gcelto u^+ \) the \emph{type of \( c \)}. 
 Two globular cells of the same type are said to be \emph{parallel}.
 We say that a globular cell \( c \) is an \emph{object} if \( \dim c = 0 \). 
@@ -85,21 +85,25 @@ Furthermore, the assignment \( P \mapsto \molecin{P} \) extends to functors
     The \emph{\( n \)\nbd globe} is the composition structure defined by \( \globe{n} \eqdef \molecin{\dglobe{n}} \), and its \emph{boundary} is the composition structure given by \( \bd{}{}\globe{n} \eqdef \molecin{(\bd{}{}\dglobe{n})} \).
 \end{dfn}
 
-\begin{rmk}
-    A strict functor \( u \colon O^n \to C \) classifies a globular cell of \( C \), and a strict functor \( \bd{}{} O^n \to C \) classifies two parallel cells \( u, v \colon O^{n - 1} \to C \).
-\end{rmk}
-
-\begin{dfn} [Diagram in a composition structure]
-    Let \( C \) be a composition structure and \( P \) be a regular directed complex.
-    A \emph{diagram of shape \( P \) in \( C \)} is a strict functor \( \F \colon \molecin{P} \to C \).
-    If \( P = U \) is a molecule, we speak of \emph{pasting diagram}, and in that case, for \( k \geq 0 \) and \( \a \in \set{-, +} \), we write \( \bd{k}{\a} F \) for the restriction of \( \F \) along the strict functor \( \molecin{\bd{k}{\a} U} \to \molecin{U} \).
-    % We write \( \Dgm(C) \) for the collection of all pasting diagrams of \( C \).
+\begin{dfn} [Pasting diagram in a composition structure]
+    Let \( C \) be a composition structure and \( U \) be a molecule.
+    A \emph{pasting diagram of shape \( U \) in \( C \)} is a strict functor \( u \colon \molecin{P} \to C \).
+    If \( U \) is an atom, we say that \( u \) is a \emph{cell}.
+    We let \( \dim u \eqdef \dim U \), and for \( k \geq 0 \) and \( \a \in \set{-, +} \), we write \( \bd{k}{\a} u \) for the restriction of \( u \) along the strict functor \( \molecin{\bd{k}{\a} U} \to \molecin{U} \), and may omit \( k \) when it is equal to \( \dim u - 1 \).
+    Finally, we write \( u \colon u^- \celto u^+ \) to mean that \( \bd{}{\a} u = u^\a \), for all \( \a \in \set{-, +} \), and call \( u^- \celto u^+ \) the \emph{type} of \( u \).
+    Two diagrams are \emph{parallel} if they have the same type.
 \end{dfn}
 
 \begin{dfn} [Principal cell]
     Let \( \F \colon \molecin{U} \to C \) be a pasting diagram.
-    The \emph{principal cell of \( \F \)} is the cell \( \pcell{\F} \eqdef \F(\idd{U}) \).
+    The \emph{principal cell of \( \F \)} is the globular cell \( \pcell{\F} \eqdef \F(\idd{U}) \).
 \end{dfn}
+
+\begin{rmk}
+    We warn the reader on the difference between cells and globular cells. 
+    A globular cell \( c \in C \) of dimension \( n \geq 0 \) is classified uniquely by the cell \( u \colon \globe{n} \to C \) such that \( \pcell{u} = c \).
+    Conversely, a cell \( u \colon \globe{n} \to C \) factors uniquely as \( \molecin{\tau} \after v \), where \( \tau \colon \dglobe{n} \to \dglobe{\dim \pcell{u}} \) is the unique surjection of atoms, and \( v \colon \globe{\dim \pcell{u}} \to \C \) classifies \( \pcell{u} \).
+\end{rmk}
 
 \begin{dfn}
     For each regular directed complex \( P \), there is a canonical strict functor
