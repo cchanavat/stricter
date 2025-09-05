@@ -80,7 +80,7 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     By Proposition \ref{prop:reflection_to_stricter_monoidal}, the stricter categories \( \Gamma(C) \) coincides with the strict \( \omega \)\nbd categories of cylinders \cite[Remark 20.2.9]{ara2025polygraphs}, which happen to be stricter, since \( C \) is.
 \end{rmk}
 
-\begin{thm} \label{thm:folk_model_structure_on_stricter}
+\begin{thm} \label{thm:folk_model_structure_on_stricter} \ccnote{no need to talk about the acyclic in fact, let us remove it}
     There is a cofibrantely generated model structure on the category \( \somegaCat \), called the \emph{folk model structure}, where:
     \begin{enumerate}
         \item \( \Icof \) is a set of generating cofibrations;
@@ -99,7 +99,7 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
             \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
         \end{tikzcd}
     \end{center}
-    making it a Quillen adjunction.
+    which is in particular a Quillen pair.
 \end{thm}
 \begin{proof}
     This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders}, noticing that \( \rcs \Icof = \Icof \), and that, by \cite[20.4.7]{ara2025polygraphs}, a generating set \( \Jcof \) of acyclic cofibrations for the folk model structure on \( \omegaCat \) is given by the same construction as (\ref{dfn:generating_folk_acyclic_cof}), but computing the small objects argument in \( \omegaCat \) instead of \( \somegaCat \).
@@ -119,7 +119,7 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     \Icof_n \eqdef \trunc{n}\Icof,\quad\quad \sJcof_n \eqdef \trunc{n}\Jcof.
 \end{equation*}
 
-\begin{thm} \label{thm:folk_model_structure_on_stricter_n}
+\begin{thm} \label{thm:folk_model_structure_on_stricter_n} \ccnote{maybe do all cases uniformly, say the omega truncation is identity}
     There is a cofibrantely generated model structure on the category \( \snCat{n} \), called the \emph{folk model structure}, where:
     \begin{enumerate}
         \item \( \Icof_n \) is a set of generating cofibrations;
@@ -135,7 +135,7 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
             \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
         \end{tikzcd}
     \end{center}
-    making it a Quillen adjunction.
+    which is in particular a Quillen pair.
 \end{thm}
 \begin{proof}
     Same as Theorem \ref{thm:folk_model_structure_on_stricter}.

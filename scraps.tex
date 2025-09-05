@@ -516,3 +516,49 @@
     We show that for all 
     We show by induction on the dim morphism mi
 \end{proof}
+
+
+%%% ol stricter are strict
+    % Recall from \cite[Theorem 5.2.5]{hadzihasanovic2024combinatorics} that pasting and boundaries makes the collection of molecules a strict \( \omega \)\nbd categories. 
+    % We first show the axioms of interaction between pasting and boundaries. 
+    % Let \( c \colon O^{m} \to C \) and \( d \colon O^{m'} \to C \) be \( k \)\nbd composable cells in \( C \).
+    % The pasting diagram \( c \cp{k} d \colon \molecin{(O^m \cp{k} O^{m'})} \) is such that \( \pcell{c \cp{k} d} = \pcell{c} \comp{k} \pcell{d} \).
+    % Let \( n \geq 0 \) and \( \a \in \set{-, +} \), then
+    % \begin{equation*}
+    %      \bd{n}{\a} (\pcell{c} \comp{k} \pcell{d}) = \bd{n}{\a} \pcell{c \cp{k} d} = \pcell{\bd{n}{\a} (c \cp{k} d)},
+    % \end{equation*}
+    % the latter being equal to
+    % \begin{equation*}
+    %     \begin{cases}
+    %         \pcell{\bd{n}{\a} c} = \bd{n}{\a} \pcell{c} = \bd{n}{\a} \pcell{d} & \text{if } n < k,\\
+    %         \pcell{\bd{k}{-}c} = \bd{k}{-}\pcell c & \text{if } n = k, \a = -,\\
+    %         \pcell{\bd{k}{+}d} = \bd{k}{+}\pcell d & \text{if } n = k, \a = +,\\
+    %         \pcell{\bd{k}{\a}c \cp{k} \bd{k}{\a} d} = \bd{k}{\a}\pcell c \comp{k} \bd{k}{\a} \pcell d & \text{if } n > k.
+    %     \end{cases}
+    % \end{equation*}
+    % Next is unitality.
+    % Let \( c \colon O^m \to C \) be a cell, and \( k \geq 0 \).
+    % Then we have the pasting diagram \( c \cp{k} \bd{k}{+} c \colon \molecin{(O^m \cp{k} \bd{k}{+} O^m)} \to C \).
+    % Since \( (O^m \cp{k} \bd{k}{+} O^m) = O^m \), the principal cell of \( c \cp{k} \bd{k}{+} c \) is \( \pcell{c} \).
+    % This shows that \( \pcell{c} \comp{k} \bd{k}{+} \pcell{c} = \pcell{c} \).
+    % Similarly, \(  \bd{-}{k} c \comp{k} \pcell{c} = \pcell{c} \).
+    % Next, we consider the axiom of associativity. 
+    % Let \( c, d, e \) be \( k \)\nbd composable cell in \( C \).
+    % Then again, we have a pasting diagram \( c \cp{k} d \colon \molecin{(\dglobe{m} \cp{k} \dglobe{m'})} \to \C \).
+    % Then we may paste \( c \cp{k} d \) and \( e \) to obtain a pasting diagram 
+    % \begin{equation*}
+    %     (c \cp{k} d) \cp{k} e \colon \molecin{(\dglobe{m} \cp{k} \dglobe{m'} \cp{k} \dglobe{m''})} \to C,
+    % \end{equation*}
+    % whose principal cell is \( (\pcell c \comp{k} \pcell d) \comp{k} \pcell{e} \).
+    % Similarly, we have a pasting diagram
+    % \begin{equation*}
+    %     c \cp{k} (d \cp{k} e) \colon \molecin{(\dglobe{m} \cp{k} \dglobe{m'} \cp{k} \dglobe{m''})} \to C,
+    % \end{equation*}
+    % whose principal cell is \( \pcell c \comp{k} (\pcell d \comp{k} \pcell{e}) \).
+    % By Lemma \ref{lem:strict_functor_determined_by_basis}, 
+    % \begin{equation*}
+    %      (c \cp{k} d) \cp{k} e = c \cp{k} (d \cp{k} e),
+    % \end{equation*}
+    % hence their principal cells are equal as well.
+    % Proceed similarly for exchange.
+    % This concludes the proof.

@@ -25,7 +25,9 @@
 
 \DeclareMathOperator*{\Ob}{Ob}
 
-\newcommand\slice[2]{{#1}/{\raisebox{-2pt}{$#2$}}}
+\def\raiseslice#1#2{\raisebox{-2pt}{$#1#2$}}
+\newcommand{\slice}[2]{{#1{/}\mathpalette\raiseslice{#2}}}
+% \newcommand\slice[2]{{#1}/\raisebox{-2pt}{$#2$}}
 
 % special categories
 
@@ -222,6 +224,7 @@
 \newcommand\molec{\mathit{Mol}}
 \newcommand\Atom{\mathit{Atom}}
 \newcommand\molecin[1]{\slice{\molec}{#1}}
+% \newcommand\molecinsmall[1]{\slice{\molec}{\rel#1}}
 \newcommand\atomin[1]{\slice{\Atom}{#1}}
 
 \newcommand{\globe}[1]{O^{#1}}
