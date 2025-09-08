@@ -393,7 +393,56 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
     See \cite[Comment 8.2.2]{hadzihasanovic2024combinatorics}. 
 \end{comm}
 
-\begin{lem} \label{lem:pushout_principal_cell}
+\begin{dfn} [Generalised substitution]
+    Let \( U, V, P \) be regular directed complexes, \( s \colon U \sd V \) be a subdivision with formal dual \( c \), and \( \iota \colon U \incl P \) be an inclusion.
+    The \emph{generalised substitution of \( U \) for \( V \) in \( P \)} is the oriented graded poset \( \subs{P}{V}{U}_s \) whose underlying set is \( (P \setminus \iota(U)) \coprod V \), with partial order defined for each \( z \in \subs{P}{V}{U}_s  \) and \( \a \in \set{-, +} \), by
+    \begin{equation*}
+        \cofaces{}{\a} z \eqdef 
+        \begin{cases}
+            \cofaces{P}{\a} z, & \text{if } z \in P \setminus \iota(U), \\
+            \cofaces{V}{\a} z + \cup \set{\cofaces{P}{\a} y \mid y = \iota(c(z)), \dim y = \dim z} & \text{if } z \in V.
+        \end{cases}
+    \end{equation*}
+    This comes equipped with an evident commutative square
+\end{dfn}
+
+\begin{lem} \label{lem:generalised_substitution}
+    Let \( U, V, P \) be regular directed complexes, \( s \colon U \sd V \) be a subdivision with formal dual \( c \), and \( \iota \colon U \incl P \) be an inclusion.
+    Then \( \subs{P}{V}{U}_s \) is a regular directed complex, the formal dual of \( c' \colon \subs{P}{V}{U}_s \to P \) is a subdivision \( s' \), and the square of strict functors
+    \begin{center}
+        \begin{tikzcd}
+            {\molecin{U}} & {\molecin{P}} \\
+            {\molecin{V}} & {\molecin{({\subs P V U}_s)}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, "{{{\molecin{\iota}}}}", from=1-1, to=1-2]
+            \arrow["{{{\molecin{s}}}}"', from=1-1, to=2-1]
+            \arrow["{{{\molecin{s'}}}}", from=1-2, to=2-2]
+            \arrow["{\molecin{\iota'}}"', from=2-1, to=2-2]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+        \end{tikzcd}
+    \end{center}
+    is a pushout in \( \somegaCat \).
+\end{lem}
+\begin{proof}
+    That \( \subs{P}{V}{U}_s \) is a regular directed complex and \( s' \colon P \sd \subs{P}{V}{U}_s \) is a subdivision follows from \cite[Proposition 1.46, Comment 1.48]{chanavat2025semistrict}.
+    We prove that the square is a pushout.
+    Consider a stricter \( \omega \)\nbd category \( C \), together with strict functors \( \F \colon \molecin{P} \to C \) and \( \G \colon \molecin{V} \to C \) such that \( \F \after \molecin{\iota} = \G \after \molecin{s} \).
+    Let \( \set{\F_x}_{x \in P} \) and \( \set{\G_x}_{x \in V} \) be the matching family \( \F \) and \( \G \) are the amalgamation of, respectively.
+    For each \( x \in {\subs P V U}_s \), we let 
+    \begin{equation} \label{eq:H_matching_of}
+        \fun{H}_x \eqdef 
+        \begin{cases}
+            \F_x & \text{if } x \in V \\
+            \G_x & \text{else}.
+        \end{cases}
+    \end{equation}
+    By construction, \( \set{\fun{H}}_{x \in {\subs P V U}_s} \) is a matching family in \( C \).
+    Since \( C \) is stricter, it as an amalgamation \( \fun{H} \colon \molecin{({\subs P V U}_s)} \to C \).
+    By Lemma \ref{lem:strict_functor_determined_by_basis}, \( \fun{H} \after \molecin{\iota'} = \F \) and \( \fun{H} \after \molecin{s'} = \G \).
+    Any other strict functor \( \fun{H}' \) with this property is necessarily the amalgamation of the same matching family.
+    By Lemma \ref{lem:at_most_one_lift}, this proves uniqueness and concludes the proof. 
+\end{proof}
+
+\begin{cor} \label{cor:pushout_principal_cell}
     Let \( s \colon U \sd V \) be a subdivision between atoms.
     Then the square
     \begin{center}
@@ -407,9 +456,9 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
         \end{tikzcd}
     \end{center}
     is a pushout square in \( \somegaCat \).
-\end{lem}
+\end{cor}
 \begin{proof}
-    Same as the proof of \cite[Lemma 9.1.12]{hadzihasanovic2024combinatorics}.
+    By Lemma \ref{lem:generalised_substitution}.
 \end{proof}
 
 \begin{dfn} [Stricter polygraph]
@@ -558,7 +607,7 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
     Thus \( X \mapsto \phi(X) \) defines a functor \( \omegaRegSet \to \somegaCat \).
     We construct an inverse up to natural isomorphism to \( \phi \).
     Let \( C \) be a stricter \( \omega \)\nbd category.
-    Then the presheaf defined by \(\molecin{U} \mapsto \somegaCat(\molecin{U}, C) \) is \( S \)\nbd local by definition, and satisfy the rewrite condition by Lemma \ref{lem:pushout_principal_cell}.
+    Then the presheaf defined by \(\molecin{U} \mapsto \somegaCat(\molecin{U}, C) \) is \( S \)\nbd local by definition, and satisfy the rewrite condition by Corollary \ref{cor:pushout_principal_cell}.
     This defines a functor \( \psi \colon \somegaCat \to \omegaRegSet \).
     One sees directly that \( \phi \after \psi \) is isomorphic to the identity on \( \somegaCat \). 
     By Lemma \ref{lem:stricter_hom_set_iso_presheaf}, it is also the case of \( \psi \after \phi \).
@@ -660,41 +709,42 @@ Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(
     is a pushout square in \( \somegaCat \).
 \end{lem}
 \begin{proof}
-    Recall from \cite[Lemma 7.2.8]{hadzihasanovic2024combinatorics} that the Gray product preserves pushout of inclusions of regular directed complexes.
-    Thus the square is a pushout if and only if for all \( x \in P \), the square
-    \begin{center}
-        \begin{tikzcd}
-            {\molecin{(\imel{P}{x} \gray \bd{}{}U)}} & {\molecin{(\imel{P}{x} \gray U)}} \\
-            {\molecin{(\imel{P}{x} \gray \bd{}{}V)}} & {\molecin{(\imel{P}{x} \gray V)}}
-            \arrow[from=1-1, to=1-2]
-            \arrow["{\molecin{(\restr{\imel{P}{x} \gray s}{\bd{}{}U})}}"', from=1-1, to=2-1]
-            \arrow["{{\molecin{\imel{P}{x} \gray s}}}", from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    is a pushout.
-    We prove the statement by induction on \( n \eqdef \dim P \).
-    If \( n = 0 \), this is the content of Lemma \ref{lem:pushout_principal_cell}.
-    Inductively, let \( n > 0 \) and \( x \in \gr{n}{P} \).
-    Let \( W \eqdef \imel{P}{x} \).
-    % To make the following more readable, we do not write \( \molecin{-} \).
-    By Lemma \ref{lem:pushout_principal_cell} on \( W \gray s  \) and the pasting law for pushouts, it is enough to show that 
-    \begin{center}
-        \begin{tikzcd}
-            {\molecin{(W \gray \bd{}{} U)}} & {\molecin{(\bd{}{}(W \gray U))}} \\
-            {\molecin{(W \gray \bd{}{} V)}} & {\molecin{(\bd{}{} (W \gray V))}}
-            \arrow[from=1-1, to=1-2]
-            \arrow[from=1-1, to=2-1]
-            \arrow[from=1-2, to=2-2]
-            \arrow[from=2-1, to=2-2]
-        \end{tikzcd}
-    \end{center}
-    is a pushout.
-    Since 
-    \begin{equation*}
-        \bd{}{}(W \gray U) = (W \gray \bd{}{} U) \cup (\bd{}{} W \gray U),\text{ and } \bd{}{}(W \gray V) = (W \gray \bd{}{} V) \cup (\bd{}{} W \gray V),
-    \end{equation*}
-    we conclude by Corollary \ref{cor:molecin_preserves_pushout_inclusions}, the inductive hypothesis on \( (\bd{}{} W) \gray s \), and a double application of the pasting law for pushouts. 
+    By construction, \( P \gray V \) is the generalised substitution of \( P \gray (\bd{}{} U) \) for \( P \gray (\bd{}{} V) \) in \( P \gray U \).
+    We conclude by Lemma \ref{lem:generalised_substitution}.
+    % Recall from \cite[Lemma 7.2.8]{hadzihasanovic2024combinatorics} that the Gray product preserves pushout of inclusions of regular directed complexes.
+    % Thus the square is a pushout if and only if for all \( x \in P \), the square
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         {\molecin{(\imel{P}{x} \gray \bd{}{}U)}} & {\molecin{(\imel{P}{x} \gray U)}} \\
+    %         {\molecin{(\imel{P}{x} \gray \bd{}{}V)}} & {\molecin{(\imel{P}{x} \gray V)}}
+    %         \arrow[from=1-1, to=1-2]
+    %         \arrow["{\molecin{(\restr{\imel{P}{x} \gray s}{\bd{}{}U})}}"', from=1-1, to=2-1]
+    %         \arrow["{{\molecin{\imel{P}{x} \gray s}}}", from=1-2, to=2-2]
+    %         \arrow[from=2-1, to=2-2]
+    %     \end{tikzcd}
+    % \end{center}
+    % is a pushout.
+    % We prove the statement by induction on \( n \eqdef \dim P \).
+    % If \( n = 0 \), this is the content of Corollary \ref{cor:pushout_principal_cell}.
+    % Inductively, let \( n > 0 \) and \( x \in \gr{n}{P} \).
+    % Let \( W \eqdef \imel{P}{x} \).
+    % By Corollary \ref{cor:pushout_principal_cell} on \( W \gray s  \) and the pasting law for pushouts, it is enough to show that 
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         {\molecin{(W \gray \bd{}{} U)}} & {\molecin{(\bd{}{}(W \gray U))}} \\
+    %         {\molecin{(W \gray \bd{}{} V)}} & {\molecin{(\bd{}{} (W \gray V))}}
+    %         \arrow[from=1-1, to=1-2]
+    %         \arrow[from=1-1, to=2-1]
+    %         \arrow[from=1-2, to=2-2]
+    %         \arrow[from=2-1, to=2-2]
+    %     \end{tikzcd}
+    % \end{center}
+    % is a pushout.
+    % Since 
+    % \begin{equation*}
+    %     \bd{}{}(W \gray U) = (W \gray \bd{}{} U) \cup (\bd{}{} W \gray U),\text{ and } \bd{}{}(W \gray V) = (W \gray \bd{}{} V) \cup (\bd{}{} W \gray V),
+    % \end{equation*}
+    % we conclude by Corollary \ref{cor:molecin_preserves_pushout_inclusions}, the inductive hypothesis on \( (\bd{}{} W) \gray s \), and a double application of the pasting law for pushouts. 
 \end{proof}
 
 \begin{dfn} 
@@ -854,9 +904,9 @@ to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) 
     Similar to Comment \ref{comm:def_cellular_extension}, this definition is equivalent to the usual definition of polygraphs.
 \end{rmk}
 
-\begin{lem} \label{lem:reflection_of_polygraphs_are}
-    Let \( C \) be a polygraph.
-    Then \( \rcs C \) is a stricter polygraph.
+\begin{lem} \label{lem:reflection_of_polygraphs_are_stricter_polygraphs}
+    Let \( f \colon C \to D \) be a relative polygraph.
+    Then \( \rcs f \) is a relative stricter polygraph.
 \end{lem}
 \begin{proof}
     Clear by Proposition \ref{prop:regular_directed_complex_stricter} and since \( \rcs \) is left adjoint, 
@@ -931,7 +981,7 @@ Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd 
     The converse is not true. 
     Indeed if it were the case, \( \snCat{4} \) would be equivalent to the categories of categories enriched in \( \snCat{3} \), the latter being equivalent to \( \nCat{4} \) by Theorem \ref{thm:strict_le_3_are_stricter}.
     We know from Comment \ref{comm:strict_are_not_stricter} that this is not the case.
-    We do not know any general condition for showing that a category enriched in stricter \( \omega \)\nbd category is stricter, but see Conjecture \ref{conj:acyclic_enrichment}.
+    We do not know any general condition for showing that a category enriched in stricter \( \omega \)\nbd category is stricter.
 \end{comm}
 
 \begin{dfn} [Suspension]
@@ -1301,27 +1351,4 @@ The goal of this section is to show that it is in fact a stricter \( \omega \)\n
     That this form an adjunction follows from standard arguments.
     Last, since \( \bpt\somegaCat \) is a coslice construction, \( \sus{} \colon \somegaCat \to \somegaCat \) preserves connected colimits by \cite[Proposition 3.3.8]{riehl2019context}.
 \end{proof}
-
-\noindent Finally, we conjecture how we believe that results of this section could be generalised to more general enrichment than the suspension.
-\begin{dfn}[Acyclic enrichment]
-    Let \( C \) be an enriched category.
-    We say that \( C \) is \emph{acyclically enriched} if 
-    \begin{enumerate}
-        \item for all objects \( a \) of \( C \), \( C(a, a) \) is isomorphic to the monoidal unit and
-        \item the preorder on \( \Ob C \) defined by \( a \le b \) if and only if \( C(a, b) \) is not an initial object, is antisymmetric. 
-    \end{enumerate}
-\end{dfn}
-
-\begin{conj} \label{conj:acyclic_enrichment}
-    Let \( C \) be an acyclically enriched category in stricter \( \omega \)\nbd categories.
-    Then \( C \) is a stricter \( \omega \)\nbd category.
-\end{conj}
-
-\noindent An attempt to solve the conjecture would follow the same proof that Theorem \ref{thm:suspension_of_stricter}, by considering a strict functor of composition structure \( \F \colon \molecin{U} \to C \), and factoring it through a molecule
-\begin{equation*}
-    \sus{\order{1}{V}} \cp{0} \ldots \cp{0} \sus{\order{n}{V}},
-\end{equation*} 
-obtained by collapsing a partition of \( \gr{0}{U} \) in \( U \), as in Proposition \ref{prop:desuspension}.
-The acyclicity condition would ensure that the partition is ``correctly ordered'' in \( U \), so that the resulting quotient is indeed a molecule.
-
 

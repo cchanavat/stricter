@@ -655,3 +655,112 @@
 %         \item for all \( n > 2 \)
 %     \end{itemize}
 % \end{dfn}
+
+% very much false conjecture
+\noindent Finally, we conjecture how we believe that results of this section could be generalised to more general enrichment than the suspension.
+% \begin{dfn}[Acyclic enrichment]
+%     Let \( C \) be an enriched category.
+%     We say that \( C \) is \emph{acyclically enriched} if 
+%     \begin{enumerate}
+%         \item for all objects \( a \) of \( C \), \( C(a, a) \) is isomorphic to the monoidal unit and
+%         \item the preorder on \( \Ob C \) defined by \( a \le b \) if and only if \( C(a, b) \) is not an initial object, is antisymmetric. 
+%     \end{enumerate}
+% \end{dfn}
+
+% \begin{conj} \label{conj:acyclic_enrichment}
+%     Let \( C \) be an acyclically enriched category in stricter \( \omega \)\nbd categories.
+%     Then \( C \) is a stricter \( \omega \)\nbd category.
+% \end{conj}
+
+% \noindent An attempt to solve the conjecture would follow the same proof that Theorem \ref{thm:suspension_of_stricter}, by considering a strict functor of composition structure \( \F \colon \molecin{U} \to C \), and factoring it through a molecule
+% \begin{equation*}
+%     \sus{\order{1}{V}} \cp{0} \ldots \cp{0} \sus{\order{n}{V}},
+% \end{equation*} 
+% obtained by collapsing a partition of \( \gr{0}{U} \) in \( U \), as in Proposition \ref{prop:desuspension}.
+% The acyclicity condition would ensure that the partition is ``correctly ordered'' in \( U \), so that the resulting quotient is indeed a molecule.
+
+
+
+
+\noindent We will give an analogue of Theorem \ref{thm:folk_model_structure}, with \( \somegaCat \) in place of \( \omegaCat \).
+% We let 
+% \begin{equation*}
+%     \Icof \eqdef \set{i_n \colon \bd{}{} \globe{n} \incl \globe{n} \mid n \geq 0}.
+% \end{equation*}
+% By the small object argument in \( \somegaCat \), each strict functor \( f \colon C \to D \) of stricter \( \omega \)\nbd categories factors as \( f = p i \) where \( i \) is a relative stricter polygraph and \( p \) has the right lifting property against \( \Icof \), that is, \( p \) is an acyclic cofibration.
+
+% \begin{dfn} \label{dfn:generating_folk_acyclic_cof}
+%     For each \( n \geq 0 \), consider the strict functor \( \bd{}{} \globe{n + 1} \to \globe{n} \) sending the two non-trivial globular \( n \)\nbd cells of \( \bd{}{} \globe{n + 1} \) to the only non-trivial globular cell of \( \globe{n} \).
+%     We fix a factorisation of this strict functor
+%     \begin{equation*}
+%         \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1} \stackrel{p}{\to} \globe{n}
+%     \end{equation*}
+%     into a stricter cofibration followed by an acyclic fibration, and let \( j_n \) be the composite
+%     \begin{equation*}
+%         \globe{n} \incl \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1},
+%     \end{equation*}
+%     where \( \globe{n} \incl \bd{}{} \globe{n + 1} \) is the ``source'' inclusion, that is, the one factoring through \( \molecin{(\bd{}{-}\dglobe{n + 1})} \incl \molecin{\dglobe{n + 1}} \).
+%     We let
+%     \begin{equation*}
+%         \sJcof \eqdef \set{j_n \colon \globe{n} \to \swE{n + 1} \mid n \geq 0}.
+%     \end{equation*}  and a generating set is given by \( \Icof \).
+% \end{dfn}
+
+
+% \begin{dfn} [Acyclic fibration] \label{dfn:acyclic_fibration} \ccnote{since now we do not talk about acyclic fib, there is no need for that}
+%     Let \( f \colon C \to D \) be a strict functor of compositions structures.
+%     We say that \( f \) is an \emph{acyclic fibration} if
+%     \begin{enumerate}
+%         \item \( f \) is surjective on objects;
+%         \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel \( n \)\nbd cells of \( C \), and each \( (n + 1) \)\nbd cell \( v \colon f(c) \celto f(c') \), there exists a \( (n + 1) \)\nbd cell \( u \colon c \celto c' \) such that \( f(u) = v \)
+%     \end{enumerate}
+% \end{dfn}
+
+% \begin{dfn} [Unit on a diagram]
+%     Let \( C \) be a composition structure and \( u \colon \molecin{U} \to C \) be a diagram.
+%     Then \emph{unit on \( u \)} is the diagram \( \un(u) \eqdef u \after \molecin{\tau_{\bd{}{} U}} \), where \( \bd{}{} U \colon \dglobe{1} \gray_{\bd{}{} U} U \surj U \) is the canonical surjection.
+% \end{dfn}
+
+% \begin{rmk}
+%     By definition of \( \molecin{\tau_{{\bd{}{} U}}} \), we have \( \pcell{u} = \pcell{\un(u)} \).
+% \end{rmk}
+
+% \begin{dfn} [Reversible cell] \ccnote{in fact, we might not even need that anymore.}
+%     Let \( C \) be a composition structure, and \( e \colon u \celto v \) be a cell of dimension \( n > 0 \) in \( C \).
+%     We say that \( e \) is reversible if there exists a cell \( e^* \colon v \celto u \), as well as cells \( h \colon e \comp{n - 1} e^* \celto \un(u) \) and \( h' \colon e^* \comp{n - 1} e \celto \un(v) \) such that \( h \) and \( h' \) are reversible.
+%     In that case, \( e^* \) is called a \emph{weak inverse} of \( e \).
+%     We write \( u \simeq v \) if there exists a reversible cell \( e \) of type \( u \celto v \).
+% \end{dfn}
+
+% \begin{dfn} [\( \omega \)\nbd equivalence]
+%     Let \( f \colon C \to D \) be a strict functor of composition structures.
+%     We say that \( f \) is an \( \omega \)\nbd equivalence if
+%     \begin{enumerate}
+%         \item for each cell \( d \) in \( D \) of dimension \( 0 \), there exists a cell \( c \) in \( C \) such that \( f(c) \simeq d \);
+%         \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel \( n \)\nbd cells of \( C \), and each \( (n + 1) \)\nbd cell \( v \colon f(c) \celto f(c') \), there exists a \( (n + 1) \)\nbd cell \( u \colon c \celto c' \) such that \( f(u) \simeq v \)
+%     \end{enumerate}
+% \end{dfn}
+
+% \begin{comm}
+%     The definitions of acyclic fibration, reversibility, and \( \omega \)\nbd equivalence make sense in any composition structure, in particular in a strict or stricter \( \omega \)\nbd category.
+%     In the former case, we recover the usual definitions, see for instance \cite[19.2.3, 20.1.1, 20.1.11]{ara2025polygraphs}.
+% \end{comm}
+
+% \begin{thm} \label{thm:folk_model_structure}
+%     There exists a model structure, called the \emph{folk model structure}, on \( \omegaCat \) such that:
+%     \begin{enumerate}
+%         \item the weak equivalences are the \( \omega \)\nbd equivalences;
+%         \item the acyclic fibrations are the one of Definition \ref{dfn:acyclic_fibration};
+%         \item every strict \( \omega \)\nbd category is fibrant. 
+%     \end{enumerate} 
+% \end{thm}
+% \begin{proof} 
+%     See \cite{lafont2010folk}.
+% \end{proof}
+
+% \begin{comm}
+%     The careful reader will have noticed that the construction of \( \wE \) is slightly different than the one given in \cite{hadzihasanovic2024model}.
+%     Indeed, we define \( \fun{R}_1 \) by \( \sus{x} \mapsto y, \sus{y} \mapsto a^R \comp{0} a \), whereas in the original version, the authors define \( \fun{R}_1 \) by \( \sus{x} \mapsto a^R \comp{0} a, \sus{y} \mapsto y \).
+%     We made this slight adjustment in order to match the convention of the definition of the localisation (\ref{dfn:localisation}), so that Lemma \ref{lem:swE_is_iso_to_molecin_loc_globe} holds. 
+%     The reader can be assured that this difference is inessential and the main results of \cite{hadzihasanovic2024model} still hold for \( \wE \).
+% \end{comm}

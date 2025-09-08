@@ -46,7 +46,7 @@ and in the sequel, we always identify a regular directed complex with its associ
 \noindent We often omit the index \( k \) when it is equal to \( \min \set{\dim u, \dim v} - 1 \), and omit \( \iota \) when it is irrelevant or evident from the context.
 
 \begin{rmk}
-    \( \Rd(X) \) is a sub-reflexive graph \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pasting of round diagrams are generally not round. 
+    \( \Rd(X) \) is a sub-reflexive graph \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pastings of round diagrams are generally not round. 
 \end{rmk}
 
 \begin{lem} \label{lem:Pd_is_stricter}
@@ -62,6 +62,39 @@ and in the sequel, we always identify a regular directed complex with its associ
 \begin{equation*}
     \Pd \colon \dgmSet \to \somegaCat.
 \end{equation*}
+
+\begin{dfn} [Bipointed diagrammatic set]
+    A \emph{bipointed diagrammatic set} is given by a diagrammatic set \( X \) together with a pair of \( 0 \)\nbd cells \( a, b \colon \pt \to X \).
+    We let \( \bpt\dgmSet \) be the category of bipointed diagrammatic sets and morphisms that respect the bipointing.
+\end{dfn}
+
+\begin{dfn} [Suspension]
+    The \emph{suspension of diagrammatic sets} is the functor
+    \begin{equation*}
+        \sus{-} \colon \dgmSet \to \bpt{\dgmSet}
+    \end{equation*} 
+    defined as the left Kan extension along the Yoneda embedding of the functor sending an atom \( U \) to \( (\sus{U}, \bot^-, \bot^+) \).
+\end{dfn}
+
+\begin{prop} \label{prop:suspension_of_dgmSet}
+    The functor \( \sus{} \colon \dgmSet \to \dgmSet \) preserves connected colimits.    
+\end{prop}
+\begin{proof}
+    The category \( \bpt{\dgmSet} \) is the coslice \( \slice{(\pt + \pt)}{\dgmSet} \).
+    Since \( \sus{-} \) is left adjoin by construction, the result follows from \cite[Proposition 3.3.8]{riehl2019context}
+\end{proof}
+
+\begin{dfn} [Connected diagrammatic set]
+    Let \( X \) be a diagrammatic set. 
+    We say that \( X \) is \emph{connected} if its category of elements is connected.
+\end{dfn}
+
+\begin{rmk} \label{rmk:ez_connected}
+    Since \( \atom \) is an Eilenberg-Zilber category, \( X \) is connected if and only if its poset of non-degenerate cells is connected.
+    In particular by \cite[Lemma 3.3.13]{hadzihasanovic2024combinatorics}, all molecules are connected.
+\end{rmk}
+
+\subsection{Degenerate diagrams and equivalences}
 
 \begin{dfn} [Degenerate pasting diagram]
     Let \( u \colon U \to X \) be a diagram.
@@ -149,15 +182,15 @@ and in the sequel, we always identify a regular directed complex with its associ
 	\end{itemize}
 \end{rmk}
 
-\begin{dfn} [Higher invertor shapes]
+\begin{dfn} [Higher invertor shapes] \label{dfn:higher_invertor_shape}
     Let \( U \) be a round molecule.
-    The family of \emph{higher invertor shapes on \( U \)} is the family of molecules \( \hcyl s U \) indexed by strings \( s \in \set{L, R}^* \), defined inductively on the length of \( s \) by
+    The family of \emph{higher invertor shapes on \( U \)} is the family of molecules \( \hcyl \s U \) indexed by strings \( \s \in \set{L, R}^* \), defined inductively on the length of \( \s \) by
     \begin{align*}
         \hcyl{\langle\rangle} U & \eqdef U, \\
-        \hcyl{Ls} U &\eqdef \lcyl{\bd{}{+} \hcyl{s} U} (\hcyl{s} U), \\
-                \hcyl{Rs} U &\eqdef \rcyl{\bd{}{-} \hcyl{s} U} (\hcyl{s} U).
+        \hcyl{L\s} U &\eqdef \lcyl{\bd{}{+} \hcyl{\s} U} (\hcyl{\s} U), \\
+        \hcyl{R\s} U &\eqdef \dual{\dim U + |\s|}{\left(\rcyl{\bd{}{-} \hcyl{\s} U} (\hcyl{\s} U)\right)}.
     \end{align*}
-	These are equipped with cartesian maps \( \tau_s \colon \hcyl{s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_s \) is a cartesian map of molecules.
+	These are equipped with cartesian maps \( \tau_s \colon \hcyl{\s} U \to U \) of their underlying posets, with the property that for all cartesian maps of molecules \( p \colon U \to V \) such that \( \dim V < \dim U \), the composite \( p \after \tau_{\s} \) is a cartesian map of molecules.
 \end{dfn}
 
 \begin{lem} \label{lem:subdivision_of_unitors}
@@ -206,13 +239,13 @@ and in the sequel, we always identify a regular directed complex with its associ
     and similarly for \( \bd{}{-} \lcyl{K} V \) and \( \bd{}{+} \lcyl{K} V \).
     Since \( s(-) \) preserves pastings at submolecules and boundaries, we have by Lemma \ref{lem:subdivision_of_unitors} a clear subdivision of regular directed complexes 
     \begin{equation*}
-        \restr{\lcyl{K} s}{\bd{}{} \bd{}{} \lcyl{K} U} \colon \bd{}{} \lcyl{K} U \to \bd{}{} \lcyl{s(K)} V.
+        \restr{\lcyl{K} s}{\bd{}{} \lcyl{K} U} \colon \bd{}{} \lcyl{K} U \to \bd{}{} \lcyl{s(K)} V.
     \end{equation*}
-    Since \( U \) and \( V \) are atoms, this extends to a subdivision \( \lcyl{K} s \colon \lcyl{K} U \to \bd{}{} \lcyl{s(K)} V \)
+    Since \( U \) and \( V \) are atoms, this extends to a subdivision \( \lcyl{K} s \colon \lcyl{K} U \to \lcyl{s(K)} V \)
 \end{proof}
 
 \begin{rmk}
-    Given a subdivision \( s \colon U \sd V \) of atoms, and a string \( t \in \set{L, R}^* \), we have by induction a subdivision \( \hcyl{t} s \colon \hcyl{t} U \sd \hcyl{t} V \).
+    Given a subdivision \( s \colon U \sd V \) of atoms, and a string \( \s \in \set{L, R}^* \), we have by induction a subdivision \( \hcyl{\s} s \colon \hcyl{\s} U \sd \hcyl{\s} V \).
 \end{rmk}
 
 \begin{dfn} [Unit]
@@ -239,44 +272,13 @@ and in the sequel, we always identify a regular directed complex with its associ
     Furthermore, any morphism \( f \colon X \to Y \) of diagrammatic sets sends equivalences to equivalences.
 \end{prop}
 \begin{proof}
-    See \cite[Section]{chanavat2024equivalences} for the case of equivalences that are round diagrams, and notice that all the relevant results go through when considering not necessarily round diagrams.
+    See \cite[Theorem 2.13, Corollary 2.29, Proposition 2.31]{chanavat2024equivalences}.
 \end{proof}
-
-\begin{dfn} [Bipointed diagrammatic set]
-    A \emph{bipointed diagrammatic set} is given by a diagrammatic set \( X \) together with a pair of \( 0 \)\nbd cells \( a, b \colon \pt \to X \).
-    We let \( \bpt\dgmSet \) be the category of bipointed diagrammatic set and strict functors that respect the bipointing.
-\end{dfn}
-
-\begin{dfn} [Suspension]
-    The \emph{suspension of diagrammatic sets} is the functor
-    \begin{equation*}
-        \sus{-} \colon \dgmSet \to \bpt{\dgmSet}
-    \end{equation*} 
-    defined as the left Kan extension along the Yoneda embedding of the functor defined on atoms by \( U \mapsto (\sus{U}, \bot^-, \bot^+) \).
-\end{dfn}
-
-\begin{prop} \label{prop:suspension_of_dgmSet}
-    The functor \( \sus{-} \colon \dgmSet \to \dgmSet \) preserves connected colimits.    
-\end{prop}
-\begin{proof}
-    The category \( \bpt{\dgmSet} \) is the coslice \( \slice{(\pt + \pt)}{\dgmSet} \).
-    Since \( \sus{-} \) is left adjoin by construction, the result follows from \cite[Proposition 3.3.8]{riehl2019context}
-\end{proof}
-
-\begin{dfn} [Connected diagrammatic set]
-    Let \( X \) be a diagrammatic set. 
-    We say that \( X \) is \emph{connected} if its category of elements is connected.
-\end{dfn}
-
-\begin{rmk} \label{rmk:ez_connected}
-    Since \( \atom \) is an Eilenberg-Zilber category, \( X \) is connected if and only if its poset of non-degenerate cells is connected.
-    In particular by \cite[Lemma 3.3.13]{hadzihasanovic2024combinatorics}, all molecules are connected.
-\end{rmk}
 
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(∞, n)}-categories}
 
 
-Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degeneracies. 
+Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degenerate cells. 
 A morphism of marked diagrammatic sets is a morphism of the underlying diagrammatic sets sending marked cells to marked cells.
 We write \( \mdgmSet \) for the category of marked diagrammatic sets and their morphisms. 
 Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0}{P} \) is a subset of elements of \( P \) of dimension \( > 0 \), we let \( (P, A) \) be the marked diagrammatic set \( (P, \dgn P \cup \set{\mapel{a} \mid a \in A}) \).
@@ -292,7 +294,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
    We say that \( j \) is a \emph{marking} if \( \fun{U}j \) is an isomorphism.
 \end{dfn}
 
-\begin{dfn} \label{dfn:localisation} \ccnote{cannot do that if keep the cylinder. Will have to find the fix}
+\begin{dfn} \label{dfn:localisation}
     We recall the definition of \emph{localisation} from \cite[Section 2.4]{chanavat2024model}.
     A \emph{cellular extension} of a diagrammatic set \( X \) is a pushout diagram
     \begin{center}
@@ -311,8 +313,8 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     Let \( (X, A) \) be a marked diagrammatic set.
     We define \( \preloc{X}{A} \) to be the diagrammatic set obtain by, for each cell \( a \colon u \celto v \) in \( A \cap \nd X \),
     \begin{enumerate}
-        \item attach cells \( a^L, a^R  \colon v \celto u \), then
-        \item attach cells \( \hinv{L}(a) \colon a \cp{} a^L \celto \un(u) \) and \( \hinv{R} \colon a^R \cp{} a \celto \un(v) \).
+        \item attaching cells \( a^L, a^R  \colon v \celto u \), then
+        \item attaching cells \( \hinv{L}(a) \colon a \cp{} a^L \celto \un(u) \) and \( \hinv{R} \colon \un(v) \celto a^R \cp{} a \).
     \end{enumerate} 
     Then, let \( \order{0}{X} \eqdef X \) and \( \order{0}{A} \eqdef A \).
     Inductively on \( n > 0 \), define
@@ -324,35 +326,32 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
         \order{0}{X} \incl \order{1}{X} \incl \ldots \incl \order{n}{X} \incl \ldots,
     \end{equation*}
     whose transfinite composition is \( \loc{X}{A} \), the \emph{localisation of \( X \) at \( A \)}, which comes equipped with a canonical inclusion \( X \incl \loc{X}{A} \).
-    We may describe the non-degenerate cells of \( \loc{X}{A} \) as being either in the image of \( \nd X \setminus A \), or of the form \( \hinv{s}a, (\hinv{s}a)^L \) or \( (\hinv{s}a)^R \) for \( a \in (\nd X) \cap A \) and a string \( s \in \set{L, R}^* \), defined by \( \hinv{\langle\rangle} a \eqdef a \), and inductively on \( s \in \set{L, R}^* \),
+    We may describe the non-degenerate cells of \( \loc{X}{A} \) as being either in the image of \( \nd X \setminus A \), or of the form \( \hinv{\s}a, (\hinv{\s}a)^L \) or \( (\hinv{\s}a)^R \) for \( a \in (\nd X) \cap A \) and a string \( \s \in \set{L, R}^* \), defined by \( \hinv{\langle\rangle} a \eqdef a \), and inductively on \( \s \in \set{L, R}^* \),
     \begin{align*}
-        \hinv{Ls}a \eqdef \hinv{L}(\hinv{s}a) &\colon \hinv{s}a \cp{} (\hinv{s}a)^L \celto \un(\bd{}{-}\hinv{s}a),\\
-        \hinv{Rs}a \eqdef \hinv{R}(\hinv{s}a) &\colon (\hinv{s}a)^R \cp{} \hinv{s}a \celto \un(\bd{}{+}\hinv{s}a).
+        \hinv{L\s}a \eqdef \hinv{L}(\hinv{\s}a) &\colon \hinv{\s}a \cp{} (\hinv{\s}a)^L \celto \un(\bd{}{-}\hinv{\s}a),\\
+        \hinv{R\s}a \eqdef \hinv{R}(\hinv{\s}a) &\colon (\hinv{\s}a)^R \cp{} \hinv{\s}a \celto \un(\bd{}{+}\hinv{\s}a).
     \end{align*}
-    This can be extended to a colimit preserving functor
+    Then, by induction, if \( a \colon U \to X \), then \( \hinv{\s}(a) \colon \hcyl{\s} U \to X \).
+    
+    Finally, the construction of the localisation can be extended to a colimit preserving functor
     \begin{equation*}
         \Loc \colon \mdgmSet \to \dgmSet.
     \end{equation*}
     By definition, each cell in \( A \) becomes invertible in \( \loc{X}{A} \).
 \end{dfn}
 
-\begin{rmk}
-    This definition of localisation slightly differs from the one given in \cite[2.38]{chanavat2024model}.
-\end{rmk}
+\begin{comm} \label{comm:diff_of_localisation}
+    This definition of localisation differs slightly from the one given in \cite[2.38]{chanavat2024model}. 
+    In the latter, the attached cell \( \hinv{R} \) has type \( a^R \cp{} a \celto \un(v) \), whereas in this version, we define \( \hinv{R} \colon \un(v) \celto a^R \cp{} a \), which explain the apparition of a dual in Definition \ref{dfn:higher_invertor_shape}.
+    We made this choice to match the construction of the coherent walking equivalence in (\ref{dfn:strict_walking_equivalence}), so that Lemma \ref{lem:swE_is_iso_to_molecin_loc_globe} holds.
+    The reader can be assured that this difference of definition is inessential, and in the sequel, we will always point out which of results of \cite{chanavat2024model} would need a small adjustment to apply in our case. 
+\end{comm}
 
 \begin{dfn} [Walking equivalence]
     Let \( U \) be an atom.
     The \emph{walking equivalence of shape \( U \)} is the diagrammatic set \( \selfloc{U} \eqdef \Loc (U, \set{\top_U}) \).
     We also write \( V \simeq W \) for the walking equivalence of shape \( V \celto W \), and \( \rglobe{n} \) for \( \dglobe{n - 1} \simeq \dglobe{n - 1} \) for \( n \geq 1 \). 
 \end{dfn}
-
-% \begin{dfn}
-%     Let \( X \) be a diagrammatic set, and \( u \colon U \to X \) be cell.
-%     We write \( \td u \colon \selfloc{U} \to X \) for any extension of \( u \) along the inclusion \( U \incl \selfloc{U} \).
-%     If \( u \colon a \celto b \), then we write \( \td u \colon a \simeq b \).
-%     Furthermore if \( v \colon V \to X \) is a diagram and \( k \geq 0 \) such that \( u \cp{k} v \) is defined, we also write \( \td u \cp{k} v \colon \selfloc{U} \cp{k} V \to X \) for the morphism \( \td u \cup_{\bd{k}{+}u} v \) whose domain is \( \tilde{U} \cup_{\bd{k}{\a} U} V \).
-%     We use similar notations of pasting at a subdiagrams \( - \cpsub{} - \) and \( - \subcp{} - \).
-% \end{dfn}
 
 \begin{dfn} [Weak composites]
     Let \( X \) be a diagrammatic set.
@@ -390,7 +389,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{dfn}
 
 \begin{rmk} \label{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}
-    By a simple variation of \cite[Proposition 3.8, Proposition 3.9]{chanavat2024model}, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
+    By a simple variation of \cite[Proposition 3.8, Proposition 3.9]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation}, a diagrammatic set \( X \) is an \( (\infty, n) \)\nbd category if and only if it has the right lifting property against \( \Jcomp \cup \Jn{n} \).
 \end{rmk}
 
 \begin{lem} \label{lem:isofib_left_right_lift}
@@ -402,7 +401,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     \end{enumerate}
 \end{lem}
 \begin{proof}
-    The first part follows from \cite[Proposition 3.7]{chanavat2024model}.
+    The first part follows from by a small variation of the proof of \cite[Proposition 3.7]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation}.
     Let \( h \colon v \celto f(u) \) be an equivalence.
     Then \( h \) has a weak inverse \( h' \colon f(u) \celto v \), which is itself an equivalence.
     Thus \( h' = f(z') \) for equivalence \( z' \colon v' \celto u \).
@@ -412,7 +411,6 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     By the first part of the proof, \( k = f(k') \) for some equivalence \( k' \colon z'' \celto z \).
     In particular, \( h = f(z) \), and \( z \simeq z'' \) is an equivalence.
 \end{proof}
-
 
 \begin{dfn} [Marked horn]
     Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \) and \( x \in \maxel{\bd{}{\a} U} \).
@@ -476,7 +474,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
         \item cofibrations are the monomorphisms;
-        \item fibrant objects are of the form \( \natmark{X} \) for an \( (\infty, n) \)\nbd category \( X \).
+        \item fibrant objects are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
     \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -485,14 +483,17 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 
 \begin{lem} \label{lem:marked_localisation_acyclic}
     Let \( n \in \mathbb{N} \cup \set{\infty} \) and \( U \) be an atom of dimension \( \geq 1 \).
-    Then the marking \( \selfloc{U} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
+    Then the marking \( \minmark{\selfloc{U}} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{\iota \colon U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
 \end{lem}
 \begin{proof}
-    Follows from Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn} and \cite[Lemma 5.8]{chanavat2025gray}.
+    A marking is an acyclic cofibration if and only if it has the left lifting property against all fibrant object.
+    Let \( X \) be an \( (\infty, n) \)\nbd category and consider a morphism \( u \colon \minmark{\selfloc{U}} \to \natmark{X} \).
+    By construction, \( u \after \iota \colon U \to X \) is an equivalence in \( X \), thus is marked in \( \natmark{X} \).
+    This shows that the lifting problem has a solution and concludes the proof.
 \end{proof}
 
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
-    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, where
+    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, wherethe different definition
     \begin{enumerate}
         \item the set \( \set{\bd{}{} U \incl U \mid U \text{ atom}} \) is a generating set of cofibrations;
         \item fibrant objects are the \( (\infty, n) \)\nbd categories;
@@ -502,10 +503,10 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{thm}
 \begin{proof}
     The existence as well as the characterisation of fibrant objects, and the Quillen equivalence are given by \cite[3.27, Theorem 4.21, Theorem 4.23]{chanavat2024model}.
-    In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
-    Using a slight variation of \cite[Lemma 4.16, Lemma 4.17]{chanavat2024model} together with Lemma \ref{lem:marked_localisation_acyclic}, one sees that the set \( (\minmark{\Jcomp \cup \Jn{n}}) \) is a set of acyclic cofibrations.
+    % In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
+    Using a slight variation of \cite[Lemma 4.16, Lemma 4.17]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation} together with Lemma \ref{lem:marked_localisation_acyclic}, one sees that the set \( \minmark{(\Jcomp \cup \Jn{n})} \) is a set of acyclic cofibrations.
     By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
-    Since left Quillen equivalence reflect weak equivalence between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibration.
+    Since left Quillen equivalences reflect weak equivalences between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibration.
     Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd category with the right lifting property against \( \Jcomp \cup \Jn{n} \).
     We need to prove that \( f \) is a fibration.
     Since \( \fun{U}\natmark{f} = f \), is it enough to prove that \( \natmark{f} \) is a fibration. 
@@ -516,7 +517,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{proof}
 
 \begin{comm}
-    In \cite{chanavat2024model}, a pseudo generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a certain closure \( \mathrm{an}(\Jcomp \cup \Jn{n}) \) of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
-    We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary (which incidentally was already predicted by Hadzihasanovic in \cite[Remark 6.9]{hadzihasanovic2020diagrammatic}).
+    In \cite{chanavat2024model}, a pseudo generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a closure \( \mathrm{an}(\Jcomp \cup \Jn{n}) \) of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
+    We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary.
 \end{comm}
 

@@ -2,80 +2,16 @@
 
 \subsection{Folk model structure on stricter \texorpdfstring{$\omega$}{ω}-categories}
 
-\begin{dfn} [Acyclic fibration] \label{dfn:acyclic_fibration} \ccnote{since now we do not talk about acyclic fib, there is no need for that}
-    Let \( f \colon C \to D \) be a strict functor of compositions structures.
-    We say that \( f \) is an \emph{acyclic fibration} if
-    \begin{enumerate}
-        \item \( f \) is surjective on objects;
-        \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel \( n \)\nbd cells of \( C \), and each \( (n + 1) \)\nbd cell \( v \colon f(c) \celto f(c') \), there exists a \( (n + 1) \)\nbd cell \( u \colon c \celto c' \) such that \( f(u) = v \)
-    \end{enumerate}
-\end{dfn}
-
-\begin{dfn} [Unit on a diagram]
-    Let \( C \) be a composition structure and \( u \colon \molecin{U} \to C \) be a diagram.
-    Then \emph{unit on \( u \)} is the diagram \( \un(u) \eqdef u \after \molecin{\tau_{\bd{}{} U}} \), where \( \bd{}{} U \colon \dglobe{1} \gray_{\bd{}{} U} U \surj U \) is the canonical surjection.
-\end{dfn}
-
-\begin{rmk}
-    By definition of \( \molecin{\tau_{{\bd{}{} U}}} \), we have \( \pcell{u} = \pcell{\un(u)} \).
-\end{rmk}
-
-\begin{dfn} [Reversible cell] \ccnote{in fact, we might not even need that anymore.}
-    Let \( C \) be a composition structure, and \( e \colon u \celto v \) be a cell of dimension \( n > 0 \) in \( C \).
-    We say that \( e \) is reversible if there exists a cell \( e^* \colon v \celto u \), as well as cells \( h \colon e \comp{n - 1} e^* \celto \un(u) \) and \( h' \colon e^* \comp{n - 1} e \celto \un(v) \) such that \( h \) and \( h' \) are reversible.
-    In that case, \( e^* \) is called a \emph{weak inverse} of \( e \).
-    We write \( u \simeq v \) if there exists a reversible cell \( e \) of type \( u \celto v \).
-\end{dfn}
-
-\begin{dfn} [\( \omega \)\nbd equivalence]
-    Let \( f \colon C \to D \) be a strict functor of composition structures.
-    We say that \( f \) is an \( \omega \)\nbd equivalence if
-    \begin{enumerate}
-        \item for each cell \( d \) in \( D \) of dimension \( 0 \), there exists a cell \( c \) in \( C \) such that \( f(c) \simeq d \);
-        \item for each \( n \geq 0 \), each pair \( c, c' \) of parallel \( n \)\nbd cells of \( C \), and each \( (n + 1) \)\nbd cell \( v \colon f(c) \celto f(c') \), there exists a \( (n + 1) \)\nbd cell \( u \colon c \celto c' \) such that \( f(u) \simeq v \)
-    \end{enumerate}
-\end{dfn}
-
-\begin{comm}
-    The definitions of acyclic fibration, reversibility, and \( \omega \)\nbd equivalence make sense in any composition structure, in particular in a strict or stricter \( \omega \)\nbd category.
-    In the former case, we recover the usual definitions, see for instance \cite[19.2.3, 20.1.1, 20.1.11]{ara2025polygraphs}.
-\end{comm}
-
 \begin{thm} \label{thm:folk_model_structure}
     There exists a model structure, called the \emph{folk model structure}, on \( \omegaCat \) such that:
     \begin{enumerate}
-        \item the weak equivalences are the \( \omega \)\nbd equivalences;
-        \item the acyclic fibrations are the one of Definition \ref{dfn:acyclic_fibration};
-        \item every strict \( \omega \)\nbd category is fibrant. 
+        \item every strict \( \omega \)\nbd categories is fibrant;
+        \item cofibrations are the retract of relative polygraphs. 
     \end{enumerate} 
 \end{thm}
 \begin{proof} 
     See \cite{lafont2010folk}.
 \end{proof}
-
-\noindent We conclude this section by giving an analogue to Theorem \ref{thm:folk_model_structure}, with \( \somegaCat \) in place of \( \omegaCat \).
-We let 
-\begin{equation*}
-    \Icof \eqdef \set{i_n \colon \bd{}{} \globe{n} \incl \globe{n} \mid n \geq 0}.
-\end{equation*}
-By the small object argument in \( \somegaCat \), each strict functor \( f \colon C \to D \) of stricter \( \omega \)\nbd categories factors as \( f = p i \) where \( i \) is a relative stricter polygraph and \( p \) has the right lifting property against \( \Icof \), that is, \( p \) is an acyclic cofibration.
-
-\begin{dfn} \label{dfn:generating_folk_acyclic_cof}
-    For each \( n \geq 0 \), consider the strict functor \( \bd{}{} \globe{n + 1} \to \globe{n} \) sending the two non-trivial globular \( n \)\nbd cells of \( \bd{}{} \globe{n + 1} \) to the only non-trivial globular cell of \( \globe{n} \).
-    We fix a factorisation of this strict functor
-    \begin{equation*}
-        \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1} \stackrel{p}{\to} \globe{n}
-    \end{equation*}
-    into a stricter cofibration followed by an acyclic fibration, and let \( j_n \) be the composite
-    \begin{equation*}
-        \globe{n} \incl \bd{}{} \globe{n + 1} \stackrel{j}{\to} \swE{n + 1},
-    \end{equation*}
-    where \( \globe{n} \incl \bd{}{} \globe{n + 1} \) is the ``source'' inclusion, that is, the one factoring through \( \molecin{(\bd{}{-}\dglobe{n + 1})} \incl \molecin{\dglobe{n + 1}} \).
-    We let
-    \begin{equation*}
-        \sJcof \eqdef \set{j_n \colon \globe{n} \to \swE{n + 1} \mid n \geq 0}.
-    \end{equation*} 
-\end{dfn}
 
 \begin{dfn} [Stricter \( \omega \)\nbd category of cylinders]
     Let \( C \) be a stricter \( \omega \)\nbd category.
@@ -89,15 +25,11 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     By Proposition \ref{prop:reflection_to_stricter_monoidal}, the stricter categories \( \Gamma(C) \) coincides with the strict \( \omega \)\nbd categories of cylinders \cite[Remark 20.2.9]{ara2025polygraphs}, which happen to be stricter, since \( C \) is.
 \end{rmk}
 
-\begin{thm} \label{thm:folk_model_structure_on_stricter} \ccnote{no need to talk about the acyclic in fact, let us remove it}
+\begin{thm} \label{thm:folk_model_structure_on_stricter}
     There is a cofibrantely generated model structure on the category \( \somegaCat \), called the \emph{folk model structure}, where:
     \begin{enumerate}
-        \item \( \Icof \) is a set of generating cofibrations;
-        \item \( \sJcof \) is a set of generating acyclic cofibrations;
-        \item weak equivalences are the \( \omega \)\nbd equivalences;
-        \item acyclic fibrations are the one of Definition \ref{dfn:acyclic_fibration}.
-        \item all stricter \( \omega \)\nbd categories are fibrant;
-        \item cofibrant objects are the stricter polygraphs.
+        \item every \( \omega \)\nbd categories is fibrant;
+        \item cofibration are the retracts of relative stricter polygraphs;
     \end{enumerate}
     Furthermore, this model structure is right transferred from the folk model structure on \( \omegaCat \) along the adjunction 
     \begin{center}
@@ -111,29 +43,23 @@ By the small object argument in \( \somegaCat \), each strict functor \( f \colo
     which is in particular a Quillen pair.
 \end{thm}
 \begin{proof}
-    This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders}, noticing that \( \rcs \Icof = \Icof \), and that, by \cite[20.4.7]{ara2025polygraphs}, a generating set \( \Jcof \) of acyclic cofibrations for the folk model structure on \( \omegaCat \) is given by the same construction as (\ref{dfn:generating_folk_acyclic_cof}), but computing the small objects argument in \( \omegaCat \) instead of \( \somegaCat \).
-    As a consequence, the classes \( \llp(\rlp(\rcs\Jcof)) \) and \( \llp(\rlp(\sJcof)) \) coincide.
+    This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders} and Lemma \ref{lem:reflection_of_polygraphs_are_stricter_polygraphs}.
 \end{proof}
 
 \begin{rmk} 
-    By Lemma \ref{lem:pushout_principal_cell}, the set
+    By Corollary \ref{cor:pushout_principal_cell}, the set
     \begin{equation*}
-        \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
+        \Icof \eqdef \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
     \end{equation*}
-    is also a generating set of acyclic cofibrations for the folk model structure on \( \somegaCat \), whose cofibrations are therefore given by the retracts of relative polygraphs.
+    is a generating set of cofibrations for the folk model structure on \( \somegaCat \).
 \end{rmk}
 
-\noindent Finally, we fix \( n \in \mathbb{N} \), and let
-\begin{equation*}
-    \Icof_n \eqdef \trunc{n}\Icof,\quad\quad \sJcof_n \eqdef \trunc{n}\Jcof.
-\end{equation*}
-
-\begin{thm} \label{thm:folk_model_structure_on_stricter_n} \ccnote{maybe do all cases uniformly, say the omega truncation is identity}
+\begin{thm} \label{thm:folk_model_structure_on_stricter_n}
+    Let \( n \in \mathbb{N} \).
     There is a cofibrantely generated model structure on the category \( \snCat{n} \), called the \emph{folk model structure}, where:
     \begin{enumerate}
-        \item \( \Icof_n \) is a set of generating cofibrations;
-        \item \( \sJcof_n \) is a set of generating acyclic cofibrations;
-        \item weak equivalences are the \( \omega \)\nbd equivalences;
+        \item every \( n \)\nbd categories is fibrant.
+        \item \( \trunc{n}\Icof \) is a set of generating cofibrations;
     \end{enumerate}
     Furthermore, this model structure is right transferred from the folk model structure on \( \nCat{n} \) along the adjunction 
     \begin{center}
@@ -174,7 +100,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 \begin{proof}
     Let \( I \eqdef \set{\bd{}{} U \incl U \mid U \text{ atom}} \).
     Then \( f \) is a relative \( I \)\nbd cell complex by \cite[Remark 2.9]{chanavat2024htpy}.
-    Since \( \molecin{-} \) is left adjoint, \( \molecin{f} \) is a relative \( \molecin{I} \)\nbd cell complex, i.e. a relative stricter polygraph.
+    Since \( \molecin{-} \) is left adjoint, \( \molecin{f} \) is a relative \( \molecin{I} \)\nbd cell complex, that is, a relative stricter polygraph.
 \end{proof}
 
 \begin{cor} \label{cor:molecin_polygraph_with_basis}
@@ -190,10 +116,10 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 \end{lem}
 \begin{proof}
     The result is true on atoms by definition of the Gray product of stricter \( \omega \)\nbd categories.
-    We conclude by universal property of the Gray product.
+    We conclude by universal property of Day convolution.
 \end{proof}
 
-\begin{dfn} 
+\begin{dfn} \label{dfn:strict_walking_equivalence}
     We recall from \cite{hadzihasanovic2024model} the construction of the \emph{coherent walking equivalence \( \wE \)}, which is a strict \( \omega \)\nbd category equipped with an inclusion \( \globe{0} \incl \wE \).
     We define \( \wE \) as a transfinite composition of inclusions \( \order{n}{\wE} \incl \order{n + 1}{\wE} \) such that
     \begin{itemize}
@@ -203,7 +129,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \end{itemize}
     Then, \( \order{0}{\wE} \) is the set with two elements \( \set{x, y} \) and \( \order{1}{\wE} \) is the free category on three generators \( \set{a \colon x \to y, a^L \colon y \to x, a^R \colon y \to x} \), equipped with the evident inclusion \( \iota_1 \colon \set{x, y} \incl \order{1}{\wE} \), and
     \begin{equation*}
-        \fun{L}_1 \colon \sus{x} \mapsto a \comp{0} a^L, \sus{y} \mapsto x, \quad\text{ and }\quad \fun{R}_1 \colon \sus{x} \mapsto a^R \comp{0} a, \sus{y} \mapsto y
+        \fun{L}_1 \colon \sus{x} \mapsto a \comp{0} a^L, \sus{y} \mapsto x, \quad\text{ and }\quad \fun{R}_1 \colon \sus{x} \mapsto a^R \comp{0} a, \sus{y} \mapsto y.
     \end{equation*}
 
     Let \( k > 1 \), and suppose that \( (\order{k - 1}{\wE}, \iota_{k - 1}, \fun{L}_{k - 1}, \fun{R}_{k - 1}) \) have been defined.
@@ -223,6 +149,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     The inclusion \( \globe{0} \incl \wE \) then classifies \( x \in \order{0}{\wE} \).
     We denote by \( \fun{L}_\infty, \fun{R}_\infty \colon \sus{\wE} \to \wE \) the transfinite composition of \( (\fun{L}_k)_k \) and \( (\fun{R}_k)_k \) respectively.
 \end{dfn}
+
 
 \begin{dfn} [Stricter coherent walking equivalence]
     The \emph{stricter coherent walking equivalence} is the stricter \( \omega \)\nbd category \( \swE \eqdef \rcs \wE \), which comes equipped with the inclusion \( j \colon \globe{0} \incl \swE \).
@@ -248,27 +175,36 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \end{equation*} 
     and for \( k > 1 \),
     \begin{equation*}
-        \cls{S}_k = \set{\fun{L}_\infty(\sus{t}), \fun{R}_\infty(\sus{t}) \mid t \in \cls{S}_{k - 1}}.
+        \cls{S}_k = \set{\fun{L}_\infty(\sus{u}), \fun{R}_\infty(\sus{u}) \mid u \in \cls{S}_{k - 1}}.
     \end{equation*}
-    Letting \( \fun{L} \eqdef \fun{L}_\infty(\sus{}) \) and \( \fun{R} \eqdef \fun{R}_\infty(\sus{}) \), we can then canonically identify elements of \( \cls{S}_k \)
-    as 
+    Letting \( \fun{L} \eqdef \fun{L}_\infty(\sus{}) \) and \( \fun{R} \eqdef \fun{R}_\infty(\sus{}) \), we canonically identify elements of \( \cls{S}_k \)
+    with
     \begin{equation*}
-        \cls{S}_k \cong \set{(a, s), (a^L, s), (a^R, s) \mid s \in \set{L, R}^*},
+        \cls{S}_k \cong \set{(a, \s), (a^L, \s), (a^R, \s) \mid \s \in \set{L, R}^*},
     \end{equation*}
-    such that, for instance, \( (a, sL) = \fun{L}_\infty(\sus{(a, s)}) \).
+    by letting \( (a, \langle\rangle) \eqdef a, (a^L, \langle\rangle) \eqdef a^L \), and \( (a^R, \langle\rangle) \eqdef a^R \). 
+    Then inductively on \( \s \in \set{L, R}^* \), we let 
+    \begin{align*}
+        (a, L\s)   & \eqdef \fun{L}_\infty(\sus{(a, \s)},  \\
+        (a^L, L\s) & \eqdef \fun{L}_\infty(\sus{(a^L, \s)}), \\
+        (a^R, L\s) & \eqdef \fun{L}_\infty(\sus{(a^R, \s)})),
+    \end{align*}
+    and similarly with \( \fun{R}_\infty \) for the case \( \s R \).    
     By Corollary \ref{cor:molecin_polygraph_with_basis}, \( \molecin{\rglobe{1}} \) is the stricter polygraph whose generating set is given, in the notation of (\ref{dfn:localisation}) by \( \coprod_{k \geq 0} \cls{T}_k \), where, letting \( b \colon \dglobe{1} \to \dglobe{1} \) be the identity, 
     \begin{equation*}
         \cls{T}_0 = \set{0^-, 0^+}, \cls{T}_1 = \set{b, b^L, b^R},
     \end{equation*}
     and for \( k > 1 \),
     \begin{equation*}
-        \cls{T}_k = \set{\hinv{s}b, (\hinv{s}b)^L, (\hinv{s}b)^R \mid s \in \set{L, R}^{k - 1}}.
+        \cls{T}_k = \set{\hinv{\s}b, (\hinv{\s}b)^L, (\hinv{\s}b)^R \mid \s \in \set{L, R}^{k - 1}}.
     \end{equation*}
-    Then, we define inductively on \( k \geq 0 \) a family of bijections \( \phi_k \colon \cls{T}_k \cong \cls{S}_k \) such that by \( (0^-, 0^+) \mapsto (x, y) \), and inductively for \( k > 0 \),
+    Then, we define inductively on \( k \geq 0 \) a family of bijections \( \phi_k \colon \cls{T}_k \cong \cls{S}_k \). 
+    We et \( (0^-, 0^+) \mapsto (x, y) \) for the base case. 
+    Inductively for \( k > 0 \), we define
     \begin{equation*}
-        \hinv{s}b \mapsto (b, s),\quad (\hinv{s}b)^L \mapsto (b^L, s),\quad (\hinv{s}b)^R \mapsto (b^R, s).
+        \hinv{\s}b \mapsto (b, \s),\quad (\hinv{\s}b)^L \mapsto (b^L, \s),\quad (\hinv{\s}b)^R \mapsto (b^R, \s).
     \end{equation*}
-    One checks that \( \phi \) induces a strict functor which is an isomorphism.
+    Then, we have that \( \phi \colon \molecin{\rglobe{1}} \to \swE \) induces a strict functor, which is therefore an isomorphism.
     This concludes the proof.
 \end{proof}
 
@@ -283,7 +219,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \begin{equation*}
         \sus{\left(\colim_{v \colon V \to \selfloc{U}} V\right)} \cong \colim_{v \colon V \to \selfloc{U}} \sus{V}
     \end{equation*}
-    Then, for all \( s \in \set{L, R}^* \), \( \sus{\hcyl{s}U} \) and \( \hcyl{s} \sus{U} \) are isomorphic.
+    Then, for all \( \s \in \set{L, R}^* \), \( \sus{\hcyl{\s}U} \) and \( \hcyl{\s} \sus{U} \) are isomorphic.
     By induction on the construction of the localisation, \( \selfloc{\sus{U}} \) and \( \colim\limits_{v \colon V \to \selfloc{U}} \sus{V} \) are isomorphic.    
     This concludes the proof.
 \end{proof}
@@ -313,16 +249,16 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 
 \subsection{Right transfer from the diagrammatic model structures}
 
-\begin{lem} \label{lem:pushout_with_localisation} \ccnote{change all the strings to something else so that \( s \) can be a subdivision, i suggest \( \eps \)}
-    Let \( c \colon U \sd V \) be a subdivision between atoms of dimension \( \geq 1 \)
-    Then there is a strict functor \( \td{c} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc V} \) fitting in a pushout diagram
+\begin{lem} \label{lem:pushout_with_localisation}
+    Let \( s \colon U \sd V \) be a subdivision between atoms of dimension \( \geq 1 \)
+    Then there is a strict functor \( \td{s} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc V} \) fitting in a pushout diagram
     \begin{center}
         \begin{tikzcd}
             {\molecin{U}} & {\molecin{\selfloc{U}}} \\
             {\molecin{V}} & {\molecin{\selfloc V}}
             \arrow[""{name=0, anchor=center, inner sep=0}, hook, from=1-1, to=1-2]
-            \arrow["{\molecin{c}}"', from=1-1, to=2-1]
-            \arrow["{\tilde c}", from=1-2, to=2-2]
+            \arrow["{\molecin{s}}"', from=1-1, to=2-1]
+            \arrow["{\tilde s}", from=1-2, to=2-2]
             \arrow[hook, from=2-1, to=2-2]
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
@@ -334,12 +270,12 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     For each \( k \geq 0 \), let \( \order{k}{U} \) and \( \order{k}{V} \) be the marked diagrammatic sets corresponding respectively to the \( n \)\nbd step of the localisation as in (\ref{dfn:localisation}).
     Note that we have
     \begin{align*}
-        \nd \gr{n + k}{\order{k}{U}} &= \set{\hinv{s}u \colon \hcyl{s} U \to \order{k - 1}{U}, \hinv{s}^Lu, \hinv{s}^Ru \colon \dual{n + k}{\hcyl{s} U} \to \order{k - 1}{U}}_{s \in \set{L, R}^k},\\
-        \nd \gr{n + k}{\order{k}{V}} &= \set{\hinv{s}v \colon \hcyl{s} V \to \order{k - 1}{V}, \hinv{s}^Lv, \hinv{s}^Rv \colon \dual{n + k}{\hcyl{s} V} \to \order{k - 1}{U}}_{s \in \set{L, R}^k}.
+        \nd \gr{n + k}{\order{k}{U}} &= \set{\hinv{\s}u \colon \hcyl{\s} U \to \order{k - 1}{U}, \hinv{\s}^Lu, \hinv{\s}^Ru \colon \dual{n + k}{\hcyl{\s} U} \to \order{k - 1}{U}}_{\s \in \set{L, R}^k},\\
+        \nd \gr{n + k}{\order{k}{V}} &= \set{\hinv{\s}v \colon \hcyl{\s} V \to \order{k - 1}{V}, \hinv{\s}^Lv, \hinv{\s}^Rv \colon \dual{n + k}{\hcyl{\s} V} \to \order{k - 1}{U}}_{\s \in \set{L, R}^k}.
     \end{align*}
-    We will then show by induction on \( k \geq 0 \) that letting \( c_0 \eqdef \molecin{c} \), and for all \( k > 0 \), that \( c_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \) by letting, for all \( s \in \set{L, R}^k \),
+    We will then show by induction on \( k \geq 0 \) that letting \( c_0 \eqdef \molecin{c} \), and for all \( k > 0 \), that \( s_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \) by letting, for all \( \s \in \set{L, R}^k \),
     \begin{equation*}
-        \hinv{s}u \mapsto \hinv{s}v,\quad \hinv{s}^Lu, \mapsto \hinv{s}^Lv,\quad \hinv{s}^Ru, \mapsto \hinv{s}^Rv,
+        \hinv{\s}u \mapsto \hinv{\s}v,\quad \hinv{\s}^Lu, \mapsto \hinv{\s}^Lv,\quad \hinv{\s}^Ru, \mapsto \hinv{\s}^Rv,
     \end{equation*}
     is a well defined strict functor fitting in a pushout square
     \begin{center} \label{tik:inductive_square_subdivision_localisation}
@@ -347,8 +283,8 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             {\molecin U} & {\molecin{\order k U}} \\
             {\molecin V} & {\molecin {\order k V}.}
             \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
-            \arrow["{c_0}"', from=1-1, to=2-1]
-            \arrow["{c_k}", from=1-2, to=2-2]
+            \arrow["{s_0}"', from=1-1, to=2-1]
+            \arrow["{s_k}", from=1-2, to=2-2]
             \arrow[from=2-1, to=2-2]
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
@@ -356,10 +292,10 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     The base case is evident.
     Inductively, let \( k > 0 \).
     To make the following diagrams more readable, we omit writing \( \molecin{(-)} \). 
-    Then \( {\molecin{\order k U}} \) and \( {\molecin{\order k V}} \) are produced from \( {\molecin{\order {k - 1} U}} \) and \( {\molecin{\order {k - 1} V}} \) by first attaching left and right inverses of the elements of the form \( \hinv{s}u \) and \( \hinv{s}v \) for \( s \in \set{L, R}^{k - 1} \), giving the following pushouts in \( \somegaCat \)
+    Then \( {\molecin{\order k U}} \) and \( {\molecin{\order k V}} \) are produced from \( {\molecin{\order {k - 1} U}} \) and \( {\molecin{\order {k - 1} V}} \) by first attaching left and right inverses of the elements of the form \( \hinv{\s}u \) and \( \hinv{\s}v \) for \( \s \in \set{L, R}^{k - 1} \), giving the following pushouts in \( \somegaCat \)
     \begin{center}
         \begin{tikzcd}
-            {\coprod\limits_{s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{s}U}} & {\coprod\limits_{s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{s}U}} \\
+            {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{\s}U}} & {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{\s}U}} \\
             {\order{k - 1} U} & {U'}
             \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
@@ -371,7 +307,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     and 
     \begin{center}
         \begin{tikzcd}
-            {\coprod\limits_{s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{s}V}} & {\coprod\limits_{s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{s}V}} \\
+            {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{\s}V}} & {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{\s}V}} \\
             {\order{k - 1} V} & {V'}
             \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
@@ -380,23 +316,23 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
     \end{center}
-    By Lemma \ref{lem:subdivision_of_invertors}, Lemma \ref{lem:pushout_principal_cell}, we have the pushout square
+    By Lemma \ref{lem:subdivision_of_invertors}, Corollary \ref{cor:pushout_principal_cell}, we have the pushout square
     \begin{center}
         \begin{tikzcd}
-            {\coprod\limits_{s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{s}U}} & {\coprod\limits_{s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{s}U}} \\
-            {\coprod\limits_{s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{s}V}} & {\coprod\limits_{s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{s}V}}
+            {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{\s}U}} & {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{\s}U}} \\
+            {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \bd{}{}\dual{n + k - 1}{\hcyl{\s}V}} & {\coprod\limits_{\s \in \set{L, R}^{k - 1}} \dual{n + k - 1}{\hcyl{\s}V}}
             \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
-            \arrow["{\coprod \dual{n + k - 1}{\hcyl{s}c}}", from=1-2, to=2-2]
+            \arrow["{\coprod \dual{n + k - 1}{\hcyl{\s}c}}", from=1-2, to=2-2]
             \arrow[from=2-1, to=2-2]
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
     \end{center}
-    Combined with the inductive pushout square (\ref{tik:inductive_square_subdivision_localisation}), pasting law for pushouts therefore gives a strict functor \( c' \colon \molecin{U'} \to \molecin{V'} \) being the pushout of \( c_k \) along \( \molecin{\order{k - 1}{U}} \to \molecin{U'} \).
+    Combined with the inductive pushout square (\ref{tik:inductive_square_subdivision_localisation}), pasting law for pushouts therefore gives a strict functor \( s' \colon \molecin{U'} \to \molecin{V'} \) being the pushout of \( s_k \) along \( \molecin{\order{k - 1}{U}} \to \molecin{U'} \).
     Finally, \( \molecin{\order k U} \) and \(  {\molecin{\order k V}} \) are given by the following cellular extensions of \( U' \) and \( V' \):
     \begin{center}
         \begin{tikzcd}[column sep=small]
-            {\coprod\limits_{s \in \set{L, R}^k} \bd{}{}\hcyl{s}U} & {\coprod\limits_{s \in \set{L, R}^k} \hcyl{s}U} & {\coprod\limits_{s \in \set{L, R}^k} \bd{}{}\hcyl{s}V} & {\coprod\limits_{s \in \set{L, R}^k} \hcyl{s}V} \\
+            {\coprod\limits_{\s \in \set{L, R}^k} \bd{}{}\hcyl{\s}U} & {\coprod\limits_{\s \in \set{L, R}^k} \hcyl{\s}U} & {\coprod\limits_{\s \in \set{L, R}^k} \bd{}{}\hcyl{\s}V} & {\coprod\limits_{\s \in \set{L, R}^k} \hcyl{\s}V} \\
             {U'} & {\order k U} & {V'} & {\order k V}.
             \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
             \arrow[from=1-1, to=2-1]
@@ -410,9 +346,9 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-4, to=1]
         \end{tikzcd}
     \end{center}
-    By a similar argument, the pushout of \( c' \colon  \molecin{U'} \to \molecin{V'} \) along the strict functor \( \molecin{U'} \to \molecin{\order{k}{U}} \) is \( c_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \).
+    By a similar argument, the pushout of \( s' \colon  \molecin{U'} \to \molecin{V'} \) along the strict functor \( \molecin{U'} \to \molecin{\order{k}{U}} \) is \( s_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \).
     The pasting law for pushout concludes the inductive step.
-    By transfinite composition \( \tilde{c} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc{V}} \) is the pushout of \( \molecin{c} \) along \( \molecin{U} \to \molecin{\selfloc U} \).
+    By transfinite composition \( \tilde{s} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc{V}} \) is the pushout of \( \molecin{s} \) along \( \molecin{U} \to \molecin{\selfloc U} \).
 \end{proof}
 
 \begin{prop} \label{prop:molecin_send_Jcomp_to_acof}
@@ -425,52 +361,26 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 \end{prop}
 \begin{proof}
     Let \( n \eqdef \dim U \), and \( s \colon \dglobe{n} \sd U \) be the unique subdivision.
-    By Lemma \ref{lem:pushout_with_localisation}, we have the four commutative squares
-    \begin{center}
-        \begin{tikzcd}[column sep=small]
-            {\molecin{\dglobe n}} & {\molecin{\bd{}{}{\dglobe {n + 1}}}} & {\molecin{\dglobe {n + 1}}} & {\molecin{\rglobe {n + 1}}} \\
-            {\molecin U} & {\molecin{\bd{}{}(U \celto \compos U)}} & {\molecin{(U \celto \compos U)}} & {\molecin{(U \simeq \compos U)}}
-            \arrow[from=1-1, to=1-2]
-            \arrow["{\molecin{s}}"', from=1-1, to=2-1]
-            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-2, to=1-3]
-            \arrow[from=1-2, to=2-2]
-            \arrow[""{name=1, anchor=center, inner sep=0}, from=1-3, to=1-4]
-            \arrow[from=1-3, to=2-3]
-            \arrow[from=1-4, to=2-4]
-            \arrow[from=2-1, to=2-2]
-            \arrow[from=2-2, to=2-3]
-            \arrow[from=2-3, to=2-4]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=0]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-4, to=1]
-        \end{tikzcd}
-    \end{center}
-    where the middle and right squares are pushouts.
-    The composite of the top horizontal strict functors is an acyclic cofibration by Proposition \ref{prop:walking_eq_of_dim_n}.
-    Since acyclic cofibrations are stable under pushouts, it is enough by the pasting law for pushout to show that the left square is a pushout.
-    In the following commutative cube
+    By Lemma \ref{lem:pushout_with_localisation}, we have the two commutative squares
     \begin{center}
         \begin{tikzcd}
-            {\molecin{\bd{}{}\dglobe n}} & {\molecin{\dglobe n}} \\
-            {\molecin{\bd{}{}U}} & {\molecin{\compos U}} \\
-            && {\molecin{\dglobe n}} & {\molecin{\bd{}{}{\dglobe {n + 1}}}} \\
-            && {\molecin U} & {\molecin{\bd{}{}(U \celto \compos U)}}
-            \arrow[from=1-1, to=1-2]
-            \arrow[from=1-1, to=2-1]
-            \arrow[curve={height=12pt}, from=1-1, to=3-3]
-            \arrow[dashed, from=1-2, to=2-2]
-            \arrow[curve={height=-12pt}, from=1-2, to=3-4]
+            {\molecin{\dglobe n}} & {\molecin{\dglobe {n + 1}}} & {\molecin{\rglobe {n + 1}}} \\
+            {\molecin U} & {\molecin{(U \celto \compos U)}} & {\molecin{(U \simeq \compos U)}}
+            \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+            \arrow["{{\molecin{s}}}"', from=1-1, to=2-1]
+            \arrow[""{name=1, anchor=center, inner sep=0}, from=1-2, to=1-3]
+            \arrow[from=1-2, to=2-2]
+            \arrow[from=1-3, to=2-3]
             \arrow[from=2-1, to=2-2]
-            \arrow[curve={height=12pt}, from=2-1, to=4-3]
-            \arrow[curve={height=-12pt}, dashed, from=2-2, to=4-4]
-            \arrow[from=3-3, to=3-4]
-            \arrow["{\molecin{s}}"', from=3-3, to=4-3]
-            \arrow[from=3-4, to=4-4]
-            \arrow[from=4-3, to=4-4]
+            \arrow[from=2-2, to=2-3]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1]
         \end{tikzcd}
     \end{center}
-    the back face is a pushout by Lemma \ref{lem:pushout_principal_cell}.
-    The top and bottom face are pushouts since they are cellular extensions.
-    By the pasting law for pushouts, the front face is a pushout as desired.
+    where the right square is a pushout.
+    By Lemma \ref{lem:generalised_substitution}, the left square is also a pushout.
+    By the pasting law for pushouts, the outer square is a pushout.
+    Since composite of the top horizontal strict functors is an acyclic cofibration by Proposition \ref{prop:walking_eq_of_dim_n}, we conclude that \( \molecin{c_u} \) is an acyclic cofibration.
 \end{proof}
 
 \begin{dfn} [Diagrammatic nerve]

@@ -1,14 +1,63 @@
 \section*{Introduction}
 
+Let \( n \in \mathbb{N} \).
+The definition of strict \( n \)\nbd category is the most natural generalisation of the definition of strict \( 2 \)\nbd categories allowing for cells of dimension of higher dimensions.
+A strict \( n \)\nbd category consists of a collection of objects, called the globular cells.
+Each globular cell posses, for each natural number \( k \), a notion of \( k \)\nbd source and \( k \)\nbd target. 
+Given two globular cells such that the \( k \)\nbd target of the first one is equal to the \( k \)\nbd source of the second, one can compose them using the \( k \)\nbd composition operation, and obtain a third one.
+Those composition operations are required to satisfy, akin to strict \( 2 \)\nbd categories, axioms of unitality, an axiom of associativity, and of \emph{exchange}.
+The latter makes it so that the \( k \)\nbd composition operation is functorial with respect to the \( (k + \ell) \)\nbd composition operation for all \( \ell > 0 \).
+As a consequence, the category of strict \( (n + 1) \)\nbd category can canonically be identified with the category of categories enriched in strict \( n \)\nbd category. 
+Repeating this enrichment a transfinite number of times, one obtain the category of strict \( \omega \)\nbd categories, which is enriched over itself.
+There should, a priori, be no need for further axioms.   
+
+In fact, it is well known that, in a certain sense, the theory of strict \( n \)\nbd categories is already \emph{too} strict: all of its axioms hold up to equality and well-devised constructions, when \( n \geq 3 \), allow to break the topological intuition that associates to a globular cell of dimension \( k \) a \( k \)\nbd ball, with its hemisphere decomposed recursively as the \( (k - 1) \)\nbd source and target.
+Therefore, one is lead to think that making the strict \( n \)\nbd categories even stricter will make them even more too strict.
+We claim, however, that making them stricter is restoring a part of the topological intuition which was absent in the strict case: there is a way in which the strict \( n \)\nbd categories are not strict enough.
+What we strictify is of a different nature than the way in which it is commonly understood that strict \( n \)\nbd categories are too strict.
+It is only until recently that those ideas started to emerge in the literature.
+
+
+\subsubsection*{What is a pasting theorem}
+
+An informal justification of the exchange rule is as follow. 
+\begin{center}
+    \begin{tikzcd}
+        \bullet & \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet & \bullet
+        \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-1, to=1-2]
+        \arrow["{(0')}", squiggly, no head, from=1-2, to=1-3]
+        \arrow[""{name=2, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-3, to=1-4]
+        \arrow[""{name=3, anchor=center, inner sep=0}, from=1-3, to=1-4]
+        \arrow[""{name=4, anchor=center, inner sep=0}, from=2-1, to=2-2]
+        \arrow[""{name=5, anchor=center, inner sep=0}, curve={height=12pt}, from=2-1, to=2-2]
+        \arrow["{(0)}", squiggly, no head, from=2-2, to=2-3]
+        \arrow[""{name=6, anchor=center, inner sep=0}, from=2-3, to=2-4]
+        \arrow[""{name=7, anchor=center, inner sep=0}, curve={height=12pt}, from=2-3, to=2-4]
+        \arrow[between={0.2}{0.8}, Rightarrow, from=0, to=1]
+        \arrow["{(1)}"', between={0.2}{0.8}, squiggly, no head, from=0, to=4]
+        \arrow[between={0.2}{0.8}, Rightarrow, from=3, to=2]
+        \arrow["{(1')}", between={0.2}{0.8}, squiggly, no head, from=3, to=6]
+        \arrow[between={0.2}{0.8}, Rightarrow, from=5, to=4]
+        \arrow[between={0.2}{0.8}, Rightarrow, from=7, to=6]
+    \end{tikzcd}
+\end{center}
+Of course that \emph{pasting} along \( (0) \) and \( (0') \), then \( (1) \) and \( (1') \) will produce the same result as pasting along \( (1) \) and \( (1') \), then \( (0) \) (or \( (0') \)).
+How to make it formal?
+One way is to combinatorial complexes\dots 
+% which it can be composed with other globular cells having the same \( k \)\nbd target and \( k \)\nbd source respectively. 
+
+
+
+\subsection*{Background on regular directed complexes}
 \cccom{TODO}
 \begin{itemize}
     \item review combinatorics of regular directed complexes, 
-    \item functor \( \molecin{U} \)
     \item directed globes, say -1 is empty
-    \item suspension, gray product of regular directed complexes and diagrammatic sets
+    \item suspension, gray product of regular directed complexes
     \item dual
     \item diamond transitive
-    \item connected diagrammatic set
     \item read Henry regular polygraph and say it rectifies the problem
 \end{itemize}
 
@@ -17,7 +66,8 @@
     Any molecule is diamond transitive
 \end{lem}
 
+\subsection*{Structure of the article}
+
 \subsection*{Acknowledgment}
 \ccnote{TODO}
 % add Amar, Viktorya, Fosco
-
