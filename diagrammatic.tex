@@ -6,7 +6,7 @@ Recall that a diagrammatic set is a presheaf over the category \( \atom \).
 We write \( \dgmSet \) for the category of diagrammatic sets.
 By \cite[Lemma 2.5]{chanavat2024htpy}, the Yoneda embedding \( \atom \incl \dgmSet \) factors as
 \begin{equation*}
-    \atom \incl \rdcpx \incl \dgmSet,
+    \atom \incl \rdcpxcart \incl \dgmSet,
 \end{equation*} 
 and in the sequel, we always identify a regular directed complex with its associated diagrammatic set.
 
@@ -360,7 +360,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{dfn}
 
 \begin{dfn} [\( (\infty, n) \)\nbd category]
-    Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( X \) be a diagrammatic set.
+    Let \( n \in \mathbb{N} \cup \set{\omega} \), and \( X \) be a diagrammatic set.
     We say that \( X \) is an \( (\infty, n) \)\nbd category if:
     \begin{enumerate}
         \item \( X \) has weak composites
@@ -384,7 +384,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{dfn}
 
 \begin{dfn}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \).
+    Let \( n \in \mathbb{N} \cup \set{\omega} \).
     We let \( \Jn{n} \eqdef \set{U \incl \selfloc{U} \mid U \text{ atom}, \dim U > n } \).
 \end{dfn}
 
@@ -471,7 +471,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{proof}
 
 \begin{prop} \label{prop:model_structre_on_marked_dgm_set}
-    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
+    For each \( n \in \mathbb{N} \cup \set{\omega} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
         \item cofibrations are the monomorphisms;
         \item fibrant objects are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
@@ -482,7 +482,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{proof}
 
 \begin{lem} \label{lem:marked_localisation_acyclic}
-    Let \( n \in \mathbb{N} \cup \set{\infty} \) and \( U \) be an atom of dimension \( \geq 1 \).
+    Let \( n \in \mathbb{N} \cup \set{\omega} \) and \( U \) be an atom of dimension \( \geq 1 \).
     Then the marking \( \minmark{\selfloc{U}} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{\iota \colon U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
 \end{lem}
 \begin{proof}
@@ -492,8 +492,11 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     This shows that the lifting problem has a solution and concludes the proof.
 \end{proof}
 
+\noindent Recall that in a model structure, a \emph{pseudo-generating set of acyclic cofibrations} is a set of \( J \) of acyclic cofibration such that a morphism with fibrant codomain is a fibration if and only if it has the right lifting property against \( J \).
+
 \begin{thm} \label{thm:n_model_structure_on_dgm_set}
-    For each \( n \in \mathbb{N} \cup \set{\infty} \) exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, wherethe different definition
+    Let \( n \in \mathbb{N} \cup \set{\omega} \).
+    Then there exists a model structure on diagrammatic sets, called the \emph{\( (\infty, n) \)\nbd model structure}, such that
     \begin{enumerate}
         \item the set \( \set{\bd{}{} U \incl U \mid U \text{ atom}} \) is a generating set of cofibrations;
         \item fibrant objects are the \( (\infty, n) \)\nbd categories;

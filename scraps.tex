@@ -171,7 +171,7 @@
 
 
 % \begin{lem} \label{lem:isofib_rlp_double_walking}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be an atom of dimension \( > 0 \).
+%     Let \( n \in \mathbb{N} \cup \set{\omega} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be an atom of dimension \( > 0 \).
 %     Then \( f \) has the right lifting property against 
 %     \begin{equation*}
 %         \selfloc{U} \incl \Loc (\selfloc{U}, \dgn \selfloc{U} \cup \set{U \incl \selfloc{U}}).
@@ -202,7 +202,7 @@
 % \end{proof}
 
 % \begin{lem} \label{lem:isofib_rlp_dual_comp}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be a round molecule.
+%     Let \( n \in \mathbb{N} \cup \set{\omega} \), \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \), and \( U \) be a round molecule.
 %     Then \( f \) has the right lifting property against the inclusion \( U \incl \compos{U} \simeq U \).
 % \end{lem}
 % \begin{proof}
@@ -234,7 +234,7 @@
 % \end{proof}
 
 % \begin{lem} \label{lem:rlp_localised_horn_iff_rlp_weak_composite}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \), and \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories.
+%     Let \( n \in \mathbb{N} \cup \set{\omega} \), and \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories.
 %     The following are equivalent.
 %     \begin{enumerate}
 %         \item \( f \) has the right lifting property against \( \Loc \Jhorn \);
@@ -541,7 +541,7 @@
     % Then we have the pasting diagram \( c \cp{k} \bd{k}{+} c \colon \molecin{(O^m \cp{k} \bd{k}{+} O^m)} \to C \).
     % Since \( (O^m \cp{k} \bd{k}{+} O^m) = O^m \), the principal cell of \( c \cp{k} \bd{k}{+} c \) is \( \pcell{c} \).
     % This shows that \( \pcell{c} \comp{k} \bd{k}{+} \pcell{c} = \pcell{c} \).
-    % Similarly, \(  \bd{-}{k} c \comp{k} \pcell{c} = \pcell{c} \).
+    % Similarly, \(  \bd{k}{-} c \comp{k} \pcell{c} = \pcell{c} \).
     % Next, we consider the axiom of associativity. 
     % Let \( c, d, e \) be \( k \)\nbd composable cell in \( C \).
     % Then again, we have a pasting diagram \( c \cp{k} d \colon \molecin{(\dglobe{m} \cp{k} \dglobe{m'})} \to \C \).
@@ -565,7 +565,7 @@
 
 
 % \begin{dfn}
-%     For each \( n \in \mathbb{N} \cup \set{\infty} \), we call \( \fun{W}_n \) be the collection of weak equivalences of the \( (\infty, n) \)\nbd model structure on diagrammatic sets, and \( \fun{W}^{\m{}}_n \) the collection of weak equivalences of the coinductive \( (\infty, n) \)\nbd model structures on marked diagrammatic sets.
+%     For each \( n \in \mathbb{N} \cup \set{\omega} \), we call \( \fun{W}_n \) be the collection of weak equivalences of the \( (\infty, n) \)\nbd model structure on diagrammatic sets, and \( \fun{W}^{\m{}}_n \) the collection of weak equivalences of the coinductive \( (\infty, n) \)\nbd model structures on marked diagrammatic sets.
 % \end{dfn}
 % \begin{rmk}
 
@@ -578,7 +578,7 @@
 % \end{rmk}
 
 % \begin{prop} \label{prop:loc_preserves_weak_equivalences} \cccom{do we need that?}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \).
+%     Let \( n \in \mathbb{N} \cup \set{\omega} \).
 %     Then \( \Loc \fun{W}^{\m{}}_n = \fun{W}_n \).
 % \end{prop}
 % \begin{proof}
@@ -623,7 +623,7 @@
 % \end{dfn}
 
 % \begin{prop}\label{prop:infty_n_cat_htpy_colimit_of_its_globes}
-%     Let \( n \in \mathbb{N} \cup \set{\infty} \), \( Y \) be an \( (\infty, n) \)\nbd category, and \( \iota \colon X \subseteq Y \) a subpresheaf of \( Y \) such that for all \( n \geq 0 \), \( X(\dglobe{n}) = Y(\dglobe{n}) \).
+%     Let \( n \in \mathbb{N} \cup \set{\omega} \), \( Y \) be an \( (\infty, n) \)\nbd category, and \( \iota \colon X \subseteq Y \) a subpresheaf of \( Y \) such that for all \( n \geq 0 \), \( X(\dglobe{n}) = Y(\dglobe{n}) \).
 %     Then \( \iota \) is an acyclic cofibration in the \( (\infty, n) \)\nbd model structure.
 % \end{prop}
 % \begin{proof}
@@ -764,3 +764,153 @@
 %     We made this slight adjustment in order to match the convention of the definition of the localisation (\ref{dfn:localisation}), so that Lemma \ref{lem:swE_is_iso_to_molecin_loc_globe} holds. 
 %     The reader can be assured that this difference is inessential and the main results of \cite{hadzihasanovic2024model} still hold for \( \wE \).
 % \end{comm}
+
+
+% If the primary justification of the exchange law is algebraic, our motivation to introduce higher exchanges is geometric. 
+% Each decomposition of a molecule into pasting reflects a universal property of its associated topological space. 
+% Another justification for the axioms of strict \( \omega \)\nbd categories stems from the combinatorics of higher categorical diagrams.
+% In this perspective an higher categorical diagram is a cell complex together with the data of an orientation  
+% directed combinatorial topology.
+% In this perspective, the equations sa
+% The axiom of strict \( \omega \)\nbd category should be given by the axiom of the combinatorics of pasting diagrams.
+% Here, by pasting diagram we mean a combinatorial  
+% If one consider the class \( \underline{\Theta} \) of regular CW complexes generated by the closure under (bipointed) suspension and wedge sum  that is, by taking a pushout, along boundaries   
+
+% It turns out that the family consisting of the directed cellular isomorphisms representing the unitality, associativity, the exchange laws (in all of the possible dimensions) generates the whole family of directed cellular isomorphisms in \( \underline{Theta} \).
+% This suggest once again that the axioms     
+
+% \cccom{The following is too long, cut to the chase}
+% We discussed it, a first justification for the exchange rule is algebraic, we want lower dimensional composition to be functorial over higher dimensional composition. 
+% It turns out that the algebraic picture is equivalent to a topological one.
+% A natural starting point is to view the globes, which are the underlying shape of the elements in a higher category, as genuine topological balls realised as the canonical CW complex encoded by in the combinatorics of its boundary operators.   
+% For instance, the 2-globe \( \dglobe{2} \) is the regular CW complex 
+% \begin{center}
+%     \begin{tikzcd}[sep=large]
+%         {0^-} & {0^+},
+%         \arrow[""{name=0, anchor=center, inner sep=0}, "{1^-}"', curve={height=12pt}, from=1-1, to=1-2]
+%         \arrow[""{name=1, anchor=center, inner sep=0}, "{1^+}", curve={height=-12pt}, from=1-1, to=1-2]
+%         \arrow["2", between={0.2}{0.8}, Rightarrow, from=0, to=1]
+%     \end{tikzcd}
+% \end{center}
+% whose face poset consists of five elements \( \set{0^-, 0^+ < 1^-, 1^+ < 2} \), representing respectively \( \bd{0}{-} \dglobe{2}, \bd{0}{+} \dglobe{2}, \bd{1}{-} \dglobe{2}, \bd{1}{+} \dglobe{2} \), and \( \dglobe{2} \) itself.  
+% It should be noted that all such CW complexes are directed, in that each \( k \)\nbd cell in the boundary of a \( (k + 1) \)\nbd cell is either in the ``input'' or the ``output'' boundary of that \( (k + 1) \)\nbd cell.
+% In the setting of directed regular CW complex, the notion of ``sameness'' is prescribed by cellular isomorphism that also respects the direction and the notion of input and output \( k \)\nbd boundary can be described combinatorially by a subcomplex inclusion \( i^\alpha_k \colon \bd{k}{\a} U \incl U \).
+% Then, the \( k \)\nbd composition is embodied by the operation of \emph{pasting along the \( k \)\nbd boundary}, in that if two such complexes \( U \) and \( V \) are such that there is a directed cellular isomorphism \( \phi \colon \bd{k}{+} U \cong \bd{k}{-} V \), the pasting \( U \cp{k} V \) is defined as the pushout 
+% \begin{center}
+%     \begin{tikzcd}
+%         { \bd{k}{+} U \stackrel\phi\cong \bd{k}{-} V} & V \\
+%         U & {U \cp{k} V}
+%         \arrow[""{name=0, anchor=center, inner sep=0}, hook, from=1-1, to=1-2]
+%         \arrow[hook', from=1-1, to=2-1]
+%         \arrow[from=1-2, to=2-2]
+%         \arrow[from=2-1, to=2-2]
+%         \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+%     \end{tikzcd}
+% \end{center}
+% in topological spaces, with its canonical directed cellular decomposition.  
+% Taking the closure of the globes \( \set{\dglobe{0}, \dglobe{1}, \ldots} \) under the pasting operations, one obtain a certain family of complexes, let us call them \( \underline{\Theta} \), a typical instance of is given by
+% \begin{center}
+%     \begin{tikzcd}
+%         \bullet && \bullet && \bullet
+%         \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-3]
+%         \arrow[""{name=1, anchor=center, inner sep=0}, curve={height=-24pt}, from=1-1, to=1-3]
+%         \arrow[""{name=2, anchor=center, inner sep=0}, curve={height=24pt}, from=1-1, to=1-3]
+%         \arrow[""{name=3, anchor=center, inner sep=0}, curve={height=24pt}, from=1-3, to=1-5]
+%         \arrow[""{name=4, anchor=center, inner sep=0}, curve={height=-24pt}, from=1-3, to=1-5]
+%         \arrow[""{name=5, anchor=center, inner sep=0}, from=1-3, to=1-5]
+%         \arrow["x", between={0.2}{0.8}, Rightarrow, from=2, to=0]
+%         \arrow["y", between={0.2}{0.8}, Rightarrow, from=0, to=1]
+%         \arrow["{x'}"', between={0.2}{0.8}, Rightarrow, from=3, to=5]
+%         \arrow["{y'}"', between={0.2}{0.8}, Rightarrow, from=5, to=4]
+%     \end{tikzcd}
+% \end{center}
+% It so happens that this directed CW complex can be described equivalently by the pastings
+% \begin{equation*}
+%     (x \cp{0} x') \cp{1} (y \cp{0} y') \;\text{ and }\; (x \cp{1} y) \cp{0} (x' \cp{1} y'),
+% \end{equation*}
+% where \( x, x', y \) and \( y' \) are copies of the 2-globe.
+% That is, there is a directed cellular isomorphism
+% \begin{equation*}
+%     (x \cp{0} x') \cp{1} (y \cp{0} y') \stackrel{\xi}{\cong} (x \cp{1} y) \cp{0} (x' \cp{1} y'),
+% \end{equation*} 
+% given by the universal property of the pasting square.
+% Hence the exchange law. 
+% It turns out that the family consisting of the directed cellular isomorphisms representing the unitality, associativity, the exchange laws (in all of the possible dimensions) generates the whole family of directed cellular isomorphisms in \( \underline{Theta} \).
+% This suggest once again that the axioms     
+
+% In this topological setting, the composition along the \( k \)\nbd boundary is embodied by the \emph{pasting along the \( k \)\nbd boundary}. 
+% The \( n \)\nbd globe \( \dglobe{n} \) comes equipped, for each \( k \geq 0 \) and \( \a \in \set{-, +} \), with a subcomplex \( \bd{k}{\a} \colon \dglobe{k} \incl \dglobe{n} \), representing the \( k \)\nbd source or \( k \)\nbd target map.   
+% Then, for \( k \le n, m \), one defines the pasting of the \( n \)\nbd globe and the \( m \)\nbd globe along the \( k \)\nbd boundary as the (directed) regular CW complex \( \dglobe{n} \cp{k} \dglobe{m} \), given by the pushout 
+% \begin{equation*}
+%     \begin{tikzcd}
+%         {\dglobe k} & {\dglobe m} \\
+%         {\dglobe n} & {\dglobe{n} \cp{k} \dglobe{m}}
+%         \arrow[""{name=0, anchor=center, inner sep=0}, "{\bd{k}{-}}", hook, from=1-1, to=1-2]
+%         \arrow["{\bd{k}{+}}"', hook', from=1-1, to=2-1]
+%         \arrow[from=1-2, to=2-2]
+%         \arrow[from=2-1, to=2-2]
+%         \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
+%     \end{tikzcd}
+% \end{equation*}
+% in topological spaces.
+
+
+% \begin{center}
+%     \begin{tikzcd}
+%         \bullet & \bullet & \bullet & \bullet \\
+%         \bullet & \bullet & \bullet & \bullet
+%         \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
+%         \arrow[""{name=1, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-1, to=1-2]
+%         \arrow["{(0')}", squiggly, no head, from=1-2, to=1-3]
+%         \arrow[""{name=2, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-3, to=1-4]
+%         \arrow[""{name=3, anchor=center, inner sep=0}, from=1-3, to=1-4]
+%         \arrow[""{name=4, anchor=center, inner sep=0}, from=2-1, to=2-2]
+%         \arrow[""{name=5, anchor=center, inner sep=0}, curve={height=12pt}, from=2-1, to=2-2]
+%         \arrow["{(0)}", squiggly, no head, from=2-2, to=2-3]
+%         \arrow[""{name=6, anchor=center, inner sep=0}, from=2-3, to=2-4]
+%         \arrow[""{name=7, anchor=center, inner sep=0}, curve={height=12pt}, from=2-3, to=2-4]
+%         \arrow[between={0.2}{0.8}, Rightarrow, from=0, to=1]
+%         \arrow["{(1)}"', between={0.2}{0.8}, squiggly, no head, from=0, to=4]
+%         \arrow[between={0.2}{0.8}, Rightarrow, from=3, to=2]
+%         \arrow["{(1')}", between={0.2}{0.8}, squiggly, no head, from=3, to=6]
+%         \arrow[between={0.2}{0.8}, Rightarrow, from=5, to=4]
+%         \arrow[between={0.2}{0.8}, Rightarrow, from=7, to=6]
+%     \end{tikzcd}
+% \end{center}
+% Of course that \emph{pasting} along \( (0) \) and \( (0') \), then \( (1) \) and \( (1') \) will produce the same result as pasting along \( (1) \) and \( (1') \), then \( (0) \) (or \( (0') \)).
+% How to make it formal?
+% One way is to combinatorial complexes\dots 
+% which it can be composed with other globular cells having the same \( k \)\nbd target and \( k \)\nbd source respectively. 
+
+
+%% old diamond
+
+    % \( (D_i )_{i = 1}^r \)
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         & {x_i} \\
+    %         {y_i} && {y'_i} & {0 \le i \le r } \\
+    %         & {z_i}
+    %         \arrow[no head, from=1-2, to=2-1]
+    %         \arrow[no head, from=1-2, to=2-3]
+    %         \arrow[no head, from=2-1, to=3-2]
+    %         \arrow[no head, from=2-3, to=3-2]
+    %     \end{tikzcd}
+    % \end{center}
+    % transforming the left chain to the right chain.
+
+        % Then we have in the covering diagram of \( \augm{U} \) 
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         & u \\
+    %         {k_{n - 1}} && {u_{n - 1}} \\
+    %         {k_0} && {u_0} \\
+    %         & \bot.
+    %         \arrow[no head, from=1-2, to=2-1]
+    %         \arrow[no head, from=1-2, to=2-3]
+    %         \arrow[dashed, no head, from=2-1, to=3-1]
+    %         \arrow[dashed, no head, from=2-3, to=3-3]
+    %         \arrow[no head, from=3-1, to=4-2]
+    %         \arrow[from=3-3, to=4-2]
+    %     \end{tikzcd}
+    % \end{center}

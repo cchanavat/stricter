@@ -1,4 +1,4 @@
-\section*{Introduction}
+\section{Introduction}
 
 Let \( n \in \mathbb{N} \).
 The definition of strict \( n \)\nbd category is the most natural generalisation of the definition of strict \( 2 \)\nbd categories allowing for cells of dimension of higher dimensions.
@@ -11,63 +11,206 @@ As a consequence, the category of strict \( (n + 1) \)\nbd category can canonica
 Repeating this enrichment a transfinite number of times, one obtain the category of strict \( \omega \)\nbd categories, which is enriched over itself.
 There should, a priori, be no need for further axioms.   
 
-In fact, it is well known that, in a certain sense, the theory of strict \( n \)\nbd categories is already \emph{too} strict: all of its axioms hold up to equality and well-devised constructions, when \( n \geq 3 \), allow to break the topological intuition that associates to a globular cell of dimension \( k \) a \( k \)\nbd ball, with its hemisphere decomposed recursively as the \( (k - 1) \)\nbd source and target.
-Therefore, one is lead to think that making the strict \( n \)\nbd categories even stricter will make them even more too strict.
-We claim, however, that making them stricter is restoring a part of the topological intuition which was absent in the strict case: there is a way in which the strict \( n \)\nbd categories are not strict enough.
+In fact, it is well known that, in a certain sense, the theory of strict \( n \)\nbd categories is already \emph{too} strict: all of its axioms hold up to equality and well-devised constructions, when \( n \geq 3 \), allow to break the topological intuition that associates to a globular cell of dimension \( k \), a \( k \)\nbd ball, with its hemisphere decomposed recursively as the \( (k - 1) \)\nbd source and target.
+Therefore, one is lead to think that making strict \( n \)\nbd categories even stricter will cause them to be even more too strict.
+We claim, however, that turning them stricter is restoring a part of the topological intuition which was absent in the strict case: there is a way in which the strict \( n \)\nbd categories are not strict enough.
 What we strictify is of a different nature than the way in which it is commonly understood that strict \( n \)\nbd categories are too strict.
-It is only until recently that those ideas started to emerge in the literature.
+It is only recently that those ideas started to emerge in the literature.
 
+\subsubsection*{Higher exchanges}
 
-\subsubsection*{What is a pasting theorem}
+In his monograph \cite{hadzihasanovic2024combinatorics}, Hadzihasanovic develops the theory of higher categorical diagrams via the notion \emph{regular directed complex}.
+They are face poset of regular CW complexes together with orientation data which partition the closure of each cell into two halves: its input and output boundary, both of them representing a composable arrangement of lower dimensional cells.
+The class of complexes representing composable arrangements, called the \emph{molecules}, is defined by induction, starting from the point, the terminal object regular CW complex with its only possible operation, and closing under two kinds of operations.
+\begin{enumerate}
+    \item The first operation is that of pasting. Given two molecules \( U, V \) such that \( \bd{k}{+} U \), the output \( k \)\nbd boundary of \( U \) matches (in the sense of a directed and cellular isomorphism) \( \bd{k}{-} V \), the input \( k \)\nbd boundary of \( V \), the \emph{pasting at the \( k \)\nbd boundary of \( U \) and \( V \)} is the molecule \( U \cp{k} V \) defined as the pushout of \( U \) and \( V \) along the common boundaries. 
+    \item The second operation is that of rewrite.
+    Given two molecules \( U, V \) of the same dimension \( k \) that are \emph{round}, that is, whose associated regular CW complex is homeomorphic to the \( n \)\nbd ball, such that both the input and output \( (k - 1) \)\nbd boundary of \( U \) matches the input and output \( (k - 1) \)\nbd boundary of \( V \) respectively, the \emph{rewrite of \( U \) and \( V \)} is the molecule \( U \celto V \) defined by adding a greatest \( (k + 1) \)\nbd dimensional element \( \top \) to the pushout \( \bd{}{}(U \celto V) \) of \( U \) and \( V \) along their total boundary, in such a way that \( U \) and \( V \) are respectively the input and output boundary of the closure of \( \top \).
+\end{enumerate}  
+In particular, the boundary and pasting makes the collection of molecules\footnote{In fact, of isomorphisms classes of molecules. Since isomorphisms molecules are unique when they exists, we can safely ignore this technical detail} a strict \( \omega \)\nbd category.
+For instance, given molecules \( U, U', V, V \) and \( k < \ell \) such that \( (U \cp{\ell} U') \cp{k} (V \cp{\ell} V') \) is defined, we have
+\begin{equation*}
+    (U \cp{\ell} U') \cp{k} (V \cp{\ell} V') = (U \cp{k} V) \cp{\ell} (U' \cp{k} V').
+\end{equation*}
+One might reasonably hope that the axioms of strict \( n \)\nbd category suffice to generate all the equations satisfied by pasting of molecules.
+This is not the case.
+More precisely, this is the case as long as \( n \le 3 \) and but not afterwards, a four dimensional example is discussed in Comment \ref{comm:strict_are_not_stricter}.
+In this paper, we look at what happens to the theory of strict \( n \)\nbd category when one requires that the extra equations satisfied by the pasting of molecules, that we call \emph{higher exchanges}, to hold.
+We want to emphasis that this is not the study of the localisation of the category of strict \( \omega \)\nbd category along an arbitrary set of equations, but along equations prescribed by the geometry of combinatorial topology.
 
-An informal justification of the exchange rule is as follow. 
+What we gain is a stronger pasting theorem than the ones for strict \( n \)\nbd categories, where the allowed diagrams always satisfy certain acyclicity conditions.
+Indeed the stricter \( n \)\nbd categories have by definition a pasting theorem with respect to the class of regular directed complexes. 
+Since the latter contain many shapes used in the higher categorical literature (directed cubes and simplices, positive opetopes, thetas), the pasting theorem holds in particular for many classes of diagram of practical interest.   
+Similarly, regular directed complexes are closed under many categorical operations (suspension, join, Gray product, \dots), hence allow for uniform definitions of the said operation on stricter \( n \)\nbd categories.
+In fact, we could informally say that the theory of stricter \( n \)\nbd categories is what happens to the strict \( n \)\nbd category when Steiner theory is replaced by the theory of regular directed complexes.
+Conversely, we loose the ability to define stricter \( n \)\nbd category by iterated enrichment when \( n \geq 4 \), and we have by design to work harder to prove that some given data assemble into a stricter \( n \)\nbd category, even when knowing that it is a strict \( n \)\nbd category, as witnessed for instance by the construction of suspension in (\ref{subsec:suspension}). 
+
+\subsection*{Homotopy theory of stricter \( n \)\nbd categories}
+
+Another reason to introduce stricter \( n \)\nbd categories, and our primary motivation, is to compare them to the diagrammatic model of \( (\infty, n) \)\nbd categories, which is a model of higher categories based on the category \( \dgmSet \) of \emph{diagrammatic sets}, defined as presheaves over the categories \( \atom \) of \emph{atoms}, which are the regular directed complexes with a greatest element.  
+We conjecture that the relationship between strict and stricter \( n \)\nbd categories is the strict shadow of the relationship between the standard model of \( (\infty, n) \)\nbd category and the diagrammatic model of \( (\infty, n) \)\nbd category. 
+We believe that the two should coincide up to \( n = 3 \), and for \( n > 3 \), the latter should be a localisation of the former at the set of extra coherences.
+Before any attempt of solving this conjecture, we thought it would be a good idea to understand the missing corner in the following (for the most part conjectural) diagram of \( \infty \)\nbd categories
 \begin{center}
     \begin{tikzcd}
-        \bullet & \bullet & \bullet & \bullet \\
-        \bullet & \bullet & \bullet & \bullet
-        \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-1, to=1-2]
-        \arrow["{(0')}", squiggly, no head, from=1-2, to=1-3]
-        \arrow[""{name=2, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-3, to=1-4]
-        \arrow[""{name=3, anchor=center, inner sep=0}, from=1-3, to=1-4]
-        \arrow[""{name=4, anchor=center, inner sep=0}, from=2-1, to=2-2]
-        \arrow[""{name=5, anchor=center, inner sep=0}, curve={height=12pt}, from=2-1, to=2-2]
-        \arrow["{(0)}", squiggly, no head, from=2-2, to=2-3]
-        \arrow[""{name=6, anchor=center, inner sep=0}, from=2-3, to=2-4]
-        \arrow[""{name=7, anchor=center, inner sep=0}, curve={height=12pt}, from=2-3, to=2-4]
-        \arrow[between={0.2}{0.8}, Rightarrow, from=0, to=1]
-        \arrow["{(1)}"', between={0.2}{0.8}, squiggly, no head, from=0, to=4]
-        \arrow[between={0.2}{0.8}, Rightarrow, from=3, to=2]
-        \arrow["{(1')}", between={0.2}{0.8}, squiggly, no head, from=3, to=6]
-        \arrow[between={0.2}{0.8}, Rightarrow, from=5, to=4]
-        \arrow[between={0.2}{0.8}, Rightarrow, from=7, to=6]
+        \begin{array}{c} \text{standard} \\ (0, n) \end{array} && \begin{array}{c} \text{standard} \\ (\infty, n) \end{array} \\
+        {?} && \begin{array}{c} \text{diagrammatic} \\ (\infty, n). \end{array}
+        \arrow[hook, from=1-1, to=1-3]
+        \arrow[""{name=0, anchor=center, inner sep=0}, shift right=3, from=1-1, to=2-1]
+        \arrow[""{name=1, anchor=center, inner sep=0}, shift right=3, from=1-3, to=2-3]
+        \arrow[""{name=2, anchor=center, inner sep=0}, shift right=3, hook, from=2-1, to=1-1]
+        \arrow[hook, from=2-1, to=2-3]
+        \arrow[""{name=3, anchor=center, inner sep=0}, shift right=3, hook, from=2-3, to=1-3]
+        \arrow["\dashv"{anchor=center}, draw=none, from=0, to=2]
+        \arrow["\dashv"{anchor=center}, draw=none, from=1, to=3]
     \end{tikzcd}
 \end{center}
-Of course that \emph{pasting} along \( (0) \) and \( (0') \), then \( (1) \) and \( (1') \) will produce the same result as pasting along \( (1) \) and \( (1') \), then \( (0) \) (or \( (0') \)).
-How to make it formal?
-One way is to combinatorial complexes\dots 
-% which it can be composed with other globular cells having the same \( k \)\nbd target and \( k \)\nbd source respectively. 
-
-
+This is what we start doing with the main results (Theorem \ref{thm:folk_model_structure_on_stricter_n} and Theorem \ref{thm:quillen_folk_dgm_n}) of this article.
+\begin{thm*}
+    Let \( n \in \mathbb{N} \cup \set{\omega} \)
+    There exists a model structure on \( \snCat{n}  \), the category of stricter \( n \)\nbd category, called the folk model structure.
+    This model structure is right transferred along both:
+    \begin{enumerate}
+        \item the full subcategory inclusion \( \snCat{n} \incl \nCat{n} \) of stricter \( n \)\nbd categories into strict \( n \)\nbd categories and the folk model structure, and
+        \item the diagrammatic nerve \( \N{n} \colon \snCat{n} \to \dgmSet \) where \( \dgmSet \) is endowed with the \( (\infty, n) \)\nbd model structure. 
+    \end{enumerate}
+\end{thm*}
+Here, the diagrammatic nerve \( \N{n} \colon \snCat{n} \to \dgmSet \) is the left adjoint to the functor \( \trunc{n} \after \molecin{-} \), which send a diagrammatic set \( X \) to the \( n \)\nbd truncation of its free \emph{stricter polygraph} generated by the non-degenerate cells of \( X \).
+In its non-truncated version , the diagrammatic nerve \( \N{} \colon \somegaCat \to \dgmSet \) restricts to the Street nerve \( N^S \colon \somegaCat \to \sSet \) along the full subcategory of \( \atom \) on atoms which are \emph{directed simplices}; this subcategory being isomorphic to the simplex category.
+Our initial hope was also to include include the fact the diagrammatic nerve is homotopically fully faithful, but our attempts at a proof were unsuccessful
+We can only state conjecturally.
+\begin{conj*}
+    Let \( n \in \mathbb{N} \cup \set{\omega} \) and \( C \) be a stricter \( n \) \nbd category. 
+    Then the (derived) counit
+    \begin{equation*}
+        \counit_C \colon \trunc{n} \molecin{(\N{}C)} \to C,
+    \end{equation*}
+    is an acyclic fibration in the folk model structure on stricter \( n \)\nbd categories.
+\end{conj*}
 
 \subsection*{Background on regular directed complexes}
-\cccom{TODO}
-\begin{itemize}
-    \item review combinatorics of regular directed complexes, 
-    \item directed globes, say -1 is empty
-    \item suspension, gray product of regular directed complexes
-    \item dual
-    \item diamond transitive
-    \item read Henry regular polygraph and say it rectifies the problem
-\end{itemize}
 
-\begin{lem} \label{lem:diamond_transitive}
-    \cccom{TODO}
-    Any molecule is diamond transitive
-\end{lem}
+We now give more details on the combinatorics of the \emph{regular directed complexes}.
+All the details are in \cite{hadzihasanovic2024combinatorics}, and the reader can also read the introductions of \cite{chanavat2024model,chanavat2024equivalences,chanavat2024equivalences}.
+The basic combinatorial structure is that of \emph{orientated graded poset} -- posets graded by a function \( \dim \), together with a given orientation datum, which is specified by a partition of the set \( \faces{}{} x \) of \emph{faces of \( x \)}, into \( \faces{}{} x = \faces{}{-} x + \faces{}{+} x \), interpreted as the elements that \( x \) covers with orientation \( - \) and the elements that \( x \) covers with orientation \( - \). 
+There is a similar partition for \( \cofaces{}{} x \), the elements of \( P \) that cover \( x \).
+We write \( \maxel{P} \) for the set of maximal elements of \( P \), that is, the elements \( x \in P \) such that \( \cofaces{}{} x = \varnothing \).
+Given an orientation graded poset \( P \) and \( k \in \mathbb{N} \), we write \( \gr{k}{P} \) for the set of element \( x \in P \) such that \( \dim x = k \), and \( \gr{\le k}{P} \) for the closed set on elements \( x \in P \) such that \( \dim x \le k \). 
+Each closed subset \( U \subseteq P \) of an oriented graded poset \( P \) posses, for \( k \in \mathbb{N} \) and \( \a \in \set{-, +} \), a notion of input (\( \a = - \)) and output (\( \a = + \)) \( k \)\nbd boundary, written \( \bd{k}{\a} U \), and which is a subset of \( U \). 
+We let also let the \( k \)\nbd boundary be \( \bd{k}{} U \eqdef \bd{k}{-} U \cup \bd{k}{+} U \).
+If \( U \) has a greatest element \( x \), we also write \( \bd{k}{\a} x \). 
+By convention, those subsets are empty if \( k < 0 \), and we may omit \( k \) if it is equal to \( \dim U - 1 \).
+We say that finite oriented graded poset \( P \) is round if for all \( k < \dim P  \), \( \bd{k}{-} P \cap \bd{k}{+} P = \bd{k - 1}{} P \).
+
+We define the collection of \emph{molecule} to be the collection of orientated graded posets defined by the inductive procedure described earlier, and call an \emph{atom} a molecule with a greatest element.
+A \emph{regular directed complex} is an oriented graded poset \( P \) with the property that for all \( x \in P \), the closure \( \clset{x} \) of \( x \) is an atom.
+As stated earlier in the introduction, boundaries and pastings of molecules satisfy all of the axioms of strict \( \omega \)\nbd categories.
+
+A \emph{comap} of regular directed complexes is an order preserving map \( c \colon Q \to P \) such that for all \( x \in P \), \( n \in \mathbb{N} \) and \( \a \in \set{-, +} \), 
+\begin{enumerate}
+    \item \( \invrs{c}(\clset{x}) \) is a molecule, 
+    \item \( \invrs{c}(\bd{k}{\a} x) = \bd{k}{\a} \invrs{c}\clset{x} \).
+\end{enumerate}
+Comaps compose and we write \( \rdcpxcomap \) for the category of regular directed complexes and comaps.
+A \emph{subdivision \( s \colon P \sd Q \) of regular directed complexes} is a comap \( c \colon Q \to P \).
+We say that \( s \) is the formal dual of \( c \) and reciprocally, that \( c \) is the formal dual of \( s \).
+If \( U \subseteq P \) is a closed subset of \( P \), we write \( s(U) \) for the closed subset of \( Q \) defined by \( \invrs{c}(U) \).
+
+A \emph{map of regular directed complexes} is an order preserving map \( f \colon P \to Q \) such that for all \( x \in P \), \( k \in \mathbb{N} \) and \( \a \in \set{-, +} \), \( f(\bd{k}{\a}x) = \bd{k}{\a} f(x) \), and the restriction \( \restr{f}{\bd{k}{\a} x} \colon \bd{k}{\a} x \to f(\bd{k}{\a} x) \) is a final map of posets. 
+We write \( \rdcpxmap \) for the category of regular directed complexes and final maps.
+Among maps of regular directed complexes are the \emph{cartesian map of regular directed complexes}, which are maps \( f \colon P \to Q \) of regular directed complexes with the extra property of being cartesian fibration of their underlying poset.
+We write \( \rdcpxcart \) for the wide subcategory of \( \rdcpxmap \) on cartesian maps, and \( \atom \) for (a skeleton of) the full subcategory of \( \rdcpxcart \) on atoms.
+An \emph{inclusion} is a (necessarily cartesian) map of regular directed complex which is injective, and a \emph{local embedding} is a map of regular directed complex which is a discrete fibration of the underlying posets.
+Alternatively, \( f \colon P \to Q \) is a local embedding if for all \( x \in P \), \( \restr{f}{\clset{x}} \) is an inclusion.
+In that case, \( \restr{f}{\clset{x}} \colon \clset{x} \to f(\clset{x}) \) is in fact an isomorphism.
+Finally, given a regular directed complex \( P \) and \( x \in P \), we write \( \mapel{x} \colon \imel{P}{x} \incl P \) for the unique inclusion with image \( \clset{x} \) in \( P \).
+
+Let \( P, Q \) be two regular directed complexes.
+The \emph{Gray product of \( P \) and \( Q \)} is the oriented graded poset \( P \gray Q \) whose underlying graded poset is given by \( P \times Q \) and orientation is defined for all \( (x, y) \in P \times Q \) and \( \a \in \set{-, +} \) by
+\begin{equation*}
+    \faces{}{\a} (x, y) = \faces{}{\a} x \times \set{y} + \set{x} \times \faces{}{(-)^{\dim x} \a} y.
+\end{equation*}  
+The Gray product of two regular directed complexes is again (non-trivially) a regular directed complex, and determines monoidal structure on the categories \( \opp{\rdcpxcomap} \), \( \rdcpxmap \), \( \rdcpxcart \), and \( \atom \).
+The \emph{suspension of \( P \)} is the orientated graded poset with underlying set given by
+\begin{equation*}
+    \sus{P} \eqdef \set{\bot^-, \bot^+} + \set{\sus{x} \mid x \in P},
+\end{equation*}
+and oriented graded structure defined by, for all \( x \in \sus{P} \) and \( \a \in \set{-, +} \),
+\begin{equation*}
+    \cofaces{}{\a} x \eqdef 
+    \begin{cases}
+        \set{\sus{y} \mid y \in \cofaces{}{\a} x'} & \text{if } x = \sus{x'}, \\
+        \set{\sus{y} \mid y \in \gr{0}{P}} & \text{if } x = \bot^\a, \\
+        \varnothing & \text{if } x = \bot^{- \a}.
+    \end{cases}
+\end{equation*}
+The suspension of a regular directed complex is again a regular directed complex, and determine functors
+\begin{equation*}
+    \sus{-} \colon \rdcpxcomap \to \rdcpxcomap \quad\text{ and }\quad \sus{-} \colon \rdcpxmap \to \rdcpxmap,
+\end{equation*}
+the latter restricting to \( \rdcpxcart \) and \( \atom \).
+
+Given \( J \subseteq \mathbb{N} \), the \emph{\( J \)\nbd dual} of \( P \) is the oriented graded poset \( \dual{J}{P} \) whose underlying set is \( \set{\dual{J}{x} \mid x \in P} \), and orientated graded structure is defined by, for all \( x \in P \) and \( \a \in \set{-, +} \),
+\begin{equation*}
+    \faces{}{\a} \dual{J}{x} = 
+    \begin{cases}
+        \set{\dual{J}{y} \mid y \in \faces{}{-\a} x} & \text{if } \dim x \in J,\\
+        \set{\dual{J}{y} \mid y \in \faces{}{\a} x}  & \text{if } \dim x \notin J.
+    \end{cases}
+\end{equation*}
+The \( J \)\nbd dual of a regular directed complex is again regular directed complex, and determine functors 
+\begin{equation*}
+    \dual{J}{-} \colon \rdcpxcomap \to \rdcpxcomap \quad\text{ and }\quad \dual{J}{-} \colon \rdcpxmap \to \rdcpxmap,
+\end{equation*}
+the latter restricting to \( \rdcpxcart \) and \( \atom \).
+We write \( \dual{}{P} \) when \( J = \set{\dim P} \).
+
+Let \( k \geq 0 \).
+The \( k \)\nbd directed globe is the atom \( \dglobe{k} \) defined by letting \( \dglobe{0} \) be the point \( \pt \), and inductively on \( k > 0 \), \( \dglobe{k} = \sus{\dglobe{k - 1}} \).
+We write \( \set{0^- < 1 > 0^+} \) for the underlying poset of \( \rglobe{1} \), with orientation such that \( \faces{}{\a} 1 = 0^\a \), for all \( a \in \set{-, +} \).
+
+The \emph{augmentation} of an oriented graded poset \( P \) is the oriented graded poset \( \augm{P} \) whose underlying set is \( \set{\bot} + P \), and oriented graded structure is given by, for all \( x \in \augm{P} \) and \( a \in \set{-, +} \),
+\begin{equation*}
+    \cofaces{}{\a} x \eqdef
+    \begin{cases}
+        \cofaces{P}{\a} x & \text{if } x \in P,\\
+        \gr{0}{P} &\text{if } x = \bot, \a = +, \\
+        \varnothing &text{if } x = \bot, \a = -.
+    \end{cases}
+\end{equation*}
+We say that a graded poset \( P \) with a least element is \emph{thin} if, for all \( x, y \in P \) such that \( x \le y \) and \( \dim y - \dim x = 2 \), the interval \( [x, y] \) is an \emph{diamond}, that is, it is of the form 
+\begin{center}
+    \begin{tikzcd}
+        & y \\
+        {z_1} && {z_2} \\
+        & x
+        \arrow[no head, from=1-2, to=2-1]
+        \arrow[no head, from=1-2, to=2-3]
+        \arrow[no head, from=2-1, to=3-2]
+        \arrow[no head, from=3-2, to=2-3]
+    \end{tikzcd}
+\end{center}
+for exactly two elements \( z_1, z_2 \).
+Then, if \( P \) is a regular directed complex, the underlying graded poset of \( \augm{P} \) is thin\footnote{in fact, the oriented graded poset \( \augm{P} \) is even \emph{oriented thin}, but we will not use this stringer property in this article, see \cite[2.3.10]{hadzihasanovic2024combinatorics} something even stronger holds}.
 
 \subsection*{Structure of the article}
 
+\subsection*{Related work}
+
+The existence of stricter \( n \)\nbd categories and their model structure was conjecture by the author and Hadzihasanovic in \cite[Conjecture 6.3]{chanavat2024model}, which is now Theorem \ref{thm:quillen_folk_dgm_n}.
+This article mainly stemmed from the author will to reproduce the results of \cite{ozornova2021nerves} in the diagrammatic setting. 
+
 \subsection*{Acknowledgment}
-\ccnote{TODO}
+\cccom{TODO}
 % add Amar, Viktorya, Fosco
+
+
+\begin{itemize}
+    % \item review combinatorics of regular directed complexes, 
+    % \item directed globes, say -1 is empty
+    % \item suspension, gray product of regular directed complexes
+    % \item dual
+    % \item diamond transitive
+    \item read Henry regular polygraph and say it rectifies the problem
+\end{itemize}
+
