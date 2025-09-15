@@ -1,4 +1,4 @@
-\section{Diagrammatic sets}
+\section{Diagrammatic sets} \label{sec:diagrammatic}
 
 \subsection{Diagrams in a diagrammatic set}
 
@@ -36,7 +36,7 @@ and in the sequel, we always identify a regular directed complex with its associ
 
 \begin{dfn} [Composition structure of pasting diagrams]
     Let \( u \colon U \to X \) be a pasting diagram in a diagrammatic set \( X \).
-    For \( n \geq 0 \) and \( \a \in \set{-, +} \), we write \( \bd{n}{\a} u \) for the pasting diagram \( \restr{u}{\bd{n}{\a}U} \colon \bd{n}{\a} U \to X \).
+    For \( n \in \mathbb{N} \) and \( \a \in \set{-, +} \), we write \( \bd{n}{\a} u \) for the pasting diagram \( \restr{u}{\bd{n}{\a}U} \colon \bd{n}{\a} U \to X \).
     We may omit the index \( n \) if \( n = \dim u - 1 \).
     This makes \( \Pd(X) \) a reflexive \( \omega \)\nbd graph.
     Now let \( u \colon U \to X \) and \( v \colon V \to X \) be pasting diagrams, such that \( \bd{k}{+} u = \bd{k}{-} v \).
@@ -359,7 +359,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     In that case, \( \compos{u} \) is called a weak composite of \( u \).
 \end{dfn}
 
-\begin{dfn} [\( (\infty, n) \)\nbd category]
+\begin{dfn} [\( (\infty, n) \)\nbd category] \label{dfn:infty_n_cat}
     Let \( n \in \mathbb{N} \cup \set{\omega} \), and \( X \) be a diagrammatic set.
     We say that \( X \) is an \( (\infty, n) \)\nbd category if:
     \begin{enumerate}
@@ -373,6 +373,41 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{rmk}
     In the case \( n = \infty \), the second condition is void.
 \end{rmk}
+
+\begin{dfn} [Marked horn]
+    Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \) and \( x \in \maxel{\bd{}{\a} U} \).
+    Call \( \Lambda^x_U \eqdef U \setminus \set{\top_U, x} \)
+    We say that the inclusion of marked regular directed complexes
+    \begin{equation*}
+        \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \incl (U, A) 
+    \end{equation*}
+    is a \emph{marked horn of \( U \)} if there exists molecules \( (\order{i}{L}, \order{i}{R})_{i = 1}^k \) such that
+    \begin{enumerate}
+        \item \( \bd{}{\a} U = \order{k}{L} \cp{k - 1} (\ldots \cp{1} \order{1}{L} \cp{0} \clset{x} \cp{0} \order{1}{R} \cp{1} \ldots) \cp{k - 1} \order{k}{R} \);
+        \item \( \dim \order{i}{L}, \dim \order{i}{R} \le i \) for each \( 1 \le i \le k \);
+        \item \( \gr{i}{\order{i}{L}} \cup \gr{i}{\order{i}{R}} \subseteq A \);
+        \item \( x \in A \) if and only if \( \faces{}{-\a} U \subseteq A \).
+    \end{enumerate}
+    We let \( \Jhorn \) be the set of marked horn.
+\end{dfn}
+
+\begin{comm}
+    Let \( \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to (U, A) \) be a marked horn, and \( W \) be an \( (\infty, \infty) \)\nbd category.
+    Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Lambda^x_U \to W \) classifying in \( W \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a context in the sense of \cite[3.1]{chanavat2024equivalences}.
+    Now if \( s \) defines furthermore a morphisms of marked diagrammatic sets \( s \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to \natmark{W} \), then this implies that the context \( \fun{E} \) is weakly invertible.
+    By \cite[Lemma 5.10]{chanavat2024equivalences}, this equation has a solution \( u \), witnessed by an equivalence \( h \colon \fun{E}u \celto v \), which is exactly the data of an extension of \( s \) along \( \lambda^x_U \).
+\end{comm}
+
+\begin{prop} \label{prop:model_structre_on_marked_dgm_set}
+    For each \( n \in \mathbb{N} \cup \set{\omega} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
+    \begin{enumerate}
+        \item cofibrations are the monomorphisms;
+        \item fibrant objects are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    See \cite[3.24, Theorem 4.9]{chanavat2024model}.
+\end{proof}
 
 \begin{dfn}
     Let \( U \) be a round molecule.
@@ -412,29 +447,6 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     In particular, \( h = f(z) \), and \( z \simeq z'' \) is an equivalence.
 \end{proof}
 
-\begin{dfn} [Marked horn]
-    Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \) and \( x \in \maxel{\bd{}{\a} U} \).
-    Call \( \Lambda^x_U \eqdef U \setminus \set{\top_U, x} \)
-    We say that the inclusion of marked regular directed complexes
-    \begin{equation*}
-        \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \incl (U, A) 
-    \end{equation*}
-    is a \emph{marked horn of \( U \)} if there exists molecules \( (\order{i}{L}, \order{i}{R})_{i = 1}^k \) such that
-    \begin{enumerate}
-        \item \( \bd{}{\a} U = \order{k}{L} \cp{k - 1} (\ldots \cp{1} \order{1}{L} \cp{0} \clset{x} \cp{0} \order{1}{R} \cp{1} \ldots) \cp{k - 1} \order{k}{R} \);
-        \item \( \dim \order{i}{L}, \dim \order{i}{R} \le i \) for each \( 1 \le i \le k \);
-        \item \( \gr{i}{\order{i}{L}} \cup \gr{i}{\order{i}{R}} \subseteq A \);
-        \item \( x \in A \) if and only if \( \faces{}{-\a} U \subseteq A \).
-    \end{enumerate}
-    We let \( \Jhorn \) be the set of marked horn.
-\end{dfn}
-
-\begin{comm}
-    Let \( \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to (U, A) \) be a marked horn, and \( W \) be an \( (\infty, \infty) \)\nbd category.
-    Recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Lambda^x_U \to W \) classifying in \( W \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a context in the sense of \cite[3.1]{chanavat2024equivalences}.
-    Now if \( s \) defines furthermore a morphisms of marked diagrammatic sets \( s \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to \natmark{W} \), then this implies that the context \( \fun{E} \) is weakly invertible.
-    By \cite[Lemma 5.10]{chanavat2024equivalences}, this equation has a solution \( u \), witnessed by an equivalence \( h \colon \fun{E}u \celto v \), which is exactly the data of an extension of \( s \) along \( \lambda^x_U \).
-\end{comm}
 
 \begin{lem} \label{lem:isofib_rlp_marked_horn}
     Let \( f \colon X \to Y \) be a functor of \( (\infty, \infty) \) category with the right lifting property against \( \Jcomp \),
@@ -470,17 +482,6 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     This concludes the proof.
 \end{proof}
 
-\begin{prop} \label{prop:model_structre_on_marked_dgm_set}
-    For each \( n \in \mathbb{N} \cup \set{\omega} \) exists a model structure on diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
-    \begin{enumerate}
-        \item cofibrations are the monomorphisms;
-        \item fibrant objects are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
-    \end{enumerate}
-\end{prop}
-\begin{proof}
-    See \cite[3.24, Theorem 4.9]{chanavat2024model}.
-\end{proof}
-
 \begin{lem} \label{lem:marked_localisation_acyclic}
     Let \( n \in \mathbb{N} \cup \set{\omega} \) and \( U \) be an atom of dimension \( \geq 1 \).
     Then the marking \( \minmark{\selfloc{U}} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{\iota \colon U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
@@ -506,16 +507,15 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{thm}
 \begin{proof}
     The existence as well as the characterisation of fibrant objects, and the Quillen equivalence are given by \cite[3.27, Theorem 4.21, Theorem 4.23]{chanavat2024model}.
-    % In particular, the fibrant objects of the coinductive \( (\infty, n) \)\nbd model are of the form \( \natmark{X} \) for \( X \) an \( (\infty, n) \)\nbd category.
     Using a slight variation of \cite[Lemma 4.16, Lemma 4.17]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation} together with Lemma \ref{lem:marked_localisation_acyclic}, one sees that the set \( \minmark{(\Jcomp \cup \Jn{n})} \) is a set of acyclic cofibrations.
     By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
-    Since left Quillen equivalences reflect weak equivalences between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibration.
+    Since left Quillen equivalences reflect weak equivalences between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibrations.
     Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd category with the right lifting property against \( \Jcomp \cup \Jn{n} \).
     We need to prove that \( f \) is a fibration.
     Since \( \fun{U}\natmark{f} = f \), is it enough to prove that \( \natmark{f} \) is a fibration. 
     By Lemma \ref{lem:isofib_rlp_marked_horn}, \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
     By \cite[Theorem 4.22]{chanavat2025gray}, a set of pseudo-generating acyclic cofibration for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jhorn \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
-    But a morphism of marked diagrammatic sets has the right lifting property against a collection of markings \( J \) if and only if its domain has the right lifting property against \( J \).
+    But a morphism of marked diagrammatic sets has the right lifting property against a set of markings \( J_{\mathsf{mark}} \) if and only if its domain has the right lifting property against \( J_{\mathsf{mark}} \).
     Since the domain of \( \natmark{f} \) is the fibrant object \( \natmark{X} \), we conclude.
 \end{proof}
 

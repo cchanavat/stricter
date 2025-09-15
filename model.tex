@@ -1,17 +1,6 @@
-\section{Homotopy theory of stricter \texorpdfstring{$\omega$}{ω}-categories}
+\section{Homotopy theory of stricter \texorpdfstring{$\omega$}{ω}-categories} \label{sec:model}
 
 \subsection{Folk model structure on stricter \texorpdfstring{$\omega$}{ω}-categories}
-
-% \begin{thm} \label{thm:folk_model_structure}
-%     There exists a model structure, called the \emph{folk model structure}, on \( \omegaCat \) such that:
-%     \begin{enumerate}
-%         \item every strict \( \omega \)\nbd categories is fibrant;
-%         \item cofibrations are the retract of relative polygraphs. 
-%     \end{enumerate} 
-% \end{thm}
-% \begin{proof} 
-%     See \cite{lafont2010folk}.
-% \end{proof}
 
 \begin{dfn} [Stricter \( \omega \)\nbd category of cylinders]
     Let \( C \) be a stricter \( \omega \)\nbd category.
@@ -24,35 +13,6 @@
 \begin{rmk} \label{rmk:strict_stricter_same_cylinders}
     By Proposition \ref{prop:reflection_to_stricter_monoidal}, the stricter categories \( \Gamma(C) \) coincides with the strict \( \omega \)\nbd categories of cylinders \cite[Remark 20.2.9]{ara2025polygraphs}, which happen to be stricter, since \( C \) is.
 \end{rmk}
-
-% \begin{thm} \label{thm:folk_model_structure_on_stricter}
-%     There is a cofibrantely generated model structure on the category \( \somegaCat \), called the \emph{folk model structure}, where:
-%     \begin{enumerate}
-%         \item every \( \omega \)\nbd categories is fibrant;
-%         \item cofibration are the retracts of relative stricter polygraphs;
-%     \end{enumerate}
-%     Furthermore, this model structure is right transferred from the folk model structure on \( \omegaCat \) along the adjunction 
-%     \begin{center}
-%         \begin{tikzcd}
-%             \somegaCat & \omegaCat,
-%             \arrow[""{name=0, anchor=center, inner sep=0}, "\iota"', curve={height=12pt}, hook, from=1-1, to=1-2]
-%             \arrow[""{name=1, anchor=center, inner sep=0}, "\rcs"', curve={height=12pt}, from=1-2, to=1-1]
-%             \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-%         \end{tikzcd}
-%     \end{center}
-%     which is in particular a Quillen pair.
-% \end{thm}
-% \begin{proof}
-%     This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders} and Lemma \ref{lem:reflection_of_polygraphs_are_stricter_polygraphs}.
-% \end{proof}
-
-% \begin{rmk} 
-%     By Corollary \ref{cor:pushout_principal_cell}, the set
-%     \begin{equation*}
-%         \Icof \eqdef \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
-%     \end{equation*}
-%     is a generating set of cofibrations for the folk model structure on \( \somegaCat \).
-% \end{rmk}
 
 \begin{dfn}
     We write \( \Icof \) for the the set
@@ -113,7 +73,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 
 \begin{cor} \label{cor:molecin_polygraph_with_basis}
     Let \( X \) be a diagrammatic set. 
-    Then \( \molecin{X} \) is a stricter polygraph with generating set \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \), where
+    Then \( \molecin{X} \) is a stricter polygraph with basis \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \), where
     \begin{equation*}
         \cls{S}_k \eqdef \set{\molecin{u} \colon \molecin{U} \to \molecin{X} \mid u \colon U \to X \in \gr{k}{\nd X}}.
     \end{equation*}
@@ -198,7 +158,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
         (a^R, L\s) & \eqdef \fun{L}_\infty(\sus{(a^R, \s)})),
     \end{align*}
     and similarly with \( \fun{R}_\infty \) for the case \( \s R \).    
-    By Corollary \ref{cor:molecin_polygraph_with_basis}, \( \molecin{\rglobe{1}} \) is the stricter polygraph whose generating set is given, in the notation of (\ref{dfn:localisation}) by \( \coprod_{k \geq 0} \cls{T}_k \), where, letting \( b \colon \dglobe{1} \to \dglobe{1} \) be the identity, 
+    By Corollary \ref{cor:molecin_polygraph_with_basis}, \( \molecin{\rglobe{1}} \) is the stricter polygraph whose basis is given, in the notation of (\ref{dfn:localisation}) by \( \coprod_{k \geq 0} \cls{T}_k \), where, letting \( b \colon \dglobe{1} \to \dglobe{1} \) be the identity, 
     \begin{equation*}
         \cls{T}_0 = \set{0^-, 0^+}, \cls{T}_1 = \set{b, b^L, b^R},
     \end{equation*}
@@ -241,7 +201,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 \end{proof}
 
 \begin{prop} \label{prop:walking_eq_of_dim_n}
-    Let \( n \geq 0 \), and call \( i_n \colon \dglobe{n + 1} \to \rglobe{n + 1} \) the canonical inclusion.
+    Let \( n \in \mathbb{N} \), and call \( i_n \colon \dglobe{n + 1} \to \rglobe{n + 1} \) the canonical inclusion.
     Then 
     \begin{equation*}
         \molecin{(\bd{}{-} i_n)} \colon \molecin{\dglobe{n}} \to \molecin{\rglobe{n + 1}} 
@@ -391,9 +351,6 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     Since composite of the top horizontal strict functors is an acyclic cofibration by Proposition \ref{prop:walking_eq_of_dim_n}, we conclude that \( \molecin{c_u} \) is an acyclic cofibration.
 \end{proof}
 
-% \begin{dfn} [Diagrammatic nerve]
-%     The \emph{diagrammatic nerve} is the right adjoint \( \N{} \) to the functor \( \molecin{-} \).
-% \end{dfn}
 
 \begin{dfn} [\( n \)\nbd truncated diagrammatic nerve]
     For \( n \in \mathbb{N} \cup \set{\omega} \), the \( n \)\nbd truncated diagrammatic nerve is the right adjoint \( \N{n} \) to the functor \( \trunc{n} \after \molecin{-} \).

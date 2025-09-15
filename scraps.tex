@@ -914,3 +914,106 @@
     %         \arrow[from=3-3, to=4-2]
     %     \end{tikzcd}
     % \end{center}
+
+
+% \begin{cor} \label{cor:diagrams_are_dense} 
+%     Let \( C \) be a stricter \( \omega \)\nbd category.
+%     Then the canonical strict functor
+%     \begin{equation*}
+%         \phi \colon \colim_{u \in \Dgm(C)} \molecin{U} \to C,t
+%     \end{equation*}
+%     is an isomorphism.
+%     That is, the category \( \omegaMol \) is dense in \( \somegaCat \).
+% \end{cor}
+% \begin{proof}
+%     Follows from the density formula for presheaves and Proposition \ref{prop:stricter_cat_are_local_presheaves}.
+% \end{proof}
+
+    % Recall from \cite[Lemma 7.2.8]{hadzihasanovic2024combinatorics} that the Gray product preserves pushout of inclusions of regular directed complexes.
+    % Thus the square is a pushout if and only if for all \( x \in P \), the square
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         {\molecin{(\imel{P}{x} \gray \bd{}{}U)}} & {\molecin{(\imel{P}{x} \gray U)}} \\
+    %         {\molecin{(\imel{P}{x} \gray \bd{}{}V)}} & {\molecin{(\imel{P}{x} \gray V)}}
+    %         \arrow[from=1-1, to=1-2]
+    %         \arrow["{\molecin{(\restr{\imel{P}{x} \gray s}{\bd{}{}U})}}"', from=1-1, to=2-1]
+    %         \arrow["{{\molecin{\imel{P}{x} \gray s}}}", from=1-2, to=2-2]
+    %         \arrow[from=2-1, to=2-2]
+    %     \end{tikzcd}
+    % \end{center}
+    % is a pushout.
+    % We prove the statement by induction on \( n \eqdef \dim P \).
+    % If \( n = 0 \), this is the content of Corollary \ref{cor:pushout_principal_cell}.
+    % Inductively, let \( n > 0 \) and \( x \in \gr{n}{P} \).
+    % Let \( W \eqdef \imel{P}{x} \).
+    % By Corollary \ref{cor:pushout_principal_cell} on \( W \gray s  \) and the pasting law for pushouts, it is enough to show that 
+    % \begin{center}
+    %     \begin{tikzcd}
+    %         {\molecin{(W \gray \bd{}{} U)}} & {\molecin{(\bd{}{}(W \gray U))}} \\
+    %         {\molecin{(W \gray \bd{}{} V)}} & {\molecin{(\bd{}{} (W \gray V))}}
+    %         \arrow[from=1-1, to=1-2]
+    %         \arrow[from=1-1, to=2-1]
+    %         \arrow[from=1-2, to=2-2]
+    %         \arrow[from=2-1, to=2-2]
+    %     \end{tikzcd}
+    % \end{center}
+    % is a pushout.
+    % Since 
+    % \begin{equation*}
+    %     \bd{}{}(W \gray U) = (W \gray \bd{}{} U) \cup (\bd{}{} W \gray U),\text{ and } \bd{}{}(W \gray V) = (W \gray \bd{}{} V) \cup (\bd{}{} W \gray V),
+    % \end{equation*}
+    % we conclude by Corollary \ref{cor:molecin_preserves_pushout_inclusions}, the inductive hypothesis on \( (\bd{}{} W) \gray s \), and a double application of the pasting law for pushouts. 
+
+
+% \begin{thm} \label{thm:folk_model_structure}
+%     There exists a model structure, called the \emph{folk model structure}, on \( \omegaCat \) such that:
+%     \begin{enumerate}
+%         \item every strict \( \omega \)\nbd categories is fibrant;
+%         \item cofibrations are the retract of relative polygraphs. 
+%     \end{enumerate} 
+% \end{thm}
+% \begin{proof} 
+%     See \cite{lafont2010folk}.
+% \end{proof}
+
+
+% \begin{thm} \label{thm:folk_model_structure_on_stricter}
+%     There is a cofibrantely generated model structure on the category \( \somegaCat \), called the \emph{folk model structure}, where:
+%     \begin{enumerate}
+%         \item every \( \omega \)\nbd categories is fibrant;
+%         \item cofibration are the retracts of relative stricter polygraphs;
+%     \end{enumerate}
+%     Furthermore, this model structure is right transferred from the folk model structure on \( \omegaCat \) along the adjunction 
+%     \begin{center}
+%         \begin{tikzcd}
+%             \somegaCat & \omegaCat,
+%             \arrow[""{name=0, anchor=center, inner sep=0}, "\iota"', curve={height=12pt}, hook, from=1-1, to=1-2]
+%             \arrow[""{name=1, anchor=center, inner sep=0}, "\rcs"', curve={height=12pt}, from=1-2, to=1-1]
+%             \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+%         \end{tikzcd}
+%     \end{center}
+%     which is in particular a Quillen pair.
+% \end{thm}
+% \begin{proof}
+%     This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders} and Lemma \ref{lem:reflection_of_polygraphs_are_stricter_polygraphs}.
+% \end{proof}
+
+% \begin{rmk} 
+%     By Corollary \ref{cor:pushout_principal_cell}, the set
+%     \begin{equation*}
+%         \Icof \eqdef \set{\molecin{\bd{}{}U} \incl \molecin{U} \mid U \text{ atom}}
+%     \end{equation*}
+%     is a generating set of cofibrations for the folk model structure on \( \somegaCat \).
+% \end{rmk}
+
+% \begin{dfn} [Diagrammatic nerve]
+%     The \emph{diagrammatic nerve} is the right adjoint \( \N{} \) to the functor \( \molecin{-} \).
+% \end{dfn}
+
+
+\begin{dfn} [Pasting in a stricter \( \omega \)\nbd category]
+    Let \( C \) be a stricter \( \omega \)\nbd category, consider two pasting diagrams \( \F \colon \molecin{U} \to C \), \( \G \colon \molecin{V} \to C \), and \( k \geq 0 \) such that \( \bd{k}{+} \F = \bd{k}{-} \G \).
+    Then we write \( \F \cp{k} \G \colon \molecin{(U \cp{k} V)} \to C \) for the strict functor determined by the universal properties of pushout given by Corollary \ref{cor:molecin_preserves_pushout_inclusions}.
+    More generally, if a generalised pasting \( U \gencp{k} V \) given by a span \( (i \colon U \cap V \incl U, j \colon U \cap V \incl V) \) is defined and such that \( \F \after \molecin{i} = \G \after \molecin{j} \), we write \( \F \gencp{k} \G \) for the strict functor determined by universal property of the pushout.
+    If the generalised pasting is given by a pasting at a submolecules \( U \cpsub{\iota} V \) or \( V \subcp{\iota} V \), we write accordingly \( \F \cpsub{\iota} \G \) and \( \G \subcp{\iota} \F \).
+\end{dfn}
