@@ -779,7 +779,7 @@ The goal of this section is to clarify the relationship between strict and stric
 \begin{dfn} [Strict \( \omega \)\nbd category]
     We define \( S^\Theta \) to be the subset of \( S \) defined by 
     \begin{equation*}
-        S^\Theta \eqdef \set{s_U \colon \colim_{x \in U} \imel{U}{x} \to \molecin{U} \mid U \text{ theta}}.
+        S^\Theta \eqdef \set{s_U \colon \colim_{x \in U} \imel{U}{x} \to \molecin{U} \mid U \text{ a theta}}.
     \end{equation*}  
     A \emph{strict \( \omega \)\nbd category} is a composition structure \( C \) which is local with respect to \( S^\Theta \).
     We write \( \omegaCat \) for the category of strict \( \omega \)\nbd categories and strict functors.
@@ -806,7 +806,8 @@ We define
 \begin{equation*}
     \rcs \colon \omegaCat \to \somegaCat
 \end{equation*}
-to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) to the underlying composition structure of a strict \( \omega \)\nbd category, which is left adjoint and exhibit \( \somegaCat \) as a reflective subcategory of \( \omegaCat \).
+to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) to the underlying composition structure of a strict \( \omega \)\nbd category.
+The functor \( \rcs \) is left adjoint and exhibits \( \somegaCat \) as a reflective subcategory of \( \omegaCat \).
 
 \begin{dfn} [Strict \( n \)\nbd categories]
     Let \( n \in \mathbb{N} \).
@@ -861,7 +862,7 @@ to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) 
 \end{dfn}
 
 \begin{rmk}
-    Similar to Comment \ref{comm:def_cellular_extension}, this definition is equivalent to the usual definition of polygraphs.
+    This definition is equivalent to the usual definition of polygraphs, see again \cite[Comment 8.2.2]{hadzihasanovic2024combinatorics}.
 \end{rmk}
 
 \begin{lem} \label{lem:reflection_of_polygraphs_are_stricter_polygraphs}
@@ -872,15 +873,15 @@ to be the functor applying the reflector \( \rc \colon \Comp \to \somegaCat  \) 
     Clear by Proposition \ref{prop:regular_directed_complex_stricter} and since \( \rcs \) is left adjoint, 
 \end{proof}
 
-Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd categories also support a Gray product, defined along a similar method.
+\noindent Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd categories also support a Gray product --- our definition of Gray product of stricter \( \omega \)\nbd categories being adapted from it.
 
 \begin{prop} \label{prop:reflection_to_stricter_monoidal}
     The functor \( \rcs \colon \omegaCat \to \somegaCat \) is strong monoidal with respect to the Gray product on stricter and strict \( \omega \)\nbd categories.
 \end{prop}
 \begin{proof}
-    Since \( \rcs \) is left adjoint, and since \( \Theta \) are dense in \( \omegaCat \) by \cite[Proposition 4.6]{ara2020joint}, it is enough to show that for \( U, V \) two thetas, \( \rcs (\molecin{U} \gray \molecin{V}) \) is naturally isomorphic to \( \molecin{U \gray V} \).
+    Since \( \rcs \) is left adjoint, and since \( \Theta \) are dense in \( \omegaCat \) by \cite[Proposition 4.6]{ara2020joint}, it is enough to show that for \( U, V \) two thetas, \( \rcs (\molecin{U} \gray \molecin{V}) \) is naturally isomorphic to \( \molecin{(U \gray V)} \).
     By \cite[Lemma 9.1.16, Proposition 11.2.36]{hadzihasanovic2024combinatorics}, \( \molecin{U} \gray \molecin{V} \cong \molecin{(U \gray V)} \) in \( \omegaCat \).
-    Since \( \molecin{U \gray V} \) is stricter by Proposition \ref{prop:regular_directed_complex_stricter}, we conclude.
+    Since \( \molecin{(U \gray V)} \) is stricter by Proposition \ref{prop:regular_directed_complex_stricter}, we conclude.
 \end{proof}
 
 \noindent We conclude this section by showing a partial converse to Proposition \ref{prop:stricter_are_strict}, and exhibiting a point of divergence between strict and stricter \( \omega \)\nbd categories.
@@ -896,9 +897,9 @@ Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd 
     \begin{equation*}
         s_P \colon \colim_{x \in P} \imel{P}{x} \to P 
     \end{equation*}
-    is an isomorphism in \( \omegaCat \).
+    is an isomorphism when computed \( \omegaCat \).
     In particular, any strict \( n \)\nbd category \( C \) is local with respect to \( s_P \).
-    By Lemma \ref{lem:stricter_n_iff_local_with_dim_le_n}, this concludes the proof.
+    This concludes the proof.
 \end{proof}
 
 \begin{comm} \label{comm:strict_are_not_stricter}
@@ -907,7 +908,7 @@ Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd 
     For instance, consider the \( 4 \)\nbd dimensional regular directed complex \( P \) of \cite[Example 8.2.20]{hadzihasanovic2024combinatorics}.
     Then \( \molecin{P} \) is \emph{not} a polygraph.
     Let \( Q \eqdef \colim_{x \in P} \molecin{\imel{P}{x}} \), where the colimit is computed in \( \omegaCat \).
-    By construction, \( Q \) is a polygraph, but it cannot be a stricter \( \omega \)\nbd category.
+    By construction and Theorem \ref{thm:strict_le_3_are_stricter}, \( Q \) is a polygraph, but it cannot be a stricter \( \omega \)\nbd category.
     Indeed, if it were the case, we would have \( \molecin{P} \cong \rcs Q \cong Q \), contradicting the fact that \( \molecin{P} \) is not a polygraph.
 \end{comm}
 
@@ -939,9 +940,10 @@ Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd 
 \begin{comm}
     Thus, any stricter \( \omega \)\nbd category can canonically be seen as a category enriched in stricter \( \omega \)\nbd categories.
     The converse is not true. 
-    Indeed if it were the case, \( \snCat{4} \) would be equivalent to the categories of categories enriched in \( \snCat{3} \), the latter being equivalent to \( \nCat{4} \) by Theorem \ref{thm:strict_le_3_are_stricter}.
+    Indeed if it were the case, \( \snCat{4} \) would be equivalent to the categories of categories enriched in \( \snCat{3} \).
+    Since \( \snCat{3} \) is equivalent to \( \nCat{3} \) by Theorem \ref{thm:strict_le_3_are_stricter}, this would mean that \( \snCat{4} \) is equivalent to \( \nCat{4} \).
     We know from Comment \ref{comm:strict_are_not_stricter} that this is not the case.
-    We do not know any general condition for showing that a category enriched in stricter \( \omega \)\nbd category is stricter.
+    We do not know any general condition guaranteeing that a category enriched in stricter \( \omega \)\nbd category is stricter.
 \end{comm}
 
 \begin{dfn} [Suspension]
@@ -959,9 +961,9 @@ Next, recall from \cite[Appendice A]{ara2020joint} that strict \( \omega \)\nbd 
 \end{dfn}
 
 \noindent If \( C \) is a stricter \( \omega \)\nbd category, then \( \sus{C} \) is a strict \( \omega \)\nbd category, since it is the suspension of its underlying strict \( \omega \)\nbd category.
-The goal of this section is to show that it is in fact a stricter \( \omega \)\nbd category. 
+We conclude this section by by showing that it is in fact a stricter \( \omega \)\nbd category. 
 
-The following definitions are adapted from \cite{chandler2019thin}.
+The following two definitions are adapted from \cite{chandler2019thin}.
 \begin{dfn} [Diamond action]
     Let \( P \) be a finite thin graded poset, let \( x, y \in P \) such that \( x \le y \), \( \gamma \colon x \to \ldots \to y \) be a path from \( x \) to \( y \) in the covering diagram of \( P \), and \( D = \set{a < c_1, c_2 < b} \) be a diamond in \( P \), for two elements \( a, b \in P \) such that \( a \le b \) and \( \dim b - \dim a = 2 \).
     We define \( D\cdot \gamma \) to be the path
