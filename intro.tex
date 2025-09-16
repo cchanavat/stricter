@@ -44,7 +44,7 @@ This is not the case.
 More precisely, this is the case as long as \( n \le 3 \) and but not afterwards, a four dimensional ``higher exchange'' is discussed in Comment \ref{comm:strict_are_not_stricter}.
 In this paper, we look at what happens to the theory of strict \( n \)\nbd category when one forces the freeness condition to hold, not by restricting the class of allowed complexes, but by requiring instead the strict \( n \)\nbd categories to satisfy more axioms, to be stricter.
 
-We want to emphasis that this is not the study of the localisation of the category of strict \( \omega \)\nbd category along an arbitrary set of equations, but along equations prescribed by the geometry of combinatorial topology.
+We want to emphasis that this is not the study of the localisation of the category of strict \( \omega \)\nbd categories along an arbitrary set of equations, but along the equations prescribed by the geometry of combinatorial topology.
 What we gain is a stronger pasting theorem than the ones for strict \( n \)\nbd categories.
 Indeed, the stricter \( n \)\nbd categories have by definition a pasting theorem with respect to the class of regular directed complexes. 
 Since the latter contain many shapes used in the higher categorical literature (directed cubes and simplices, positive opetopes, thetas), the pasting theorem holds in particular for many classes of diagram of practical interest.   
@@ -142,6 +142,7 @@ We write \( \rdcpxcart \) for the wide subcategory of \( \rdcpxmap \) on cartesi
 An \emph{inclusion} is a (necessarily cartesian) map of regular directed complexes which is injective, and a \emph{local embedding} is a map of regular directed complex which is a discrete fibration of the underlying posets.
 Alternatively, \( f \colon P \to Q \) is a local embedding if for all \( x \in P \), \( \restr{f}{\clset{x}} \) is an inclusion.
 Given a regular directed complex \( P \) and \( x \in P \), we write \( \mapel{x} \colon \imel{P}{x} \incl P \) for the unique inclusion with image \( \clset{x} \) in \( P \).
+We will sometimes conflate an element \( x \in \gr{0}{P} \) with its associated local embedding \( x \colon \pt \to P \).
 
 The class of \emph{submolecule inclusions} is the smallest class of inclusions of molecules closed under isomorphisms, compositions, and containing the inclusions
 \begin{equation*}
@@ -149,6 +150,12 @@ The class of \emph{submolecule inclusions} is the smallest class of inclusions o
 \end{equation*}
 whenever a pasting \( U \cp{k} V \) is defined. 
 We also write \( \iota \colon U \submol V \) for a submolecule inclusion \( \iota \colon U \incl V \).
+If \( \iota \colon U \submol \bd{k}{-} V \) for some \( k \in \mathbb{N} \), then the pushout \( V \cup_\iota U \) is a molecule, written \( U \cpsub{\iota} V \), and called the \emph{pasting of \( U \) at the submolecule \( \iota \)}.
+Dually if \( \iota \colon U \submol \bd{k}{-} V \), we also define \( V \subcp{\iota} U \).
+
+Given a map of regular directed complexes \( f \colon U \to P \) such that \( U \) is a molecule, \( k \in \mathbb{N} \), and \( \a \in \set{-, +} \), we write \( \bd{k}{\a} f \) for the restriction of \( f \) along the inclusion \( \bd{k}{\a} U \incl U \).
+By universal property of the pushout, if  \( g \colon V \to P \) is another map of regular directed complexes such that \( V \) is a molecule and \( \bd{k}{+} f = \bd{k}{-}g \), then we have a map of regular directed complexes \( f \cp{k} g \colon U \cp{k} V \to P \).
+
 
 Let \( P, Q \) be two regular directed complexes.
 The \emph{Gray product of \( P \) and \( Q \)} is the oriented graded poset \( P \gray Q \) whose underlying graded poset is given by \( P \times Q \) and orientation is defined, for all \( (x, y) \in P \times Q \) and \( \a \in \set{-, +} \), by
@@ -193,8 +200,10 @@ We write \( \dual{}{P} \) when \( J = \set{\dim P} \).
 
 Let \( k \geq 0 \).
 The \( k \)\nbd directed globe is the atom \( \dglobe{k} \) defined by letting \( \dglobe{0} \) be the point \( \pt \), and inductively on \( k > 0 \), \( \dglobe{k} = \sus{\dglobe{k - 1}} \).
-We write \( \set{0^- < 1 > 0^+} \) for the underlying poset of \( \dglobe{1} \), with orientation such that \( \faces{}{\a} 1 = 0^\a \), for all \( a \in \set{-, +} \).
 For each round molecule \( U \) of dimension \( n \in \mathbb{n} \), there exists a unique subdivision \( \dglobe{n} \sd U \).
+We write \( \set{0^- < 1 > 0^+} \) for the underlying poset of \( \dglobe{1} \), with orientation such that \( \faces{}{\a} 1 = 0^\a \), for all \( a \in \set{-, +} \).
+For \( k \geq 0 \), we write \( k\arr \) for the molecule \( \underbrace{\arr \cp{0} \cdots \cp{0} \arr}_{k \text{ times}} \).
+If \( k = 0 \), \( k\arr \) is to be interpreted as the point \( \pt \).
 
 The \emph{augmentation} of a graded poset \( P \) is the graded poset \( \augm{P} \) whose underlying set is \( \set{\bot} + P \), and graded structure is given by, for all \( x \in \augm{P} \),
 \begin{equation*}
@@ -243,7 +252,7 @@ After setting up the usual terminology, we show in Lemma \ref{lem:Pd_is_stricter
 We then introduce degenerate diagrams and equivalences, and show (Lemma \ref{lem:subdivision_of_unitors} and Lemma \ref{lem:subdivision_of_invertors}) that a certain class of surjective cartesian maps respect subdivisions.
 Next, we recall the definition of (diagrammatic) \( (\infty, n) \)\nbd category (Definition \ref{dfn:infty_n_cat}) and recall the construction of the model structure on marked diagrammatic sets (Proposition \ref{prop:model_structre_on_marked_dgm_set}).
 We then move on to the model structure on plain diagrammatic sets. 
-We wish to give a smaller set of pseudo generating acyclic cofibrations, thus start by some preliminary results (Lemma \ref{lem:isofib_left_right_lift}, Lemma \ref{lem:isofib_rlp_marked_horn}) which will be enough in Theorem \ref{thm:n_model_structure_on_dgm_set} to show that the acyclic cofibrations in the \( (\infty, n) \)\nbd model structure on diagrammatic sets are pseudo-generated by the walking weak composites and the walking \( k \)\nbd equivalences, for \( k > n \). 
+We wish to give a smaller pseudo-generating set acyclic cofibrations, thus start by some preliminary results (Lemma \ref{lem:isofib_left_right_lift}, Lemma \ref{lem:isofib_rlp_marked_horn}) which will be enough in Theorem \ref{thm:n_model_structure_on_dgm_set} to show that the acyclic cofibrations in the \( (\infty, n) \)\nbd model structure on diagrammatic sets are pseudo-generated by the walking weak composites and the walking \( k \)\nbd equivalences, for \( k > n \). 
 
 Finally, in Section \ref{sec:model}, we study the folk model structure on stricter \( n \)\nbd category. 
 Since Gray products of strict \( n \)\nbd categories are reflected to Gray products of stricter \( \omega \)\nbd category, the existence (Theorem \ref{thm:folk_model_structure_on_stricter_n}) of the model structure is a direct application of a Theorem of \cite{ara2025polygraphs}.
