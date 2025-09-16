@@ -170,8 +170,8 @@ the left adjoint of \( \iota \).
 
 \begin{lem} \label{lem:well_define_from_regular_iff_well_defined_from_molecules}
     Let \( C \) be a composition structure, \( P \) be a regular directed complex, \( \set{\F_x \colon \molecin{\imel{P}{x}} \to C}_{x \in P} \) be a \( P \)\nbd matching family in \( C \). 
-    Suppose that for all \( w \colon W \to P \) in \( \molecin{P} \), the \( W \)\nbd matching family \( \set{\F_{w(x)} \colon \imel{P}{w(x)} \to X}_{x \in W} \) in \( C \) has a well defined amalgamation.
-    Then \( \set{\F_x}_{x \in P} \) has a well defined amalgamation.
+    Suppose that for all \( w \colon W \to P \) in \( \molecin{P} \), the \( W \)\nbd matching family \( \set{\F_{w(x)} \colon \imel{P}{w(x)} \to X}_{x \in W} \) in \( C \) has a well-defined amalgamation.
+    Then \( \set{\F_x}_{x \in P} \) has a well-defined amalgamation.
 \end{lem}
 \begin{proof}
     For \( w \colon W \to P \) in \( \molecin{P} \), we let \( \F_w \) be the strict functor 
@@ -191,9 +191,9 @@ the left adjoint of \( \iota \).
 
 \begin{comm} \label{comm:well_defined_amalgamation}
     Given a \( P \)\nbd matching family \( \set{\F_x} \) in \( C \), we thus have a \emph{candidate amalgamation} \( \F \colon \molecin{P} \to C \) defined on the basis \( \atomin{P} \) by \( \mapel{x} \mapsto \pcell{\F_x} \).
-    Then, \( \F \) is a well defined strict functor if for all local embeddings \( u \colon U \to P \) with \( U \) a molecule, if \( u = u_1 \cp{k} u_2 \), then \( \F(u) = \F(u_1) \comp{k} \F(u_2) \).
+    Then, \( \F \) is a well-defined strict functor if for all local embeddings \( u \colon U \to P \) with \( U \) a molecule, if \( u = u_1 \cp{k} u_2 \), then \( \F(u) = \F(u_1) \comp{k} \F(u_2) \).
     To show this, we may use \emph{induction on submolecule} (see \cite[Comment 4.1.7]{hadzihasanovic2024combinatorics}) as follows.
-    Take an arbitrary element \( w \colon W \to P \) in \( \molecin{P} \), and prove that \( \F \after \molecin{w} \) is a well defined strict functor under the hypothesis that for all proper subdiagrams \( \iota \colon W' \submol W \) of \( W \), \( \F \after \molecin{w \after \iota} \) is a well defined strict functor.
+    Take an arbitrary element \( w \colon W \to P \) in \( \molecin{P} \), and prove that \( \F \after \molecin{w} \) is a well-defined strict functor under the hypothesis that for all proper subdiagrams \( \iota \colon W' \submol W \) of \( W \), \( \F \after \molecin{w \after \iota} \) is a well-defined strict functor.
     The base case on submolecules \( W' \) of \( W \) of dimension \( 0 \) is always true in that case. 
 \end{comm}
 
@@ -224,11 +224,11 @@ the left adjoint of \( \iota \).
     We show that \( C \) is local with respect to \( s_p \).
     Let \( \set{\F_x} \) be a \( P \)\nbd matching family in \( C \).
     We show that the candidate amalgamation \( \F \colon \molecin{P} \to C \) is a strict functor as per Comment \ref{comm:well_defined_amalgamation}.
-    Let \( w \colon W \to P \) in \( \molecin{P} \), and suppose that \( \F \after \molecin{w \after \iota} \) is well defined for all proper submolecules \( \iota \colon W' \submol W \) of \( W \).
+    Let \( w \colon W \to P \) in \( \molecin{P} \), and suppose that \( \F \after \molecin{w \after \iota} \) is well-defined for all proper submolecules \( \iota \colon W' \submol W \) of \( W \).
     Then either \( w \) is in \( \atomin{P} \), in which cases we are done since \( \F \after \molecin{w} = \F_x \) for the unique \( x \in P \) such that \( w = \mapel{x} \), or \( w = w_1 \cp{k} w_2 \) for some molecules \( W_1, W_2 \) such that \( W = W_1 \cp{k} W_2 \).
     Then, by inductive hypothesis, we have a strict functor \( (\F \after \molecin{w_1}, \F \after \molecin{w_2}) \colon \molecin{W_1} \cup \molecin{W_2} \to C \).
     By hypothesis, this extends to a strict functor \( \F' \colon \molecin{(W_1 \cp{k} W_2)} \to C \), which is equal to \( \F \after \molecin{w} \) by Lemma \ref{lem:strict_functor_determined_by_basis}.
-    This shows that \( \F \after \molecin{w} \) is well defined and concludes the proof.
+    This shows that \( \F \after \molecin{w} \) is well-defined and concludes the proof.
 \end{proof}
 
 \begin{prop} \label{prop:regular_directed_complex_stricter}
@@ -237,7 +237,7 @@ the left adjoint of \( \iota \).
 \end{prop}
 \begin{proof}
     Let \( Q \) be a regular directed complex, and consider a \( Q \)\nbd matching family \( \set{\F_x \colon \molecin{\imel{Q}{x}} \to \molecin{P}} \) in \( \molecin{P} \).
-    We want to show that the candidate amalgamation \( \F \colon \molecin{Q} \to \molecin{P} \) is well defined, but for each \( w \colon W \to Q \) in \( \F(w) \) is given by the canonical local embedding \( \colim_{x \in W} \pcell{\F_{w(x)}} \to P \), which is independent of the chosen decomposition of \( w \).
+    We want to show that the candidate amalgamation \( \F \colon \molecin{Q} \to \molecin{P} \) is well-defined, but for each \( w \colon W \to Q \) in \( \F(w) \) is given by the canonical local embedding \( \colim_{x \in W} \pcell{\F_{w(x)}} \to P \), which is independent of the chosen decomposition of \( w \).
     This concludes the proof.
 \end{proof}
 
@@ -313,7 +313,7 @@ the left adjoint of \( \iota \).
     \end{equation*}
     Let \( x \in P \) with \( \dim x > n \).
     Then \( \dim \pcell{\F_x} \le n \), hence for any \( \a \in \set{-, +} \), \( \pcell{\bd{n}{\a} \F_x} = \pcell{\F(\bd{n}{\a} x \to P)} \).
-    Using this fact, an induction on the submolecules of any \( w \colon W \to P \) shows that \( \F(w) = \gr{\le n}{\F}(\bd{n}{\a} w) \), proving that \( \F \) is well defined.
+    Using this fact, an induction on the submolecules of any \( w \colon W \to P \) shows that \( \F(w) = \gr{\le n}{\F}(\bd{n}{\a} w) \), proving that \( \F \) is well-defined.
     This shows that \( C \) is stricter.
     The last condition is shown equivalent to the second one using a similar argument than in the proof of Lemma \ref{lem:stricter_iff_local_wrt_pasting}.
     This concludes the proof.
@@ -483,7 +483,7 @@ The following definition is adapted from \cite[8.2.1]{hadzihasanovic2024combinat
     \end{center}
     in \( \somegaCat \), exhibiting \( \skel{n}C \) as a cellular extension of \( \skel{n - 1}C \), and such that for each \( e \in \cls{S}_n \), \( \dim e = n \).
     The set \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \) is called the \emph{generating set of globular cells} of \( C \).
-    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative stricter polygraph} if \( f \) can be obtain as the transfinite composition of cellular extensions of \( A \).
+    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative stricter polygraph} if \( f \) can be obtained as the transfinite composition of cellular extensions of \( A \).
 \end{dfn}
 
 \begin{lem} \label{lem:stricter_polygraph_basis}
@@ -673,7 +673,7 @@ Recall that if \( P, Q \) are regular directed complexes, the basis \( \atomin{(
     The Gray product determines a monoidal structure on the category \( \omegaReg \), whose monoidal unit is the terminal stricter \( \omega \)\nbd category \( \globe{0} \).
 \end{cor}
 \begin{proof}
-    Lemma \ref{lem:gray_of_strict_functors} shows that \( - \gray - \) is well defined on strict functors. 
+    Lemma \ref{lem:gray_of_strict_functors} shows that \( - \gray - \) is well-defined on strict functors. 
     Since for all regular directed complexes \( P \), \( \pt \gray P = P = P \gray \pt \), we deduce that the monoidal unit is \( \molecin{\pt} = \globe{0} \).
     Functoriality is straightforward.
     This concludes the proof.
@@ -857,7 +857,7 @@ The functor \( \rcs \) is left adjoint and exhibits \( \somegaCat \) as a reflec
     \end{center}
     in \( \omegaCat \), exhibiting \( \skel{n}C \) as a cellular extension of \( \skel{n - 1}C \), and such that for each \( e \in \cls{S}_n \), \( \dim e = n \).
     The set \( \cls{S} = \coprod_{k \geq 0} \cls{S}_k \) is called the \emph{generating set} of \( C \).
-    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative polygraph} if \( f \) can be obtain as the transfinite composition of cellular extensions of \( A \).
+    More generally, we say that a strict functor \( f \colon A \to C \) of composition structure is a \emph{relative polygraph} if \( f \) can be obtained as the transfinite composition of cellular extensions of \( A \).
 \end{dfn}
 
 \begin{rmk}
@@ -892,7 +892,7 @@ The functor \( \rcs \) is left adjoint and exhibits \( \somegaCat \) as a reflec
 \begin{proof}
     Let \( P \) be a regular directed complex with \( \dim P \le 3 \).
     By \cite[Corollary 8.4.12]{hadzihasanovic2024combinatorics}, \( \molecin{P} \) is a polygraph.
-    Thus the map
+    Thus, the map
     \begin{equation*}
         s_P \colon \colim_{x \in P} \imel{P}{x} \to P 
     \end{equation*}
@@ -933,13 +933,13 @@ The functor \( \rcs \) is left adjoint and exhibits \( \somegaCat \) as a reflec
         \set{\F_x \colon \molecin{\imel{U}{x}} \to C(a, b)}_{x \in U}
     \end{equation*}
     determines a \( \sus{U} \)\nbd matching family in \( C \) by letting \( \F_{\sus{x}} \eqdef \F_x \) for \( x \in U \), and \( \F_{\bot^-}, \F_{\bot^+} \) be the strict functors from \( \molecin{\pt} \) classifying \( a \) and \( b \) respectively. 
-    This matching family has an amalgamation \( \sus{\F} \colon \molecin{\sus{U}} \to C \), showing that the amalgamation of \( \set{\F_x}_{x \in U} \) is well defined.
+    This matching family has an amalgamation \( \sus{\F} \colon \molecin{\sus{U}} \to C \), showing that the amalgamation of \( \set{\F_x}_{x \in U} \) is well-defined.
 \end{proof}
 
 \begin{comm}
     Thus, any stricter \( \omega \)\nbd category can canonically be seen as a category enriched in stricter \( \omega \)\nbd categories.
     The converse is not true. 
-    Indeed if it were the case, \( \snCat{4} \) would be equivalent to the categories of categories enriched in \( \snCat{3} \).
+    Indeed, if it were the case, \( \snCat{4} \) would be equivalent to the categories of categories enriched in \( \snCat{3} \).
     Since \( \snCat{3} \) is equivalent to \( \nCat{3} \) by Theorem \ref{thm:strict_le_3_are_stricter}, this would mean that \( \snCat{4} \) is equivalent to \( \nCat{4} \).
     We know from Comment \ref{comm:strict_are_not_stricter} that this is not the case.
     We do not know any general condition guaranteeing that a category enriched in stricter \( \omega \)\nbd category is stricter.
@@ -960,7 +960,7 @@ The functor \( \rcs \) is left adjoint and exhibits \( \somegaCat \) as a reflec
 \end{dfn}
 
 \noindent If \( C \) is a stricter \( \omega \)\nbd category, then \( \sus{C} \) is a strict \( \omega \)\nbd category, since it is the suspension of its underlying strict \( \omega \)\nbd category.
-We conclude this section by by showing that it is in fact a stricter \( \omega \)\nbd category. 
+We conclude this section by showing that it is in fact a stricter \( \omega \)\nbd category. 
 
 The following two definitions are adapted from \cite{chandler2019thin}.
 \begin{dfn} [Diamond action]
@@ -979,7 +979,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
 \end{dfn}
 
 \begin{dfn} [Diamond transitive oriented graded poset]
-    Let \( P \) be an graded poset.
+    Let \( P \) be a graded poset.
     We say that \( P \) is \emph{diamond transitive} if for all \( x, y \in P \) such that \( x \le y \), the diamond action on the graded poset \( P_{x, y} \) is transitive, that is, for all paths \( \gamma, \gamma' \) from \( x \) to \( y \) in \( P \), there exist \( k \in \mathbb{N} \) and a sequence \( (D_i)_{i = 1}^k \) of diamonds in \( P \) such that \( \gamma' = D_1 \cdot \ldots \cdot D_k \cdot \gamma \).
 \end{dfn}
 
@@ -1079,7 +1079,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
 
 \begin{lem} \label{lem:collapsible_connected_with_all_closure_element}
     Let \( U \) be a molecule, \( \beta \in \set{-, +} \), \( K \subseteq U \) be a \( \beta \)\nbd collapsible subset, and \( V \submol U \).
-    Then \( V \cap K \) is either either empty or connected.
+    Then \( V \cap K \) is either empty or connected.
     In the latter case, \( V \cap K \subseteq V \) is \( \beta \)\nbd collapsible and contains \( \bd{0}{-\beta} V \).
 \end{lem}
 \begin{proof}
@@ -1110,7 +1110,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
 \begin{proof}
     We proceed induction on the layering dimension \( \ell \) of \( U \) (see \cite[Comment 4.2.13]{hadzihasanovic2024combinatorics}).
     If \( \ell = -1 \), then \( U \) is an atom, thus \( U = \clset{\top_U} \subseteq K \) by definition.
-    Inductively, let \( \ell \geq 0 \). Then \( U \) admits a \( \ell \)\nbd layering
+    Inductively, let \( \ell \geq 0 \). Then \( U \) admits an \( \ell \)\nbd layering
     \begin{equation*}
         U \eqdef \order{1}{U} \cp{\ell} \ldots \cp{\ell} \order{r}{U}
     \end{equation*}
@@ -1141,7 +1141,8 @@ The following two definitions are adapted from \cite{chandler2019thin}.
         \bd{k}{\a} (\coll{K}{U}) = \clos \faces{k}{\a} (\coll{K}{U}) \cup \gr{< k}{\clset{\maxel (\coll{K}{U})}} = \mapcoll(\bd{k}{\a} U) \cup \set{\zcoll}.
     \end{equation*}
     Since \( k > 0 \), Lemma \ref{lem:collapsible_connected_with_all_closure_element} implies that \( \set{\zcoll} = p(\bd{0}{-} U) \subseteq p(\bd{k}{\a} U) \).
-    Thus \(  \mapcoll (\bd{k}{\a} U) = \bd{k}{\a} (\coll{K}{U}) \).
+    Thus, \(  \mapcoll (\bd{k}{\a} U) = \bd{k}{\a} (\coll{K}{U}) \).
+
     Next suppose \( k = 0 \) and \( \a = + \).
     Then since \( K \) is a proper subset, \( \set{x} = \bd{0}{+} U \) is not a subset of \( K \) by Lemma \ref{lem:collapsible_negbeta_boundary_collapse_all}. 
     Thus, by construction of \( \coll{K}{U} \), we have \( \mapcoll (\bd{0}{+} U) = \bd{0}{+} (\coll{K}{U}) \).
@@ -1149,9 +1150,10 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     By construction, \( \cofaces{}{+} \zcoll = \varnothing \), thus we have one inclusion.
     Let \( \icoll{u} \in \gr{0}{(U \setminus K)} \).
     If \( u \in \bd{0}{-} U \) then \( u \in K \) by Lemma \ref{lem:collapsible_connected_with_all_closure_element}, a contradiction.
-    Thus there exists \( v \in \cofaces{}{+} u \), and since \( K \) is closed, \( v \notin K \).
+    Thus, there exists \( v \in \cofaces{}{+} u \), and since \( K \) is closed, \( v \notin K \).
     We find that \( \icoll{v} \in \cofaces{}{+} \icoll{u} \), meaning that \( u \notin \bd{0}{-} (\coll{K}{U}) \).
     This proves that \( \set{\zcoll} = \bd{0}{-} (\coll{K}{U}) \).
+
     By Lemma \ref{lem:collapsible_is_puhsout}, Lemma \ref{lem:collapsible_connected_with_all_closure_element}, and formal properties, for all closed subsets \( V \subseteq U \) such that \( V \) is a molecule, we have 
     \begin{equation*}
         p(V) \cong
@@ -1161,6 +1163,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
         \end{cases}
     \end{equation*}
     Using this and the first part of the proof, one sees that \( \coll{K}{U} \) is globular.
+
     Last, suppose that \( U \) is round of dimension \( n \geq 0 \).
     Let \( k < n \), and let \( x \in (\bd{k}{-} (\coll{K}{U})) \cap (\bd{k}{+} (\coll{K}{U})) \).
     We must show that \( x \in \bd{k - 1}{}  (\coll{K}{U}) \)
@@ -1168,7 +1171,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     If \( k > 0 \) we are done by globularity.
     Else \( k = 0 \).
     In that case, \( \zcoll \in \bd{0}{+} (\coll{K}{U}) \), so \( \bd{0}{+} U \subseteq K \), hence \( \coll{K}{U} = \pt \) by Lemma \ref{lem:collapsible_negbeta_boundary_collapse_all}.
-    Thus \( n = 0 = k \), contradiction.
+    Thus, \( n = 0 = k \), contradiction.
     Suppose now that \( x = \icoll{u} \) for some \( u \in U \setminus K \).
     By the first part of the proof, \( u \in \bd{k}{-} U \cap \bd{k}{+} U \), and since \( U \) is round, \( u \in \bd{k - 1}{} U \), so that by the first part of the proof again, \( \icoll{u} \in \bd{k - 1}{} (\coll{K}{U}) \).
     This concludes the proof.
@@ -1207,7 +1210,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     Suppose inductively that \( \mapcoll(V) \) is a molecule for all proper submolecules of \( U \).
     Suppose first that \( U \) is an atom.
     By inductive hypothesis, for \( \a \in \set{-, +} \), \( p(\bd{}{\a} U) \) is a molecule, and is round by Lemma \ref{lem:collapsible_mapcoll_preserve_boundaries}.
-    Thus \( p(\bd{}{-} U) \celto p(\bd{}{+} U) \) is a well defined atom, and one sees that, unless \( K = U \), it is by construction isomorphic to \( \coll{K}{U} \).
+    Thus, \( p(\bd{}{-} U) \celto p(\bd{}{+} U) \) is a well-defined atom, and one sees that, unless \( K = U \), it is by construction isomorphic to \( \coll{K}{U} \).
     If \( K = U \), then \( U = \pt \) is also an atom. 
     This shows that \( \coll{K}{U} \) is an atom.
     Now suppose that \( U \) is a molecule.
@@ -1231,13 +1234,13 @@ The following two definitions are adapted from \cite{chandler2019thin}.
          \bd{0}{} V \subseteq \gr{0}{V} \subseteq \gr{0}{U} &= \bd{0}{} U = \bd{0}{} V, \text{ and} \nonumber\\
          \bd{0}{-} V \cap \bd{0}{+} V &= \varnothing \label{aln:grade_boundary_zero}.
     \end{align}
-    Thus \( \gr{0}{V} = \bd{0}{-} V \coprod \bd{0}{+} V\).
+    Thus, \( \gr{0}{V} = \bd{0}{-} V \coprod \bd{0}{+} V\).
     Similarly, \( \gr{0}{W} = \bd{0}{-} W \coprod \bd{0}{+} W \).
     By inductive hypothesis on the submolecules, \( V = \sus{V'} \) and \( W = \sus{W'} \) for some molecules \( V' \) and \( W' \).
     By \cite[Proposition 7.3.16]{hadzihasanovic2024combinatorics}, \( U \) is of the form \( \sus{(V' \celto W')} \).
     Suppose next that \( U \) splits into \( V \cp{k} W \) with \( \dim V, \dim W > k \).
     If \( k = 0 \), then \( \bd{0}{+} V \subseteq \gr{0}{U} \), but \( \bd{0}{+} V \cap (\bd{0}{-} U \coprod \bd{0}{+} U) \) is empty, contradicting the assumption.
-    Thus \( k > 0 \) and (\ref{aln:grade_boundary_zero}) also holds of \( V \) and \( W \).
+    Thus, \( k > 0 \) and (\ref{aln:grade_boundary_zero}) also holds of \( V \) and \( W \).
     We deduce by inductive hypothesis that \( V = \sus{V'} \) and \( W = \sus{W'} \).
     By \cite[Proposition 7.3.16]{hadzihasanovic2024combinatorics} again, \( U \) is of the form \( \sus{(V' \cp{k - 1} W')} \).
     This concludes the proof.
@@ -1279,8 +1282,8 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     For \( \beta \in \set{-, +} \), let \( K^\beta \eqdef \set{x \in U \mid \pcell{\F_x} = \bot^\beta} \).
     Suppose that there exists \( \beta \in \set{-, +} \) such that \( K^\beta \) is empty and let \( x \in U \).
     If \( \pcell{\F_x} \in C \), we would have \( x \in K^\beta \).
-    Thus \( \pcell{\F_x} = \bot^{-\beta} \), and \( K^{-\beta} = U \).
-    Therefore, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well defined since it factors as
+    Thus, \( \pcell{\F_x} = \bot^{-\beta} \), and \( K^{-\beta} = U \).
+    Therefore, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well-defined since it factors as
     \begin{equation*}
         \molecin{U} \to \molecin{\pt} \to \sus{C},
     \end{equation*}
@@ -1291,7 +1294,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     Let \( x \in U \), and suppose that \( \bd{0}{-\beta} x \in K^\beta \).
     Then \( \bd{0}{-\beta} \pcell{F_x} = \bot^{\beta} \).
     If \( \pcell{\F_x} \neq \bot^\beta \), then by construction of \( \sus{C} \), \( \bd{0}{-\beta} \pcell{\F_x} = \bot^{-\beta} \), a contradiction.
-    Thus \( \pcell{\F_x} = \bot^\beta \), hence \( x \in K^\beta \).
+    Thus, \( \pcell{\F_x} = \bot^\beta \), hence \( x \in K^\beta \).
     Since \( K^\beta \) is non-empty, it is \( \beta \)\nbd collapsible.
     Then  \( \gr{0}{U} \subseteq K^- \cup K^+ \), and \( K^- \cap K^+ = \varnothing \), so  Proposition \ref{prop:desuspension} applies, and we have in particular a molecule \( V \) and a final map of molecules \( q \colon U \surj \sus{V} \). 
     Then, one checks that the family of globular cells of \( C \)
@@ -1299,8 +1302,8 @@ The following two definitions are adapted from \cite{chandler2019thin}.
         \set{\pcell{\F_x} \mid q(x) = \sus{y}}_{y \in V}
     \end{equation*} 
     defines, as per Remark \ref{rmk:data_matching family}, a \( V \)\nbd matching family \( \set{\G_y \colon \molecin{\imel{V}{y}} \to C}_{y \in V} \) in \( C \).
-    Since \( C \) is stricter, it admits a well defined amalgamation \( \G \colon \molecin{V} \to C \).
-    Finally, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well defined, since it factors as \( \F = \sus{\G} \after \molecin{q} \).
+    Since \( C \) is stricter, it admits a well-defined amalgamation \( \G \colon \molecin{V} \to C \).
+    Finally, the candidate amalgamation \( \F \colon \molecin{U} \to \sus{C} \) is well-defined, since it factors as \( \F = \sus{\G} \after \molecin{q} \).
     Thus, \( \sus{C} \) is local with respect to \( s_U \).
     By Lemma \ref{lem:stricter_iff_local_wrt_pasting}, this concludes the proof.
 \end{proof}
@@ -1323,7 +1326,7 @@ The following two definitions are adapted from \cite{chandler2019thin}.
     preserves connected colimits.
 \end{cor}
 \begin{proof}
-    That the pair of functors is well defined follows from Lemma \ref{lem:hom_of_stricter_is_stricter} and Theorem \ref{thm:suspension_of_stricter}.
+    That the pair of functors is well-defined follows from Lemma \ref{lem:hom_of_stricter_is_stricter} and Theorem \ref{thm:suspension_of_stricter}.
     That this form an adjunction follows from standard arguments.
     Last, since \( \bpt\somegaCat \) is a coslice construction, \( \sus{} \colon \somegaCat \to \somegaCat \) preserves connected colimits by \cite[Proposition 3.3.8]{riehl2019context}.
 \end{proof}
