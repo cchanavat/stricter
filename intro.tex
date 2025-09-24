@@ -1,13 +1,13 @@
 \section{Introduction}
 
 Let \( n \in \mathbb{N} \cup \set{\omega} \).
-The definition of strict \( n \)\nbd category is the most natural generalisation of the definition of strict \( 2 \)\nbd categories allowing for cells of dimension strictly higher than two.
+The definition of strict \( n \)\nbd category is the most natural generalisation of the definition of strict \( 2 \)\nbd categories allowing for cells of dimension higher than two.
 A strict \( n \)\nbd category \cite{brown1981groupoids} consists of set, whose elements are called the \emph{globular cells}\footnote{The terminology globular cell is non-standard. We use it to avoid any confusion with the already overloaded, in our context, notion of cell.}.
 Each globular cell posses, for each natural number \( k \), a notion of \( k \)\nbd source and \( k \)\nbd target. 
 Given two globular cells such that the \( k \)\nbd target of the first one is equal to the \( k \)\nbd source of the second, one can compose them using the \( k \)\nbd composition operation, and obtain a third one.
 Those composition operations are required to satisfy, akin to strict \( 2 \)\nbd categories, axioms of unitality, an axiom of associativity, and of exchange.
-The latter makes it so that the \( k \)\nbd composition operation is functorial with respect to the \( (k + \ell) \)\nbd composition operation for all \( \ell > 0 \).
-As a consequence, the category of strict \( (n + 1) \)\nbd category can canonically be identified with the category of categories enriched in strict \( n \)\nbd category. 
+The latter makes it so that the \( k \)\nbd composition operation is functorial with respect to the \( (k + \ell) \)\nbd composition operation, for all \( \ell > 0 \).
+As a consequence, the category of strict \( (n + 1) \)\nbd category can canonically be identified with the category of categories enriched in strict \( n \)\nbd categories. 
 Repeating this enrichment a transfinite number of times, one obtain the category of strict \( \omega \)\nbd categories, which is enriched over itself.
 There should, a priori, be no need for further axioms.   
 
@@ -29,7 +29,7 @@ A regular directed complex is the face poset of regular CW complex together with
 The main point of departure with the existing literature is that the class of complexes representing composable arrangements, called the \emph{molecules}\footnote{Named after Steiner's notion of molecules \cite{steiner1993algebra}}, is defined by induction.
 One starts from the point, the terminal regular CW complex with its only possible orientation, and closes under two kinds of operations.
 \begin{enumerate}
-    \item The first operation is \emph{pasting}. Given two molecules \( U, V \) such that \( \bd{k}{+} U \), the output \( k \)\nbd boundary of \( U \) matches (in the sense of a directed and cellular isomorphism) \( \bd{k}{-} V \), the input \( k \)\nbd boundary of \( V \), the \emph{pasting at the \( k \)\nbd boundary of \( U \) and \( V \)} is the molecule \( U \cp{k} V \) defined as the pushout of \( U \) and \( V \) along the common boundaries. 
+    \item The first operation is \emph{pasting}. Given two molecules \( U, V \) such that \( \bd{k}{+} U \), the output \( k \)\nbd boundary of \( U \) matches (in the sense of a directed and cellular isomorphism) \( \bd{k}{-} V \), the input \( k \)\nbd boundary of \( V \), the \emph{pasting at the \( k \)\nbd boundary of \( U \) and \( V \)} is the molecule \( U \cp{k} V \), defined as the pushout of \( U \) and \( V \) along the common boundaries. 
     \item The second operation is \emph{rewrite}, and takes as input two molecules \( U, V \) of the same dimension \( k \), which are \emph{round}, that is, whose associated regular CW complex is homeomorphic to the topological \( k \)\nbd ball.
     Then, if both the input and output \( (k - 1) \)\nbd boundary of \( U \) match the input and output \( (k - 1) \)\nbd boundary of \( V \), the \emph{rewrite of \( U \) and \( V \)} is the molecule \( U \celto V \) defined by adding a greatest \( (k + 1) \)\nbd dimensional element \( \top \) to the pushout \( \bd{}{}(U \celto V) \) of \( U \) and \( V \) along their total boundary, in such a way that \( U \) and \( V \) are respectively the input and output boundary of the closure of \( \top \).
     This makes the regular CW complex associated to \( U \celto V \) a topological \( (k + 1) \)\nbd ball.
@@ -45,9 +45,9 @@ This is not the case.
 More precisely, this is the case as long as \( n \le 3 \), but not afterwards, a four dimensional ``higher exchange'' is discussed in Comment \ref{comm:strict_are_not_stricter}.
 In this paper, we look at what happens to the theory of strict \( n \)\nbd category when one forces the freeness condition to hold, not by restricting the class of allowed complexes, but by requiring instead the strict \( n \)\nbd categories to satisfy more axioms, to be stricter.
 
-We want to emphasise that this is not the study of the localisation of the category of strict \( \omega \)\nbd categories along an arbitrary set of equations, but along the equations prescribed by the geometry of combinatorial topology which restore the status of pasting as a universal construction.
+We want to emphasise that this is not the study of the localisation of the category of strict \( \omega \)\nbd categories along an arbitrary set of equations, but along the equations prescribed by the geometry of combinatorial topology, which restore the status of pasting as a universal construction; that those equations are missing to the theory of strict \( n \)\nbd categories has not been decided by us, but by the theory of directed topological spaces.
 What we gain is a stronger pasting theorem than the ones for strict \( n \)\nbd categories.
-Indeed, the stricter \( n \)\nbd categories have by definition a pasting theorem with respect to the class of regular directed complexes. 
+Indeed, stricter \( n \)\nbd categories have, by definition, a pasting theorem with respect to the class of all regular directed complexes. 
 Since the latter contain many shapes used in the higher categorical literature (directed cubes and simplices, positive opetopes, thetas), the pasting theorem holds in particular for many classes of diagram of practical interest.   
 Similarly, regular directed complexes are closed under many categorical operations (join, Gray product, duals, \dots), hence allow for uniform definitions of the said operation on stricter \( n \)\nbd categories.
 Conversely, we loose the ability to define the stricter \( n \)\nbd categories by iterated enrichment when \( n \geq 4 \), and we have, by design, to work harder to prove that some given data assemble into a stricter \( n \)\nbd category, even when knowing that it is a strict \( n \)\nbd category, as witnessed for instance by the proof of Theorem \ref{thm:suspension_of_stricter}, asserting that stricter \( \omega \)\nbd categories are stable under suspensions, and whose proof relies on quite a number of involved and technical preliminary Lemmas.  
@@ -55,8 +55,8 @@ Conversely, we loose the ability to define the stricter \( n \)\nbd categories b
 \subsection*{Homotopy theory of stricter \( n \)\nbd categories}
 
 Another reason to introduce stricter \( n \)\nbd categories, and our primary motivation, is to compare them to the diagrammatic model of \( (\infty, n) \)\nbd categories, which is a model of higher categories \cite{chanavat2024htpy,chanavat2024model} built in the category \( \dgmSet \) of \emph{diagrammatic sets} --- the presheaves over the categories \( \atom \) of \emph{atoms}, which are the regular directed complexes with a greatest element.  
-Our working conjecture is that the relationship between strict and stricter \( n \)\nbd categories is the strict shadow of the relationship between the standard model of \( (\infty, n) \)\nbd categories \cite{barwick2020unicity} and the diagrammatic model of \( (\infty, n) \)\nbd categories: the two should coincide up to \( n = 3 \), and for \( n > 3 \), the latter should be a localisation of the former at the set of extra coherences.
-Before any attempt of solving this problem, we thought it would be a good idea to understand the missing corner in the following (for the most part conjectural) diagram of \( (\infty, 1) \)\nbd categories
+Our working conjecture is that, as long as \( n \le 3 \), the standard model of \( (\infty, n) \)\nbd categories \cite{barwick2020unicity} and the diagrammatic model of \( (\infty, n) \)\nbd categories are equivalent --- we remain noncommital for \( n > 3 \).
+Before any attempt of solving this problem, we thought it would be a good idea to understand the missing corner in the following diagram of \( (\infty, 1) \)\nbd categories,
 \begin{center}
     \begin{tikzcd}
         \begin{array}{c} \text{standard} \\ (0, n) \end{array} && \begin{array}{c} \text{standard} \\ (\infty, n) \end{array} \\
@@ -64,14 +64,14 @@ Before any attempt of solving this problem, we thought it would be a good idea t
         \arrow[hook, from=1-1, to=1-3]
         \arrow[""{name=0, anchor=center, inner sep=0}, shift right=3, from=1-1, to=2-1]
         \arrow[""{name=1, anchor=center, inner sep=0}, shift right=3, from=1-3, to=2-3]
-        \arrow[""{name=2, anchor=center, inner sep=0}, shift right=3, hook, from=2-1, to=1-1]
+        \arrow[""{name=2, anchor=center, inner sep=0}, shift right=3, from=2-1, to=1-1]
         \arrow[hook, from=2-1, to=2-3]
-        \arrow[""{name=3, anchor=center, inner sep=0}, shift right=3, hook, from=2-3, to=1-3]
+        \arrow[""{name=3, anchor=center, inner sep=0}, shift right=3, from=2-3, to=1-3]
         \arrow["\dashv"{anchor=center}, draw=none, from=0, to=2]
         \arrow["\dashv"{anchor=center}, draw=none, from=1, to=3]
     \end{tikzcd}
 \end{center}
-This is what we start doing with the main results (Theorem \ref{thm:folk_model_structure_on_stricter_n} and Theorem \ref{thm:quillen_folk_dgm_n}) of this article, that we summarise in the following.  
+This is what we start doing with the main results (Theorem \ref{thm:folk_model_structure_on_stricter_n} and Theorem \ref{thm:quillen_folk_dgm_n}) of this article, that we summarise here.
 \begin{thm*}
     Let \( n \in \mathbb{N} \cup \set{\omega} \).
     There exists a model structure, called the \emph{folk model structure}, on the category \( \snCat{n} \) of stricter \( n \)\nbd category.
@@ -104,6 +104,12 @@ However, following \cite{gagna2023nerve, maehara2023oriental}, we are quite conf
     \end{equation*}
     is an acyclic cofibration in the \( (\infty, \omega) \)\nbd model structure on diagrammatic sets. 
 \end{conj*}
+
+\noindent Thus, the role played by stricter \( n \)\nbd categories in the diagrammatic model is analogous to the role played by strict \( n \)\nbd categories in the standard model.
+In particular, we believe that the \( (\infty, 1) \)\nbd categories of diagrammatic \( (\infty, n) \)\nbd categories should be presented by a model structure on certain presheaves over the full subcategory of \( \snCat{n} \) on stricter \( n \)\nbd categories of the form \( \molecin{P} \), for \( P \) a (finite) regular directed complex.
+This presentation would be akin to the presentation of the \( (\infty, 1) \)\nbd category of standard \( (\infty, n) \)\nbd categories given by \( n \)\nbd quasicategories \cite{ara2014higher} or \( \Theta_n \)\nbd spaces \cite{rezk2010cartesian}.     
+Since by Theorem \ref{thm:strict_le_3_are_stricter}, the categories \( \snCat{n} \) and \( \nCat{n} \) coincide when \( n \le 3 \), such a presentation of the \( (\infty, 1) \)\nbd categories of diagrammatic \( (\infty, n) \)\nbd categories should lead to a proof that the diagrammatic and the standard model coincide for \( n \le 3 \).
+We are actively working on implementing this strategy.
 
 \subsection*{Background on regular directed complexes}
 

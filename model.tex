@@ -22,7 +22,7 @@
 \end{dfn}
 
 \begin{thm} \label{thm:folk_model_structure_on_stricter_n}
-    Let \( n \in \mathbb{N} \).
+    Let \( n \in \mathbb{N} \cup \set{\omega} \).
     There is a cofibrantely generated model structure on the category \( \snCat{n} \), called the \emph{folk model structure}, where:
     \begin{enumerate}
         \item every \( n \)\nbd categories is fibrant.
@@ -37,11 +37,13 @@
             \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
         \end{tikzcd}
     \end{center}
-    which is in particular a Quillen pair.
+    which is in particular a Quillen pair, and an equivalence if \( n \le 3 \).
 \end{thm}
 \begin{proof}
     This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders} and Lemma \ref{lem:reflection_of_polygraphs_are_stricter_polygraphs}.
     That the set \( \trunc{n}\Icof \) is a generating set of cofibrations follows from Corollary \ref{cor:pushout_principal_cell}.
+    If \( n \le 3 \), then by Theorem \ref{thm:strict_le_3_are_stricter}, the full subcategory inclusion \( \iota \) is the identify.
+    Since \( \nCat{n} \) and \( \snCat{n} \) have the same cofibrations and fibrant objects, the two folk model structures coincide. 
 \end{proof}
 
 \noindent Therefore, we have the following commutative square of left Quillen functors
@@ -61,7 +63,6 @@
     By construction, the folk model structure on \( \nCat{n} \) is right transferred along the full subcategory inclusion \( \nCat{n} \incl \omegaCat \).
     Thus, the same applies for the folk model structure on \( \snCat{n} \) and the full subcategory inclusion \( \snCat{n} \incl \somegaCat \).
 \end{rmk}
-
 
 \subsection{Coherent walking equivalence}
 
