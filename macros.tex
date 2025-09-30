@@ -2,40 +2,29 @@
 \newcommand\eqdef{\coloneqq}
 \newcommand\nbd{\nobreakdash-\hspace{0pt}}
 \newcommand\idd[1]{\mathrm{id}_{#1}}
-\newcommand\bigid[1]{\mathrm{Id}_{#1}}
 \newcommand\invrs[1]{#1^{-1}}
 \newcommand\after{\circ}
-
 \newcommand\incl{\hookrightarrow}
 \newcommand\surj{\twoheadrightarrow}
 \newcommand\restr[2]{{#1}{\raisebox{0pt}{$|_{#2}$}}}
-
+\newcommand\sd{\looparrowright}
 \newcommand\set[1]{\left\{ {#1} \right\}}
 \newcommand\order[2]{#2^{(#1)}}
-
+\renewcommand{\a}{\alpha}
 
 % category theory macros
-
 \newcommand\opp[1]{#1^\mathrm{op}}
-
 \newcommand\cat[1]{\mathbf{#1}}
-
 \newcommand\fun[1]{\mathsf{#1}}
 \DeclareMathOperator*{\colim}{colim}
-
-\DeclareMathOperator*{\Ob}{Ob}
-
 \def\raiseslice#1#2{\raisebox{-2pt}{$#1#2$}}
 \newcommand{\slice}[2]{{#1{/}\mathpalette\raiseslice{#2}}}
-% \newcommand\slice[2]{{#1}/\raisebox{-2pt}{$#2$}}
 
 % special categories
-
 \newcommand\rdcpx{\cat{RDCpx}}
 \newcommand\rdcpxmap{\rdcpx_{\downarrow}}
 \newcommand\rdcpxcomap{\rdcpx_{\uparrow}}
 \newcommand\rdcpxcart{\rdcpx_{\mathsf{cart}}}
-
 \newcommand{\atom}{{\scalebox{1.3}{\( \odot \)}}}
 \newcommand{\smallatom}{\odot}
 \newcommand{\Set}{\cat{Set}}
@@ -43,49 +32,31 @@
 \newcommand{\Pos}{\cat{Pos}}
 \newcommand{\dgmSet}{\atom\Set}
 \newcommand{\sSet}{\cat{sSet}}
-
 \newcommand{\pt}{\mathbf{1}}
-\newcommand{\init}{\varnothing}
-
 \newcommand{\bpt}[1]{#1_{**}}
+
 % oriented poset macros
 \DeclareMathOperator{\clos}{cl}
 \newcommand\clset[1]{\mathrm{cl}\set{#1}}
 \newcommand\gr[2]{#2_{#1}}
 \newcommand\maxel[1]{\mathscr{M}\!\mathit{ax}\,#1}
 \newcommand\bd[2]{\partial_{#1}^{#2}}
-
 \newcommand\faces[2]{\Delta_{#1}^{#2}}
 \newcommand\cofaces[2]{\nabla_{#1}^{#2}}
-\newcommand\inter[1]{\mathrm{int}\,#1}
-
 \newcommand\cp[1]{\,{\scriptstyle\#}_{#1}\,}
 \newcommand\cpsub[1]{\triangleright_{#1}}
 \newcommand\subcp[1]{\prescript{}{#1\!}{\triangleleft}\;}
-\newcommand\gencp[1]{\,{\scriptstyle\widehat{\#}}_{#1}\,}
-
 \newcommand\subs[3]{#1[#2/#3]}
 \newcommand\compos[1]{\langle#1\rangle}
-
 \newcommand\celto{\Rightarrow}
-\newcommand\relcelto[1]{\Rightarrow_{\kern-3pt #1}}
-
 \newcommand\submol{\sqsubseteq}
-
 \newcommand\augm[1]{{{#1}_\bot}}
-
 \newcommand\dual[2]{\fun{D}_{#1}{#2}}
-\newcommand\join{\,{\star}\,}
 \newcommand\gray{\otimes}
 \newcommand\sus[1]{\fun{S}{#1}}
+\newcommand\pcyl[1]{\ltimes_{#1}}
 
-\newcommand{\tp}{\otimes}
-
-\DeclareMathOperator{\lydim}{lydim}
-%%%%%%%%%%% 
-
-
-% diagrammatic set stuff
+% diagrammatic sets
 \DeclareMathOperator{\Pd}{Pd}
 \DeclareMathOperator{\Rd}{Rd}
 \DeclareMathOperator{\Eqv}{Eqv}
@@ -95,30 +66,26 @@
 \DeclareMathOperator{\dgn}{dgn}
 \DeclareMathOperator{\Nd}{Nd}
 \DeclareMathOperator{\nd}{nd}
-
 \newcommand\rev[1]{{#1}^\dag}
 
 % unitors 
-
 \newcommand{\un}{\varepsilon}
-\newcommand{\lun}[1]{\lambda_{#1}}
-\newcommand{\run}[1]{\rho_{#1}}
 \newcommand{\hinv}[1]{\xi_{#1}}
-
 \newcommand{\lcyl}[1]{\mathrm{L}_{#1}}
 \newcommand{\rcyl}[1]{\mathrm{R}_{#1}}
-
 \newcommand{\hcyl}[1]{\Xi_{#1}}
 
 % special objects
-
+\newcommand{\dglobe}[1]{\vec{O}^{#1}}
+\newcommand\arr{\dglobe{1}}
+\newcommand{\rglobe}[1]{\selfloc{O}^{#1}}
 
 % collapsible
-
 \newcommand{\coll}[2]{{#2} / {#1}}
 \newcommand{\zcoll}{\bullet}
 \newcommand{\icoll}[1]{(#1)}
 \newcommand{\mapcoll}{p}
+
 % maps induced
 \newcommand{\mapel}[1]{\iota_{#1}}
 \newcommand{\imel}[2]{{#1}_{#2}}
@@ -127,151 +94,68 @@
 \newcommand{\loc}[2]{#1[#2^{-1}]}
 \newcommand{\preloc}[2]{#1\set{{#2}^{-1}}}
 \newcommand{\selfloc}[1]{\widetilde{#1}}
-\newcommand{\locarr}{\tilde I}
 \DeclareMathOperator{\Loc}{\fun{Loc}}
-\newcommand{\revarr}{\tilde I}
-\newcommand{\selflocm}[1]{\selfloc{#1}_{\m{}}}
-\newcommand{\markarr}{\markmol{\arr}}
 
-\newcommand{\td}[1]{\tilde{#1}}
-% other
-\renewcommand{\a}{\alpha}
 
-%% coinductive classes
-\newcommand{\B}{\mathcal{B}}
-\DeclareMathOperator{\Linv}{\mathcal{L}}
-\DeclareMathOperator{\Rinv}{\mathcal{R}}
-\DeclareMathOperator{\Pst}{Pst}
-
-% contexts
-\renewcommand{\th}{\vartheta}
-
+% strict functors
 \newcommand{\F}{\fun{F}}
 \newcommand{\G}{\fun{G}}
 
 %% marked stuff
 \newcommand{\m}[1]{{\mathsf{m}#1}}
-\newcommand{\mrk}[1]{{#1}_{\m{}}}
-\newcommand{\markmol}[1]{{#1}_{\m{}}}
-
 \newcommand{\mdgmSet}{\atom\Set^{\m{}}}
 \newcommand{\minmark}[1]{{#1}^{\flat}}
-\newcommand{\maxmark}[1]{{#1}^{\sharp}}
 \newcommand{\natmark}[1]{{#1}^{\natural}}
-
-\newcommand{\minbdmap}[1]{\minmark{\partial}_{#1}}
-\newcommand{\markbdmap}[1]{\partial^{\m{}}_{#1}}
-\newcommand{\maxmarkabove}[2]{{#2}^{\sharp_{#1}}}
-
-% model structures
-\newcommand{\pp}[1]{\mathbin{\hat{#1}}}
-\DeclareMathOperator{\an}{an}
-\newcommand{\cof}[1]{{#1}\text{\nbd}\mathsf{cof}}
-\newcommand{\pizero}{\pi_0}
-
-%% other
-\newcommand\cls[1]{\mathscr{#1}}
 
 % anodyne sets
 \newcommand{\Jn}[1]{J_{#1}}
 \newcommand{\Jhorn}{J_{\mathsf{horn}}}
-\newcommand{\Jcoind}{J_{\mathsf{coind}}}
-\newcommand{\Jloc}{J_{\mathsf{loc}}}
 \newcommand{\Jcomp}{J_{\mathsf{comp}}}
 
-% simplicial notations
-
-\newcommand{\simplex}[1]{\Delta[#1]}
-\newcommand{\osimplex}[1]{\vec\Delta[#1]}
-\newcommand{\simplexcat}{\Delta}
-\newcommand{\isSet}{i_{\simplexcat}}
-\newcommand{\rsSet}[1]{{#1}_{\simplexcat}}
-\newcommand{\msSet}{\sSet^{\m{}}}
-
-\newcommand{\thick}[1]{\mathfrak{th}_{#1}}
-\newcommand{\rthick}[1]{\mathfrak{th}^{\mathsf{r}}_{#1}}
-\newcommand{\rsnerve}{N^{\fun{rs}}}
-\newcommand{\natnerve}{N^\natural}
-
-\newcommand{\spine}[1]{\mathrm{Sp}[{#1}]}
-\newcommand{\simplexorder}[1]{[#1]}
-\newcommand{\bdsimplex}[1]{\partial[#1]}
-\newcommand{\marksimplex}[1]{\simplex{#1}_{\m{}}}
-\newcommand{\hornsimplex}[2]{\Lambda^{#1}[#2]}
-\newcommand{\stratsimplex}[2]{\Delta^{#1}[#2]}
-
 % omega cat notations
-
 \newcommand{\omegaCat}{{\omega\Cat}}
 \newcommand{\nCat}[1]{{#1\Cat}}
 \newcommand{\somegaCat}{\omegaCat^>}
 \newcommand{\snCat}[1]{\nCat{#1}^>}
-\newcommand{\Comp}{\omega\cat{Comp}}
-\newcommand{\nComp}[1]{{#1\cat{Comp}}}
+\newcommand{\Comp}{\omega\cat{CSt}}
+\newcommand{\nComp}[1]{{#1\cat{CSt}}}
 \newcommand{\comp}[1]{*_{#1}}
 \newcommand{\omegaReg}{\omega\cat{Reg}}
-\newcommand{\omegaMol}{\omega\cat{Mol}}
 \newcommand{\omegaRegSet}{[\opp{\omegaReg}, \Set]^{\mathsf{rw, pst}}}
 \newcommand{\rc}{\fun{r}}
 \newcommand{\rcs}{\fun{r}^{>}}
-
 \newcommand{\pcell}[1]{\langle#1\rangle}
 \let\amalg\relax
 \DeclareMathOperator*{\amalg}{\mathrm{amalg}}
-
 \newcommand{\trunc}[1]{\tau_{#1}}
 \newcommand{\skel}[1]{\sigma_{#1} }
 \newcommand\molec{\mathit{Mol}}
 \newcommand\Atom{\mathit{Atom}}
 \newcommand\molecin[1]{\slice{\molec}{#1}}
-% \newcommand\molecinsmall[1]{\slice{\molec}{\rel#1}}
 \newcommand\atomin[1]{\slice{\Atom}{#1}}
-
 \newcommand{\globe}[1]{O^{#1}}
-\newcommand{\dglobe}[1]{\vec{O}^{#1}}
-\newcommand\arr{\dglobe{1}}
-\newcommand{\rglobe}[1]{\selfloc{O}^{#1}}
-
 \newcommand{\gcelto}{\to}
-
-\DeclareMathOperator{\Dgm}{Dgm}
-
-\newcommand\sd{\looparrowright}
-
 \newcommand{\N}[1]{N_{#1}}
 
 
-\newcommand{\eps}{\epsilon}
 % folk model structure
-
 \newcommand{\Icof}{\mathcal{I}}
-\newcommand{\sJcof}{\mathcal{J}^>}
-\newcommand{\Jcof}{\mathcal{J}}
-\newcommand{\sfolkcof}{\mathrm{Cof}^{>}}
 \newcommand{\wE}{\tilde E}
 \newcommand{\swE}{\tilde E^>}
-\newcommand{\rGamma}{\tilde\Gamma}
-\newcommand{\rpi}{\tilde\pi}
 
 % gray product
-
 \newcommand{\homlax}{\underline{\fun{Hom}}_{\mathrm{lax}}}
 \newcommand{\homcolax}{\underline{\fun{Hom}}_{\mathrm{colax}}}
 
-% model structures
-
-\DeclareMathOperator{\rlp}{r}
-\DeclareMathOperator{\llp}{l}
-
 % string
-
 \newcommand{\s}{\mathsf{t}}
 
 % adjunction
-
 \newcommand{\unit}{\eta}
 \newcommand{\counit}{\epsilon}
 
+% other
+\newcommand\cls[1]{\mathscr{#1}}
 \makeatletter
 \newcommand{\oset}[3][0ex]{%
   \mathrel{\mathop{#3}\limits^{
@@ -280,7 +164,6 @@
 \makeatother
 \newcommand\qeq{\oset{?}{=}}
 
-% other
 
 \newcommand*\cocolon{%
         \nobreak
@@ -294,7 +177,3 @@
 }
 
 
-
-% notes
-\newcommand{\cccom}[1]{\todo[inline, color=magenta!30, linecolor=magenta!30!black, size=\normalsize]{#1}}
-\newcommand{\ccnote}[1]{\todo[noline, color=magenta!30, linecolor=magenta!30!black, size=\tiny]{#1}}

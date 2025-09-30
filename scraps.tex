@@ -65,7 +65,7 @@
 \end{proof}
 
 \begin{rmk} \label{rmk:thetas_are_dense}
-    As it is the case for strict \( \omega \)\nbd categories, the previous result is still valid if one let the colimit run over pasting diagrams \( u \colon \molecin{U} \to C \), where \( U \) is a ``theta'', that is, a pasting of directed globes.
+    As it is the case for strict \( \omega \)\nbd categories, the previous result is still valid if one let the colimit run over pasting diagrams \( u \colon \molecin{U} \to C \), where \( U \) is a ``theta'', that is, a pasting of globes.
 \end{rmk}
 
 
@@ -718,7 +718,7 @@
 
 % \begin{dfn} [Unit on a diagram]
 %     Let \( C \) be a composition structure and \( u \colon \molecin{U} \to C \) be a diagram.
-%     Then \emph{unit on \( u \)} is the diagram \( \un(u) \eqdef u \after \molecin{\tau_{\bd{}{} U}} \), where \( \bd{}{} U \colon \dglobe{1} \gray_{\bd{}{} U} U \surj U \) is the canonical surjection.
+%     Then \emph{unit on \( u \)} is the diagram \( \un(u) \eqdef u \after \molecin{\tau_{\bd{}{} U}} \), where \( \bd{}{} U \colon \dglobe{1} \pcyl{\bd{}{} U} U \surj U \) is the canonical surjection.
 % \end{dfn}
 
 % \begin{rmk}
@@ -1017,3 +1017,30 @@
     More generally, if a generalised pasting \( U \gencp{k} V \) given by a span \( (i \colon U \cap V \incl U, j \colon U \cap V \incl V) \) is defined and such that \( \F \after \molecin{i} = \G \after \molecin{j} \), we write \( \F \gencp{k} \G \) for the strict functor determined by universal property of the pushout.
     If the generalised pasting is given by a pasting at a submolecules \( U \cpsub{\iota} V \) or \( V \subcp{\iota} V \), we write accordingly \( \F \cpsub{\iota} \G \) and \( \G \subcp{\iota} \F \).
 \end{dfn}
+
+\begin{lem} \label{lem:subdivision_of_unitors}
+    Let \( s \colon U \sd V \) be a subdivision of molecules with formal dual \( c \colon V \to U \), and \( K \subseteq U \) be a closed subset of \( U \).
+    Then the formal dual \( \arr \pcyl K s \colon \arr \pcyl K U \sd \arr \pcyl{s(K)} V \) of the order-preserving function \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \) is a subdivision of partial Gray cylinders.
+\end{lem}
+\begin{proof}
+    Let \( x \in \arr \pcyl K U \), call \( V_x \eqdef s(\imel{U}{x}) \), \( K_x \eqdef \imel{U}{x} \cap K \), and \( c_x \) the restriction of \( c \) to \( V_x \)
+    Then \( (\arr \pcyl K s)\imel{U}{x} \) is isomorphic to \( \arr \pcyl{s(K_x)} V_x \), which is a molecule.
+    Now let \( q_V \colon \arr \times V_x \surj \arr \times_{s(K_x)} V_x  \) and \( q_U \colon \arr \times \imel{U}{x} \surj \arr \times_{K_x} \imel{U}{x} \) be the quotient maps.
+    Then we have a commutative diagram
+    \begin{center}
+        \begin{tikzcd}
+            {\arr \times \imel{U}{x}} & {\arr \times_{K_x} \imel{U}{x}.} \\
+            {\arr \times V_x} & {\arr \times_{s(K_x)} V_x}
+            \arrow["{{q_U}}", two heads, from=1-1, to=1-2]
+            \arrow["{{\arr \times c_x}}", from=2-1, to=1-1]
+            \arrow["{{q_V}}"', two heads, from=2-1, to=2-2]
+            \arrow["{{\arr \times_{K_x} c_x}}"', from=2-2, to=1-2]
+        \end{tikzcd}
+    \end{center}
+    By \cite[Proposition 7.2.21]{hadzihasanovic2024combinatorics}, the formal dual of \( \arr \times c_x \) is a subdivision.
+    By inspection, for all \( k \in \mathbb{N} \) and \( \a \in \set{-, +} \), we have
+    \begin{equation*}
+        q_V(\bd{k}{\a} (\arr \gray V_x)) = \bd{k}{\a} (\arr \pcyl{s(K_x)} V_x) \text{ and } q_U(\bd{k}{\a} (\arr \gray \imel{U}{x})) = \bd{k}{\a} (\arr \pcyl{K_x} \imel{U}{x}),
+    \end{equation*}
+    which is enough to conclude. 
+\end{proof}

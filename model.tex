@@ -2,6 +2,8 @@
 
 \subsection{Folk model structure on stricter \texorpdfstring{$\omega$}{ω}-categories}
 
+\noindent Recall from \cite{lafont2010folk} the existence, for all \( n \in \set{\mathbb{N}} \cup \set{\omega} \), of the \emph{folk model structure} on strict \( n \)\nbd categories.
+
 \begin{dfn} [Stricter \( \omega \)\nbd category of cylinders]
     Let \( C \) be a stricter \( \omega \)\nbd category.
     The \emph{stricter \( \omega \)\nbd category of cylinders} is the stricter \( \omega \)\nbd category 
@@ -25,8 +27,8 @@
     Let \( n \in \mathbb{N} \cup \set{\omega} \).
     There is a cofibrantely generated model structure on the category \( \snCat{n} \), called the \emph{folk model structure}, where:
     \begin{enumerate}
-        \item every \( n \)\nbd categories is fibrant.
-        \item \( \trunc{n}\Icof \) is a set of generating cofibrations;
+        \item every \( n \)\nbd category is fibrant;
+        \item \( \trunc{n}\Icof \) is a set of generating cofibrations.
     \end{enumerate}
     Furthermore, this model structure is right transferred from the folk model structure on \( \nCat{n} \) along the adjunction 
     \begin{center}
@@ -42,8 +44,7 @@
 \begin{proof}
     This is a direct application of \cite[Proposition 21.3.2]{ara2025polygraphs} with Remark \ref{rmk:strict_stricter_same_cylinders} and Lemma \ref{lem:reflection_of_polygraphs_are_stricter_polygraphs}.
     That the set \( \trunc{n}\Icof \) is a generating set of cofibrations follows from Corollary \ref{cor:pushout_principal_cell}.
-    If \( n \le 3 \), then by Theorem \ref{thm:strict_le_3_are_stricter}, the full subcategory inclusion \( \iota \) is the identify.
-    Since \( \nCat{n} \) and \( \snCat{n} \) have the same cofibrations and fibrant objects, the two folk model structures coincide. 
+    If \( n \le 3 \), then by Theorem \ref{thm:strict_le_3_are_stricter}, the full subcategory inclusion \( \iota \) is the identity, hence \( \nCat{n} \) and \( \snCat{n} \) have the same cofibrations and fibrant objects, so the two folk model structures coincide. 
 \end{proof}
 
 \noindent Therefore, we have the following commutative square of left Quillen functors
@@ -75,7 +76,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 \end{lem}
 \begin{proof}
     Let \( I \eqdef \set{\bd{}{} U \incl U \mid U \text{ atom}} \).
-    By \cite[Remark 2.9]{chanavat2024htpy}, \( f \) can be constructed as a pushout of transfinite composition of elements of \( I \), .
+    By \cite[Remark 2.9]{chanavat2024htpy}, \( f \) can be constructed as a pushout of transfinite composition of elements of \( I \).
     Since \( \molecin{-} \) is left adjoint, the same holds of \( \molecin{f} \), that is, \( \molecin{f} \) is a relative stricter polygraph.
 \end{proof}
 
@@ -175,11 +176,11 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \begin{equation*}
         \cls{T}_k = \set{\hinv{\s}b, (\hinv{\s}b)^L, (\hinv{\s}b)^R \mid \s \in \set{L, R}^{k - 1}}.
     \end{equation*}
-    We have a family of bijections \( \set{\phi_k \colon \cls{T}_k \cong \cls{S}_k}_{k \geq 0} \) given by letting \( \phi_0 \) map \( (0^-, 0^+) \) to \( (x, y) \) and by letting \( \phi_k \) be defined by
+    We have a family of bijections \( \set{\phi_k \colon \cls{T}_k \cong \cls{S}_k}_{k \geq 0} \) given by letting \( \phi_0 \) map \( (0^-, 0^+) \) to \( (x, y) \) and, for \( k > 0 \), by letting \( \phi_k \) be defined by
     \begin{equation*}
         \hinv{\s}b \mapsto (b, \s),\quad (\hinv{\s}b)^L \mapsto (b^L, \s),\quad (\hinv{\s}b)^R \mapsto (b^R, \s).
     \end{equation*}
-    One checks that have that \( \phi \colon \molecin{\rglobe{1}} \to \swE \) induces a strict functor, which is therefore an isomorphism of stricter polygraphs.
+    One checks that \( \phi \colon \molecin{\rglobe{1}} \to \swE \) induces a strict functor, which is therefore an isomorphism of stricter polygraphs.
     This concludes the proof.
 \end{proof}
 
@@ -214,12 +215,12 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     \begin{equation*}
         \molecin{(\bd{}{-} i_n)} \colon \molecin{\dglobe{n}} \to \molecin{\rglobe{n + 1}} 
     \end{equation*}
-    is an acyclic cofibration in the folk model structure for stricter \( \omega \)\nbd categories.
+    is an acyclic cofibration in the folk model structure on stricter \( \omega \)\nbd categories.
 \end{prop}
 \begin{proof}
     By Lemma \ref{lem:inclusion_into_stricter_is_equivalence} and Lemma \ref{lem:swE_is_iso_to_molecin_loc_globe}, \( \molecin{(\bd{}{-} i_0)} \) is an acyclic cofibration.
-    By a straightforward variation of \cite[Proposition 2.8]{hadzihasanovic2024model}, the functor \( \sus{} \colon \somegaCat \to \somegaCat \) preserves acyclic cofibrations, thus \( \sus{}\cdots\sus{\molecin{(\bd{}{-} i_0)}} \), where \( \sus{} \) is applied \( n \)\nbd times, is a acyclic cofibration.
-    Using Lemma \ref{lem:sus_commute_molec_connected} and Lemma \ref{lem:suspension_commute_selfloc}, one sees that the latter is in fact isomorphic to \( \molecin{(\bd{}{-} i_n)} \).
+    By a straightforward variation of \cite[Proposition 2.8]{hadzihasanovic2024model}, the functor \( \sus{} \colon \somegaCat \to \somegaCat \) preserves acyclic cofibrations, thus \( \sus{}\cdots\sus{\molecin{(\bd{}{-} i_0)}} \), where \( \sus{} \) is applied \( n \) times, is an acyclic cofibration.
+    Using Lemma \ref{lem:suspension_commute_selfloc} and Lemma \ref{lem:sus_commute_molec_connected}, one sees that the latter is in fact isomorphic to \( \molecin{(\bd{}{-} i_n)} \).
     This concludes the proof.
 \end{proof}
 
@@ -227,11 +228,11 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
 
 \begin{lem} \label{lem:pushout_with_localisation}
     Let \( s \colon U \sd V \) be a subdivision between atoms of dimension \( \geq 1 \).
-    Then there is a strict functor \( \td{s} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc V} \) fitting in a pushout diagram
+    Then there is a strict functor \( \tilde{s} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc V} \) fitting in a pushout diagram
     \begin{center}
         \begin{tikzcd}
             {\molecin{U}} & {\molecin{\selfloc{U}}} \\
-            {\molecin{V}} & {\molecin{\selfloc V}}
+            {\molecin{V}} & {\molecin{\selfloc V},}
             \arrow[""{name=0, anchor=center, inner sep=0}, hook, from=1-1, to=1-2]
             \arrow["{\molecin{s}}"', from=1-1, to=2-1]
             \arrow["{\tilde s}", from=1-2, to=2-2]
@@ -239,6 +240,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
     \end{center}
+    in \( \somegaCat \).
 \end{lem}
 \begin{proof}
     Let \( n \geq 1 \) be the dimension of \( U \), \( u \colon U \to U \) and \( v \colon V \to V \) be the identity.
@@ -248,7 +250,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
         \nd \gr{n + k}{\order{k}{U}} &= \set{\hinv{\s}u \colon \hcyl{\s} U \to \order{k - 1}{U}, \hinv{\s}^Lu, \hinv{\s}^Ru \colon \dual{n + k}{\hcyl{\s} U} \to \order{k - 1}{U}}_{\s \in \set{L, R}^k},\\
         \nd \gr{n + k}{\order{k}{V}} &= \set{\hinv{\s}v \colon \hcyl{\s} V \to \order{k - 1}{V}, \hinv{\s}^Lv, \hinv{\s}^Rv \colon \dual{n + k}{\hcyl{\s} V} \to \order{k - 1}{V}}_{\s \in \set{L, R}^k}.
     \end{align*}
-    We will then show by induction on \( k \geq 0 \) that letting \( s_0 \eqdef \molecin{s} \), and for all \( k > 0 \), that \( s_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \) by letting, for all \( \s \in \set{L, R}^k \),
+    We show by induction on \( k \geq 0 \) that the mapping \( s_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \) defined, for all \( \s \in \set{L, R}^k \), by
     \begin{equation*}
         \hinv{\s}u \mapsto \hinv{\s}v,\quad \hinv{\s}^Lu, \mapsto \hinv{\s}^Lv,\quad \hinv{\s}^Ru, \mapsto \hinv{\s}^Rv,
     \end{equation*}
@@ -264,8 +266,8 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
         \end{tikzcd}
     \end{equation}
-    The base case is evident.
-    Inductively, let \( k > 0 \) and suppose that the construction is well-defined for up to \( k - 1 \).
+    The base case is \( s_0 \eqdef \molecin{s} \), which is indeed a strict functor making the previous square trivially a pushout.
+    Inductively, let \( k > 0 \) and suppose that the construction is well-defined up to \( k - 1 \).
     To make the following diagrams more readable, we omit writing \( \molecin{(-)} \).
     Then \( {\molecin{\order k U}} \) and \( {\molecin{\order k V}} \) are produced from \( {\molecin{\order {k - 1} U}} \) and \( {\molecin{\order {k - 1} V}} \) by first attaching left and right inverses to the elements of the form \( \hinv{\s}u \) and \( \hinv{\s}v \) for \( \s \in \set{L, R}^{k - 1} \), giving the following pushouts in \( \somegaCat \)
     \begin{center}
@@ -322,7 +324,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
         \end{tikzcd}
     \end{center}
     By a similar argument, the pushout of \( s' \colon  \molecin{U'} \to \molecin{V'} \) along the strict functor \( \molecin{U'} \to \molecin{\order{k}{U}} \) is \( s_k \colon \molecin{\order{k}{U}} \to \molecin{\order{k}{V}} \).
-    The pasting law for pushout concludes the inductive step.
+    The pasting law for pushouts concludes the inductive step.
     By transfinite composition \( \tilde{s} \colon \molecin{\selfloc{U}} \to \molecin{\selfloc{V}} \) is the pushout of \( \molecin{s} \) along \( \molecin{U} \to \molecin{\selfloc U} \).
     This concludes the proof.
 \end{proof}
@@ -336,6 +338,7 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     is an acyclic cofibration in the folk model structure for stricter \( \omega \)\nbd categories.
 \end{prop}
 \begin{proof}
+    By Lemma \ref{lem:molecin_preserves_cofibration}, \( \molecin{c_U} \) is a cofibration.
     Let \( n \eqdef \dim U \) and \( s \colon \dglobe{n} \sd U \) be the unique subdivision.
     By Lemma \ref{lem:pushout_with_localisation}, we have the two commutative squares
     \begin{center}
@@ -349,7 +352,6 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
             \arrow[from=1-3, to=2-3]
             \arrow[from=2-1, to=2-2]
             \arrow[from=2-2, to=2-3]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=0]
             \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1]
         \end{tikzcd}
     \end{center}
@@ -411,14 +413,14 @@ Notice that by Corollary \ref{cor:regular_directed_complex_colimit_of_itself}, t
     A direct inspection and Corollary \ref{cor:molecin_polygraph_with_basis} show that \( \trunc{n}\molecin{i} \) is an isomorphism.
     Thus \( \trunc{n} \after \molecin{(\Jcomp \cup \Jn{n})} \) is a set of acyclic cofibrations.
     By \cite[E.2.14]{joyal2008theory}, \( \trunc{n} \after \molecin{-} \) is left Quillen. 
-    Since ``being right transferred'' is a compatible with composition of right Quillen functors, we conclude by Proposition \ref{prop:quillen_folk_dgm_infty}.
+    Since ``being right transferred'' is compatible with composition of right Quillen functors, we conclude by Proposition \ref{prop:quillen_folk_dgm_infty}.
 \end{proof}
 
 \noindent By Day convolution, diagrammatic sets support a biclosed monoidal structure \( - \gray - \) which restricts to the Gray product on atoms.
 
 \begin{prop} \label{prop:Gray_monoidal}
     Let \( n \in \mathbb{N} \cup \set{\omega} \).
-    Then the folk model structure is monoidal with respect to the Gray product.
+    Then the folk model structure on stricter \( n \)\nbd categories is monoidal with respect to the Gray product.
     Furthermore, the functors 
     \begin{equation*}
          \molecin{-} \colon \dgmSet \to \snCat{n} \quad\text{ and }\quad \rcs \colon \nCat{n} \to \snCat{n}

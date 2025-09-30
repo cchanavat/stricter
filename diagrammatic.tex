@@ -43,15 +43,14 @@ and in the sequel, we always identify a regular directed complex with its associ
     We let \( u \cp{k} v \colon U \cp{k} V \to X \) be the unique pasting diagram determined by the universal property of the pushout \( U \cp{k} V \).
     This makes \( \Pd(X) \) a composition structure.
 
-    More generally, if \( \iota \colon u \submol \bd{k}{-} v \), we write \( u \cpsub{\iota} v \) for the universal pasting diagram determined by the the pasting at the submolecule \( \iota \).
-    We use the dual notation if \( \iota \colon u \submol \bd{k}{+} v \). 
+    More generally, if \( \iota \colon \bd{k}{+} u \submol \bd{k}{-} v \), we write \( u \cpsub{\iota} v \) for the universal pasting diagram determined by the the pasting at the submolecule \( \iota \).
+    We use the dual notation if \( \iota \colon \bd{k}{-} u \submol \bd{k}{+} v \). 
 
     We often omit the index \( k \) when it is equal to \( \min \set{\dim u, \dim v} - 1 \), and omit \( \iota \) when it is irrelevant or evident from the context.
-
 \end{dfn}
 
 \begin{rmk}
-    \( \Rd(X) \) is a sub-reflexive graph \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pastings of round diagrams are generally not round. 
+    \( \Rd(X) \) is a sub-reflexive \( \omega \)\nbd graph of \( \Pd(X) \), but is not itself a composition structure, since pastings of round diagrams are generally not round. 
 \end{rmk}
 
 \begin{lem} \label{lem:Pd_is_stricter}
@@ -60,7 +59,7 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{lem}
 \begin{proof}
     Let \( P \) be a regular directed complex and consider a matching family \( \set{\F_x \colon \molecin{\imel{P}{x}} \to \Pd(X)}_{x \in P} \).
-    Then the candidate amalgamation sends \( w \colon W \to P \) to the canonical \( \colim_{x \in W} \imel{P}{w(x)} \to X \), which does not depend on the decomposition of \( w \).
+    Then the candidate amalgamation sends \( w \colon W \to P \) to the canonical morphism of diagrammatic sets \( \colim_{x \in W} \imel{P}{w(x)} \to X \), which does not depend on the decomposition of \( w \).
 \end{proof}
 
 \noindent Since morphisms \( f \colon X \to Y \) of diagrammatic sets also induce strict functors \( \Pd(f) \colon \Pd(X) \to \Pd(Y) \), this defines a functor
@@ -86,7 +85,7 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{prop}
 \begin{proof}
     The category \( \bpt{\dgmSet} \) is the coslice \( \slice{(\pt + \pt)}{\dgmSet} \).
-    Since \( \sus{-} \) is left adjoin by construction, the result follows from \cite[Proposition 3.3.8]{riehl2019context}
+    Since \( \sus{-} \) is left adjoint by construction, the result follows from \cite[Proposition 3.3.8]{riehl2019context}
 \end{proof}
 
 \begin{dfn} [Connected diagrammatic set]
@@ -116,28 +115,23 @@ and in the sequel, we always identify a regular directed complex with its associ
     The \emph{reverse of \( u \)} is the diagram \( \rev{u} \eqdef v \after \dual{n}{p} \colon \dual{n}{U} \to X \).
 \end{dfn}
 
-\begin{dfn}[Partial cylinder]
-    Given a graded poset \( P \) and a closed subset \( K \subseteq P \), the \emph{partial cylinder on \( P \) relative to \( K \)} is the graded poset \( \arr \times_K P \) obtained as the pushout
-    \begin{center}
-        \begin{tikzcd}
-            {I \times K} & K \\
-            {I \times P} & {I \times_K  P}
-            \arrow[two heads, from=1-1, to=1-2]
-            \arrow[hook', from=1-1, to=2-1]
-            \arrow["{(-)}", hook', from=1-2, to=2-2]
-            \arrow["q", two heads, from=2-1, to=2-2]
-            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
-        \end{tikzcd}  
-    \end{center}
-    in the category of posets.
-    This is equipped with a canonical projection map \( \tau_K \colon \arr \times_K P \surj P \).
-\end{dfn}
-
 \begin{dfn}[Partial Gray cylinder]
 	Let \( U \) be a regular directed complex and \( K \subseteq U \) a closed subset.
-	The \emph{partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \arr \gray_K U \) whose
+	The \emph{partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \arr \pcyl K U \) whose
     \begin{itemize}
-        \item underlying graded poset is \( \arr \times_K U \), and
+        \item underlying graded poset is obtained as the pushout
+            \begin{center}
+                \begin{tikzcd}
+                    {I \times K} & K \\
+                    {I \times P} & {(I \times P) \coprod_{I \times K} K}
+                    \arrow[two heads, from=1-1, to=1-2]
+                    \arrow[hook', from=1-1, to=2-1]
+                    \arrow["{(-)}", hook', from=1-2, to=2-2]
+                    \arrow["q", two heads, from=2-1, to=2-2]
+                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                \end{tikzcd}  
+            \end{center}
+            in the category of posets;
         \item orientation is specified, for all \( \a \in \set{+, -} \), by
         \begin{align*}
             \faces{}{\a}(x) & \eqdef \set{(y) \mid y \in \faces{}{\a}x}, \\
@@ -150,14 +144,15 @@ and in the sequel, we always identify a regular directed complex with its associ
             \end{cases}
         \end{align*}
     \end{itemize}
+    This is equipped with a canonical projection map \( \tau_K \colon \arr \pcyl K P \surj P \).
 \end{dfn}
 
 \begin{dfn}[Inverted partial Gray cylinder]
 	Let \( U \) be a molecule, \( n \eqdef \dim U \), and \( K \subseteq \bd{}{+}U \) a closed subset.
 	The \emph{left-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \lcyl{K} U \) whose
     \begin{itemize}
-        \item underlying graded poset is \( \arr \times_K U \), and
-        \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
+        \item underlying graded poset is the same as \( \arr \pcyl{K} U \);
+        \item orientation is as in \( \arr \pcyl K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
     \begin{align*}
         \faces{}{-}(1, x) &\eqdef \set{(0^-, x), (0^+, x)} + \set{(1, y) \mid y \in \faces{}{+}x \setminus K}, \\
         \faces{}{+}(1, x) &\eqdef \set{(1, y) \mid y \in \faces{}{-}x}, \\
@@ -167,8 +162,8 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{itemize}
 	Dually, if \( K \subseteq \bd{}{-}U \), the \emph{right-inverted partial Gray cylinder on \( U \) relative to \( K \)} is the oriented graded poset \( \rcyl{K}{U} \) whose
     \begin{itemize}
-        \item underlying graded poset is \( \arr \times_K U \), and
-        \item orientation is as in \( \arr \gray_K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
+        \item underlying graded poset is the same as \( \arr \pcyl{K} U \);
+        \item orientation is as in \( \arr \pcyl K U \), except for all \( x \in \gr{n}{U} \) and \( \a \in \set{+, -} \)
         \begin{align*}
             \faces{}{-}(1, x) &\eqdef \set{(1, y) \mid y \in \faces{}{+}x}, \\
             \faces{}{+}(1, x) &\eqdef \set{(0^-, x), (0^+, x)} + \set{(1, y) \mid y \in \faces{}{-}x \setminus K}, \\
@@ -180,9 +175,9 @@ and in the sequel, we always identify a regular directed complex with its associ
 
 \begin{rmk} \label{rmk:inverted_cylinder_well_def}
 	By \cite[Lemma 1.20, Lemma 1.26]{chanavat2024equivalences}, partial Gray cylinders and inverted partial Gray cylinders respect the classes of molecules, round molecules and atoms.
-	Moreover, for all molecules \( U \) and closed subset \( K \subseteq U \),
+	Moreover, for all molecules \( U \) and closed subsets \( K \subseteq U \),
 	\begin{itemize}
-		\item \( \tau_K \colon \arr \gray_K U \surj U \) is a cartesian map of molecules,
+		\item \( \tau_K \colon \arr \pcyl K U \surj U \) is a cartesian map of molecules,
 		\item if \( p \colon U \to V \) is a cartesian map of molecules with \( \dim V < \dim U \), then \( p \after \tau_K \colon \lcyl{K}{U} \to V \) and \( p \after \tau_K \colon \rcyl{K}{U} \to V \) are cartesian maps of molecules.
 	\end{itemize}
 \end{rmk}
@@ -199,38 +194,19 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{dfn}
 
 \begin{lem} \label{lem:subdivision_of_unitors}
-    Let \( s \colon U \sd V \) be a subdivision of molecules with formal dual \( c \colon V \to U \), and \( K \subseteq U \) be a subset of \( U \).
-    Then the formal dual \( \arr \gray_K s \colon \arr \gray_K U \sd \arr \gray_{s(K)} V \) of the function \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \) is a subdivision of partial Gray cylinders.
+    Let \( s \colon U \sd V \) be a subdivision of molecules with formal dual \( c \colon V \to U \), and \( K \subseteq U \) be a closed subset of \( U \).
+    Then the formal dual \( \arr \pcyl K s \colon \arr \pcyl K U \sd \arr \pcyl{s(K)} V \) of the order-preserving function \( \arr \pcyl{K} c \colon \arr \pcyl{s(K)} V \to \arr \pcyl{K} U \) is a subdivision of partial Gray cylinders.
 \end{lem}
 \begin{proof}
-    Let \( x \in \arr \gray_K U \), call \( V_x \eqdef s(\imel{U}{x}) \), \( K_x \eqdef \imel{U}{x} \cap K \), and \( c_x \) the restriction of \( c \) to \( V_x \)
-    Then \( (\arr \gray_K s)\imel{U}{x} \) is isomorphic to \( \arr \gray_{s(K_x)} V_x \), which is a molecule.
-    Now let \( q_V \colon \arr \times V_x \surj \arr \times_{s(K_x)} V_x  \) and \( q_U \colon \arr \times \imel{U}{x} \surj \arr \times_{K_x} \imel{U}{x} \) be the quotient maps.
-    Then we have a commutative diagram
-    \begin{center}
-        \begin{tikzcd}
-            {\arr \times \imel{U}{x}} & {\arr \times_{K_x} \imel{U}{x}.} \\
-            {\arr \times V_x} & {\arr \times_{s(K_x)} V_x}
-            \arrow["{{q_U}}", two heads, from=1-1, to=1-2]
-            \arrow["{{\arr \times c_x}}", from=2-1, to=1-1]
-            \arrow["{{q_V}}"', two heads, from=2-1, to=2-2]
-            \arrow["{{\arr \times_{K_x} c_x}}"', from=2-2, to=1-2]
-        \end{tikzcd}
-    \end{center}
-    By \cite[Proposition 7.2.21]{hadzihasanovic2024combinatorics}, the formal dual of \( \arr \times c_x \) is a subdivision.
-    By inspection, for all \( k \in \mathbb{N} \) and \( \a \in \set{-, +} \), we have
-    \begin{equation*}
-        q_V(\bd{k}{\a} (\arr \gray V_x)) = \bd{k}{\a} (\arr \gray_{s(K_x)} V_x) \text{ and } q_U(\bd{k}{\a} (\arr \gray \imel{U}{x})) = \bd{k}{\a} (\arr \gray_{K_x} \imel{U}{x}),
-    \end{equation*}
-    which is enough to conclude. 
+    This is a special case of \cite[Proposition 1.34]{chanavat2025semistrict}.
 \end{proof}
 
 \begin{lem} \label{lem:subdivision_of_invertors}
     Let \( s \colon U \sd V \) be a subdivision of atoms with formal dual \( c \colon V \to U \).
     Then
     \begin{enumerate}
-        \item for all closed subsets \( K \subseteq \bd{}{+} U \), the formal dual \( \lcyl{K} s \colon \lcyl{K} U \sd \lcyl{s(K)} V \) of the function \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \) is a subdivision of left-inverted partial Gray cylinders, and dually
-        \item for all closed subsets \( K \subseteq \bd{}{-} U \), the formal dual \( \rcyl{K} s \colon \rcyl{K} U \sd \rcyl{s(K)} V \) of the function \( \arr \times_K c \colon \arr \times_{s(K)} V \to \arr \times_K U \)  is a subdivision of right-inverted partial Gray cylinders.
+        \item for all closed subsets \( K \subseteq \bd{}{+} U \), the formal dual \( \lcyl{K} s \colon \lcyl{K} U \sd \lcyl{s(K)} V \) of the order-preserving function \( \lcyl{K} c \colon \lcyl{s(K)} V \to \lcyl{K} U \) is a subdivision of left-inverted partial Gray cylinders, and dually
+        \item for all closed subsets \( K \subseteq \bd{}{-} U \), the formal dual \( \rcyl{K} s \colon \rcyl{K} U \sd \rcyl{s(K)} V \) of the order-preserving function \( \rcyl{K} \colon \rcyl{s(K)} V \to \rcyl{K} U \) is a subdivision of right-inverted partial Gray cylinders.
     \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -238,7 +214,7 @@ and in the sequel, we always identify a regular directed complex with its associ
     Let \( n \eqdef \dim U \).
     By construction, \( \bd{}{-} \lcyl{K} U \) and \( \bd{}{+} \lcyl{K} U \) are, respectively, of the form
     \begin{equation*}
-        U \cpsub{} (\arr \gray_K \bd{}{+} U) \subcp{} \dual{n}{U} \text{ and } \arr \gray_{K \cap \bd{}{-} U} \bd{}{-} U,
+        U \cpsub{} (\arr \pcyl K \bd{}{+} U) \subcp{} \dual{n}{U} \text{ and } \arr \pcyl{K \cap \bd{}{-} U} \bd{}{-} U,
     \end{equation*}
     and similarly for \( \bd{}{-} \lcyl{K} V \) and \( \bd{}{+} \lcyl{K} V \).
     Since \( s(-) \) preserves pastings at submolecules and boundaries, we have by Lemma \ref{lem:subdivision_of_unitors} a clear subdivision of regular directed complexes 
@@ -249,12 +225,12 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{proof}
 
 \begin{rmk}
-    Given a subdivision \( s \colon U \sd V \) of atoms, and a string \( \s \in \set{L, R}^* \), we have by induction a subdivision \( \hcyl{\s} s \colon \hcyl{\s} U \sd \hcyl{\s} V \).
+    Given a subdivision \( s \colon U \sd V \) of atoms, and a string \( \s \in \set{L, R}^* \), we have, by inductively applying Lemma \ref{lem:subdivision_of_invertors}, a subdivision \( \hcyl{\s} s \colon \hcyl{\s} U \sd \hcyl{\s} V \).
 \end{rmk}
 
 \begin{dfn} [Unit]
     Let \( u \colon U \to X \) be a pasting diagram.
-    The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \gray_{\bd{}{}U} U \to X \).
+    The \emph{unit on \( u \)} is the degenerate pasting diagram \( \un u \colon u \celto u \) defined by \( u \after \tau_{\bd{}{} U} \colon \arr \pcyl{\bd{}{}U} U \to X \).
 \end{dfn}
 
 \begin{dfn} [Equivalence] 
@@ -281,7 +257,6 @@ and in the sequel, we always identify a regular directed complex with its associ
 \end{proof}
 
 \subsection{Model structure for diagrammatic \texorpdfstring{$(\infty, n)$}{(∞, n)}-categories}
-
 
 Recall that a \emph{marked diagrammatic set} is a diagrammatic set \( X \) together with a set \( A \subset \gr{> 0}{\cell X} \) called the \emph{marked cell}, containing all the degenerate cells. 
 A morphism of marked diagrammatic sets is a morphism of the underlying diagrammatic sets sending marked cells to marked cells.
@@ -338,18 +313,18 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
         \hinv{L\s}a \eqdef \hinv{L}(\hinv{\s}a) &\colon \hinv{\s}a \cp{} (\hinv{\s}a)^L \celto \un(\bd{}{-}\hinv{\s}a),\\
         \hinv{R\s}a \eqdef \hinv{R}(\hinv{\s}a) &\colon (\hinv{\s}a)^R \cp{} \hinv{\s}a \celto \un(\bd{}{+}\hinv{\s}a).
     \end{align*}
-    By induction, we have \( \hinv{\s}(a) \colon \hcyl{\s} U \to X \).
+    By induction, if \( a \) is of shape \( U \), we have \( \hinv{\s}(a) \colon \hcyl{\s} U \to X \).
     
     Finally, the construction of the localisation can be extended to a colimit preserving functor
     \begin{equation*}
         \Loc \colon \mdgmSet \to \dgmSet.
     \end{equation*}
-    By definition, each cell in \( A \) becomes invertible in \( \loc{X}{A} \).
+    By definition, each cell in \( A \) becomes an equivalence in \( \loc{X}{A} \).
 \end{dfn}
 
 \begin{comm} \label{comm:diff_of_localisation}
     This definition of localisation differs slightly from the one given in \cite[2.38]{chanavat2024model}. 
-    In the latter, the attached cell \( \hinv{R} \) has type \( \un(v) \celto a^R \cp{} a \), whereas in this version, we define \( \hinv{R} \colon a^R \cp{} a \celto \un(v) \), which explain the apparition of a dual in Definition \ref{dfn:higher_invertor_shape}.
+    In the latter, the attached cell \( \hinv{R} \) has type \( \un(v) \celto a^R \cp{} a \), whereas in this version, we define \( \hinv{R} \colon a^R \cp{} a \celto \un(v) \), which explain the appearance of a dual in Definition \ref{dfn:higher_invertor_shape}.
     We made this choice to match the construction of the coherent walking equivalence from \cite{hadzihasanovic2024model} in (\ref{dfn:strict_walking_equivalence}), so that Lemma \ref{lem:swE_is_iso_to_molecin_loc_globe} holds.
     The reader can be assured that this difference of definition is inessential and, in the sequel, we will always point out which results of \cite{chanavat2024model} would need a small adjustment to apply in the present case. 
 \end{comm}
@@ -382,11 +357,11 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 
 \begin{comm}
     In \cite{chanavat2024model}, an \( (\infty, \omega) \)\nbd category was called an \( (\infty, \infty) \)\nbd category.
-    In this article, we chose to update the notation in order to be more uniform with that of strict \( n \)\nbd category, where \( n \) is allowed to range in \( \mathbb{N} \cup \set{\omega} \), and because overall, following \cite{loubaton2023theory}, we think it is a better notation. 
+    In this article, we chose to update the notation in order to be more uniform with that of strict \( n \)\nbd category, where \( n \) ranges in \( \mathbb{N} \cup \set{\omega} \), and because overall, following \cite{loubaton2023theory}, we think it is a better notation. 
 \end{comm}
 
 \begin{dfn} [Marked horn]
-    Let \( (U, A) \) be a marked atom with \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \), \( x \in \maxel{\bd{}{\a} U} \), and call \( \Lambda^x_U \eqdef U \setminus \set{\top_U, x} \).
+    Let \( (U, A) \) be a marked atom with greatest element \( \top \in A \) such that \( k \eqdef \dim U - 1 \geq 0 \), \( \a \in \set{-, +} \), \( x \in \maxel{\bd{}{\a} U} \), and call \( \Lambda^x_U \eqdef U \setminus \set{\top_U, x} \).
     We say that the inclusion of marked regular directed complexes
     \begin{equation*}
         \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \incl (U, A) 
@@ -405,11 +380,11 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     Let \( \lambda^x_U \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to (U, A) \) be a marked horn, and \( W \) be an \( (\infty, \omega) \)\nbd category.
     We recall from \cite[Comment 3.13]{chanavat2024model} that a morphism \( s \colon \Lambda^x_U \to W \) classifying in \( W \) an equation \( \fun{E}x \qeq v \) in the indeterminate \( x \), where \( v \eqdef \restr{s}{\bd{}{+}U} \), and \( \fun{E} \) is a context in the sense of \cite[3.1]{chanavat2024equivalences}.
     Now if \( s \) defines furthermore a morphisms of marked diagrammatic sets \( s \colon (\Lambda^x_U, \Lambda^x_U \cap A) \to \natmark{W} \), then this implies that the context \( \fun{E} \) is weakly invertible.
-    By \cite[Lemma 5.10]{chanavat2024equivalences}, this equation has a solution \( u \), witnessed by an equivalence \( h \colon \fun{E}u \celto v \), which is exactly the data of an extension of \( s \) along \( \lambda^x_U \).
+    By \cite[Lemma 5.10]{chanavat2024equivalences}, this equation has a solution \( u \), witnessed by an equivalence \( h \colon \fun{E}u \celto v \), which, up to passing to weak composites, is exactly the data of an extension of \( s \) along \( \lambda^x_U \).
 \end{comm}
 
 \begin{prop} \label{prop:model_structre_on_marked_dgm_set}
-    For each \( n \in \mathbb{N} \cup \set{\omega} \) exists a model structure on marked diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
+    For each \( n \in \mathbb{N} \cup \set{\omega} \) there exists a model structure on marked diagrammatic sets, called the \emph{coinductive \( (\infty, n) \)\nbd model structure}, where
     \begin{enumerate}
         \item cofibrations are the monomorphisms;
         \item fibrant objects are of the form \( \natmark{X} \), for \( X \) an \( (\infty, n) \)\nbd category.
@@ -428,6 +403,10 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     We let \( \Jcomp \) be the set of walking weak composites.
 \end{dfn}
 
+\begin{rmk}
+    Each walking weak composite is the localisation of a marked horn.
+\end{rmk}
+
 \begin{dfn}
     Let \( n \in \mathbb{N} \cup \set{\omega} \).
     We let \( \Jn{n} \eqdef \set{U \incl \selfloc{U} \mid U \text{ atom}, \dim U > n } \).
@@ -438,7 +417,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \end{rmk}
 
 \begin{lem} \label{lem:isofib_left_right_lift}
-    Let \( f \colon X \to Y \) be a functor of \( (\infty, \omega) \)\nbd categories with the right lifting property against \( \Jcomp \), \( u \) be a round diagram in \( X \) and \( v \) a cell in \( Y \).
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, \omega) \)\nbd categories with the right lifting property against \( \Jcomp \), \( u \) be a round diagram in \( X \) and \( v \) a cell in \( Y \) parallel to \( f(u) \).
     Then
     \begin{enumerate}
         \item for all cells \( h \colon f(u) \celto v \) such that \( h \) is an equivalence, there exists an equivalence \( z \colon u \celto v' \) such that \( f(z) = h \);
@@ -446,13 +425,13 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
     \end{enumerate}
 \end{lem}
 \begin{proof}
-    Since \( f \) has the right lifting against \( \Jcomp \), the first part follows from by a small variation of the proof of \cite[Proposition 3.7]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation}.
+    Since \( f \) has the right lifting against \( \Jcomp \), the first part follows from a small variation of the proof of \cite[Proposition 3.7]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation}.
     We consider the second point.
     Suppose that the cell \( h \colon v \celto f(u) \) is an equivalence.
     Then \( h \) has a weak inverse \( h^* \colon f(u) \celto v \), which is itself an equivalence, and can be taken to be a cell since \( Y \) has weak composites.
     Thus by the first part of the proof, \( h^* = f(z^*) \), for an equivalence \( z^* \colon u \celto v' \).
-    Then, \( z^* \) a weak inverse \( z' \colon v' \celto u \). 
-    Since morphisms of diagrammatic set preserves weak inverses, \( f(z') \) is a weak inverse of \( h^* \).
+    Then, \( z^* \) has a weak inverse \( z' \colon v' \celto u \). 
+    Since morphisms of diagrammatic set preserve weak inverses, \( f(z') \) is a weak inverse of \( h^* \).
     By Proposition \ref{prop:main_equivalence}, there exists an equivalence \( k \colon f(z') \celto h \), which we may take to be a cell, since \( Y \) has weak composites.
     By the first part of the proof, \( k = f(k') \) for some equivalence \( k' \) of type \( z' \celto z \), where \( z \colon v' \celto u \) is an equivalence by Proposition \ref{prop:main_equivalence}.
     Since \( h = f(z) \), this concludes the proof.
@@ -460,7 +439,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 
 
 \begin{lem} \label{lem:isofib_rlp_marked_horn}
-    Let \( f \colon X \to Y \) be a functor of \( (\infty, \omega) \) category with the right lifting property against \( \Jcomp \),
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, \omega) \) categories with the right lifting property against \( \Jcomp \),
     Then \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
 \end{lem}
 \begin{proof}
@@ -497,7 +476,7 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 
 \begin{lem} \label{lem:marked_localisation_acyclic}
     Let \( n \in \mathbb{N} \cup \set{\omega} \) and \( U \) be an atom of dimension \( \geq 1 \).
-    Then the marking \( \minmark{\selfloc{U}} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{\iota \colon U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure.
+    Then the marking \( \minmark{\selfloc{U}} \incl (\selfloc{U}, \dgn \selfloc{U} \cup \set{\iota \colon U \incl \selfloc{U}}) \) is an acyclic cofibration in the coinductive \( (\infty, n) \)\nbd model structure on marked diagrammatic sets.
 \end{lem}
 \begin{proof}
     Notice that a marking is an acyclic cofibration if and only if it has the left lifting property against all fibrant objects.
@@ -521,19 +500,19 @@ Furthermore, if \( P \) is a regular directed complex and \( A \subseteq \gr{> 0
 \begin{proof}
     The existence as well as the characterisation of fibrant objects and the Quillen equivalence are given by \cite[3.27, Theorem 4.21, Theorem 4.23]{chanavat2024model}.
     Using the two-out-of-three, a slight variation of \cite[Lemma 4.16]{chanavat2024model} to account for Comment \ref{comm:diff_of_localisation}, and Lemma \ref{lem:marked_localisation_acyclic}, one sees that the set \( \minmark{(\Jcomp \cup \Jn{n})} \) is a set of acyclic cofibrations.
-    By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
     Since left Quillen equivalences reflect weak equivalences between cofibrant objects, \( \Jcomp \cup \Jn{n} \) is a set of acyclic cofibrations.
-    Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd category with the right lifting property against \( \Jcomp \cup \Jn{n} \).
-    We need to prove that \( f \) is a fibration.
-    Since \( \fun{U}\natmark{f} = f \), is it enough to prove that \( \natmark{f} \) is a fibration. 
+    By Remark \ref{rmk:infty_n_cat_iff_rlp_Jcomp_Jn}, \( \Jcomp \cup \Jn{n} \) detects fibrant objects.
+    Let \( f \colon X \to Y \) be a functor of \( (\infty, n) \)\nbd categories with the right lifting property against \( \Jcomp \cup \Jn{n} \).
+    It remains to prove that \( f \) is a fibration.
+    Since \( \fun{U}\natmark{f} = f \), it is enough to prove that \( \natmark{f} \) is a fibration. 
     By Lemma \ref{lem:isofib_rlp_marked_horn}, \( \natmark{f} \) has the right lifting property against \( \Jhorn \).
-    By \cite[Theorem 4.22]{chanavat2025gray}, a set of pseudo-generating acyclic cofibration for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jhorn \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
+    By \cite[Theorem 4.22]{chanavat2025gray}, a pseudo-generating set of acyclic cofibrations for the coinductive \( (\infty, n) \)\nbd model structure is given by \( \Jhorn \cup J_{\mathsf{mark}} \), where \( J_{\mathsf{mark}} \) is a set of markings.
     But a morphism of marked diagrammatic sets has the right lifting property against a set of markings \( J_{\mathsf{mark}} \) if and only if its domain has the right lifting property against \( J_{\mathsf{mark}} \).
     Since the domain of \( \natmark{f} \) is the fibrant object \( \natmark{X} \), we conclude.
 \end{proof}
 
 \begin{comm}
-    In \cite{chanavat2024model}, a pseudo-generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a closure \( \mathrm{an}(\Jcomp \cup \Jn{n}) \) of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
+    In \cite{chanavat2024model}, a pseudo-generating set of acyclic cofibrations for the \( (\infty, n) \)\nbd model structure was given by a closure of \( \Jcomp \cup \Jn{n} \) under certain Gray products.
     We showed in Theorem \ref{thm:n_model_structure_on_dgm_set} that this closure is unnecessary.
 \end{comm}
 
