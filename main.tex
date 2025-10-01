@@ -3,12 +3,12 @@
 \usepackage{amsmath,amsthm,amsfonts,amssymb,mathtools,mathdots,scalerel,mathrsfs,stmaryrd,cmll}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{mlmodern, tikz-cd, quiver}
+\usepackage{mlmodern,tikz-cd,quiver}
 \usepackage[many]{tcolorbox}
 
 \usepackage[shortlabels]{enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tikz, fancyhdr, xparse, xcolor, tocloft}
+\usepackage{tikz,fancyhdr,xparse,xcolor,tocloft}
 \usepackage[british]{babel}
 \usepackage[a4paper, top=4.5cm, bottom=4.5cm, left=4cm, right=4cm, asymmetric]{geometry}
 
@@ -18,8 +18,6 @@
 \usepackage{cctitle, titlesec}
 \usepackage{etoolbox}
 
-\usetikzlibrary{nfold}
-
 \makeatletter
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
@@ -28,10 +26,8 @@
 \input{macros}
 \input{style}
 
-
 \showboxbreadth=50 
 \showboxdepth=50
-
 
 \newcommand\runtitle{homotopy theory of stricter $n$-categories}
 \newcommand\runauthor{chanavat}
@@ -62,7 +58,6 @@
 \end{center}
 
 \makeaftertitle
-
 
 \input{intro}
 \input{stricter}
